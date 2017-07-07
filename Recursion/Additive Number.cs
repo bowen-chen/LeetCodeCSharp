@@ -32,16 +32,18 @@ namespace Demo
             Console.WriteLine(IsAdditiveNumber("121474836472147483648"));
         }
 
-        public bool IsAdditiveNumber2(string num)
+        public bool IsAdditiveNumber(string num)
         {
             int n = num.Length;
             // i first number length
             for (int i = 1; i <= n / 2; i++)
             {
+                // when num[0] == '0', i must be 1
                 if (num[0] == '0' && i > 1)
                 {
-                    return false;
+                    break;
                 }
+
                 long x1 = long.Parse(num.Substring(0, i));
                 // second number length
                 for (int j = 1; Math.Max(j, i) <= n - i - j; j++)
@@ -50,6 +52,7 @@ namespace Demo
                     {
                         break;
                     }
+
                     long x2 = long.Parse(num.Substring(i, i + j));
                     if (IsValid(x1, x2, num.Substring(i + j)))
                     {
@@ -59,6 +62,7 @@ namespace Demo
             }
             return false;
         }
+
         private bool IsValid(long x1, long x2, string num)
         {
             if (string.IsNullOrEmpty(num))
@@ -70,88 +74,6 @@ namespace Demo
             x1 = temp;
             string sum = x2.ToString();
             return num.StartsWith(sum) && IsValid(x1, x2, num.Substring(sum.Length));
-        }
-
-        public bool IsAdditiveNumber(string num)
-        {
-            for (int i = 1; i <= num.Length; i++)
-            {
-                string substring = num.Substring(num.Length - i, i);
-                if (substring.Length == 1 || !substring.StartsWith("0"))
-                {
-                    long sum;
-                    try
-                    {
-                        sum = long.Parse(substring);
-                    }
-                    catch (OverflowException)
-                    {
-                        break;
-                    }
-                    if (IsAdditiveNumber(num.Substring(0, num.Length - substring.Length), -1, sum))
-                    {
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
-
-        public bool IsAdditiveNumber(string num, long second, long sum)
-        {
-            if (second == -1)
-            {
-                for (int i = 1; i <= num.Length; i++)
-                {
-                    string substring = num.Substring(num.Length - i, i);
-                    if (substring.Length == 1 || !substring.StartsWith("0"))
-                    {
-                        try
-                        {
-                            second = long.Parse(substring);
-                        }
-                        catch (OverflowException)
-                        {
-                            break;
-                        }
-                        if (IsAdditiveNumber(num.Substring(0, num.Length - substring.Length), second, sum))
-                        {
-                            return true;
-                        }
-                    }
-                }
-            }
-            else
-            {
-                for (int i = 1; i <= num.Length; i++)
-                {
-                    string substring = num.Substring(num.Length - i, i);
-                    if (substring.Length == 1 || !substring.StartsWith("0"))
-                    {
-                        long first;
-                        try
-                        {
-                            first = long.Parse(substring);
-                        }
-                        catch (OverflowException)
-                        {
-                            break;
-                        }
-                        if (first + second == sum)
-                        {
-                            if (i == num.Length)
-                            {
-                                return true;
-                            }
-                            if (IsAdditiveNumber(num.Substring(0, num.Length - substring.Length), first, second))
-                            {
-                                return true;
-                            }
-                        }
-                    }
-                }
-            }
-            return false;
         }
     }
 }

@@ -45,41 +45,6 @@ namespace Demo
             Reverse(nums, 0, nums.Length - 1);
         }
 
-        public void NextPermutation2(int[] nums)
-        {
-            int n = nums.Length;
-            if (n < 2)
-            {
-                return;
-            }
-
-            int index = n - 1;
-            while (index > 0)
-            {
-                if (nums[index - 1] < nums[index])
-                    break;
-                index--;
-            }
-
-            if (index == 0)
-            {
-                Reverse(nums, 0, n - 1);
-            }
-            else
-            {
-                int val = nums[index - 1];
-                int j = n - 1;
-                while (j >= index)
-                {
-                    if (nums[j] > val)
-                        break;
-                    j--;
-                }
-                Swap(nums, j, index - 1);
-                Reverse(nums, index, n - 1);
-            }
-        }
-
         public void Swap(int[] nums, int i, int j)
         {
             int temp = nums[i];

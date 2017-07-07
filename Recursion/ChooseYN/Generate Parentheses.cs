@@ -34,6 +34,7 @@ namespace Demo
                 ret.Add(current);
                 return;
             }
+
             if (c == 0)
             {
                 GenerateParenthesis(ret, c + 1, n - 1, current + "(");
@@ -44,6 +45,7 @@ namespace Demo
                 {
                     GenerateParenthesis(ret, c + 1, n - 1, current + "(");
                 }
+
                 GenerateParenthesis(ret, c - 1, n, current + ")");
             }
         }

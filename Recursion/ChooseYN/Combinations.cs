@@ -31,14 +31,16 @@ namespace Demo
 
         public void Combine(IList<IList<int>> ret, List<int> current, int c, int n, int k)
         {
-            if (n - c + 1 < k)
-            {
-                return;
-            }
-
+            // happy
             if (k == 0)
             {
                 ret.Add(new List<int>(current));
+                return;
+            }
+
+            // unhappy
+            if (n - c + 1 < k)
+            {
                 return;
             }
 

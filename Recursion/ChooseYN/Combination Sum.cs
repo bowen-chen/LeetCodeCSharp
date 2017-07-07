@@ -32,22 +32,21 @@ namespace Demo
 
         private void CombinationSum(IList<IList<int>> ret, int[] candidates, int target, int index, List<int> current)
         {
-            if (index >= candidates.Length)
+            // happy
+            if (target == 0)
             {
+                ret.Add(new List<int>(current));
                 return;
             }
 
-            if (target < candidates[index])
+            // unhappy
+            if (index >= candidates.Length || target < candidates[index])
             {
                 return;
             }
 
             // choose
             current.Add(candidates[index]);
-            if (target - candidates[index] == 0)
-            {
-                ret.Add(new List<int>(current));
-            }
             CombinationSum(ret, candidates, target - candidates[index], index, current);
             current.RemoveAt(current.Count - 1);
 

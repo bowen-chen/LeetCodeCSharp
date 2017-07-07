@@ -65,7 +65,7 @@ namespace Demo
             }
             for (int i = 0; i < n/2; ++i)
             {
-                v[i] = "(" + v[i] + "," + v[n - i - 1] + ")";
+                v[i] = "(" + v[i] + "," + v[n - 1 - i] + ")";
             }
             FindContestMatch(n/2, v);
         }

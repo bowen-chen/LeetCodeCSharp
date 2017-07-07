@@ -43,6 +43,7 @@ namespace Demo
 
         private void Subsets(IList<IList<int>> ret, int[] nums, int index, IList<int> cur)
         {
+            // unhappy
             if (index >= nums.Length)
             {
                 return;
@@ -51,7 +52,7 @@ namespace Demo
             cur.Add(nums[index]);
             ret.Add(new List<int>(cur));
             Subsets(ret, nums, index + 1, cur);
-            cur.Remove(nums[index]);
+            cur.RemoveAt(cur.Count - 1);
 
             //not choose
             Subsets(ret, nums, index + 1, cur);

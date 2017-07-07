@@ -34,12 +34,14 @@ namespace Demo
 
         public void ReadBinaryWatch(int num, IList<string> ret, int current, int currentindex)
         {
+            // happy
             if (num == 0)
             {
                 ret.Add(string.Format("{0}:{1:d2}", current >> 6, current & 0x3f));
                 return;
             }
 
+            // unhappy
             if (num > 10 - currentindex || currentindex >= 10)
             {
                 return;
@@ -47,7 +49,7 @@ namespace Demo
 
             // choose
             var next = current | (1 << currentindex);
-            if ((next >> 6) <= 11 && (next & 63) <= 59)
+            if ((next >> 6) <= 11 && (next & 0x3f) <= 59)
             {
                 ReadBinaryWatch(num - 1, ret, next, currentindex + 1);
             }

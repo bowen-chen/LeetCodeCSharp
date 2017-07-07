@@ -11,6 +11,7 @@ Input: 21
 Output: -1
 */
 
+using System;
 using System.Linq;
 
 namespace Demo
@@ -21,34 +22,37 @@ namespace Demo
         {
             var str = n.ToString().ToArray();
             int len = str.Length;
+
+            // 1. from right to left, find the first nums[i] < nums[i+1], we need switch nums[i]
+            //  str[i+1] to end is ordered as decending
             int i;
-            for (i=len-1; i > 0; --i)
+            for (i=len-2; i >= 0; --i)
             {
-                if (str[i] > str[i - 1])
+                if (str[i] < str[i + 1])
                 {
                     break;
                 }
             }
 
-            if (i == 0)
+            if (i == -1)
             {
                 return -1;
             }
 
-            // str[i-1] is the first number less than str[i] from right
-            // and str[i] to str[len-1] is sorted decending
-            for (int j = len - 1; j >= i; --j)
+            // 2. from right to left, find the first nums[j] > nums[i], swap nums[j] nums[i]
+            for (int j = len - 1; j > i; --j)
             {
-                if (str[j] > str[i - 1])
+                if (str[j] > str[i])
                 {
                     char t = str[j];
-                    str[j] = str[i - 1];
-                    str[i-1] = t;
+                    str[j] = str[i];
+                    str[i] = t;
                     break;
                 }
             }
 
-            System.Array.Sort(str, i, str.Length - i);
+            // 3. reverse i+1 to end
+            Array.Reverse(str, i + 1, str.Length - i);
             long res = long.Parse(new string(str));
             return res > int.MaxValue ? -1 : (int)res;
         }

@@ -25,7 +25,9 @@ namespace Demo
             for (int i = 0; i < n; i++)
             {
                 res[i] = -1;
-            };
+            }
+
+            // keep index in the stack
             var st = new Stack<int>();
             for (int i = 0; i < 2 * n; ++i)
             {
@@ -34,6 +36,7 @@ namespace Demo
                 {
                     res[st.Pop()] = num;
                 }
+
                 if (i < n)
                 {
                     st.Push(i);

@@ -63,10 +63,11 @@ namespace Demo
                 {
                     s.Pop();
                     char first = s.Pop();
+                    s.Pop(); // pop :
                     char second = s.Pop();
                     s.Push(c == 'T' ? first : second);
                 }
-                else if(c!= ':')
+                else
                 {
                     s.Push(c);
                 }

@@ -45,48 +45,5 @@ namespace Demo
             }
             return res;
         }
-
-        public int LongestValidParentheses2(string s)
-        {
-            int n = s.Length;
-            int longest = 0;
-            var st = new Stack<int>();
-            for (int i = 0; i < n; i++)
-            {
-                if (s[i] == '(')
-                {
-                    st.Push(i);
-                }
-                else
-                {
-                    if (st.Count != 0 && s[st.Peek()] == '(')
-                    {
-                        st.Pop();
-                    }
-                    else
-                    {
-                        st.Push(i);
-                    }
-                }
-            }
-
-            if (st.Count == 0)
-            {
-                longest = n;
-            }
-            else
-            {
-                int a = n;
-                while (st.Count != 0)
-                {
-                    int b = st.Peek();
-                    st.Pop();
-                    longest = Math.Max(longest, a - b - 1);
-                    a = b;
-                }
-                longest = Math.Max(longest, a);
-            }
-            return longest;
-        }
     }
 }

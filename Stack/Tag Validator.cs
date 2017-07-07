@@ -71,11 +71,8 @@ Output: False
 Note:
 For simplicity, you could assume the input code (including the any characters mentioned above) only contain letters, digits, '<','>','/','!','[',']' and ' '.
 */
-using System;
+
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Demo
 {
@@ -86,6 +83,7 @@ namespace Demo
             var st = new Stack<string>();
             for (int i = 0; i < code.Length; ++i)
             {
+                // all content should be inside root doc
                 if (i > 0 && st.Count == 0)
                 {
                     return false;

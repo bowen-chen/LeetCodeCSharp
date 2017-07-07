@@ -33,60 +33,36 @@ namespace Demo
             CombinationSum3(3, 7);
         }
 
-        public IList<IList<int>> CombinationSum32(int k, int n)
-        {
-            var ret = new List<IList<int>>();
-            var cur = new List<int>();
-            CombinationSum32(ret, cur, 1, k, n);
-            return ret;
-        }
-
-        public void CombinationSum32(IList<IList<int>> ret, IList<int> cur, int i, int k, int n)
-        {
-            if (n <= 0 || k <= 0 || i>=10)
-            {
-                if (n == 0 && k == 0)
-                {
-                    ret.Add(new List<int>(cur));
-                }
-                return;
-            }
-
-
-            cur.Add(i);
-            CombinationSum32(ret, cur, i + 1, k - 1, n - i);
-            cur.RemoveAt(cur.Count - 1);
-
-
-            CombinationSum32(ret, cur, i + 1, k, n);
-        }
-
-
         public IList<IList<int>> CombinationSum3(int k, int n)
         {
             var ret = new List<IList<int>>();
             var cur = new List<int>();
-            CombinationSum3(ret, cur, k, n);
+            CombinationSum3(ret, cur, 1, k, n);
             return ret;
         }
 
-        public void CombinationSum3(IList<IList<int>> ret, IList<int> cur, int k, int n)
+        public void CombinationSum3(IList<IList<int>> ret, IList<int> cur, int i, int k, int n)
         {
-            if (n <= 0 || k <= 0)
+            // happy
+            if (n == 0 && k == 0)
             {
-                if (n == 0 && k == 0)
-                {
-                    ret.Add(new List<int>(cur));
-                }
+                ret.Add(new List<int>(cur));
                 return;
             }
 
-            for (int i = cur.Count == 0 ? 1 : cur[cur.Count - 1] + 1; i <= 9; i++)
-            {
-                cur.Add(i);
-                CombinationSum3(ret, cur, k - 1, n - i);
-                cur.RemoveAt(cur.Count - 1);
+            // unhappy
+            if (n < 0 || k < 0 || i>=10)
+            {   
+                return;
             }
+
+            // choose
+            cur.Add(i);
+            CombinationSum3(ret, cur, i + 1, k - 1, n - i);
+            cur.RemoveAt(cur.Count - 1);
+
+            // not choose
+            CombinationSum3(ret, cur, i + 1, k, n);
         }
     }
 }

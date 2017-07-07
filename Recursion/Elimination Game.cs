@@ -33,7 +33,7 @@ namespace Demo
             // /2
             // 1 2 3 4 j
             // 4 3 2 1 i
-            // j = 1 + n/2 -1
+            // j = 1 + n/2 - i
             // k = 2 x (1+ n/2 - i)
             return n == 1 ? 1 : 2 * (1 + n / 2 - LastRemaining(n / 2));
         }

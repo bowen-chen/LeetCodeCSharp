@@ -48,15 +48,20 @@ namespace Demo
                 }
                 else if (s[idx] == ']')
                 {
+                    Debug.Assert(stack.Count > 0);
                     var temp = stack.Pop();
                     res = temp.Item1 + string.Concat(Enumerable.Repeat(res, temp.Item2));
                     idx++;
                 }
                 else
                 {
+                    Debug.Assert(s[idx] != '[');
                     res += s[idx++];
                 }
             }
+
+
+            Debug.Assert(stack.Count == 0);
             return res;
         }
         public string DecodeString(string s)
