@@ -19,7 +19,7 @@ namespace Demo
         // O(n)
         // http://en.wikipedia.org/wiki/Longest_palindromic_substring
 
-        public string LongestPalindrome2(string s)
+        public string LongestPalindrome(string s)
         {
             int len = s.Length;
             bool[,] dp = new bool[len, len];
