@@ -27,7 +27,7 @@ namespace Demo
         private readonly Stack<TreeNode> s = new Stack<TreeNode>(); 
         public BSTIterator(TreeNode root)
         {
-            Push(root);
+            PushLeft(root);
         }
 
         /** @return whether we have a next smallest number */
@@ -44,11 +44,11 @@ namespace Demo
                 return 0;
             }
             var n = s.Pop();
-            Push(n.right);
+            PushLeft(n.right);
             return n.val;
         }
 
-        private void Push(TreeNode root)
+        private void PushLeft(TreeNode root)
         {
             while (root != null)
             {

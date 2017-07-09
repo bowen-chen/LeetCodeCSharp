@@ -59,7 +59,8 @@ namespace Demo
                 }
             }
 
-            return res = Math.Max(res, inc+dec-1);
+            res = Math.Max(res, inc+dec-1);
+            return res;
         }
     }
 }

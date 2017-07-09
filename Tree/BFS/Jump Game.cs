@@ -51,8 +51,8 @@ namespace Demo
 
         public bool CanJump2(int[] nums)
         {
-            int last = nums.Length - 1, i;
-            for (i = nums.Length - 2; i >= 0; i--)
+            int last = nums.Length - 1;
+            for (int i = nums.Length - 2; i >= 0; i--)
             {
                 if (i + nums[i] >= last) last = i;
             }

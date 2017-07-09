@@ -41,6 +41,7 @@ namespace Demo
             return res;
         }
 
+        // return depth
         private int FindLeaves(TreeNode root, List<List<int>>  res)
         {
             if (root == null) return -1;

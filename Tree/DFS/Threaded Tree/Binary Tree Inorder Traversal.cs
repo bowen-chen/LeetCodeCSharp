@@ -39,6 +39,7 @@ namespace Demo
             {
                 if (cur.left == null)
                 {
+                    // inorder visit, before go right
                     res.Add(cur.val);
                     cur = cur.right;
                 }
@@ -54,13 +55,17 @@ namespace Demo
                     // My predecessor right is null, so it is the first time, go left
                     if (pre.right == null)
                     {
+                        // thread myself
                         pre.right = cur;
                         cur = cur.left;
                     }
                     // My predecessor right is myself, so it is the second time, go right
                     else
                     {
+                        // restore the tree
                         pre.right = null;
+
+                        // inorder visit, before go right
                         res.Add(cur.val);
                         cur = cur.right;
                     }

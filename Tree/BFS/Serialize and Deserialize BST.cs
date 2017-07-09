@@ -8,7 +8,7 @@ The encoded string should be as compact as possible.
 
 Note: Do not use class member/global/static variables to store states. Your serialize and deserialize algorithms should be stateless.
 */
-using System;
+
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

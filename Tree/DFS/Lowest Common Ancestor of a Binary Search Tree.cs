@@ -35,31 +35,5 @@ namespace Demo
 
             return root;
         }
-        public TreeNode LowestCommonAncestor3(TreeNode root, TreeNode p, TreeNode q)
-        {
-            if (p.val > q.val)
-            {
-                var temp = p;
-                p = q;
-                q = temp;
-            }
-
-            return LowestCommonAncestor32(root, p, q);
-        }
-
-        public TreeNode LowestCommonAncestor32(TreeNode root, TreeNode p, TreeNode q)
-        {
-            if (root == null)
-            {
-                return null;
-            }
-
-            if (root.val >= p.val && root.val <= q.val)
-            {
-                return root;
-            }
-
-            return LowestCommonAncestor32(root.left, p, q) ?? LowestCommonAncestor32(root.right, p, q);
-        }
     }
 }

@@ -42,6 +42,7 @@ namespace Demo
             return ret;
         }
 
+        // return size
         private int LargestBSTSubtree(TreeNode root, out int min, out int max, ref int ret)
         {
             min = int.MinValue;
@@ -60,6 +61,7 @@ namespace Demo
             {
                 return -1;
             }
+
             int size = leftSize + 1 + rightSize;
             ret = Math.Max(size, max);
             min = leftSize == 0 ? root.val : leftMin;

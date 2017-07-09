@@ -45,6 +45,8 @@ namespace Demo
             FindTilt(root, ref res);
             return res;
         }
+      
+        /// <returns>Sum of node sub tree</returns>
         private int FindTilt(TreeNode node, ref int res)
         {
             if (node == null)

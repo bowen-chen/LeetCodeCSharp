@@ -48,6 +48,7 @@ namespace Demo
             {
                 return;
             }
+
             GetMinimumDifference(root.left, ref pre, ref res);
             if (pre != null)
             {

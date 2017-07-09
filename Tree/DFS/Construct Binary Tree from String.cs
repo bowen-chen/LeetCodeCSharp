@@ -33,13 +33,15 @@ namespace Demo
 
         public TreeNode Str2Tree(string s, ref int index)
         {
-            // begin with a number
-            if (s[index] != '-' && !(s[index] >= '0' || s[index] <= 9))
+            // must begin with a number
+            if (s[index] != '-' && !(s[index] >= '0' || s[index] <= '9'))
             {
                 return null;
             }
 
             int j = s.IndexOfAny(new[] {'(', ')'}, index);
+            // if s[index] = '(', parse my number
+            // if s[index] = ')', then it is leaf
             TreeNode n = new TreeNode(int.Parse(s.Substring(index, j - index)));
             index = j;
             if (s[index] == '(')

@@ -55,9 +55,8 @@ namespace Demo
 {
     public partial class Solution
     {
-
         // A function to do boundary traversal of a given binary tree
-        public IList<int> LeftBoundaryOfBinaryTree(TreeNode node)
+        public IList<int> BoundaryOfBinaryTree(TreeNode node)
         {
             var ret = new List<int>();
             if (node != null)
@@ -65,9 +64,9 @@ namespace Demo
                 ret.Add(node.val);
 
                 // Print the left boundary in top-down manner.
-                LeavesOfBinaryTree(node.left, ret);
+                LeftBoundaryOfBinaryTree(node.left, ret);
 
-                // Print all leaf nodes
+                // Print all leaf nodes, in case of node is a leaf
                 LeavesOfBinaryTree(node.left, ret);
                 LeavesOfBinaryTree(node.right, ret);
 
@@ -81,65 +80,66 @@ namespace Demo
         // A simple function to print leaf nodes of a binary tree
         public void LeavesOfBinaryTree(TreeNode node, List<int> output)
         {
-            if (node != null)
+            if (node == null)
             {
-                LeavesOfBinaryTree(node.left, output);
-
-                // Print it if it is a leaf node
-                if (node.left == null && node.right == null)
-                {
-                    output.Add(node.val);
-                }
-                LeavesOfBinaryTree(node.right, output);
+                return;
             }
+
+            LeavesOfBinaryTree(node.left, output);
+
+            // Print it if it is a leaf node
+            if (node.left == null && node.right == null)
+            {
+                output.Add(node.val);
+            }
+
+            LeavesOfBinaryTree(node.right, output);
         }
 
         // A function to print all left boundry nodes, except a leaf node.
         // Print the nodes in TOP DOWN manner
         private void LeftBoundaryOfBinaryTree(TreeNode node, List<int> output)
         {
-            if (node != null)
+            if (node == null)
             {
-                if (node.left != null)
-                {
-
-                    // to ensure top down order, print the node
-                    // before calling itself for left subtree
-                    output.Add(node.val);
-                    LeftBoundaryOfBinaryTree(node.left, output);
-                }
-                else if (node.right != null)
-                {
-                    output.Add(node.val);
-                    LeftBoundaryOfBinaryTree(node.right, output);
-                }
-
-                // do nothing if it is a leaf node, this way we avoid
-                // duplicates in output
+                return;
             }
+
+            if (node.left != null)
+            {
+                output.Add(node.val);
+                LeftBoundaryOfBinaryTree(node.left, output);
+            }
+            else if (node.right != null)
+            {
+                output.Add(node.val);
+                LeftBoundaryOfBinaryTree(node.right, output);
+            }
+
+            // else if it is a leaf node, do nothing
         }
 
         // A function to print all right boundry nodes, except a leaf node
         // Print the nodes in BOTTOM UP manner
         private void RightBoundaryOfBinaryTree(TreeNode node, List<int> output)
         {
-            if (node != null)
+            if (node == null)
             {
-                if (node.right != null)
-                {
-                    // to ensure bottom up order, first call for right
-                    //  subtree, then print this node
-                    RightBoundaryOfBinaryTree(node.right, output);
-                    output.Add(node.val);
-                }
-                else if (node.left != null)
-                {
-                    RightBoundaryOfBinaryTree(node.left, output);
-                    output.Add(node.val);
-                }
-                // do nothing if it is a leaf node, this way we avoid
-                // duplicates in output
+                return;
             }
+
+            if (node.right != null)
+            {
+                RightBoundaryOfBinaryTree(node.right, output);
+                output.Add(node.val);
+            }
+            else if (node.left != null)
+            {
+                RightBoundaryOfBinaryTree(node.left, output);
+                output.Add(node.val);
+            }
+
+            // else if it is a leaf node, do nothing
         }
     }
 }

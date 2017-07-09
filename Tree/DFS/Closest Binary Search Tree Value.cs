@@ -15,7 +15,12 @@ namespace Demo
         public int ClosestValue(TreeNode root, double target)
         {
             TreeNode kid = target < root.val ? root.left : root.right;
-            if (kid == null) return root.val;
+            if (kid == null)
+            {
+                return root.val;
+            }
+
+            // closest value in my subtree
             int closest = ClosestValue(kid, target);
             return Math.Abs(root.val - target) < Math.Abs(closest - target) ? root.val : closest;
         }

@@ -33,28 +33,5 @@ namespace Demo
 
             return HasPathSum(root.left, sum - root.val) || HasPathSum(root.right, sum - root.val);
         }
-
-        public bool HasPathSum2(TreeNode root, int sum)
-        {
-            return HasPathSum2(root, sum, 0);
-        }
-
-        private bool HasPathSum2(TreeNode root, int sum, int current)
-        {
-            if (root == null)
-            {
-                return false;
-            }
-
-            current += root.val;
-
-            if (root.left == null && root.right == null)
-            {
-                return current == sum;
-            }
-
-            return HasPathSum2(root.left, sum, current)
-                   || HasPathSum2(root.right, sum, current);
-        }
     }
 }

@@ -32,21 +32,23 @@ namespace Demo
             TreeNode cur = root;
             TreeNode first = null;
             TreeNode second = null;
-            TreeNode parent = null;
+            TreeNode last = null;
+
+            // inorder
             while (cur != null)
             {
                 if (cur.left == null)
                 {
-                    if (parent != null && parent.val > cur.val)
+                    if (last != null && last.val > cur.val)
                     {
                         if (first == null)
                         {
-                            first = parent;
+                            first = last;
                         }
 
                         second = cur;
                     }
-                    parent = cur;
+                    last = cur;
                     cur = cur.right;
                 }
                 else
@@ -67,16 +69,17 @@ namespace Demo
                     // My predecessor right is myself, so it is the second time, go right
                     else
                     {
-                        if (parent != null && parent.val > cur.val)
+                        if (last != null && last.val > cur.val)
                         {
                             if (first == null)
                             {
-                                first = parent;
+                                first = last;
                             }
 
                             second = cur;
                         }
-                        parent = cur;
+                        last = cur;
+
                         pre.right = null;
                         cur = cur.right;
                     }

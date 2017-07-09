@@ -32,19 +32,16 @@ namespace Demo
 
         private bool IsBalanced(TreeNode root, out int depth)
         {
-            int ldepth = 0;
-            bool leftb = true;
-            if (root.left != null)
+            if (root == null)
             {
-                leftb = IsBalanced(root.left, out ldepth);
+                depth = 0;
+                return true;
             }
+            int ldepth;
+            bool leftb = IsBalanced(root.left, out ldepth);
 
-            int rdepth = 0;
-            bool rightb = true;
-            if (root.right != null)
-            {
-                rightb = IsBalanced(root.right, out rdepth);
-            }
+            int rdepth;
+            bool rightb = IsBalanced(root.right, out rdepth);
 
             depth = Math.Max(ldepth, rdepth) + 1;
             return leftb && rightb && Math.Abs(ldepth - rdepth) <= 1;

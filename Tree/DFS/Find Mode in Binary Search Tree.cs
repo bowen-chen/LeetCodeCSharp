@@ -48,13 +48,13 @@ namespace Demo
             return res.ToArray();
         }
 
-        private void FindMode(TreeNode node, ref int preValue, ref int preCount, ref int max, List<int> res)
+        private void FindMode(TreeNode node, ref int preValue, ref int preCount, ref int maxCount, List<int> res)
         {
             if (node == null)
             {
                 return;
             }
-            FindMode(node.left, ref preValue, ref preCount, ref max, res);
+            FindMode(node.left, ref preValue, ref preCount, ref maxCount, res);
             if (node.val == preValue)
             {
                 preCount ++;
@@ -65,18 +65,18 @@ namespace Demo
                 preCount = 1;
             }
 
-            if (preCount == max)
+            if (preCount == maxCount)
             {
                 res.Add(node.val);
             }
-            else if (preCount > max)
+            else if (preCount > maxCount)
             {
                 res.Clear();
                 res.Add(node.val);
-                max = preCount;
+                maxCount = preCount;
             }
 
-            FindMode(node.right, ref preValue, ref preCount, ref max, res);
+            FindMode(node.right, ref preValue, ref preCount, ref maxCount, res);
         }
     }
 }

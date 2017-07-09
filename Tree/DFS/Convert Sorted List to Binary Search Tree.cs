@@ -55,7 +55,8 @@ namespace Demo
             int mid = low + (high - low) / 2;
             TreeNode left = SortedListToBST(ref node, low, mid - 1);
 
-            TreeNode treenode = new TreeNode(node.val) {left = left};
+            TreeNode treenode = new TreeNode(node.val);
+            treenode.left = left; 
             node = node.next;
 
             treenode.right = SortedListToBST(ref node, mid + 1, high);

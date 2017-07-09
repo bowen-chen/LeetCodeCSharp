@@ -45,20 +45,5 @@ namespace Demo
 
             return SumOfLeftLeaves(root.left, true) + SumOfLeftLeaves(root.right, false);
         }
-
-        public int SumOfLeftLeaves2(TreeNode root)
-        {
-            if (root == null)
-            {
-                return 0;
-            }
-
-            if (root.left != null && root.left.left == null && root.left.right == null)
-            {
-                return root.left.val + SumOfLeftLeaves2(root.right);
-            }
-
-            return SumOfLeftLeaves2(root.left) + SumOfLeftLeaves2(root.right);
-        }
     }
 }

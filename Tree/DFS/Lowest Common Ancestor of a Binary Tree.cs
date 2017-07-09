@@ -39,31 +39,5 @@ namespace Demo
 
             return left ?? right;
         }
-
-        public TreeNode LowestCommonAncestor2(TreeNode root, TreeNode p, TreeNode q)
-        {
-            TreeNode ret = null;
-            LowestCommonAncestor2(root, p, q, ref ret);
-            return ret;
-        }
-
-        public int LowestCommonAncestor2(TreeNode root, TreeNode p, TreeNode q, ref TreeNode ret)
-        {
-            if (root == null)
-            {
-                return 0;
-            }
-            
-            int center = (root == p || root == q) ? 1 : 0;
-            int left = LowestCommonAncestor2(root.left, p, q, ref ret);
-            int right = left != 2 ? LowestCommonAncestor2(root.right, p, q, ref ret) : 0;
-
-            if ((left == 1 && right == 1) || (left == 1 && center == 1) || (center == 1 && right == 1))
-            {
-                ret = root;
-            }
-
-            return left + right + center;
-        }
     }
 }

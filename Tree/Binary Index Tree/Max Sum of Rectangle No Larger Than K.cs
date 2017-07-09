@@ -16,6 +16,7 @@ What if the number of rows is much larger than the number of columns?
 */
 
 using System;
+using System.Collections.Generic;
 
 namespace Demo
 {
@@ -32,9 +33,9 @@ namespace Demo
             {
                 for (int j = 0; j < n; ++j)
                 {
-                    int t = matrix[i,j];
-                    if (i > 0) t += sum[i - 1,j];
-                    if (j > 0) t += sum[i,j - 1];
+                    int t = matrix[i, j];
+                    if (i > 0) t += sum[i - 1, j];
+                    if (j > 0) t += sum[i, j - 1];
                     if (i > 0 && j > 0) t -= sum[i - 1, j - 1];
                     sum[i, j] = t;
                     // Traverse all recetangle ending with i,j
@@ -42,16 +43,80 @@ namespace Demo
                     {
                         for (int c = 0; c <= j; ++c)
                         {
-                            int d = sum[i,j];
-                            if (r > 0) d -= sum[r - 1,j];
-                            if (c > 0) d -= sum[i,c - 1];
-                            if (r > 0 && c > 0) d += sum[r - 1,c - 1];
+                            int d = sum[i, j];
+                            if (r > 0) d -= sum[r - 1, j];
+                            if (c > 0) d -= sum[i, c - 1];
+                            if (r > 0 && c > 0) d += sum[r - 1, c - 1];
                             if (d <= k) res = Math.Max(res, d);
                         }
                     }
                 }
             }
             return res;
+        }
+
+        public int MaxSumSubmatrix2(int[,] matrix, int k)
+        {
+            int m = matrix.GetLength(0);
+            int n = matrix.GetLength(1);
+            if (m == 0 || n == 0)
+            {
+                return 0;
+            }
+            int res = int.MinValue;
+            for (int left = 0; left < n; ++left)
+            {
+                int[] sum = new int[m];
+                for (int right = left; right < n; ++right)
+                {
+                    for (int row = 0; row < m; ++row)
+                    {
+                        sum[row] += matrix[row, right];
+                    }
+
+                    int curSum = 0;
+                    int curMax = int.MinValue;
+                    var s = new SortedList<int, int>();
+                    s.Add(0, 0);
+                    foreach (int a in sum)
+                    {
+                        curSum += a;
+                        var it = FindLowerBound(s, curSum - k);
+                        if (it != s.Count)
+                        {
+                            curMax = Math.Max(curMax, curSum - s[s.Keys[it]]);
+                        }
+
+                        if (!s.ContainsKey(curSum))
+                        {
+                            s.Add(curSum, curSum);
+                        }
+                    }
+                    res = Math.Max(res, curMax);
+                }
+            }
+            return res;
+        }
+
+        private int FindLowerBound(SortedList<int, int> sortedList, int target)
+        {
+            // find the first number not (less than target)
+            int low = 0;
+            int high = sortedList.Count - 1;
+            while (low <= high)
+            {
+                var mid = low + (high - low) / 2;
+                if (sortedList[sortedList.Keys[mid]] < target)
+                {
+                    low = mid + 1;
+                }
+                else
+                {
+                    high = mid - 1;
+                }
+            }
+
+            return low;
         }
     }
 }

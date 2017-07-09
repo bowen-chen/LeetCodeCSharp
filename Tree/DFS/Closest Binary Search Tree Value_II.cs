@@ -93,30 +93,11 @@ namespace Demo
 
             ClosestKValues3(reverse ? root.right : root.left, target, reverse, stack);
             // early terminate, no need to traverse the whole tree
+            // each time, we traverse half the tree
             if ((reverse && root.val <= target) || (!reverse && root.val > target)) return;
             // track the value of current node
             stack.Push(root.val);
             ClosestKValues3(reverse ? root.left : root.right, target, reverse, stack);
-        }
-
-        public List<int> ClosestKValues2(TreeNode root, double target, int k)
-        {
-            var pq = new PriorityQueue<Tuple<double, int>>(16, Comparer<Tuple<double, int>>.Create((t1, t2) => t2.Item1.CompareTo(t1.Item2)));
-            ClosestKValues2(root, pq, target, k);
-            var ret = new List<int>();
-            while (pq.Count != 0)
-            {
-                ret.Add(pq.Pop().Item2);
-            }
-            return ret;
-        }
-        private void ClosestKValues2(TreeNode node, PriorityQueue<Tuple<double, int>> pq, double target, int k)
-        {
-            if (node == null) return;
-            pq.Push(Tuple.Create(Math.Abs(target - node.val), node.val));
-            if (pq.Count > k) pq.Pop();
-            ClosestKValues2(node.left, pq, target, k);
-            ClosestKValues2(node.right, pq, target, k);
         }
     }
 }

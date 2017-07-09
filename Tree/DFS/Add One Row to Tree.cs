@@ -76,21 +76,21 @@ namespace Demo
             return root;
         }
 
-        public void AddOneRow(TreeNode root, int v, int d, int c)
+        public void AddOneRow(TreeNode root, int v, int d, int currentDepth)
         {
             if (root == null)
             {
                 return;
             }
-            if (c + 1 == d)
+            if (currentDepth + 1 == d)
             {
                 root.left = new TreeNode(v) {left = root.left};
                 root.right = new TreeNode(v) { right = root.right };
             }
             else
             {
-                AddOneRow(root.left, v, d, c + 1);
-                AddOneRow(root.right, v, d, c + 1);
+                AddOneRow(root.left, v, d, currentDepth + 1);
+                AddOneRow(root.right, v, d, currentDepth + 1);
             }
         }
     }

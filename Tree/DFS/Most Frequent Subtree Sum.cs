@@ -42,6 +42,8 @@ namespace Demo
             FindFrequentTreeSum(root, m, ref max, res);
             return res.ToArray();
         }
+
+        // return sum of subtree
         private int FindFrequentTreeSum(TreeNode node, Dictionary<int, int> m, ref int max, List<int> res)
         {
             if (node == null)
@@ -51,10 +53,12 @@ namespace Demo
             int left = FindFrequentTreeSum(node.left, m, ref max, res);
             int right = FindFrequentTreeSum(node.right, m, ref max, res);
             int sum = left + right + node.val;
+
             if (!m.ContainsKey(sum))
             {
                 m[sum] = 0;
             }
+
             ++m[sum];
             if (m[sum] >= max)
             {
@@ -62,6 +66,7 @@ namespace Demo
                 {
                     res.Clear();
                 }
+
                 res.Add(sum);
                 max = m[sum];
             }

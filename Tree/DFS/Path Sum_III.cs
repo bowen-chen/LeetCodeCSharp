@@ -45,6 +45,7 @@ namespace Demo
     {
         public int PathSum3(TreeNode root, int sum)
         {
+            // similar to the sum array
             var m = new Dictionary<int, int>
             {
                 [0] = 1
@@ -74,6 +75,7 @@ namespace Demo
 
             ++m[curSum];
             res += PathSum3(node.left, sum, curSum, m) + PathSum3(node.right, sum, curSum, m);
+
             // remove the path to this node
             --m[curSum];
             return res;
