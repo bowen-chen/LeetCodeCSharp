@@ -66,9 +66,18 @@ namespace Demo
     {
         public NestedInteger Deserialize(string s)
         {
-            if (string.IsNullOrEmpty(s)) return new NestedInteger();
-            if (s[0] != '[') return new NestedInteger(int.Parse(s));
-            if (s.Length <= 2) return new NestedInteger();
+            if (string.IsNullOrEmpty(s))
+            {
+                return new NestedInteger();
+            }
+            if (s[0] != '[')
+            {
+                return new NestedInteger(int.Parse(s));
+            }
+            if (s.Length <= 2)
+            {
+                return new NestedInteger();
+            }
             NestedInteger res = new NestedInteger();
             int start = 1, cnt = 0;
             for (int i = 1; i < s.Length; ++i)
@@ -78,8 +87,14 @@ namespace Demo
                     res.Add(Deserialize(s.Substring(start, i - start)));
                     start = i + 1;
                 }
-                else if (s[i] == '[') ++cnt;
-                else if (s[i] == ']') --cnt;
+                else if (s[i] == '[')
+                {
+                    ++cnt;
+                }
+                else if (s[i] == ']')
+                {
+                    --cnt;
+                }
             }
             return res;
         }
@@ -302,9 +317,10 @@ namespace Demo
         {
             int n = 0;
             int positive = 1;  // flag for positive number
-            if (s[index++] == '-')
+            if (s[index] == '-')
             {
                 positive = -1;
+                index ++;
             }
 
             while (index < s.Length)

@@ -24,13 +24,17 @@ namespace Demo
     {
         public bool Exist(char[,] board, string word)
         {
-            for (int y = 0; y <= board.GetUpperBound(0); y++)
+            for (int y = 0; y < board.GetLength(0); y++)
             {
-                for (int x = 0; x <= board.GetUpperBound(1); x++)
+                for (int x = 0; x < board.GetLength(1); x++)
                 {
-                    if (Exist(board, y, x, word, 0)) return true;
+                    if (Exist(board, y, x, word, 0))
+                    {
+                        return true;
+                    }
                 }
             }
+
             return false;
         }
 
@@ -40,6 +44,7 @@ namespace Demo
             {
                 return true;
             }
+
             if (y < 0 || x < 0 || y >= board.GetLength(0) || x >= board.GetLength(1))
             {
                 return false;
@@ -58,43 +63,6 @@ namespace Demo
                          || Exist(board, y + 1, x, word, i + 1)
                          || Exist(board, y - 1, x, word, i + 1);
             board[y, x] = (char) (board[y, x] ^ 256);
-            return exist;
-        }
-
-        public bool Exist2(char[,] board, string word)
-        {
-            for (int y = 0; y <= board.GetUpperBound(0); y++)
-            {
-                for (int x = 0; x <= board.GetUpperBound(1); x++)
-                {
-                    var visited = new HashSet<long>();
-                    if (Exist2(board, y, x, word, 0, visited)) return true;
-                }
-            }
-            return false;
-        }
-
-        private bool Exist2(char[,] board, int y, int x, string word, int i, HashSet<long> v)
-        {
-            if (i == word.Length)
-            {
-                return true;
-            }
-            if (y < 0 || x < 0 || y > board.GetUpperBound(0) || x > board.GetUpperBound(1) ||
-                v.Contains(((long) y) << 32 + x))
-            {
-                return false;
-            }
-            if (board[y, x] != word[i])
-            {
-                return false;
-            }
-            v.Add(((long) y) << 32 + x);
-            bool exist = Exist2(board, y, x + 1, word, i + 1, v)
-                         || Exist2(board, y, x - 1, word, i + 1, v)
-                         || Exist2(board, y + 1, x, word, i + 1, v)
-                         || Exist2(board, y - 1, x, word, i + 1, v);
-            v.Remove(((long) y) << 32 + x);
             return exist;
         }
     }

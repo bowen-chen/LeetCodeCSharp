@@ -16,7 +16,6 @@ Given the list [1,[4,[6]]],
 By calling next repeatedly until hasNext returns false, the order of elements returned by next should be: [1,4,6].
 */
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -26,63 +25,7 @@ namespace Demo
     {
         private readonly Stack<NestedInteger> _stack = new Stack<NestedInteger>();
 
-        private int _current;
-
-        private bool _hasNext;
-
         public NestedIterator(IList<NestedInteger> nestedList)
-        {
-            foreach (var m in nestedList.Reverse())
-            {
-                _stack.Push(m);
-            }
-
-            _hasNext = MoveNext();
-        }
-
-        public bool HasNext()
-        {
-            return _hasNext;
-        }
-
-        public int Next()
-        {
-            if (HasNext())
-            {
-                int ret = _current;
-                _hasNext = MoveNext();
-                return ret;
-            }
-
-            throw new Exception();
-        }
-
-        private bool MoveNext()
-        {
-            while (_stack.Count > 0)
-            {
-                var m = _stack.Pop();
-                if (m.IsInteger())
-                {
-                    _current = m.GetInteger();
-                    return true;
-                }
-
-                foreach (var c in m.GetList().Reverse())
-                {
-                    _stack.Push(c);
-                }
-            }
-
-            return false;
-        }
-    }
-
-    public class NestedIterator2
-    {
-        private readonly Stack<NestedInteger> _stack = new Stack<NestedInteger>();
-
-        public NestedIterator2(IList<NestedInteger> nestedList)
         {
             foreach (var m in nestedList.Reverse())
             {

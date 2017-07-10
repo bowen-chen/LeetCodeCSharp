@@ -101,10 +101,12 @@ namespace Demo
                 {
                     return false;
                 }
+
                 while (i >= 0 && p > preorder[i])
                 {
                     low = preorder[i--];
                 }
+
                 preorder[++i] = p;
             }
             return true;

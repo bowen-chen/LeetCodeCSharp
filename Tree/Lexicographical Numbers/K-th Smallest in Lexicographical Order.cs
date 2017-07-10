@@ -46,7 +46,7 @@ namespace Demo
         }
 
         //use long in case of overflow
-        public int CalCount(int n, long levelBegin, long levelEnd)
+        public int CalCount(int n, long levelBegin /*inclusive*/, long levelEnd /*exclusive*/)
         {
             long count = 0;
             while (levelBegin <= n)

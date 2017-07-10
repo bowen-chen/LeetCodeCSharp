@@ -23,10 +23,14 @@ namespace Demo
             return res;
         }
 
-
+        // DFS
         private void LexicalOrder(int cur, int n, List<int> res)
         {
-            if (cur > n) return;
+            if (cur > n)
+            {
+                return;
+            }
+
             res.Add(cur);
             for (int i = 0; i <= 9; ++i)
             {

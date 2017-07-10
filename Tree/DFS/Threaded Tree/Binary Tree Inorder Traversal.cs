@@ -73,5 +73,47 @@ namespace Demo
             }
             return res;
         }
+
+        public IList<int> InorderTraversal2(TreeNode root)
+        {
+            var ret = new List<int>();
+            InorderTraversal2(root, ret);
+            return ret;
+        }
+
+        public void InorderTraversal2(TreeNode root, IList<int> ret)
+        {
+            if (root == null)
+            {
+                return;
+            }
+
+            InorderTraversal2(root.left, ret);
+            ret.Add(root.val);
+            InorderTraversal2(root.right, ret);
+        }
+
+        public IList<int> InorderTraversal3(TreeNode root)
+        {
+            var ret = new List<int>();
+            var s = new Stack<TreeNode>();
+            var p = root;
+            while (p!= null || s.Count != 0)
+            {
+                if (p != null)
+                {
+                    s.Push(p);
+                    p = p.left;
+                }
+                else
+                {
+                    p = s.Pop();
+                    ret.Add(p.val);
+                    p = p.right;
+                }
+            }
+
+            return ret;
+        }
     }
 }

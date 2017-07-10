@@ -50,6 +50,7 @@ namespace Demo
                     {
                         n.IsRemaingPalindrome.Add(index);
                     }
+
                     char c = word[i];
                     if (n[c] == null)
                     {
@@ -80,6 +81,7 @@ namespace Demo
                     }
                 }
                 
+                // match the whole word
                 foreach (int j in n.IsRemaingPalindrome)
                 {
                     yield return j;

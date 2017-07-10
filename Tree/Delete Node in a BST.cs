@@ -78,13 +78,13 @@ namespace Demo
 
         public TreeNode DeleteNode(TreeNode root)
         {
-            // only child
+            // only right child (could be null)
             if (root.left == null)
             {
                 return root.right;
             }
 
-            // only child
+            // only left child
             if (root.right == null)
             {
                 return root.left;
@@ -101,11 +101,27 @@ namespace Demo
             }
             root.val = pre.val;
 
+            //  root
+            // /
+            //left
+            // \
+            //   ...
+            //    \
+            //     parent
+            //      \
+            //       pre
+            //       /
+            //      pre.left
             if (parent != root)
             {
                 // reconnect left child
                 parent.right = pre.left;
             }
+            //     root (parent)
+            //    /
+            //   pre
+            //  /
+            // pre.left
             else
             {
                 parent.left = pre.left;

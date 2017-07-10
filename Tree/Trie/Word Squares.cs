@@ -92,14 +92,14 @@ namespace Demo
 
         private void WordSquares(IList<string[]> res, string[] c, TrieNode root, int level)
         {
-            int n = c.Length;
-            if (level >= n)
+            if (level >= c.Length)
             {
                 var t = new string[c.Length];
                 c.CopyTo(t, 0);
                 res.Add(t);
                 return;
             }
+
             string prefix = "";
             for (int i = 0; i < level; ++i)
             {

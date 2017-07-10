@@ -79,5 +79,91 @@ namespace Demo
             }
             return res;
         }
+
+        public IList<int> PostorderTraversal2(TreeNode root)
+        {
+            var ret = new List<int>();
+            PostorderTraversal2(root, ret);
+            return ret;
+        }
+
+        public void PostorderTraversal2(TreeNode root, IList<int> ret)
+        {
+            if (root == null)
+            {
+                return;
+            }
+
+            PostorderTraversal2(root.left, ret);
+            PostorderTraversal2(root.right, ret);
+            ret.Add(root.val);
+        }
+
+        public IList<int> PostorderTraversal3(TreeNode root)
+        {
+            var ret = new List<int>();
+            var s = new Stack<TreeNode>();
+
+            // Check for empty tree
+            if (root == null)
+            {
+                return ret;
+            }
+
+            s.Push(root);
+            TreeNode prev = null;
+            while (s.Count == 0)
+            {
+                var current = s.Peek();
+
+                // go down the tree from parent
+                // if it has child, push left/right child
+                // otherwise process it and pop stack
+                if (prev == null || prev.left == current || prev.right == current)
+                {
+                    if (current.left != null)
+                    {
+                        s.Push(current.left);
+                    }
+                    else if (current.right != null)
+                    {
+                        s.Push(current.right);
+                    }
+                    else
+                    {
+                        s.Pop();
+                        ret.Add(current.val);
+                    }
+                }
+                // go up the tree from left node
+                // if it has right child push right child onto stack
+                // otherwise process it and pop stack
+                else if (current.left == prev)
+                {
+                    if (current.right != null)
+                    {
+                        s.Push(current.right);
+                    }
+                    else
+                    {
+                        s.Pop();
+                        ret.Add(current.val);
+                    }
+
+                    
+                }
+                // go up the tree from right node
+                // process parent and pop stack */
+                else if (current.right == prev)
+                {
+                    s.Pop();
+                    ret.Add(current.val);
+                }
+
+                prev = current;
+            }
+
+            return ret;
+        }
     }
 }

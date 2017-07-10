@@ -30,6 +30,7 @@ namespace Demo
             return ReversePairs(nums, 0, nums.Length - 1);
         }
 
+        // merge sort
         public int ReversePairs(int[] nums, int left, int right)
         {
             if (left >= right) return 0;
@@ -44,9 +45,12 @@ namespace Demo
                     ++j;
                 }
 
+                // all number from [mid + 1, j) x 2.0 < nums[i]
                 res += j - (mid + 1);
                 ++i;
             }
+
+            // merge [left, mid] and [mid+1, right]
             i = left;
             j = mid + 1;
             int c = 0;

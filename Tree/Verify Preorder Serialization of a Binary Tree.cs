@@ -81,8 +81,15 @@ namespace Demo
             int slot = 1;
             foreach (string node in tokens)
             {
-                if (--slot < 0) return false;
-                if (!node.Equals("#")) slot += 2;
+                if (--slot < 0)
+                {
+                    return false;
+                }
+
+                if (!node.Equals("#"))
+                {
+                    slot += 2;
+                }
             }
             return slot == 0;
         }

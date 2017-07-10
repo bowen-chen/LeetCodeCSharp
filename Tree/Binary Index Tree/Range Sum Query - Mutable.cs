@@ -40,6 +40,17 @@ namespace Demo
 
     public class NumArray
     {
+        // level3 :       4
+        // level2 :   2       6
+        // level1 : 1   3   5   7
+        // tree   : 1 2 3 4 5 6 7
+        // nums   : 0 1 2 3 4 5 6
+
+        // for each tree node, we save its num plus sum of left subtree
+        // ti&(-ti) is the last bit 1
+        // When update a node, we travel up from left tree. ti+=ti&(-ti)
+        // When sum a rang, we travel up from right tree. ti-=ti&(-ti)
+
         // Binary index tree
         int[] tree;
         int[] nums;
@@ -75,7 +86,7 @@ namespace Demo
         public int Sum(int i)
         {
             int sum = 0;
-            for (int ti = i+1; ti >= 1; ti -= ti & (-ti))
+            for (int ti = i + 1; ti >= 1; ti -= ti & (-ti))
             {
                 sum += tree[ti];
             }

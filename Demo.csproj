@@ -570,12 +570,12 @@
     <Compile Include="Tree\DFS\Count Complete Tree Nodes.cs" />
     <Compile Include="Tree\DFS\Both Side\Count Univalue Subtrees.cs" />
     <Compile Include="Tree\DFS\Both Side\Diameter of Binary Tree.cs" />
-    <Compile Include="Tree\DFS\Find Leaves of Binary Tree.cs" />
+    <Compile Include="Tree\DFS\Both Side\Find Leaves of Binary Tree.cs" />
     <Compile Include="Tree\DFS\Find Mode in Binary Search Tree.cs" />
     <Compile Include="Tree\DFS\Inorder Successor in BST.cs" />
     <Compile Include="Tree\DFS\Invert Binary Tree.cs" />
     <Compile Include="Tree\DFS\Kth Smallest Element in a BST.cs" />
-    <Compile Include="Tree\DFS\Largest BST Subtreecs.cs" />
+    <Compile Include="Tree\DFS\Both Side\Largest BST Subtreecs.cs" />
     <Compile Include="Tree\DFS\Lowest Common Ancestor of a Binary Search Tree.cs" />
     <Compile Include="Tree\DFS\Lowest Common Ancestor of a Binary Tree.cs" />
     <Compile Include="Tree\DFS\Maximum Depth of Binary Tree.cs" />
@@ -584,7 +584,7 @@
     <Compile Include="Tree\DFS\Path Sum.cs" />
     <Compile Include="Tree\DFS\Path Sum_II.cs" />
     <Compile Include="Tree\DFS\Path Sum_III.cs" />
-    <Compile Include="Tree\DFS\Recover Binary Search Tree.cs" />
+    <Compile Include="Tree\DFS\Threaded Tree\Recover Binary Search Tree.cs" />
     <Compile Include="Tree\DFS\SameTree.cs" />
     <Compile Include="Tree\DFS\Subtree of Another Tree.cs" />
     <Compile Include="Tree\DFS\Sum of Left Leaves.cs" />

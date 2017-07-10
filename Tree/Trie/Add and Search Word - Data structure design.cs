@@ -24,7 +24,6 @@ click to show hint.
 You should be familiar with how a Trie works. If not, please work on this problem: Implement Trie (Prefix Tree) first.
 */
 
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -58,12 +57,7 @@ namespace Demo
     {
         private class TrieNode : IEnumerable<TrieNode>
         {
-            private TrieNode[] children = new TrieNode[26];
-
-            // Initialize your data structure here.
-            public TrieNode()
-            {
-            }
+            private readonly TrieNode[] children = new TrieNode[26];
 
             public bool IsWord { get; set; }
 
@@ -84,7 +78,7 @@ namespace Demo
             }
         }
 
-        private TrieNode root;
+        private readonly TrieNode root;
 
         public WordDictionary()
         {
@@ -92,7 +86,7 @@ namespace Demo
         }
 
         // Inserts a word into the trie.
-        public void AddWord(String word)
+        public void AddWord(string word)
         {
             TrieNode n = root;
             foreach (char c in word)
@@ -101,6 +95,7 @@ namespace Demo
                 {
                     n[c] = new TrieNode();
                 }
+
                 n = n[c];
             }
             n.IsWord = true;
@@ -184,7 +179,7 @@ namespace Demo
                         var n = node[word[i]];
                         if (n == null)
                         {
-                            return false;
+                            continue;
                         }
 
                         if (i == word.Length - 1)
