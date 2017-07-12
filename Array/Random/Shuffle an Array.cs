@@ -22,7 +22,7 @@ using System;
 
 namespace Demo
 {
-    public partial class Solution2
+    public class Solution2
     {
         private readonly int[] _nums;
         private readonly Random _random = new Random();

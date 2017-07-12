@@ -31,7 +31,7 @@ namespace Demo
                 }
                 else
                 {
-                    return new int[] { low + 1, high + 1 };
+                    return new [] { low + 1, high + 1 };
                 }
             }
 

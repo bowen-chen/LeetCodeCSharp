@@ -21,55 +21,14 @@ using System;
 
 namespace Demo
 {
-    /**
-     * Definition for singly-linked list.
-     * public class ListNode {
-     *     public int val;
-     *     public ListNode next;
-     *     public ListNode(int x) { val = x; }
-     * }
-     */
     public class RandLinkedListSolution
     {
-        private readonly int _len;
         private readonly ListNode _head;
         private readonly Random _rd = new Random();
         /** @param head The linked list's head.
             Note that the head is guaranteed to be not null, so it contains at least one node. */
+
         public RandLinkedListSolution(ListNode head)
-        {
-            _len = 0;
-            _head = head;
-            ListNode cur = head;
-            while (cur != null)
-            {
-                ++_len;
-                cur = cur.next;
-            }
-        }
-
-        /** Returns a random node's value. */
-        public int GetRandom()
-        {
-            int t = _rd.Next(_len);
-            ListNode cur = _head;
-            while (t != 0)
-            {
-                --t;
-                cur = cur.next;
-            }
-            return cur.val;
-        }
-    }
-
-    public class RandLinkedListSolution2
-    {
-        private readonly ListNode _head;
-        private readonly Random _rd = new Random();
-        /** @param head The linked list's head.
-            Note that the head is guaranteed to be not null, so it contains at least one node. */
-
-        public RandLinkedListSolution2(ListNode head)
         {
             _head = head;
         }
@@ -84,7 +43,11 @@ namespace Demo
             while (cur != null)
             {
                 int j = _rd.Next(i);
-                if (j == 0) res = cur.val;
+                if (j == 0)
+                {
+                    res = cur.val;
+                }
+
                 ++i;
                 cur = cur.next;
             }

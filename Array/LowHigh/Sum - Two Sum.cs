@@ -43,7 +43,7 @@ namespace Demo
                 int expect = target - numbers[i];
                 if (m.ContainsKey(expect))
                 {
-                    return new int[] {m[expect] + 1, i + 1};
+                    return new [] {m[expect] + 1, i + 1};
                 }
                 m[numbers[i]] = i;
             }

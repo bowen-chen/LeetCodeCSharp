@@ -31,14 +31,15 @@ namespace Demo
                     int lo = i + 1, hi = nums.Length - 1, sum = 0 - nums[i];
                     while (lo < hi)
                     {
-                        if (nums[lo] + nums[hi] == sum)
+                        int cur = nums[i] + nums[lo] + nums[hi];
+                        if (cur == sum)
                         {
                             res.Add(new List<int> {nums[i], nums[lo], nums[hi]});
-                            while (lo < hi && nums[lo] == nums[lo + 1])
+                            while (lo < hi && nums[lo] == nums[lo + 1]) // skip the same int
                             {
                                 lo++;
                             }
-                            while (lo < hi && nums[hi] == nums[hi - 1])
+                            while (lo < hi && nums[hi] == nums[hi - 1]) // skip the same int
                             {
                                 hi--;
                             }

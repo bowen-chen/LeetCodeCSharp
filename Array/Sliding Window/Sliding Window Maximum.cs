@@ -52,12 +52,16 @@ namespace Demo
 
             var list = new List<int>();
             int[] ret = new int[nums.Length - k + 1];
+
+            // fit k-1 numbers
+            // the list is descending
             for (int i = 0; i < k - 1; i++)
             {
                 while (list.Count > 0 && list[list.Count - 1] < nums[i])
                 {
                     list.RemoveAt(list.Count - 1);
                 }
+
                 list.Add(nums[i]);
             }
 
@@ -69,6 +73,7 @@ namespace Demo
                 {
                     list.RemoveAt(list.Count - 1);
                 }
+
                 list.Add(nums[i]);
 
                 ret[i - (k - 1)] = list[0];

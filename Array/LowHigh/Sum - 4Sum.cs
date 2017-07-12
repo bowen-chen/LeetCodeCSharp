@@ -39,11 +39,11 @@ namespace Demo
                                 if (cur == target)
                                 {
                                     res.Add(new List<int> {nums[i], nums[j], nums[lo], nums[hi]});
-                                    while (lo < hi && nums[lo] == nums[lo + 1])
+                                    while (lo < hi && nums[lo] == nums[lo + 1]) // skip the same int
                                     {
                                         lo++;
                                     }
-                                    while (lo < hi && nums[hi] == nums[hi - 1])
+                                    while (lo < hi && nums[hi] == nums[hi - 1]) // skip the same int
                                     {
                                         hi--;
                                     }

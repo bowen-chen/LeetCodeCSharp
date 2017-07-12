@@ -25,7 +25,8 @@ namespace Demo
             {
                 map[number] = 1;
             }
-            else {
+            else
+            {
                 map[number]++;
             }
         }
@@ -35,7 +36,8 @@ namespace Demo
             foreach (var i in map.Keys)
             {
                 int j = value - i;
-                if ((i == j && map[i] > 1) || (i != j && map.ContainsKey(j)))
+                if ((i == j && map.ContainsKey(i) && map[i] > 1)
+                    || (i != j && map.ContainsKey(j)))
                 {
                     return true;
                 }

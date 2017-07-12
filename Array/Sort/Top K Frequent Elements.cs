@@ -75,7 +75,7 @@ namespace Demo
             {
                 if (bucket.ContainsKey(i))
                 {
-                    foreach (var n in  bucket[i])
+                    foreach (var n in bucket[i])
                     {
                         res.Add(n);
                         if (res.Count == k)
@@ -85,6 +85,7 @@ namespace Demo
                     }
                 }
             }
+
             return res;
         }
     }

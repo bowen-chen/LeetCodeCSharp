@@ -50,28 +50,5 @@ namespace Demo
                 }
             }
         }
-
-        public void SortColors2(int[] nums)
-        {
-            //zero) = 0, [i, second] = 1, (high = 2
-            int second = nums.Length - 1, zero = 0;
-            for (int i = 0; i <= second; i++)
-            {
-                while (nums[i] == 2 && i < second)
-                {
-                    int temp = nums[i];
-                    nums[i] = nums[second];
-                    nums[second] = temp;
-                    second--;
-                }
-                while (nums[i] == 0 && i > zero)
-                {
-                    int temp = nums[i];
-                    nums[i] = nums[zero];
-                    nums[zero] = temp;
-                    zero++;
-                }
-            }
-        }
     }
 }

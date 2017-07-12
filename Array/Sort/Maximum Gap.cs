@@ -18,7 +18,10 @@ namespace Demo
         public int MaximumGap(int[] nums)
         {
             if (nums == null || nums.Length < 2)
+            {
                 return 0;
+            }
+
             // get the max and min value of the array
             int min = nums[0];
             int max = nums[0];
@@ -46,6 +49,7 @@ namespace Demo
                 bucketsMIN[idx] = Math.Min(i, bucketsMIN[idx]??int.MaxValue);
                 bucketsMAX[idx] = Math.Max(i, bucketsMAX[idx]??int.MinValue);
             }
+
             // scan the buckets for the max gap
             int maxGap = int.MinValue;
             int previousMax = min;
@@ -56,11 +60,14 @@ namespace Demo
                     // empty bucket
                     continue;
                 }
+
                 // min value minus the previous value is the current gap
                 maxGap = Math.Max(maxGap, bucketsMIN[i].Value - previousMax);
+
                 // update previous bucket value
                 previousMax = bucketsMAX[i].Value;
             }
+
             maxGap = Math.Max(maxGap, max - previousMax); // updata the final max value gap
             return maxGap;
         }

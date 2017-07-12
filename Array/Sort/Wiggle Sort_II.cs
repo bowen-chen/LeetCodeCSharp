@@ -46,8 +46,8 @@ namespace Demo
             {
                 return;
             }
-            int n = nums.Length;
 
+            int n = nums.Length;
             int m = n/2 + 1;
 
             // Step 1: Find the median

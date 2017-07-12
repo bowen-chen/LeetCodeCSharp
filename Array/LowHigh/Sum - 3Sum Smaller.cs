@@ -19,7 +19,7 @@ namespace Demo
 {
     public partial class Solution
     {
-        int threeSumSmaller(int[] nums, int target)
+        public int ThreeSumSmaller(int[] nums, int target)
         {
             Array.Sort(nums);
             int n = nums.Length, ret = 0;
