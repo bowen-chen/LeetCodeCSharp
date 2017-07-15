@@ -21,6 +21,7 @@ namespace Demo
                 {
                     pre = pre.Substring(0, pre.Length - 1);
                 }
+
                 i++;
             }
             return pre;

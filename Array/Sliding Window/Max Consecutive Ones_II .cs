@@ -26,27 +26,6 @@ namespace Demo
 {
     public partial class Solution
     {
-        public int FindMaxConsecutiveOnes2(int[] nums)
-        {
-            int res = 0;
-            int precnt = 0; // flip the last zero, give cur number of 1
-            int cnt = 0;
-            foreach (int num in nums)
-            {
-                if (num == 1)
-                {
-                    ++cnt;
-                }
-                else
-                {
-                    precnt = cnt + 1; // 1 : plip 0
-                    cnt = 0;
-                }
-                res = Math.Max(res, cnt + precnt);
-            }
-            return res;
-        }
-
         public int FindMaxConsecutiveOnes3(int[] nums)
         {
             int k = 1; // can flip k
@@ -55,13 +34,19 @@ namespace Demo
             var q = new Queue<int>();
             for (int right = 0; right < nums.Length; ++right)
             {
-                if (nums[right] == 0) q.Enqueue(right);
+                if (nums[right] == 0)
+                {
+                    q.Enqueue(right);
+                }
+
                 if (q.Count > k)
                 {
                     left = q.Dequeue() + 1;
                 }
+
                 res = Math.Max(res, right - left + 1);
             }
+
             return res;
         }
     }

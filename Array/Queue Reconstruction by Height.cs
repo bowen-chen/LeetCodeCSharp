@@ -30,7 +30,7 @@ namespace Demo
             }
 
             var ps2 = new List<int[]>();
-            foreach(var p in ps.OrderByDescending(p=>p[0]).ThenBy(p => p[1]))
+            foreach (var p in ps.OrderByDescending(p => p[0]).ThenBy(p => p[1]))
             {
                 ps2.Insert(p[1], new[] {p[0], p[1]});
             }

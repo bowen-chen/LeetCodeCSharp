@@ -37,11 +37,24 @@ namespace Demo
             for (int i = S.Length - 1; i >= 0; --i)
             {
                 char c = S[i];
-                if (c == '-') continue;
-                if (c >= 'a' && c <= 'z') c =(char)(c- 32);
+                if (c == '-')
+                {
+                    continue;
+                }
+
+                // to upper
+                if (c >= 'a' && c <= 'z')
+                {
+                    c =(char)(c- 32);
+                }
+
                 res.Insert(0, c);
-                if (++cnt % K == 0) res.Insert(0, '-');
+                if (++cnt%K == 0)
+                {
+                    res.Insert(0, '-');
+                }
             }
+
             return res.ToString().TrimStart('-');
         }
     }

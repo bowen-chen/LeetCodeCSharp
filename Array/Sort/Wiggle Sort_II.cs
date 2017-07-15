@@ -33,10 +33,11 @@ namespace Demo
         /// Mapped Indices:    11    1  3  5  7  9  0  2  4  6  8 10
         /// Original Indices: (6)    0  1  2  3  4  5
         /// Mapped Indices:    7     1  3  5  0  2  4
+        /// From original indices to mapped indices (fake index->real index)
         /// </summary>
         private int WiggleSortIndex(int idx, int n)
         {
-            // (n|1) round up to nearest old
+            // (n|1) round up to nearest odd >= n
             return (2 * idx + 1) % (n | 1);
         }
 
@@ -53,8 +54,8 @@ namespace Demo
             // Step 1: Find the median
             int median = FindKthLargest(nums, m);
 
-            // bigger half, put them into 1 3 5 7 9
-            // smaller half, put them into 0 2 4 6 9 10
+            // bigger half, put them into original index 1 3 5 7 9
+            // smaller half, put them into original index 0 2 4 6 9 10
             // Step 2: Tripartie partition within O(n)-time & O(1)-space.
             int first = 0, mid = 0, last = n - 1;
             while (mid <= last)

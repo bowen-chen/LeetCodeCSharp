@@ -26,11 +26,11 @@ namespace Demo
             for (int i = 2; i <= n; i++)
             {
                 StringBuilder sb = new StringBuilder();
-                char c = 'x'; // some char not match 0 - 9
+                char preChar = 'x'; // some char not match 0 - 9
                 int count = 0;
-                foreach (char b in pre)
+                foreach (char curChar in pre)
                 {
-                    if (b == c)
+                    if (curChar == preChar)
                     {
                         count++;
                     }
@@ -39,17 +39,20 @@ namespace Demo
                         if (count != 0)
                         {
                             sb.Append(count);
-                            sb.Append(c);
+                            sb.Append(preChar);
                         }
+
                         count = 1;
-                        c = b;
+                        preChar = curChar;
                     }
                 }
+
                 if (count != 0)
                 {
                     sb.Append(count);
-                    sb.Append(c);
+                    sb.Append(preChar);
                 }
+
                 pre = sb.ToString();
             }
 

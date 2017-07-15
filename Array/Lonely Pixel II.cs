@@ -65,15 +65,18 @@ namespace Demo
 
                     cur += picture[i, j];
                 }
+
                 if (cnt == N)
                 {
                     if (!u.ContainsKey(cur))
                     {
                         u[cur] = 0;
                     }
+
                     ++u[cur];
                 }
             }
+
             foreach (var a in u)
             {
                 if (a.Value != N)
@@ -86,6 +89,7 @@ namespace Demo
                     res += (a.Key[i] == 'B' && col[i] == N) ? N : 0;
                 }
             }
+
             return res;
         }
     }

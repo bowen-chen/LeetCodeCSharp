@@ -50,6 +50,7 @@ namespace Demo
                     index = s.IndexOf(d, index + 1);
                 }
             }
+
             var res = new StringBuilder();
             bool inbold = false;
             for (int i = 0; i < s.Length;i++)
@@ -71,6 +72,7 @@ namespace Demo
             {
                 res.Append("</b>");
             }
+
             return res.ToString();
         }
     }

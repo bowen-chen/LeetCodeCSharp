@@ -31,8 +31,10 @@ namespace Demo
                 {
                     cur = n;
                 }
+
                 ret = Math.Max(cur, ret);
             }
+
             return ret;
         }
     }

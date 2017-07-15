@@ -30,12 +30,12 @@ namespace Demo
             int i = 0;
             while (i < len)
             {
-                for (int idx = 0; idx < numRows && i < len; idx++) // vertically down
+                for (int idx = 0; idx < numRows && i < len; idx++) // vertically down [0->numRows-1]
                 {
                     sb[idx].Append(s[i++]);
                 }
 
-                for (int idx = numRows - 2; idx >= 1 && i < len; idx--) // obliquely up
+                for (int idx = numRows - 2; idx >= 1 && i < len; idx--) // obliquely up, [numRows-2, 1]
                 {
                     sb[idx].Append(s[i++]);
                 }
@@ -45,6 +45,7 @@ namespace Demo
             {
                 sb[0].Append(sb[idx]);
             }
+
             return sb[0].ToString();
         }
     }

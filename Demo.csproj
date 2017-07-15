@@ -44,14 +44,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Array\Add Bold Tag in String.cs" />
+    <Compile Include="Array\String\Add Bold Tag in String.cs" />
     <Compile Include="Array\Can Place Flowers.cs" />
     <Compile Include="Array\LowHigh\Valid Triangle Number.cs" />
     <Compile Include="Array\Maximum Distance in Arrays.cs" />
     <Compile Include="Array\Range Addition_II.cs" />
     <Compile Include="Common\Counter.cs" />
     <Compile Include="DP\1D\Count Numbers with Unique Digits.cs" />
-    <Compile Include="Array\Count of Range Sum.cs" />
+    <Compile Include="Array\Sort\Count of Range Sum.cs" />
     <Compile Include="Count The Repetitions.cs" />
     <Compile Include="Array\Maximum Number\Create Maximum Number.cs" />
     <Compile Include="DP\1D\Non-negative Integers without Consecutive Ones.cs" />
@@ -63,7 +63,7 @@
     <Compile Include="Hash Table\Valid Square.cs" />
     <Compile Include="Math\Fraction Addition and Subtraction.cs" />
     <Compile Include="Minimum Unique Word Abbreviation.cs" />
-    <Compile Include="Misc\Design Compressed String Iterator.cs" />
+    <Compile Include="Array\Iterator\Design Compressed String Iterator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Array\Maximum Number\Remove K Digits.cs" />
     <Compile Include="Array\Add Strings.cs" />
@@ -73,13 +73,13 @@
     <Compile Include="Array\Compare Version Numbers.cs" />
     <Compile Include="Stack\Decode String.cs" />
     <Compile Include="Array\Design Tic-Tac-Toe.cs" />
-    <Compile Include="Array\Detect Capital.cs" />
+    <Compile Include="Array\String\Detect Capital.cs" />
     <Compile Include="Array\Diagonal Traverse.cs" />
-    <Compile Include="Array\Find K Pairs with Smallest Sums.cs" />
+    <Compile Include="Array\Sort\Find K Pairs with Smallest Sums.cs" />
     <Compile Include="Array\Find Permutation.cs" />
-    <Compile Include="Array\First Missing Positive.cs" />
+    <Compile Include="Misc\N Number\First Missing Positive.cs" />
     <Compile Include="Array\Fizz Buzz.cs" />
-    <Compile Include="Array\Flatten 2D Vector.cs" />
+    <Compile Include="Array\Iterator\Flatten 2D Vector.cs" />
     <Compile Include="Bit\Game of Life.cs" />
     <Compile Include="Array\Heaters.cs" />
     <Compile Include="Array\String\Subsequence\Is Subsequence.cs" />
@@ -92,12 +92,12 @@
     <Compile Include="Array\String\Subsequence\Longest Word in Dictionary through Deleting.cs" />
     <Compile Include="Stack\Tag Validator.cs" />
     <Compile Include="Tree\BFS\Magical String.cs" />
-    <Compile Include="Array\Max Consecutive Ones.cs" />
-    <Compile Include="Array\Max Consecutive Ones_II .cs" />
+    <Compile Include="Array\Sliding Window\Max Consecutive Ones.cs" />
+    <Compile Include="Array\Sliding Window\Max Consecutive Ones_II .cs" />
     <Compile Include="Tree\Binary Index Tree\Max Sum of Rectangle No Larger Than K.cs" />
     <Compile Include="Array\Maximum Subarray.cs" />
     <Compile Include="Binary Search\Median of Two Sorted Arrays.cs" />
-    <Compile Include="Array\Merge Sorted Array.cs" />
+    <Compile Include="Array\Sort\Merge Sorted Array.cs" />
     <Compile Include="Array\Minimum Time Difference.cs" />
     <Compile Include="Array\Partition\Move Zeroes.cs" />
     <Compile Include="Array\Queue Reconstruction by Height.cs" />
@@ -123,7 +123,7 @@
     <Compile Include="Array\Valid Word Abbreviation.cs" />
     <Compile Include="Array\Validate IP Address.cs" />
     <Compile Include="Array\ZigZag Conversion.cs" />
-    <Compile Include="Array\Zigzag Iterator.cs" />
+    <Compile Include="Array\Iterator\Zigzag Iterator.cs" />
     <Compile Include="Array\LowHigh\Sum - 4Sum_II.cs" />
     <Compile Include="Hash Table\K-diff Pairs in an Array.cs" />
     <Compile Include="Array\LowHigh\Sum - 3Sum Closest.cs" />
@@ -147,10 +147,10 @@
     <Compile Include="Array\Count And Say.cs" />
     <Compile Include="Array\String\Encode and Decode Strings.cs" />
     <Compile Include="Array\String\Implement strStr.cs" />
-    <Compile Include="Array\String\Length of Last Word.cs" />
+    <Compile Include="Array\String\Reverse\Length of Last Word.cs" />
     <Compile Include="Array\String\Longest Common Prefix.cs" />
     <Compile Include="Array\String\String to Integer %28atoi%29.cs" />
-    <Compile Include="Array\String\Number of Segments in a String.cs" />
+    <Compile Include="Array\String\Reverse\Number of Segments in a String.cs" />
     <Compile Include="Hash Table\Anagrams\Permutation in String.cs" />
     <Compile Include="Array\String\Shortest Palindrome.cs" />
     <Compile Include="Array\String\Split Concatenated Strings.cs" />

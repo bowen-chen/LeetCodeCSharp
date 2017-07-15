@@ -43,6 +43,7 @@ namespace Demo
                 {
                     len = 1;
                 }
+
                 cnt[p[i] - 'a'] = Math.Max(cnt[p[i] - 'a'], len);
             }
             return cnt.Sum();

@@ -30,6 +30,7 @@ namespace Demo
                 res = res.Insert(0, ((char)(sum%10 + '0')).ToString());
                 carry = sum/10;
             }
+
             return carry == 1 ? "1" + res : res;
         }
     }

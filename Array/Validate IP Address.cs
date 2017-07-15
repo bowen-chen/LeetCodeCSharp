@@ -49,7 +49,7 @@ namespace Demo
 
         private string ValidIPv4(string ip)
         {
-            var tokens = ip.Split(new[] {'.'});
+            var tokens = ip.Split('.');
             if (tokens.Length != 4)
             {
                 return "Neither";
@@ -75,7 +75,7 @@ namespace Demo
 
         private string ValidIPv6(string ip)
         {
-            var tokens = ip.Split(new[] { ':' });
+            var tokens = ip.Split(':');
             if (tokens.Length != 8)
             {
                 return "Neither";

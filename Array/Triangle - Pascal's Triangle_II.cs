@@ -28,6 +28,7 @@ namespace Demo
                     row[j] = row[j] + row[j + 1];
                 }
             }
+
             return row;
         }
     }

@@ -47,6 +47,7 @@ namespace Demo
             {
                 return nums;
             }
+
             var res = new int[r,c];
             int k = 0;
             for (int i = 0; i < r; ++i)
@@ -57,6 +58,7 @@ namespace Demo
                     k++;
                 }
             }
+
             return res;
         }
     }

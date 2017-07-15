@@ -14,10 +14,11 @@ namespace Demo
     {
         public string ReverseWords3(string s)
         {
-            if (s.Length == 0)
+            if (string.IsNullOrEmpty(s))
             {
                 return s;
             }
+
             var c = s.ToCharArray();
             int last = 0;
             for (int i = 0; i < c.Length; i++)

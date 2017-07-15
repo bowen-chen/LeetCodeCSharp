@@ -52,7 +52,11 @@ namespace Demo
         public bool hasNext()
         {
             if (cnt > 0) return true;
-            if (i >= s.Length) return false;
+            if (i >= s.Length)
+            {
+                return false;
+            }
+
             c = s[i++];
             while (i < s.Length && s[i] >= '0' && s[i] <= '9')
             {

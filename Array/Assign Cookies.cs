@@ -30,16 +30,16 @@ namespace Demo
 {
     public partial class Solution
     {
-        public int FindContentChildren(int[] g, int[] s)
+        public int FindContentChildren(int[] greed, int[] size)
         {
             int res = 0;
-            Array.Sort(g);
-            Array.Sort(s);
+            Array.Sort(greed);
+            Array.Sort(size);
             int i = 0;
             int j = 0;
-            while (i < s.Length && j < g.Length)
+            while (i < size.Length && j < greed.Length)
             {
-                if (s[i] >= g[j])
+                if (size[i] >= greed[j])
                 {
                     ++res;
                     ++j;

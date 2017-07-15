@@ -27,6 +27,7 @@ namespace Demo
                 cnt = (num == 0) ? 0 : cnt + 1;
                 res = Math.Max(res, cnt);
             }
+
             return res;
         }
     }

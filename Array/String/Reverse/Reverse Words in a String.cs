@@ -22,58 +22,6 @@ namespace Demo
 {
     public partial class Solution
     {
-        public string ReverseWords(string s)
-        {
-            if (s == null)
-            {
-                return null;
-            }
-            StringBuilder input = new StringBuilder(s.Trim());
-            int start = 0;
-            bool inword = true;
-            ReverseString(input, 0, input.Length - 1);
-            for (int i = 0; i < input.Length; i++)
-            {
-                char c = input[i];
-                if (c != ' ')
-                {
-                    if (!inword)
-                    {
-                        start = i;
-                        inword = true;
-                    }
-                }
-                else
-                {
-                    if (inword)
-                    {
-                        ReverseString(input, start, i - 1);
-                        inword = false;
-                    }
-                    else
-                    {
-                        input.Remove(i, 1);
-                        i--;
-                    }
-                }
-            }
-            if (inword)
-            {
-                ReverseString(input, start, input.Length - 1);
-            }
-            return input.ToString();
-        }
-
-        public void ReverseString(StringBuilder str, int start, int end)
-        {
-            while (start < end)
-            {
-                char temp = str[start];
-                str[start] = str[end];
-                str[end] = temp;
-                start++;
-                end--;
-            }
-        }
+        // see Reverse Words in a String_II
     }
 }

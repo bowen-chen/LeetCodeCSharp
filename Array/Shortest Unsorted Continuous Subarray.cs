@@ -34,7 +34,6 @@ namespace Demo
                     }
                     e = i;
                 }
-
             }
 
             return e != s ? e - s + 1 : 0;

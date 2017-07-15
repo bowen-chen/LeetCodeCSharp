@@ -40,6 +40,7 @@ namespace Demo
     public partial class Codec
     {
         // Encodes a list of strings to a single string.
+        // 3/abc4/abcd
         public string Encode(List<string> strs)
         {
             StringBuilder sb = new StringBuilder();

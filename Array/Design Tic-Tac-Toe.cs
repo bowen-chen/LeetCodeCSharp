@@ -78,8 +78,8 @@ namespace Demo
             return (_rows[row] == expect || _cols[col] == expect || _diag == expect || _revDiag == expect) ? player : 0;
         }
 
-        private int[] _rows;
-        private int[] _cols;
+        private readonly int[] _rows;
+        private readonly int[] _cols;
         private int _diag;
         private int _revDiag;
         private readonly int _n;

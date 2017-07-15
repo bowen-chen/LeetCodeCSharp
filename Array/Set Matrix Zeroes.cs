@@ -26,6 +26,7 @@ namespace Demo
                 {
                     col0 = 0;
                 }
+
                 for (int j = 1; j < n; j++)
                 {
                     if (matrix[i, j] == 0)
@@ -45,6 +46,7 @@ namespace Demo
                         matrix[i, j] = 0;
                     }
                 }
+
                 if (col0 == 0)
                 {
                     matrix[i, 0] = 0;

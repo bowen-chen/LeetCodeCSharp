@@ -38,12 +38,15 @@ namespace Demo
             string ans = "";
             for (int i = 0; i < strs.Length; i++)
             {
+                // split at string[i]
                 string left = i == 0 ? "" : string.Join("", strs.Take(i - 1));
                 string right = i == strs.Length-1 ? "" : string.Join("", strs.Skip(i+1));
+
                 var s = strs[i];
                 var rs = new string(strs[i].Reverse().ToArray());
                 for (int j = 0; j <= strs.Length; j++)
                 {
+                    // split at string[i][j]
                     var ns = s.Substring(0, j)+right + left+s.Substring(j, s.Length-j);
                     ans = ns.CompareTo(ans) >= 0 ? ns : ans;
 

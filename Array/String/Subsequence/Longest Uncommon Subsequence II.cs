@@ -22,7 +22,6 @@ namespace Demo
     {
         public int FindLUSlength(string[] strs)
         {
-            int n = strs.Length;
             foreach (var s1 in strs.OrderByDescending(s=>s.Length))
             {
                 int count = 0;
@@ -33,6 +32,7 @@ namespace Demo
                         count++;
                     }
                 }
+
                 if (count == 1)
                 {
                     return s1.Length;

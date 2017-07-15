@@ -35,6 +35,7 @@ namespace Demo
             int cntRotated = 0;
             int start = 0;
             int curr = 0;
+
             // Keep rotating the elements until we have rotated n 
             // different elements.
             while (cntRotated < n)
@@ -47,6 +48,7 @@ namespace Demo
                     curr = (curr + k)%n;
                     cntRotated++;
                 } while (curr != start);
+
                 // Stop rotating the elements when we finish one cycle, 
                 // i.e., we return to start.
 

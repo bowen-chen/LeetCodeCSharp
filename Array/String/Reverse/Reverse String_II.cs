@@ -20,7 +20,7 @@ namespace Demo
             var c = s.ToCharArray();
             for (int i = 0; i < s.Length; i += 2 * k)
             {
-                ReverseStr(c, i, Math.Min(i + k-1, s.Length - 1));
+                ReverseStr(c, i, Math.Min(i + k - 1, s.Length - 1));
             }
             return new string(c);
         }

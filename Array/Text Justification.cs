@@ -53,12 +53,14 @@ namespace Demo
                 {
                     if (i + k >= words.Length)
                     {
+                        // don't stretch last line
                         tmp += " ";
                     }
                     else
                     {
-                        tmp += new string(' ', (maxWidth - l)/(k - 1) + ((j < (maxWidth - l)%(k - 1)) ? 1 : 0));
+                        tmp += new string(' ', (maxWidth - l)/(k - 1) + ((j < (maxWidth - l)%(k - 1)) ? 1 : 0) /* add one space for the first few space,*/);
                     }
+
                     tmp += words[i + j + 1];
                 }
 

@@ -17,8 +17,8 @@ namespace Demo
 {
     public class ZigzagIterator
     {
-        int[] indexes;
-        int[][] vs;
+        readonly int[] indexes;
+        readonly int[][] vs;
         int cur;
 
         public ZigzagIterator(int[][] vs)
@@ -30,22 +30,20 @@ namespace Demo
 
         public int Next()
         {
-            do
-            {
-                cur = (cur + 1)%indexes.Length;
-            } while (indexes[cur] >= vs[cur].Length);
-
-            return vs[cur][indexes[cur]++];
+            return vs[cur][indexes[cur++]++];
         }
 
         public bool HasNext()
         {
             for (int i = 0; i < indexes.Length; i++)
             {
-                if (indexes[i] < vs[cur].Length)
+                cur = cur%indexes.Length;
+                if (indexes[cur] < vs[cur].Length)
                 {
                     return true;
                 }
+
+                cur++;
             }
             return false;
         }

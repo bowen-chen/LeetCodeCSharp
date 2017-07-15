@@ -11,30 +11,52 @@ return "blue is sky the".
 Could you do it in-place without allocating extra space?
 */
 
+using System;
+
 namespace Demo
 {
     public partial class Solution
     {
         // same as I or two pass as below
-        public void ReverseWords(char[] s)
+        public string ReverseWords2(string s)
         {
-            if (s.Length == 0)
+            if (string.IsNullOrEmpty(s))
             {
-                return;
+                return s;
             }
-            reverse(s, 0, s.Length - 1);
+
+            var b = s.ToCharArray();
             int last = 0;
-            for (int i = 0; i < s.Length; i++)
+            for (int i = 0; i < b.Length; i++)
             {
-                if (s[i] == ' ')
+                if (b[i] != ' ' || (i != 0 && b[i - 1] != ' '))
                 {
-                    reverse(s, last, i - 1);
+                    b[last++] = b[i];
+                }
+            }
+
+            if (last > 0 && b[last - 1] == ' ')
+            {
+                last--;
+            }
+
+            Array.Resize(ref b, last);
+            Reverse(b, 0, b.Length - 1);
+
+            last = 0;
+            for (int i = 0; i <= b.Length; i++)
+            {
+                if (i== b.Length || b[i] == ' ')
+                {
+                    Reverse(b, last, i - 1);
                     last = i + 1;
                 }
             }
+
+            return new string(b);
         }
 
-        public void reverse(char[] s, int l, int r)
+        public void Reverse(char[] s, int l, int r)
         {
             while (l <= r)
             {

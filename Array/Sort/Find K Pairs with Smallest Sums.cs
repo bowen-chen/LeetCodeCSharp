@@ -55,7 +55,7 @@ namespace Demo
             {
                 for (int i = 0; i < nums1.Length && i < k; i++)
                 {
-                    q.Push(new[] {i, 0, nums1[i]+nums2[0]});
+                    q.Push(new[] {i, 0, nums1[i] + nums2[0]});
                 }
             }
 
