@@ -44,6 +44,7 @@ namespace Demo
                         : cal(nums[i++], a, b, c);
                 }
             }
+
             return res;
         }
         int cal(int x, int a, int b, int c)

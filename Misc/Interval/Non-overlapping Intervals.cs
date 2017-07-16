@@ -25,6 +25,7 @@ Output: 0
 Explanation: You don't need to remove any of the intervals since they're already non-overlapping.
 */
 
+using System;
 using System.Linq;
 
 namespace Demo
@@ -34,22 +35,19 @@ namespace Demo
         public int EraseOverlapIntervals(Interval[] intervals)
         {
             int res = 0;
-            int last = int.MinValue;
+            int? end = null;
             foreach (var i in intervals.OrderBy(i => i.start))
             {
-                if (i.start < last)
+                if (end == null || end <= i.start)
                 {
-                    ++res;
-
-                    //remove the small one
-                    if (i.end < last)
-                    {
-                        last = i.end;
-                    }
+                    end = i.end;
                 }
                 else
                 {
-                    last = i.end;
+                    ++res;
+                    
+                    //remove the bigger one
+                    end = Math.Min(end.Value, i.end);
                 }
             }
             return res;

@@ -23,6 +23,7 @@ namespace Demo
 
         public bool IsPowerOfFour2(int num)
         {
+            // 55, 01010101
             return num > 0 && (num & (num - 1)) == 0 && (num & 0x55555555) == num;
         }
     }

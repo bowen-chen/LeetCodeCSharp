@@ -83,21 +83,13 @@ namespace Demo
             long[] cache = new long[end - start];
             for (int i = start, j = mid, r = 0; i < mid || j < end;)
             {
-                if (i >= mid)
+                if (i < mid && j < end)
                 {
-                    cache[r++] = sums[j++];
-                }
-                else if (j >= end)
-                {
-                    cache[r++] = sums[i++];
-                }
-                else if (sums[i] < sums[j])
-                {
-                    cache[r++] = sums[j++];
+                    cache[r++] = sums[i] < sums[j] ? sums[i++] : sums[j++];
                 }
                 else
                 {
-                    cache[r++] = sums[i++];
+                    cache[r++] = i < mid ? sums[i++] : sums[j++];
                 }
             }
 

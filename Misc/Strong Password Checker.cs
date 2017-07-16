@@ -35,10 +35,10 @@ namespace Demo
                 missing_type --;
             }
 
-            int change = 0; // the number of triple set of number
-            int one = 0; // AAA,A can be solve by change times [replace] AABA or change-1 [replace] and 2 [delete] AA
-            int two = 0; // AAA,AA can be solve by change times [replace]
-            int three = 0; // AAA,AAA can be solve by change times [replace] AAB or change-1 replace and 1 delete AA;
+            int triplet = 0; // the number of triple set of number
+            int one = 0; // (AAA)[N]A can be solve by N times [replace] (AAX)[N]A or N-1 [replace] and 2 [delete] (AAX)[N-1]AA
+            int two = 0; // (AAA)[N]AA can be solve by N times [replace] (AAX)[N]AA
+            int three = 0; // (AAA)[N] can be solve by N times [replace] (AAX)[N] or change-1 replace and 1 delete (AAA)[N-1]AA;
 
             int p = 2;
             while (p < s.Length)
@@ -46,14 +46,14 @@ namespace Demo
                 if (s[p] == s[p - 1] && s[p - 1] == s[p - 2])
                 {
                     int length = 2;
-                    while (p < s.Length && s[p] == s[p - 1])
+                    do
                     {
 
                         length ++;
                         p ++;
-                    }
+                    } while (p < s.Length && s[p] == s[p - 1]);
 
-                    change += length/3;
+                    triplet += length/3;
                     if (length%3 == 0)
                     {
                         three ++;
@@ -82,22 +82,23 @@ namespace Demo
             if (s.Length <= 20)
             {
                 // replace only
-                return Math.Max(missing_type, change);
+                return Math.Max(missing_type, triplet);
             }
 
+            // we delete to reach 20
             int deleteTotal = s.Length - 20;
             int remainingDelete = deleteTotal;
 
             // delete 1 from each three
             var delete = Math.Min(remainingDelete, three);
-            change -= delete;
+            triplet -= delete;
             remainingDelete -= delete;
 
             // delete 2 from each one
             if (remainingDelete > 0)
             {
                 delete = Math.Min(remainingDelete, one*2);
-                change -= delete/2;
+                triplet -= delete/2;
                 remainingDelete -= delete;
             }
 
@@ -105,10 +106,11 @@ namespace Demo
             if (remainingDelete > 0)
             {
                 delete = remainingDelete;
-                change -= delete/3;
+                triplet -= delete/3;
             }
 
-            return deleteTotal + Math.Max(missing_type, change);
+            // then we need replace to fix missing_type and remaining triplet
+            return deleteTotal + Math.Max(missing_type, triplet);
         }
     }
 }

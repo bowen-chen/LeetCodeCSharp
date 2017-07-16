@@ -20,14 +20,16 @@ namespace Demo
             var m = new Dictionary<int, int>();
             foreach (var a in intervals)
             {
-                if (m.ContainsKey(a.start))
+                if (!m.ContainsKey(a.start))
                 {
                     m[a.start] = 0;
                 }
-                if (m.ContainsKey(a.end))
+
+                if (!m.ContainsKey(a.end))
                 {
                     m[a.end] = 0;
                 }
+
                 ++m[a.start];
                 --m[a.end];
             }
@@ -55,6 +57,7 @@ namespace Demo
                 {
                     pq.Pop();
                 }
+
                 pq.Push(i.end);
                 ret = Math.Max(ret, pq.Count);
             }

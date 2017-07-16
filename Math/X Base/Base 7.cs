@@ -24,6 +24,7 @@ namespace Demo
             {
                 num = -num;
             }
+
             while (num != 0)
             {
                 res = (num % 7) + res;

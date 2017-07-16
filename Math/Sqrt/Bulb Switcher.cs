@@ -24,6 +24,7 @@ namespace Demo
         // 1, 4, 9, 16
         public int BulbSwitch(int n)
         {
+            // use high low do a binary search if math.sqrt is not allowed.
             return (int) Math.Sqrt(n);
         }
     }

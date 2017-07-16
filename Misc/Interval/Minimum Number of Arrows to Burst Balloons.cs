@@ -32,20 +32,22 @@ namespace Demo
             {
                 regPoinst[i] = new[] {points[i, 0], points[i, 1]};
             }
+
             int res = 0;
-            int? end =null;
+            int? end = null;
             foreach(var p in regPoinst.OrderBy(p=>p[0]))
             {
-                if (end!=null && p[0] <= end)
-                {
-                    end = Math.Min(end.Value, p[1]);
-                }
-                else
+                if (end == null || end < p[0])
                 {
                     ++res;
                     end = p[1];
                 }
+                else
+                {
+                    end = Math.Min(end.Value, p[1]);
+                }
             }
+
             return res;
         }
     }

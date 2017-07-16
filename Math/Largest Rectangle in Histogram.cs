@@ -22,15 +22,14 @@ namespace Demo
     {
         public int LargestRectangleArea(int[] height)
         {
-
+            // keep index in stack
+            // height[inex] is ascending order
             Stack<int> stack = new Stack<int>();
             int max_area = 0;
 
             for (int i = 0; i <= height.Length; ++i)
             {
                 int height_bound = (i == height.Length) ? 0 : height[i];
-
-                
                 while (stack.Count != 0)
                 {
                     int h = height[stack.Peek()];

@@ -41,13 +41,14 @@ namespace Demo
             foreach (var a in list)
             {
                 // cur is before a
-                if (cur.end< a.start -1)
+                if (cur.end < a.start -1)
                 {
                     if (notadd)
                     {
                         res.Add(cur);
                         notadd = false;
                     }
+
                     res.Add(a);
                 }
                 // cur is after a
@@ -69,10 +70,12 @@ namespace Demo
                     }
                 }
             }
+
             if (notadd)
             {
                 res.Add(cur);
             }
+
             list = res;
         }
 

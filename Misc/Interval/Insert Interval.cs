@@ -44,6 +44,7 @@ namespace Demo
                         ret.Add(newInterval);
                         notadd = false;
                     }
+
                     ret.Add(interval);
                 }
                 // after
@@ -68,6 +69,7 @@ namespace Demo
             {
                 ret.Add(newInterval);
             }
+
             return ret;
         }
     }

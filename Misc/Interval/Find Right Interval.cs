@@ -31,6 +31,7 @@ For [2,3], the interval [3,4] has minimum-"right" start point.
 */
 
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace Demo
@@ -51,6 +52,8 @@ namespace Demo
             var map = new Dictionary<int, int>();
             for (int i = 0; i < intervals.Length; i++)
             {
+                //You may assume none of these intervals have the same start point.
+                Debug.Assert(!map.ContainsKey(intervals[i].start));
                 map[intervals[i].start] = i;
             }
 
@@ -58,13 +61,14 @@ namespace Demo
             int[] res = new int[intervals.Length];
             for (int i = 0; i < intervals.Length; i++)
             {
-                res[i] = FindFirstStartNoLessThanEnd(list, intervals[i].end);
+                res[i] = FindFirstStartNotMeetLessThanEnd(list, intervals[i].end);
             }
 
             return res;
         }
 
-        private int FindFirstStartNoLessThanEnd(KeyValuePair<int, int>[] list, int end)
+        // ! (start < end)
+        private int FindFirstStartNotMeetLessThanEnd(KeyValuePair<int, int>[] list, int end)
         {
             int left = 0;
             int right = list.Length - 1;
@@ -80,6 +84,7 @@ namespace Demo
                     right = mid -1;
                 }
             }
+
             return left < list.Length ? list[left].Value : -1;
         }
     }

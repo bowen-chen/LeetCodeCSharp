@@ -20,7 +20,7 @@ namespace Demo
         public int Read(Stream stream, byte[] buf, int n)
         {
             int len = 0;
-            int m = 0;
+            int m;
             while (len + 4 <= n)
             {
                 m = Read4(stream, buf, len);

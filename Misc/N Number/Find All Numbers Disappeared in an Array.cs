@@ -23,9 +23,9 @@ namespace Demo
     {
         public IList<int> FindDisappearedNumbers(int[] nums)
         {
-            var res = new List<int>();
             for (int i = 0; i < nums.Length; ++i)
             {
+                // put nums[i] in right position
                 if (nums[i] != nums[nums[i] - 1])
                 {
                     var t = nums[i];
@@ -35,6 +35,7 @@ namespace Demo
                 }
             }
 
+            var res = new List<int>();
             for (int i = 0; i < nums.Length; ++i)
             {
                 if (nums[i] != i + 1)

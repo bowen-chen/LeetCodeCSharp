@@ -27,7 +27,7 @@ namespace Demo
             intervals2 = intervals2.OrderBy(a => a.start).ToList();
             int i = 0;
             int j = 0;
-            while (i < intervals1.Count && j < intervals2.Count)
+            while (i < intervals1.Count || j < intervals2.Count)
             {
                 Interval m;
                 if (i < intervals1.Count && j < intervals2.Count)

@@ -49,27 +49,13 @@ namespace Demo
                     if ((num & (1 << i)) != 0) ++ones;
                     else ++zeros;
                 }
-                if (ones > zeros) res |= (1 << i);
+
+                if (ones > zeros)
+                {
+                    res |= (1 << i);
+                }
             }
             return res;
-        }
-
-        public int MajorityElement4(int[] nums)
-        {
-            var dic = new Dictionary<int, int>();
-            foreach (var n in nums)
-            {
-                if (dic.ContainsKey(n))
-                {
-                    dic[n]++;
-                }
-                else
-                {
-                    dic[n] = 1;
-                }
-            }
-
-            return dic.Keys.FirstOrDefault(key => dic[key] > nums.Length/2);
         }
     }
 }

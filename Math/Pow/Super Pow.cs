@@ -19,6 +19,7 @@ namespace Demo
 {
     public partial class Solution
     {
+        // a^(xyz) = a^x^10^10 * a^y^10 * a^z
         // (a^b)%c = ((a%c)^b) %c
         // (a*b)%c = ((a%c)*(b%c))%c
         public int SuperPow(int a, int[] b)
@@ -28,13 +29,22 @@ namespace Demo
             {
                 res = (SuperPow(res, 10)%1337)*(SuperPow(a%1337, i)%1337)%1337;
             }
+
             return res;
         }
 
         private int SuperPow(int x, int n)
         {
-            if (n == 0) return 1;
-            if (n == 1) return x;
+            if (n == 0)
+            {
+                return 1;
+            }
+
+            if (n == 1)
+            {
+                return x;
+            }
+
             return (SuperPow(x*x%1337, n/2)%1337)*(SuperPow(x, n%2)%1337)%1337;
         }
     }

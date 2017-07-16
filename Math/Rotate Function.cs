@@ -44,6 +44,8 @@ namespace Demo
             int t = 0;
             int sum = 0;
             int n = A.Length;
+
+            // t = f(0)
             for (int i = 0; i < n; ++i)
             {
                 sum += A[i];

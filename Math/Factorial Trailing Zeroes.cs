@@ -13,6 +13,7 @@ namespace Demo
         public int TrailingZeroes(int n)
         {
             int result = 0;
+
             // 0 is 2*5
             for (long i = 5; n/i > 0; i *= 5)
             {

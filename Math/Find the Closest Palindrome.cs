@@ -29,6 +29,7 @@ namespace Demo
             // When overflow, 100001 or 99999
             string sn = n.ToString();
             var len = sn.Length;
+
             // we put all cadicate in s
             var s = new HashSet<string>();
             s.Add("1" + new string(Enumerable.Repeat('0', len - 1).ToArray()) + "1");
@@ -43,6 +44,7 @@ namespace Demo
             s.Add((mid+1) + new string((mid+1).ToString().Reverse().Skip(skip).ToArray()));
             s.Add((mid-1) + new string((mid-1).ToString().Reverse().Skip(skip).ToArray()));
             s.Remove(sn);
+
             int res = 0;
             int diff = Math.Abs(n-res);
             foreach (var c in s)

@@ -23,6 +23,7 @@ namespace Demo
         {
             for (int i = 0; i < nums.Length; ++i)
             {
+                // put nums[i] in right position
                 if (nums[i] != nums[nums[i] - 1])
                 {
                     var t = nums[i];

@@ -78,6 +78,7 @@ namespace Demo
                     beforeSlash = true;
                 }
             }
+
             return A + "/" + B;
         }
 

@@ -38,14 +38,14 @@ namespace Demo
             var height = new List<int[]>();
             for (int i = 0; i< buildings.GetLength(0);i++)
             {
-                // enter new build, -h
+                // enter new building, -h
                 height.Add(new [] { buildings[i, 0], -buildings[i, 2] });
 
-                // leave build, h
+                // leave building, h
                 height.Add(new [] { buildings[i, 1], buildings[i, 2] });
             }
 
-            // number of height build
+            // number of height building
             // <height, count>
             var sortedList = new SortedDictionary<int, int>(Comparer<int>.Create((a, b) => b -a));
             sortedList.Add(0, 1);
@@ -55,26 +55,26 @@ namespace Demo
                 if (h[1] < 0)
                 {
                     // new building
-                    if (sortedList.ContainsKey(-h[1]))
+                    if (!sortedList.ContainsKey(-h[1]))
                     {
-                        sortedList[-h[1]]++;
+                        sortedList[-h[1]]=0;
                     }
-                    else
-                    {
-                        sortedList.Add(-h[1], 1);
-                    }
+
+                    sortedList[-h[1]]++;
                 }
                 else
                 {
-                    // -new building
+                    // leave building
                     if (--sortedList[h[1]] == 0)
                     {
                         sortedList.Remove(h[1]);
                     }
                 }
+
                 int curHeight = sortedList.First().Key;
                 if (prevHeight != curHeight)
                 {
+                    // h[0] is current location
                     result.Add(new [] { h[0], curHeight });
                     prevHeight = curHeight;
                 }

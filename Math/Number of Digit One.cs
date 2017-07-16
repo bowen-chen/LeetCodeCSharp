@@ -42,8 +42,10 @@ namespace Demo
             {
                 // mth digit
                 long a = n/m%10;
+
                 // digit afer mth;
                 long b = n%m;
+
                 // total number before mth
                 long c = n/m/10;
 

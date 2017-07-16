@@ -31,6 +31,7 @@ namespace Demo
             // build [0, miss)
             long miss = 1; 
             int added = 0, i = 0;
+
             // we can build any number between [0, miss) with nums[0->i]
             while (miss <= n)
             {
@@ -44,6 +45,7 @@ namespace Demo
                     added++;
                 }
             }
+
             return added;
         }
     }

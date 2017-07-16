@@ -20,7 +20,7 @@ namespace Demo
             return stream.Read(buf, offset, 4);
         }
 
-        private byte[] buffer = null;
+        private byte[] buffer = new byte[4];
         private int bufferLength = 0;
         private int current = 0;
 
@@ -48,14 +48,14 @@ namespace Demo
             {
                 return len;
             }
-
-            buffer = new byte[4];
+            
             bufferLength = Read4(stream, buffer, 0);
             m = Math.Min(bufferLength, n - len);
             for (int i = 0; i < m; i++)
             {
                 buf[len++] = buffer[i];
             }
+
             current = m;
             return len;
         }

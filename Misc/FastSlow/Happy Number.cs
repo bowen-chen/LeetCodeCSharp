@@ -27,6 +27,7 @@ namespace Demo
                 slow = Next(slow);
                 fast = Next(Next(fast));
             } while (fast != slow);
+
             return slow == 1;
         }
 
@@ -39,6 +40,7 @@ namespace Demo
                 n = n / 10;
                 m += i * i;
             }
+
             return m;
         }
     }

@@ -60,6 +60,7 @@ namespace Demo
 
                 map.Add(num, res.Length);
             }
+
             return res.ToString();
         }
     }

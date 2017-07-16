@@ -19,6 +19,7 @@ namespace Demo
             {
                 return ret;
             }
+
             int start = nums[0];
             int end = nums[0];
             for (int i = 1; i < nums.Length; i++)
@@ -31,6 +32,7 @@ namespace Demo
 
                 end = nums[i];
             }
+
             ret.Add(start == end ? start.ToString() : start + "->" + end);
             return ret;
         }

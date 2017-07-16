@@ -33,6 +33,7 @@ namespace Demo
             {
                 res += nums[j--] - nums[i++];
             }
+
             return res;
         }
     }

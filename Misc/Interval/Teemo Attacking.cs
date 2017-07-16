@@ -42,6 +42,7 @@ namespace Demo
                 int diff = timeSeries[i] - timeSeries[i - 1];
                 res += (diff < duration) ? diff : duration;
             }
+
             return res + duration;
         }
     }

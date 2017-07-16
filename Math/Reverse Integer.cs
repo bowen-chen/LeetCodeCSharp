@@ -33,6 +33,7 @@ namespace Demo
                 {
                     return 0;
                 }
+
                 res = res * 10 + x % 10;
                 x /= 10;
             }
@@ -47,6 +48,7 @@ namespace Demo
                 x = -x;
                 negative = true;
             }
+
             long ret = 0;
             while (x > 0)
             {

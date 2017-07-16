@@ -33,8 +33,10 @@ namespace Demo
                     n += num % 10;
                     num /= 10;
                 }
+
                 num = n;
             }
+
             return num;
         }
 
@@ -48,6 +50,7 @@ namespace Demo
             {
                 return 0;
             }
+
             var mod = num % 9;
             return mod == 0 ? 9 : mod;
         }

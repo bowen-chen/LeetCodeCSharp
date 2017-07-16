@@ -13,6 +13,7 @@ namespace Demo
 {
     public partial class Solution
     {
+        // no overlap
         public bool CanAttendMeetings(Interval[] intervals)
         {
             if (intervals == null)
@@ -21,7 +22,6 @@ namespace Demo
             }
 
             intervals = intervals.OrderBy(i => i.start).ToArray();
-
             for (int i = 1; i < intervals.Length; i++)
             {
                 if (intervals[i].start < intervals[i - 1].end)

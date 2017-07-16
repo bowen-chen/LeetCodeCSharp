@@ -86,8 +86,7 @@ namespace Demo
         public int CountPrimes(int n)
         {
             bool[] isNotPrime = new bool[n];
-            // Loop's ending condition is i * i < n instead of i < sqrt(n)
-            // to avoid repeatedly calling an expensive function sqrt().
+            
             for (int i = 2; i * i < n; i++)
             {
                 if (isNotPrime[i])
@@ -95,17 +94,22 @@ namespace Demo
                     continue;
                 }
 
-                // any j < i*i should be covered
+                // any i* [2 -> i-1] should be covered already
                 for (int j = i * i; j < n; j += i)
                 {
                     isNotPrime[j] = true;
                 }
             }
+
             int count = 0;
             for (int i = 2; i < n; i++)
             {
-                if (!isNotPrime[i]) count++;
+                if (!isNotPrime[i])
+                {
+                    count++;
+                }
             }
+
             return count;
         }
     }

@@ -25,11 +25,13 @@ namespace Demo
             {
                 return false;
             }
+
             int i = 1;
             while (i <= x / 10)
             {
                 i *= 10;
             }
+
             while (i > 1)
             {
                 int h = x / i;
@@ -38,6 +40,7 @@ namespace Demo
                 {
                     return false;
                 }
+
                 x %= i;
                 x /= 10;
                 i /= 100;

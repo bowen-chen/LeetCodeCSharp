@@ -74,6 +74,7 @@ namespace Demo
                     }
                 }
             }
+
             for (int i = 0; i < mA; ++i)
             {
                 foreach (var k in v[i])
@@ -86,6 +87,7 @@ namespace Demo
                     }
                 }
             }
+
             return res;
         }
     }

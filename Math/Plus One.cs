@@ -24,6 +24,7 @@ namespace Demo
                     return digits;
                 }
             }
+
             var ret = new int[digits.Length + 1];
             ret[0] = 1;
             return ret;

@@ -71,7 +71,10 @@ namespace Demo
         private long ldivide(long ldividend, long ldivisor)
         {
             // Recursion exit condition
-            if (ldividend < ldivisor) return 0;
+            if (ldividend < ldivisor)
+            {
+                return 0;
+            }
 
             //  Find the largest multiple so that (divisor * multiple <= dividend), 
             //  whereas we are moving with stride 1, 2, 4, 8, 16...2^n for performance reason.
@@ -83,6 +86,7 @@ namespace Demo
                 sum += sum;
                 multiple += multiple;
             }
+
             //Look for additional value for the multiple from the reminder (dividend - sum) recursively.
             return multiple + ldivide(ldividend - sum, ldivisor);
         }

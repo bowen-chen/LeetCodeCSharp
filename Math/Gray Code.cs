@@ -38,6 +38,7 @@ namespace Demo
             {
                 ret.Add(ret[i] + nbit);
             }
+
             return ret;
         }
     }

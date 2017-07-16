@@ -36,9 +36,11 @@ namespace Demo
     {
         public string RearrangeString(string str, int k)
         {
-            if (k == 0) return str;
-            string res = "";
-            int len = str.Length;
+            if (k == 0)
+            {
+                return str;
+            }
+
             var m = new Dictionary<char, int>();
             foreach (var a in str)
             {
@@ -46,6 +48,7 @@ namespace Demo
                 {
                     m[a] = 0;
                 }
+
                 m[a]++;
             }
 
@@ -56,6 +59,8 @@ namespace Demo
                 q.Push(Tuple.Create(it.Value, it.Key));
             }
 
+            string res = "";
+            int len = str.Length;
             while (q.Count != 0)
             {
                 List<Tuple<int, char>> v = new List<Tuple<int, char>>();
@@ -73,13 +78,16 @@ namespace Demo
                     {
                         v.Add(Tuple.Create(t.Item1 - 1, t.Item2));
                     }
+
                     --len;
                 }
+
                 foreach (var a in v)
                 {
                     q.Push(a);
                 }
             }
+
             return res;
         }
     }

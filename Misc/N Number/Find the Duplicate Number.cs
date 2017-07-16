@@ -20,6 +20,8 @@ namespace Demo
     {
         public int FindDuplicate(int[] nums)
         {
+            // ! (count <=mid)
+            // count<=mid, dup is in high part
             int low = 1;
             int high = nums.Length - 1;
             while (low <= high)
@@ -40,6 +42,7 @@ namespace Demo
 
         public int FindDuplicate2(int[] nums)
         {
+            // after knock out the number at nums[number] place, rest of them should be a link
             int slow = nums[0];
             int fast = nums[nums[0]];
             while (slow != fast)
