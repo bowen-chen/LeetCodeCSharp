@@ -32,20 +32,21 @@ namespace Demo
             {
                 int mid = l + (h - l)/2;
                 int cur = matrix[mid/m, mid%m];
-                if (cur == target)
-                {
-                    return true;
-                }
 
                 if (cur < target)
                 {
                     l = mid + 1;
                 }
-                else
+                else if (cur > target)
                 {
                     h = mid - 1;
                 }
+                else
+                {
+                    return true;
+                }
             }
+
             return false;
         }
     }

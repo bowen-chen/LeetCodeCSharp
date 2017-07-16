@@ -26,9 +26,9 @@ namespace Demo
                 return 0;
             }
 
+            // find the first low does not meet citations[mid] < citations.Length - mid
             int low = 0;
             int high = citations.Length - 1;
-            // find the first low does not meet citations[mid] < citations.Length - mid
             while (low <= high)
             {
                 var mid = low + (high - low)/2;

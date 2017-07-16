@@ -12,30 +12,17 @@ namespace Demo
     {
         public int HammingWeight(uint n)
         {
-            int ret = 0;
-            while (n!=0)
-            {
-                if ((n & 1) != 0)
-                {
-                    ret ++;
-                }
-                n = n >> 1;
-            }
-            return ret;
-        }
-
-        public int HammingWeight2(uint n)
-        {
             int count = 0;
             while (n != 0)
             {
                 count++;
                 n = n & (n - 1);
             }
+
             return count;
         }
 
-        public int HammingWeight3(uint n)
+        public int HammingWeight2(uint n)
         {
             //0101
             n = (n & 0x55555555) + (n >> 1 & 0x55555555); // put count of each  2 bits into those  2 bits 

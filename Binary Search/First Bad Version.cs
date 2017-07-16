@@ -31,14 +31,11 @@ namespace Demo
 
         public int FirstBadVersion(int n)
         {
+            // find the first version which doesn't meet condition good.
             int low = 1;
             int high = n;
-
-            // find the first version which doesn't meet condition good.
             while (low <= high)
             {
-                // (low + high)/2; overflow
-                // mid could be equals low
                 int mid = low + (high - low) / 2;
                 if (!IsBadVersion(mid))
                 {

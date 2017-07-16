@@ -52,6 +52,7 @@ namespace Demo
                 return -1;
             }
 
+            // res is the max move through one machine
             int res = 0, cnt = 0, avg = sum / machines.Length;
             foreach (int m in machines)
             {

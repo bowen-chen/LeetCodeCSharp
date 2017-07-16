@@ -33,6 +33,7 @@ namespace Demo
                 ++res;
                 exc &= (exc - 1);
             }
+
             return res;
         }
     }

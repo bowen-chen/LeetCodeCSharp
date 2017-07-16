@@ -46,6 +46,7 @@ namespace Demo
 
                 num >>= 4;
             }
+
             return res == "" ? "0" : res;
         }
     }

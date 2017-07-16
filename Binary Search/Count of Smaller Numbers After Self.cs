@@ -40,34 +40,25 @@ namespace Demo
                 }
                 else
                 {
+                    // find the first sortedlist[low] does not meet sortedList[low] < nums[i]
                     int low = 0;
                     int high = sortedList.Count - 1;
-                    if (sortedList[high] < nums[i])
+                    while (low <= high)
                     {
-                        count = sortedList.Count;
-                    }
-                    else if (sortedList[low] >= nums[i])
-                    {
-                        count = 0;
-                    }
-                    else
-                    {
-                        // find the first sortedlist[low] does not meet sortedList[low] < nums[i]
-                        while (low <= high)
+                        int mid = low + (high - low)/2;
+                        if (sortedList[mid] < nums[i])
                         {
-                            int mid = low + (high - low)/2;
-                            if (sortedList[mid] < nums[i])
-                            {
-                                low = mid + 1;
-                            }
-                            else
-                            {
-                                high = mid - 1;
-                            }
+                            low = mid + 1;
                         }
-                        count = low;
+                        else
+                        {
+                            high = mid - 1;
+                        }
                     }
+
+                    count = low;
                 }
+
                 ret[i] = count;
                 sortedList.Insert(count, nums[i]);
             }

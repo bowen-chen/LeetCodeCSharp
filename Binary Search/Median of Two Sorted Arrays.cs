@@ -14,14 +14,24 @@ namespace Demo
         public double FindMedianSortedArrays(int[] nums1, int[] nums2)
         {
             int m = nums1.Length, n = nums2.Length;
-            if (m < n) return FindMedianSortedArrays(nums2, nums1);
-            if (n == 0) return (nums1[(m - 1) / 2] + nums1[m / 2]) / 2.0;
+            if (m < n)
+            {
+                // we will cut nums2, so nums2 should be shorter array.
+                return FindMedianSortedArrays(nums2, nums1);
+            }
+
+            if (n == 0)
+            {
+                return (nums1[(m - 1) / 2] + nums1[m / 2]) / 2.0;
+            }
 
             // nums2 is shorter, we always cut the shorter one
             // for an array with length n, there are 2*n+1 place to cut
             // /a/b/c/d/
             // for even array length, cut in the middle a,b/c,d, L=b R=c L+R/2
             // for odd array length, cut in the middle number, a,b,(c/c),d,e, L=c r=c L+R/2
+            // l = cut-1 /2
+            // r = cut / 2
             // we try find where to cut in nums2
             int left = 0, right = 2 * n;
             while (left <= right)
@@ -33,19 +43,26 @@ namespace Demo
                 int mid1 = m + (mid2 - n);
 
                 double L1 = mid1 == 0 ? double.MinValue : nums1[(mid1 - 1) / 2];
-                double L2 = mid2 == 0 ? double.MinValue : nums2[(mid2 - 1) / 2];
                 double R1 = mid1 == m * 2 ? double.MaxValue : nums1[mid1 / 2];
+                double L2 = mid2 == 0 ? double.MinValue : nums2[(mid2 - 1) / 2];
                 double R2 = mid2 == n * 2 ? double.MaxValue : nums2[mid2 / 2];
-                if (L1 > R2) left = mid2 + 1;
-                else if (L2 > R1) right = mid2 - 1;
-                else return (Math.Max(L1, L2) + Math.Min(R1, R2)) / 2;
-            }
-            return -1;
-        }
 
-        public void Test_FindMedianSortedArrays()
-        {
-            var a = FindMedianSortedArrays(new []{1,2}, new[] { 1, 2 });
+                // we expected l1<=r2 and l2<=r1
+                if (L1 > R2)
+                {
+                    left = mid2 + 1;
+                }
+                else if (L2 > R1)
+                {
+                    right = mid2 - 1;
+                }
+                else
+                {
+                    return (Math.Max(L1, L2) + Math.Min(R1, R2)) / 2;
+                }
+            }
+
+            return -1;
         }
 
         private int Getkth(int[] s, int s1, int l1, int[] l, int s2, int l2, int k)

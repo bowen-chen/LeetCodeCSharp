@@ -18,6 +18,7 @@ namespace Demo
             {
                 ret ^= i;
             }
+
             return ret;
         }
     }

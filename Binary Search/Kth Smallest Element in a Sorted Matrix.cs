@@ -26,12 +26,12 @@ namespace Demo
         {
             int n = matrix.GetLength(0);
             int m = matrix.GetLength(1);
-            int low = matrix[0, 0];
-            int high = matrix[n - 1, m - 1];
 
             // find first low doesn't meet condition (number than matrix(low)<k)
             // we need use "doesn't meet condition search", since matrix could have dup number
             // so there may not be a low meet condition (number than matrix(low)==k-1)
+            int low = matrix[0, 0];
+            int high = matrix[n - 1, m - 1];
             while (low <= high)
             {
                 int mid = low + (high - low) / 2;
@@ -45,6 +45,7 @@ namespace Demo
                     high = mid-1;
                 }
             }
+
             return low;
         }
 
@@ -68,6 +69,7 @@ namespace Demo
                     i--;
                 }
             }
+
             return cnt;
         }
     }

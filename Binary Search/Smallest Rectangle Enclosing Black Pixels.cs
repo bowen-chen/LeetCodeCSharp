@@ -83,16 +83,14 @@ namespace Demo
                 }
                 return false;
             }
-            else
+
+            int m = image.GetLength(0);
+            for (int j = 0; j < m; j++)
             {
-                int m = image.GetLength(0);
-                for (int j = 0; j < m; j++)
-                {
-                    if (image[j, cur] == '1')
-                        return true;
-                }
-                return false;
+                if (image[j, cur] == '1')
+                    return true;
             }
+            return false;
         }
     }
 }

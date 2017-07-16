@@ -18,24 +18,23 @@ namespace Demo
     {
         public int SearchInsert(int[] nums, int target)
         {
+            // find first low, where nums[low] >= targets
             int low = 0;
             int high = nums.Length - 1;
-            // find first low, where nums[low] >= target
             while (low <= high)
             {
                 int mid = low + (high - low) / 2;
-                if (nums[mid] == target)
-                {
-                    return mid;
-                }
-
                 if (nums[mid] < target)
                 {
                     low = mid + 1;
                 }
-                else
+                else if (nums[mid] > target)
                 {
                     high = mid - 1;
+                }
+                else
+                {
+                    return mid;
                 }
             }
 

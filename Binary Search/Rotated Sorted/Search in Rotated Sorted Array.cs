@@ -25,6 +25,7 @@ namespace Demo
                 {
                     return mid;
                 }
+
                 // Range low to mid, is sorted 
                 if (nums[lo] <= nums[mid])
                 {
@@ -52,6 +53,7 @@ namespace Demo
                     }
                 }
             }
+
             return -1;
         }
     }

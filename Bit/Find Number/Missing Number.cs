@@ -22,6 +22,7 @@ namespace Demo
             {
                 ret += i - nums[i];
             }
+
             return (int)(ret + nums.Length);
         }
 
@@ -35,6 +36,7 @@ namespace Demo
                 result ^= i;
                 i++;
             }
+
             return result;
         }
     }

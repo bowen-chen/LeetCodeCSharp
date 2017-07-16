@@ -29,6 +29,8 @@ namespace Demo
             for (int i = 1; i < n; i++)
             {
                 dp[i] = int.MaxValue;
+
+                //this part can use priority queue
                 for (int j = 0; j < primes.Length; j++)
                 {
                     dp[i] = Math.Min(dp[i], dp[index[j]]*primes[j]);

@@ -33,7 +33,8 @@ namespace Demo
                 a = nexta;
                 b = nextb;
             }
-            //we need find the number that is 01 => 1, 10=> 1.
+
+            //we need find the number, if it appears once then it's a, if appears twice then it's b
             return a | b;
         }
     }

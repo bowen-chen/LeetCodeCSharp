@@ -30,10 +30,10 @@ namespace Demo
             return new [] { start, FirstGreaterEqual(nums, target + 1) - 1 };
         }
 
-        //find the first number that is greater than or equal to target.
-        //could return A.length if target is greater than A[A.length-1].
         private int FirstGreaterEqual(int[] A, int target)
         {
+            //find the first number that is greater than or equal to target.
+            //could return A.length if target is greater than A[A.length-1].
             int low = 0;
             int high = A.Length-1;
             while (low <= high)
@@ -48,6 +48,7 @@ namespace Demo
                     high = mid - 1;
                 }
             }
+
             return low;
         }
     }

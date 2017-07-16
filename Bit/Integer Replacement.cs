@@ -16,6 +16,7 @@ Output:
 
 Explanation:
 8 -> 4 -> 2 -> 1
+
 Example 2:
 
 Input:
@@ -41,11 +42,18 @@ namespace Demo
     {
         public int IntegerReplacement(int n)
         {
-            if (n == int.MaxValue) return 32; //n = 2^31-1;
+            if (n == int.MaxValue)
+            {
+                return 32; //n = 2^31-1;
+            }
+
             int count = 0;
             while (n > 1)
             {
-                if (n % 2 == 0) n /= 2;
+                if (n%2 == 0)
+                {
+                    n /= 2;
+                }
                 else
                 {
                     // n+1 = 2k+2 -> k+1
@@ -60,6 +68,7 @@ namespace Demo
                         n--;
                     }
                 }
+
                 count++;
             }
             return count;

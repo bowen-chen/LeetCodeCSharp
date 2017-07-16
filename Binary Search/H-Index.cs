@@ -27,7 +27,6 @@ namespace Demo
         {
             int len = citations.Length;
             int[] count = new int[len + 1];
-
             foreach (int c in citations)
             {
                 if (c >= len)

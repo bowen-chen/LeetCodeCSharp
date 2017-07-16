@@ -47,21 +47,23 @@ namespace Demo
                 if (cnt == 0)
                 {
                     /*10 single byte*/
-                    if ((d >> 5) == 0x6 /*110*/) cnt = 1;
-                    else if ((d >> 4) == 0xE /*1110*/) cnt = 2;
-                    else if ((d >> 3) == 0X1E /*11110*/) cnt = 3;
+                    if (d >> 5 == 0x6 /*110*/) cnt = 1;
+                    else if (d >> 4 == 0xE /*1110*/) cnt = 2;
+                    else if (d >> 3 == 0X1E /*11110*/) cnt = 3;
                     else if (d >> 7 != 0) return false;
                 }
                 else
                 {
                     // leading 10
-                    if ((d >> 6) != 0x2)
+                    if ((d >> 6) != 0x2 /*10*/)
                     {
                         return false;
                     }
+
                     --cnt;
                 }
             }
+
             return cnt == 0;
         }
     }

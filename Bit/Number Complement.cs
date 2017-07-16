@@ -37,6 +37,7 @@ namespace Demo
             {
                 mask <<= 1;
             }
+
             return ~mask & ~num;
         }
     }

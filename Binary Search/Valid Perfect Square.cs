@@ -15,8 +15,6 @@ Returns: False
 
 */
 
-using System;
-
 namespace Demo
 {
     public partial class Solution
@@ -27,22 +25,22 @@ namespace Demo
             int high = num;
             while (low <= high)
             {
-                int mid = low + (high - low) / 2;
-                long t = (long)mid*mid;
-                if (t == num)
-                {
-                    return true;
-                }
-
+                int mid = low + (high - low)/2;
+                long t = (long) mid*mid;
                 if (t < num)
                 {
                     low = mid + 1;
                 }
-                else
+                else if (t > num)
                 {
                     high = mid - 1;
                 }
+                else
+                {
+                    return true;
+                }
             }
+
             return false;
         }
     }

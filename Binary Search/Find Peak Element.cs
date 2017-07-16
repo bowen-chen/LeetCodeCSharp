@@ -25,7 +25,6 @@ namespace Demo
         {
             int low = 0;
             int high = nums.Length - 1;
-
             while (low < high)
             {
                 int mid1 = (low + high) / 2;
@@ -45,6 +44,7 @@ namespace Demo
                     high = mid1;
                 }
             }
+
             return low;
         }
     }

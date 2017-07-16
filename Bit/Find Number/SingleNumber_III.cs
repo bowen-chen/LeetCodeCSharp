@@ -38,6 +38,7 @@ namespace Demo
                     intB = intB ^ item;
                 }
             }
+
             return new [ ]{ intA, intB};
         }
     }

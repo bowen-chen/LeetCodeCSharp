@@ -18,13 +18,8 @@ namespace Demo
             int high = num.Length - 1;
             while (low <= high)
             {
-                int mid = low + (high - low) / 2;
-                if (condition(num[mid]) == 0)
-                {
-                    return low;
-                }
-
-                if (condition(num[mid])<0)
+                int mid = low + (high - low)/2;
+                if (condition(num[mid]) < 0)
                 {
                     low = mid + 1;
                 }
@@ -32,7 +27,12 @@ namespace Demo
                 {
                     high = mid - 1;
                 }
+                else // condition(num[mid]) == 0
+                {
+                    return low;
+                }
             }
+
             return -1;
         }
 

@@ -50,20 +50,22 @@ namespace Demo
                         sum = sum +km;
                         km *= mid;
                     }
-                    if (sum == num)
-                    {
-                        return mid.ToString();
-                    }
+                   
                     if (sum < num)
                     {
                         left = mid + 1;
                     }
-                    else
+                    else if(sum>num)
                     {
                         right = mid - 1;
                     }
+                    else
+                    {
+                        return mid.ToString();
+                    }
                 }
             }
+
             return (num - 1).ToString();
         }
     }

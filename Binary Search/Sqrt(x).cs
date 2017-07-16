@@ -26,27 +26,29 @@ namespace Demo
             {
                 return 0;
             }
+
+            // find first low doesn't meet x > low * low
             int low = 1;
             int high = x;
-            // find first low doesn't meet low * low < x
             while (low <= high)
             {
                 int mid = low + (high - low)/2;
-                if (x/mid == mid)
-                {
-                    return mid;
-                }
                 if (x/mid > mid)
                 {
                     low = mid + 1;
                 }
+                else if (x/mid < mid)
+                {
+                    high = mid - 1;
+                }
                 else
                 {
-                    high = mid -1;
+                    return mid;
                 }
             }
-            // low if first mid that x < mid*mid
-            return low-1;
+
+            // low is the first mid that x < mid*mid
+            return low - 1;
         }
     }
 }

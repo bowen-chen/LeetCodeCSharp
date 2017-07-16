@@ -19,7 +19,7 @@ namespace Demo
             int lo = 0;
             int hi = nums.Length - 1;
 
-            // find first low, nums[low]<=nums[low+1]
+            // find first low, !(nums[low]>left edge)
             while (lo <= hi)
             {
                 int mid = (lo + hi)/2;

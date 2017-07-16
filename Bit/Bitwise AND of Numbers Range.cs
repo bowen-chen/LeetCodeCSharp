@@ -25,6 +25,7 @@ namespace Demo
                 n >>= 1;
                 moveFactor++;
             }
+
             return m << moveFactor;
         }
     }
