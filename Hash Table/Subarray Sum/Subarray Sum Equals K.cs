@@ -30,41 +30,15 @@ namespace Demo
                 {
                     res += m[sum - k];
                 }
+
                 if (!m.ContainsKey(sum))
                 {
                     m[sum] = 0;
                 }
+
                 ++m[sum];
             }
-            return res;
-        }
 
-        public int SubarraySum2(int[] nums, int k)
-        {
-            int res = 0;
-            int n = nums.Length;
-            int sum = 0;
-            var sums = new int[nums.Length];
-            for (int i = 0; i < n; ++i)
-            {
-                sum += nums[i];
-                sums[i] = sum;
-            }
-
-            for (int i = 0; i < n; ++i)
-            {
-                if (sums[i] == k)
-                {
-                    ++res;
-                }
-                for (int j = i - 1; j >= 0; --j)
-                {
-                    if (sums[i] - sums[j] == k)
-                    {
-                        ++res;
-                    }
-                }
-            }
             return res;
         }
     }

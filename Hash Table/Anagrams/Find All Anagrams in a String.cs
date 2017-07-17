@@ -39,41 +39,6 @@ namespace Demo
     {
         public IList<int> FindAnagrams(string s, string p)
         {
-            int len = p.Length;
-            int cnt = len;
-            var m = new int[26];
-            foreach (char c in p)
-            {
-                m[c - 'a']++;
-            }
-
-            var res = new List<int>();
-            for (int right = 0, left = 0; right < s.Length; ++right)
-            {
-                if (m[s[right] - 'a']-- > 0)
-                {
-                    cnt--;
-                }
-
-                while (cnt == 0)
-                {
-                    if (right - left + 1 == len)
-                    {
-                        res.Add(left);
-                    }
-
-                    if (++m[s[left++] - 'a'] > 0)
-                    {
-                        ++cnt;
-                    }
-                }
-            }
-
-            return res;
-        }
-
-        public IList<int> FindAnagrams2(string s, string p)
-        {
             var res = new List<int>();
             if (string.IsNullOrEmpty(p) || string.IsNullOrEmpty(p))
             {
@@ -110,6 +75,7 @@ namespace Demo
                     }
                 }
             }
+
             return res;
         }
     }

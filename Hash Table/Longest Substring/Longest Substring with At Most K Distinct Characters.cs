@@ -18,20 +18,26 @@ namespace Demo
         public int LengthOfLongestSubstringKDistinct(string s, int k)
         {
             int res = 0, left = 0;
-            Dictionary<char, int> m = new Dictionary<char, int>();
+            int count = 0;
+            var m = new int[26];
             for (int i = 0; i < s.Length; ++i)
             {
-                ++m[s[i]];
-                while (m.Count > k)
+                if (++m[s[i] - 'a'] == 1)
                 {
-                    if (--m[s[left]] == 0)
-                    {
-                        m.Remove(s[left]);
-                    }
-                    ++left;
+                    count ++;
                 }
+
+                while (count > k)
+                {
+                    if (--m[s[left++] - 'a'] == 0)
+                    {
+                        count--;
+                    }
+                }
+
                 res = Math.Max(res, i - left + 1);
             }
+
             return res;
         }
     }

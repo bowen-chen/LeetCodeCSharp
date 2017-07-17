@@ -45,11 +45,12 @@ namespace Demo
             nums[9] = counts['i' - 'a'] - nums[6] - nums[8] - nums[5];
             for (int i = 0; i < nums.Length; ++i)
             {
-                for (int j = 0; j < nums[i]; ++j)
+                if(nums[i] != 0)
                 {
-                    res.Append((char)(i + '0'));
+                    res.Append((char)(i + '0'), nums[i]);
                 }
             }
+
             return res.ToString();
         }
     }

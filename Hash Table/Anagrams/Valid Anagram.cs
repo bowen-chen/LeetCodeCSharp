@@ -26,12 +26,7 @@ namespace Demo
                 return true;
             }
 
-            if (t == null || s == null)
-            {
-                return false;
-            }
-
-            if (t.Length != s.Length)
+            if (t == null || s == null || t.Length != s.Length)
             {
                 return false;
             }

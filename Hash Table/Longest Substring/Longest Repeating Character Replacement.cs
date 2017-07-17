@@ -30,6 +30,7 @@ The substring "BBBB" has the longest repeating letters, which is 4.
 */
 
 using System;
+using System.Linq;
 
 namespace Demo
 {
@@ -40,19 +41,21 @@ namespace Demo
             int[] count = new int[26];
             int l = 0;
             int maxCount = 0;
-            int maxLength = 0;
+
+            // we keep increase the window
             for (int r = 0; r < s.Length; r++)
             {
+                // the max count possible
                 maxCount = Math.Max(maxCount, ++count[s[r] - 'A']);
+
                 // we always replace the chars with the max count char
                 while ((r - l + 1 - maxCount) > k)
                 {
-                    count[s[l] - 'A']--;
-                    l++;
+                    count[s[l++] - 'A']--;
                 }
-                maxLength = Math.Max(maxLength, r - l + 1);
             }
-            return maxLength;
+
+            return s.Length - l;
         }
     }
 }

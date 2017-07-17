@@ -19,7 +19,48 @@ namespace Demo
 {
     public partial class Solution
     {
-        public bool CheckInclusion(string s1, string s2)
+        public bool CheckInclusion(string p, string s)
+        {
+            if (string.IsNullOrEmpty(p) || string.IsNullOrEmpty(s))
+            {
+                return false;
+            }
+
+            int[] m = new int[26];
+            foreach (char c in p)
+            {
+                m[c - 'a']++;
+            }
+
+            // count is sum of all the positive hash value
+            int left = 0;
+            int right = 0;
+            int count = p.Length;
+            while (right < s.Length)
+            {
+                if (m[s[right++] - 'a']-- >= 1)
+                {
+                    count--;
+                }
+
+                if (count == 0)
+                {
+                    return true;
+                }
+
+                if (right - left == p.Length)
+                {
+                    if (m[s[left++] - 'a']++ >= 0)
+                    {
+                        count++;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        public bool CheckInclusion2(string s1, string s2)
         {
             int n1 = s1.Length;
             int n2 = s2.Length;
@@ -30,6 +71,7 @@ namespace Demo
             {
                 m[c - 'a']++;
             }
+
             for (int right = 0; right < n2; ++right)
             {
                 if (m[s2[right] - 'a']-- > 0)

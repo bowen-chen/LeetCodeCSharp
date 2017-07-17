@@ -32,38 +32,8 @@ namespace Demo
                     sum -= nums[start++];
                 }
             }
+
             return minlen == int.MaxValue ? 0 : minlen;
-        }
-
-        private int MinSubArrayLen2(int s, int[] nums)
-        {
-            int[] sums = new int[nums.Length + 1];
-            for (int i = 1; i < sums.Length; i++) sums[i] = sums[i - 1] + nums[i - 1];
-            int minLen = int.MaxValue;
-            for (int i = 0; i < sums.Length; i++)
-            {
-                int end = binarySearch(i + 1, sums.Length - 1, sums[i] + s, sums);
-                if (end == sums.Length) break;
-                if (end - i < minLen) minLen = end - i;
-            }
-            return minLen == int.MaxValue ? 0 : minLen;
-        }
-
-        private int binarySearch(int lo, int hi, int key, int[] sums)
-        {
-            while (lo <= hi)
-            {
-                int mid = (lo + hi) / 2;
-                if (sums[mid] >= key)
-                {
-                    hi = mid - 1;
-                }
-                else
-                {
-                    lo = mid + 1;
-                }
-            }
-            return lo;
         }
     }
 }

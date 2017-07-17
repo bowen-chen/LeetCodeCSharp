@@ -70,9 +70,11 @@ namespace Demo
                     {
                         res = Math.Max(res, LongestSubstring2(ss, k));
                     }
+
                     return res;
                 }
             }
+
             return s.Length;
         }
     }

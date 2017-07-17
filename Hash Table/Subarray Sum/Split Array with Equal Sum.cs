@@ -41,8 +41,10 @@ namespace Demo
             {
                 sums[i] = sums[i - 1] + nums[i];
             }
+
             for (int j = 3; j < n - 3; ++j)
             {
+                // split on j
                 var s = new HashSet<int>();
                 for (int i = 1; i < j - 1; ++i)
                 {
@@ -57,9 +59,13 @@ namespace Demo
                 {
                     int s3 = sums[k - 1] - sums[j];
                     int s4 = sums[n - 1] - sums[k];
-                    if (s3 == s4 && s.Contains(s3)) return true;
+                    if (s3 == s4 && s.Contains(s3))
+                    {
+                        return true;
+                    }
                 }
             }
+
             return false;
         }
     };
