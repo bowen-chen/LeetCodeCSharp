@@ -28,7 +28,7 @@ namespace Demo
         public bool IsReflected(List<Tuple<int, int>> points)
         {
             HashSet<long> m = new HashSet<long>();
-            int max = int.MinValue, min = Int32.MaxValue;
+            int max = int.MinValue, min = int.MaxValue;
             foreach (var a in points)
             {
                 max = Math.Max(max, a.Item1);
@@ -45,6 +45,7 @@ namespace Demo
                     return false;
                 }
             }
+
             return true;
         }
     }

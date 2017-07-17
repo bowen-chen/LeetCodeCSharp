@@ -42,11 +42,13 @@ namespace Demo
                         m[dis] ++;
                     }
                 }
+
                 foreach (var kvp in m)
                 {
                     res += kvp.Value * (kvp.Value - 1);
                 }
             }
+
             return res;
         }
     }

@@ -16,16 +16,14 @@ namespace Demo
 {
     public partial class Solution
     {
-        public List<int> FindSubstring2(string s, string[] words)
+        public List<int> FindSubstring(string s, string[] words)
         {
             var res = new List<int>();
             if (string.IsNullOrEmpty(s) || words == null || words.Length == 0)
             {
                 return res;
             }
-            int n = s.Length;
-            int cnt = words.Length;
-            int len = words[0].Length;
+
             var m1 = new Dictionary<string, int>();
             foreach (string w in words)
             {
@@ -33,109 +31,53 @@ namespace Demo
                 {
                     m1[w] = 0;
                 }
+
                 m1[w]++;
             }
+
+
+            int n = s.Length;
+            int len = words[0].Length;
             for (int i = 0; i < len; ++i)
             {
                 int left = i;
-                int count = 0;
-                var m2 = new Dictionary<string, int>();
+                int count = words.Length;
+                var m2 = new Dictionary<string, int>(m1);
                 for (int j = i; j <= n - len; j += len)
                 {
                     string t = s.Substring(j, len);
-                    if (m1.ContainsKey(t))
+                    if (m2.ContainsKey(t))
                     {
-                        if (!m2.ContainsKey(t))
-                        {
-                            m2[t] = 0;
-                        }
 
-                        if (++m2[t] <= m1[t])
+                        if (--m2[t] >= 0)
                         {
-                            ++count;
-                        }
-                        else
-                        {
-                            while (m2[t] > m1[t])
+                            count--;
+                            if (count == 0)
                             {
-                                var t1 = s.Substring(left, len);
-                                if (--m2[t1] < m1[t1])
-                                {
-                                    --count;
-                                }
-                                left += len;
+                                res.Add(left);
                             }
                         }
 
-                        if (count == cnt)
+                        while (m2[t] < 0 || count ==0)
                         {
-                            res.Add(left);
-                            --m2[s.Substring(left, len)];
-                            --count;
+                            if (++m2[s.Substring(left, len)] >0)
+                            {
+                                count++;
+                            }
+
                             left += len;
                         }
                     }
                     else
                     {
-
-                        m2.Clear();
-                        count = 0;
+                        m2 = new Dictionary<string, int>(m1);
+                        count = words.Length;
                         left = j + len;
                     }
                 }
             }
+
             return res;
-        }
-
-        public IList<int> FindSubstring(string s, string[] words)
-        {
-            var expected = new Dictionary<string, int>();
-            foreach (string word in words)
-            {
-                if(!expected.ContainsKey(word))
-                {
-                    expected[word] = 0;
-                }
-                expected[word]++;
-            }
-
-            int n = s.Length;
-            int num = words.Length;
-            int len = words[0].Length;
-
-            var ret = new List<int>();
-            for (int i = 0; i < n - num * len + 1; i++)
-            {
-                var seen = new Dictionary<string, int>();
-                int j = 0;
-                for (; j < num; j++)
-                {
-                    string word = s.Substring(i + j * len, len);
-                    if (expected.ContainsKey(word))
-                    {
-                        if (!seen.ContainsKey(word))
-                        {
-                            seen[word] = 0;
-                        }
-                        seen[word]++;
-                        if (seen[word] > expected[word])
-                        {
-                            // extra word
-                            break;
-                        }
-                    }
-                    else
-                    {
-                        // non match word
-                        break;
-                    }
-                }
-                if (j == num)
-                {
-                    ret.Add(i);
-                }
-            }
-            return ret;
         }
     }
 }

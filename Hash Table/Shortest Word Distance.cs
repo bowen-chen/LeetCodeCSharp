@@ -26,15 +26,18 @@ namespace Demo
                 if (words[i] == word1)
                 {
                     p1 = i;
+                    if (p1 != -1 && p2 != -1)
+                    {
+                        min = Math.Min(min, Math.Abs(p1 - p2));
+                    }
                 }
                 else if (words[i] == word2)
                 {
                     p2 = i;
-                }
-
-                if (p1 != -1 && p2 != -1)
-                {
-                    min = Math.Min(min, Math.Abs(p1 - p2));
+                    if (p1 != -1 && p2 != -1)
+                    {
+                        min = Math.Min(min, Math.Abs(p1 - p2));
+                    }
                 }
             }
 

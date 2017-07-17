@@ -15,8 +15,10 @@ namespace Demo
         public bool ContainsNearbyAlmostDuplicate2(int[] nums, int k, int t)
         {
             if (k < 1 || t < 0) return false;
-            var map = new Dictionary<long, long>();
+
             // bucket size t+1
+            // the possible pair is in nearby bucket or same bucket
+            var map = new Dictionary<long, long>();
             for (int i = 0; i < nums.Length; i++)
             {
                 long bucket = ((long)nums[i] - int.MinValue) / ((long)t + 1);
@@ -26,15 +28,18 @@ namespace Demo
                 {
                     return true;
                 }
-                // remove
+
+                // remove the last bucket
                 if (map.Count >= k)
                 {
                     long lastBucket = ((long)nums[i - k] - int.MinValue) / ((long)t + 1);
                     map.Remove(lastBucket);
                 }
+
                 //add
                 map.Add(bucket, nums[i]);
             }
+
             return false;
         }
     }

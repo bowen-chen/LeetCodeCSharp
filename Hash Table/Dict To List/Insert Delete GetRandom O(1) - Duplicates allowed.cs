@@ -36,7 +36,10 @@ namespace Demo
 {
     public class RandomizedCollection
     {
+        // value to index
         private readonly Dictionary<int, List<int>> _valueToIndex = new Dictionary<int, List<int>>();
+
+        // values <value, index in the _valueToIndex list>
         private readonly List<Tuple<int, int>> _nums = new List<Tuple<int, int>>();
         private readonly Random _random = new Random();
 
@@ -73,6 +76,7 @@ namespace Demo
             {
                 _valueToIndex.Remove(val);
             }
+
             return true;
         }
 

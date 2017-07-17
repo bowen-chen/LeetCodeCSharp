@@ -139,7 +139,7 @@
     <Compile Include="Array\Sliding Window\Sliding Window Maximum.cs" />
     <Compile Include="Array\Sliding Window\Sliding Window Median.cs" />
     <Compile Include="Array\Sort\Kth Largest Element in an Array.cs" />
-    <Compile Include="Array\Sort\Maximum Gap.cs" />
+    <Compile Include="Hash Table\Bucket\Maximum Gap.cs" />
     <Compile Include="Array\Partition\Sort Colors.cs" />
     <Compile Include="Array\Sort\Top K Frequent Elements.cs" />
     <Compile Include="Array\Sort\Wiggle Sort.cs" />
@@ -306,9 +306,9 @@
     <Compile Include="Graph\UnionFind\UnionFind.cs" />
     <Compile Include="Hash Table\Brick Wall.cs" />
     <Compile Include="Hash Table\Bulls and Cows.cs" />
-    <Compile Include="Hash Table\Contains Duplicate.cs" />
-    <Compile Include="Hash Table\Contains Duplicate_II.cs" />
-    <Compile Include="Hash Table\Contains Duplicate_III.cs" />
+    <Compile Include="Hash Table\Bucket\Contains Duplicate.cs" />
+    <Compile Include="Hash Table\Bucket\Contains Duplicate_II.cs" />
+    <Compile Include="Hash Table\Bucket\Contains Duplicate_III.cs" />
     <Compile Include="Hash Table\Design Hit Counter.cs" />
     <Compile Include="Hash Table\Design Phone Directory.cs" />
     <Compile Include="Hash Table\Distribute Candies.cs" />
@@ -316,8 +316,8 @@
     <Compile Include="Hash Table\Find the Difference.cs" />
     <Compile Include="Hash Table\First Unique Character in a String.cs" />
     <Compile Include="Hash Table\Group Shifted Strings.cs" />
-    <Compile Include="Hash Table\Insert Delete GetRandom O(1) - Duplicates allowed.cs" />
-    <Compile Include="Hash Table\Insert Delete GetRandom O(1).cs" />
+    <Compile Include="Hash Table\Dict To List\Insert Delete GetRandom O%281%29 - Duplicates allowed.cs" />
+    <Compile Include="Hash Table\Dict To List\Insert Delete GetRandom O%281%29.cs" />
     <Compile Include="Hash Table\Intersection of Two Arrays.cs" />
     <Compile Include="Hash Table\Intersection of Two Arrays_II.cs" />
     <Compile Include="Hash Table\Isomorphic Strings.cs" />

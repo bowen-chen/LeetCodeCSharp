@@ -30,16 +30,5 @@ namespace Demo
             foreach (char c in t) res ^= c;
             return res;
         }
-
-        public char FindTheDifference2(string s, string t)
-        {
-            int[] m = new int[26];
-            foreach (char c in s) ++m[c - 'a'];
-            foreach (char c in t)
-            {
-                if (--m[c - 'a'] < 0) return c;
-            }
-            return '?';
-        }
     }
 }

@@ -51,6 +51,8 @@ namespace Demo
                 }
             }
 
+            // we use max count task as frame boundary and frame len is n+1, except the last frame
+            // the last frame length is the number of tasks with max count
             return Math.Max(tasks.Length, (max - 1)*(n + 1) + maxCount);
         }
     }

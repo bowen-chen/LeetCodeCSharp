@@ -26,12 +26,10 @@ namespace Demo
             {
                 if (!m.ContainsKey(c))
                 {
-                    m[c] = 1;
+                    m[c] = 0;
                 }
-                else
-                {
-                    ++m[c];
-                }
+
+                ++m[c];
             }
 
             foreach (char c in ransomNote)

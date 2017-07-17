@@ -56,6 +56,7 @@ namespace Demo
                 {
                     charToInt[c] = 0;
                 }
+
                 charToInt[c]++;
             }
 
@@ -70,6 +71,7 @@ namespace Demo
                 intToString[kvp.Value] += new string(kvp.Key, kvp.Value);
                 max = Math.Max(max, kvp.Value);
             }
+
             for (int i = max; i > 0; --i)
             {
                 if (intToString.ContainsKey(i))
@@ -77,6 +79,7 @@ namespace Demo
                     res.Append(intToString[i]);
                 }
             }
+
             return res.ToString();
         }
     }

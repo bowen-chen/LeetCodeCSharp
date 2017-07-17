@@ -34,9 +34,11 @@ namespace Demo
                     {
                         return false;
                     }
+
                     m.Add(dist);
                 }
             }
+
             return m.Count == 2;
         }
     }

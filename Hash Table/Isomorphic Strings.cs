@@ -34,6 +34,8 @@ namespace Demo
                 {
                     return false;
                 }
+
+                // default value is 0, so we need add 1
                 m1[s[i]] = i + 1;
                 m2[t[i]] = i + 1;
             }
@@ -59,10 +61,12 @@ namespace Demo
                     {
                         return false;
                     }
+
                     dic[s[i]] = t[i];
                     dic2.Add(t[i]);
                 }
             }
+
             return true;
         }
     }

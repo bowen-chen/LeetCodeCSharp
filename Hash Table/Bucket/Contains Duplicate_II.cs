@@ -21,28 +21,16 @@ namespace Demo
                 {
                     h.Remove(nums[i - k]);
                 }
+
                 var n = nums[i];
                 if (h.Contains(n))
                 {
                     return true;
                 }
+
                 h.Add(n);
             }
-            return false;
-        }
 
-        public bool ContainsNearbyDuplicate2(int[] nums, int k)
-        {
-            for (int i = 0; i < nums.Length; i++)
-            {
-                for (int j = i + 1; j <= i + k && j < nums.Length; j++)
-                {
-                    if (nums[i] == nums[j])
-                    {
-                        return true;
-                    }
-                }
-            }
             return false;
         }
     }

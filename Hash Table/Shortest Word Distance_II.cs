@@ -22,8 +22,8 @@ namespace Demo
 {
     public class WordDistance
     {
+        private readonly Dictionary<string, List<int>> map = new Dictionary<string, List<int>>();
 
-        private Dictionary<string, List<int>> map = new Dictionary<string, List<int>>();
         public WordDistance(string[] words)
         {
             for (int i = 0; i < words.Length; i++)
@@ -54,6 +54,7 @@ namespace Demo
                     j++;
                 }
             }
+
             return dist;
         }
  }

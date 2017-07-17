@@ -14,7 +14,6 @@ Return:
 */
 
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Demo
 {
@@ -27,13 +26,19 @@ namespace Demo
             {
                 return res;
             }
-            var seen = new Dictionary<int, int>();
-            var m = new Dictionary < char, int>{ { 'A', 0}, { 'C', 1}, { 'G', 2}, { 'T', 3} };
 
+            var seen = new Dictionary<int, int>();
+            var m = new Dictionary <char, int>{ { 'A', 0}, { 'C', 1}, { 'G', 2}, { 'T', 3} };
+
+            // ACGT can be presented in 2 bit
             // 32 bit can save 16 char, we only use 20bit, 0xfffff
             int cur = 0;
             int i = 0;
-            while (i < 9) cur = cur << 2 | m[s[i++]];
+            while (i < 9)
+            {
+                cur = cur << 2 | m[s[i++]];
+            }
+
             while (i < s.Length)
             {
                 cur = ((cur << 2) | m[s[i++]]) & 0xfffff;
@@ -41,31 +46,13 @@ namespace Demo
                 {
                     seen[cur] = 0;
                 }
+
                 if (seen[cur]++ == 1)
                 {
                     res.Add(s.Substring(i - 10, 10));
                 }
             }
             return res;
-        }
-
-        public IList<string> FindRepeatedDnaSequences2(string s)
-        {
-            if (s.Length <= 10)
-            {
-                return new List<string>();
-            }
-            Dictionary<string, int> h = new Dictionary<string, int>();
-            for (int i = 9; i < s.Length; i++)
-            {
-                string tmp = s.Substring(i - 9, 10);
-                if (!h.ContainsKey(tmp))
-                {
-                    h.Add(tmp, 0);
-                }
-                h[tmp]++;
-            }
-            return h.Where(kp => kp.Value > 1).Select(kp => kp.Key).ToList();
         }
     }
 }

@@ -40,18 +40,23 @@ namespace Demo
                     {
                         c2 = (char)(c2 + 26);
                     }
+
                     key += c2;
                 }
+
                 if (!map.ContainsKey(key))
                 {
                     map.Add(key, new List<string>());
                 }
+
                 map[key].Add(s);
             }
+
             foreach (var v in map.Values)
             {
                 v.Sort();
             }
+
             return map.Values.ToList();
         }
     }

@@ -28,6 +28,7 @@ namespace Demo
                 {
                     m[num] = 0;
                 }
+
                 ++m[num];
             }
 
@@ -38,6 +39,7 @@ namespace Demo
                     res = Math.Max(res, a.Value + m[a.Key + 1]);
                 }
             }
+
             return res;
         }
     }

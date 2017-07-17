@@ -29,6 +29,30 @@ namespace Demo
     {
         public int MaxProduct(string[] words)
         {
+            int res = 0;
+            var mask = new Dictionary<int, int>();
+            for (int i = 0; i < words.Length; ++i)
+            {
+                mask[i] = 0;
+                foreach (char c in words[i])
+                {
+                    mask[i] |= 1 << (c - 'a');
+                }
+
+                for (int j = 0; j < i; ++j)
+                {
+                    if ((mask[i] & mask[j]) == 0)
+                    {
+                        res = Math.Max(res, words[i].Length * words[j].Length);
+                    }
+                }
+            }
+
+            return res;
+        }
+
+        public int MaxProduct2(string[] words)
+        {
             Dictionary<int, int> dic = new Dictionary<int, int>();
             foreach (var word in words)
             {
@@ -37,6 +61,7 @@ namespace Demo
                 {
                     i |= 1 << (c - 'a');
                 }
+
                 if (!dic.ContainsKey(i) || dic[i] < word.Length)
                 {
                     dic[i] = word.Length;
@@ -51,6 +76,7 @@ namespace Demo
                 {
                     break;
                 }
+
                 for (int j = i + 1; j < p.Length; j++)
                 {
                     if ((p[i].Key & p[j].Key) == 0)

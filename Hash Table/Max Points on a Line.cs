@@ -3,6 +3,8 @@
 easy
 Given n points on a 2D plane, find the maximum number of points that lie on the same straight line.
 */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -12,45 +14,38 @@ namespace Demo
     {
         public int MaxPoints(Point[] points)
         {
-            Dictionary<double, int> hash = new Dictionary<double, int>();
             int ret = 0;
             for (int i = 0; i < points.Length; i++)
             {
-                hash.Clear();
+                var hash = new Dictionary<long, int>();
                 int samepoint = 1;
                 for (int j = i + 1; j < points.Length; j++)
                 {
-                    double slope;
                     bool samex = points[i].x == points[j].x;
                     bool samey = points[i].y == points[j].y;
-                    if (samex & samey)
+                    if (samex && samey)
                     {
                         samepoint++;
                         continue;
                     }
-                    else if (samex & !samey)
-                    {
 
-                        slope = double.MaxValue;
-                    }
-                    else if (!samex & samey)
+                    long y = points[j].y - points[i].y;
+                    long x = points[j].x - points[i].x;
+                    var sign = y != 0 && x != 0 && (y > 0) ^ (x > 0);
+                    y = Math.Abs(y);
+                    x = Math.Abs(x);
+                    long gcd = this.gcd(y, x);
+                    y = y/gcd;
+                    x = x/gcd;
+                    var slope = y << 32 | x;
+                    slope = sign ? -slope : slope;
+
+                    if (!hash.ContainsKey(slope))
                     {
-                        slope = 0;
-                    }
-                    else
-                    {
-                        slope = (double) (points[j].y - points[i].y)
-                                /(points[j].x - points[i].x);
+                        hash[slope]=0;
                     }
 
-                    if (hash.ContainsKey(slope))
-                    {
-                        hash[slope] ++;
-                    }
-                    else
-                    {
-                        hash[slope] = 1;
-                    }
+                    hash[slope]++;
                 }
 
                 int currentMax = (hash.Count == 0 ? 0 : hash.Values.Max()) + samepoint;
@@ -59,8 +54,13 @@ namespace Demo
                     ret = currentMax;
                 }
             }
-            return ret;
 
+            return ret;
+        }
+
+        private long gcd(long x, long y)
+        {
+            return y == 0 ? x : gcd(y, x % y);
         }
     }
 }

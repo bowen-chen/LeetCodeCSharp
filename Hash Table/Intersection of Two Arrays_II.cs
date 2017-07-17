@@ -30,8 +30,10 @@ namespace Demo
                 {
                     h[n] = 0;
                 }
+
                 h[n]++;
             }
+
             var l = new List<int>();
             foreach (int n in nums2)
             {
@@ -44,6 +46,7 @@ namespace Demo
                     }
                 }
             }
+
             return l.ToArray();
         }
     }

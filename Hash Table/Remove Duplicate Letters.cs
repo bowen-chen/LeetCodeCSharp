@@ -24,6 +24,7 @@ namespace Demo
             {
                 ++m[a];
             }
+
             var res = new List<char>();
             
             // the charactor is already in the ret
@@ -35,6 +36,7 @@ namespace Demo
                 {
                     continue;
                 }
+
                 while (res.Count > 0 && a < res[res.Count - 1] && m[res[res.Count - 1]] > 0)
                 {
                     visited[res[res.Count - 1]] = false;
@@ -46,50 +48,6 @@ namespace Demo
             }
 
             return new string(res.ToArray());
-        }
-
-        public string RemoveDuplicateLetters3(string s) {
-            if (s == null || s.Length <= 1)
-            {
-                return s;
-            }
-
-            var lastPos = new Dictionary<char, int>();
-            for (int i = 0; i < s.Length; i++)
-            {
-                if (!lastPos.ContainsKey(s[i]))
-                {
-                    lastPos[s[i]] = 0;
-                }
-                lastPos[s[i]] = i;
-            }   
-
-            string result = string.Empty;
-            int begin = 0;
-            int end =  lastPos.Values.Min();
-
-            while (lastPos.Count != 0)
-            {
-                // init with max char
-                char minChar = (char)('z' + 1);
-                for (int k = begin; k <= end; k++)
-                {
-                    if (lastPos.ContainsKey(s[k]) && s[k] < minChar)
-                    {
-                        minChar = s[k];
-                        begin = k + 1;
-                    }
-                }
-
-                result += minChar;
-                lastPos.Remove(minChar);
-
-                if (s[end] == minChar && lastPos.Count != 0)
-                {
-                    end = lastPos.Values.Min();
-                }
-            }
-            return result;
         }
     }
 }

@@ -34,6 +34,7 @@ namespace Demo
             {
                 s.Add(candy);
             }
+
             return Math.Min(s.Count, candies.Length / 2);
         }
     }

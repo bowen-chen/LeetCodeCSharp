@@ -56,6 +56,7 @@ namespace Demo
                     ++res;
                 }
             }
+
             return res;
         }
 
@@ -64,22 +65,32 @@ namespace Demo
             int res = 0;
             Array.Sort(nums);
             int n = nums.Length;
-            for (int i = 0; i < n; ++i)
+            int lo = 0;
+            int hi = 0;
+            int pre = -1;
+            while (hi < n)
             {
-                int j =i+1;
-                while (j < n && (long) nums[j] - nums[i] < k)
+                if (hi==lo || nums[hi] - nums[lo] < k)
                 {
-                    ++j;
+                    hi++;
                 }
-                if (j < n && (long) nums[j] - nums[i] == k)
+                else if (nums[hi] - nums[lo] > k)
                 {
-                    ++res;
+                    lo++;
                 }
-                while (i < n - 1 && nums[i] == nums[i + 1])
+                else
                 {
-                    ++i;
+                    if (pre == -1 || nums[pre] != nums[lo])
+                    {
+                        res++;
+                        pre = lo;
+                    }
+
+                    lo++;
+                    hi++;
                 }
             }
+
             return res;
         }
     }

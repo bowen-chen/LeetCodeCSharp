@@ -44,8 +44,13 @@ namespace Demo
                     {
                         three = 1;
                     }
-                    if (one + two + three > 1) break;
+
+                    if (one + two + three > 1)
+                    {
+                        break;
+                    }
                 }
+
                 if (one + two + three == 1) res.Add(word);
             }
             return res.ToArray();

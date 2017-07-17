@@ -43,6 +43,7 @@ namespace Demo
         public int LengthLongestPath(string input)
         {
             int res = 0;
+
             // level to length
             var m = new Dictionary<int, int> { { 0, 0 } };
             foreach (string s in input.Split('\n'))
@@ -58,6 +59,7 @@ namespace Demo
                     m[level + 1] = m[level] + len + 1;
                 }
             }
+
             return res;
         }
 

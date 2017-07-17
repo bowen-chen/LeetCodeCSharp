@@ -36,6 +36,7 @@ namespace Demo
     public class ValidWordAbbr
     {
         Dictionary<string, string> map;
+
         public ValidWordAbbr(string[] dictionary)
         {
             map = new Dictionary<string, string>();

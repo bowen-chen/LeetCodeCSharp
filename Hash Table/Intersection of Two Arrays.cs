@@ -19,6 +19,7 @@ namespace Demo
     {
         public int[] Intersection(int[] nums1, int[] nums2)
         {
+            // Each element in the result must be unique.
             var h = new HashSet<int>();
             foreach (int n in nums1)
             {
@@ -27,6 +28,7 @@ namespace Demo
                     h.Add(n);
                 }
             }
+
             var l = new List<int>();
             foreach (int n in nums2)
             {
@@ -36,6 +38,7 @@ namespace Demo
                     h.Remove(n);
                 }
             }
+
             return l.ToArray();
         }
     }

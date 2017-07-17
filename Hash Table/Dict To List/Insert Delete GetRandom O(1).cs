@@ -40,14 +40,12 @@ namespace Demo
 {
     public class RandomizedSet
     {
-        private readonly Dictionary<int, int> _valueToIndex = new Dictionary<int, int>(); 
+        // value to index mapping
+        private readonly Dictionary<int, int> _valueToIndex = new Dictionary<int, int>();
+
+        // values
         private readonly List<int> _nums = new List<int>();
         private readonly Random _random = new Random();
-        /** Initialize your data structure here. */
-        public RandomizedSet()
-        {
-
-        }
 
         /** Inserts a value to the set. Returns true if the set did not already contain the specified element. */
         public bool Insert(int val)
