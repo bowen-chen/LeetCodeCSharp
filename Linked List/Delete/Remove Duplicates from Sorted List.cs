@@ -28,6 +28,7 @@ namespace Demo
                 {
                     q = q.next;
                 }
+
                 pre.next = q;
                 pre = q;
             }

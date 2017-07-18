@@ -42,10 +42,12 @@ namespace Demo
                 x = x.next;
                 j--;
             }
+
             if (j >0)
             {
                 return head;
             }
+
             var dummyHead = new ListNode(0);
             var p = head;
             var tail = head;
@@ -56,10 +58,12 @@ namespace Demo
                 dummyHead.next = p;
                 p = temp;
             }
+
             if (p != null)
             {
                 tail.next = ReverseKGroup(p, k);
             }
+
             return dummyHead.next;
         }
 
@@ -68,24 +72,31 @@ namespace Demo
             ListNode curr = head;
             int count = 0;
             while (curr != null && count != k)
-            { // find the k+1 node
+            { 
+                // find the k+1 node
                 curr = curr.next;
                 count++;
             }
+
             if (count == k)
-            { // if k+1 node is found
+            { 
+                // if k+1 node is found
                 curr = ReverseKGroup2(curr, k); // reverse list with k+1 node as head
-                                               // head - head-pointer to direct part, 
-                                               // curr - head-pointer to reversed part;
+                
+                // head - head-pointer to direct part, 
+                // curr - head-pointer to reversed part;
                 while (count-- > 0)
-                { // reverse current k-group: 
+                { 
+                    // reverse current k-group: 
                     ListNode tmp = head.next; // tmp - next head in direct part
                     head.next = curr; // preappending "direct" head to the reversed list 
                     curr = head; // move head of reversed part to a new node
                     head = tmp; // move "direct" head to the next node in direct part
                 }
+
                 head = curr;
             }
+
             return head;
         }
     }

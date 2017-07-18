@@ -39,6 +39,7 @@ namespace Demo
                     he.next = head;
                     he = he.next;
                 }
+
                 head = head.next;
             }
 

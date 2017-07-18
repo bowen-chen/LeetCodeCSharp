@@ -31,6 +31,7 @@ namespace Demo
                 {
                     return true;
                 }
+
                 slow = slow.next;
                 fast = fast.next;
                 if (fast != null)

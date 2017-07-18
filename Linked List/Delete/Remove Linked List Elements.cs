@@ -18,20 +18,21 @@ namespace Demo
         {
             var ret = new ListNode(0);
             var pre = ret;
-            var p = head;
             while (head != null)
             {
-                if (p.val == val)
+                if (head.val != val)
                 {
-                    // remove head
-                    pre.next = head.next;
+                    pre.next = head;
+                    pre = head;
+                    head = head.next;
+                    pre.next = null;
                 }
                 else
                 {
-                    pre = head;
+                    head = head.next;
                 }
-                head = head.next;
             }
+
             return ret.next;
         }
 
@@ -41,6 +42,7 @@ namespace Demo
             {
                 return null;
             }
+
             head.next = RemoveElements2(head.next, val);
             return head.val == val ? head.next : head;
         }

@@ -32,15 +32,21 @@ namespace Demo
                 return head;
             }
 
-            ListNode ret = new ListNode(0) {next = head};
+            // in case m = 0
+            ListNode ret = new ListNode(0)
+            {
+                next = head
+            };
 
             ListNode reverseHead = ret;
+
             n -= m;
             while (m != 1)
             {
                 reverseHead = reverseHead.next;
                 m--;
             }
+
             ListNode reverseTail = reverseHead.next;
             while (n>0)
             {
@@ -50,6 +56,7 @@ namespace Demo
                 reverseHead.next = q;
                 n--;
             }
+
             return ret.next;
         }
     }

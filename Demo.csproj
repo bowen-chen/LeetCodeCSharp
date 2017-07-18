@@ -316,8 +316,8 @@
     <Compile Include="Hash Table\Find the Difference.cs" />
     <Compile Include="Hash Table\First Unique Character in a String.cs" />
     <Compile Include="Hash Table\Group Shifted Strings.cs" />
-    <Compile Include="Hash Table\Dict To List\Insert Delete GetRandom O%281%29 - Duplicates allowed.cs" />
-    <Compile Include="Hash Table\Dict To List\Insert Delete GetRandom O%281%29.cs" />
+    <Compile Include="Linked List\Double Linked\Insert Delete GetRandom O%281%29 - Duplicates allowed.cs" />
+    <Compile Include="Linked List\Double Linked\Insert Delete GetRandom O%281%29.cs" />
     <Compile Include="Hash Table\Intersection of Two Arrays.cs" />
     <Compile Include="Hash Table\Intersection of Two Arrays_II.cs" />
     <Compile Include="Hash Table\Isomorphic Strings.cs" />

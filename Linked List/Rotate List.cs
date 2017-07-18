@@ -45,6 +45,7 @@ namespace Demo
             {
                 return head;
             }
+
             k = length - k;
             p = head;
             int j = 1;

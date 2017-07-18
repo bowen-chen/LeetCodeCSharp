@@ -26,55 +26,23 @@ namespace Demo
      */
     public partial class Solution
     {
-        public ListNode OddEvenList2(ListNode head)
+        public ListNode OddEvenList(ListNode head)
         {
             if (head != null)
             {
                 ListNode odd = head, even = head.next, evenHead = even;
                 while (even != null && even.next != null)
                 {
-                    odd.next = odd.next.next;
+                    odd.next = even.next;
                     even.next = even.next.next;
                     odd = odd.next;
                     even = even.next;
                 }
+
                 odd.next = evenHead;
             }
+
             return head;
-        }
-
-        public ListNode OddEvenList(ListNode head)
-        {
-            var oHead = new ListNode(0);
-            var oTail = oHead;
-            var eHead = new ListNode(0);
-            var eTail = eHead;
-            int i = 1;
-            while (head != null)
-            {
-                if (i % 2 == 0)
-                {
-                    eTail.next = head;
-                    eTail = head;
-                }
-                else
-                {
-                    oTail.next = head;
-                    oTail = head;
-                }
-                i++;
-                head = head.next;
-            }
-
-            eTail.next = null;
-            oTail.next = null;
-
-            if (eHead.next != null)
-            {
-                oTail.next = eHead.next;
-            }
-
-            return oHead.next ?? eHead.next;
         }
     }
 }

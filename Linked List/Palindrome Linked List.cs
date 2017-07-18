@@ -48,6 +48,7 @@ namespace Demo
                 {
                     return false;
                 }
+
                 pre = pre.next;
                 slow = slow.next;
             }

@@ -36,6 +36,7 @@ namespace Demo
                 s1.Push(l1.val);
                 l1 = l1.next;
             }
+
             while (l2 != null)
             {
                 s2.Push(l2.val);
@@ -53,6 +54,7 @@ namespace Demo
                 head = temp;
                 sum /= 10;
             }
+
             return head;
         }
     }

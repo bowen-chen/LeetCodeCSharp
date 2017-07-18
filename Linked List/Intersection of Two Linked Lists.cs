@@ -48,6 +48,7 @@ namespace Demo
                 a = (a != null) ? a.next : headB;
                 b = (b != null) ? b.next : headA;
             }
+
             return a;
         }
 

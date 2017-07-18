@@ -25,14 +25,20 @@ cache.get(4);       // returns 4
 */
 
 using System.Collections.Generic;
+using System.Runtime.Remoting.Messaging;
 
 namespace Demo
 {
     public class LFUCache
     {
         private int _minfreq;
-        private readonly Dictionary<int, LinkedNode> _keyNode = new Dictionary<int, LinkedNode>();
-        private readonly Dictionary<int, LinkedNode> _freqHeadNode = new Dictionary<int, LinkedNode>();
+
+        // key to node
+        private readonly Dictionary<int, LinkedNode> _keyToNode = new Dictionary<int, LinkedNode>();
+
+        // freq to node head, single linked loop list
+        private readonly Dictionary<int, LinkedNode> _freqToHeadNode = new Dictionary<int, LinkedNode>();
+
         private readonly int _capacity;
 
         public LFUCache(int capacity)
@@ -42,27 +48,8 @@ namespace Demo
 
         public int Get(int key)
         {
-            if (!_keyNode.ContainsKey(key))
-            {
-                return -1;
-            }
-
-            var node = _keyNode[key];
-            node.Pre.Next = node.Next;
-            node.Next.Pre = node.Pre;
-            if (_freqHeadNode[node.Freq].Pre == _freqHeadNode[node.Freq])
-            {
-                _freqHeadNode.Remove(node.Freq);
-                if (node.Freq == _minfreq)
-                {
-                    // _minfreq++ is always valid, since node.Freq++ below
-                    _minfreq++;
-                }
-            }
-
-            node.Freq++;
-            AddLinkedNode(node);
-            return node.Val;
+            var node = GetLinkedNode(key);
+            return node == null ? -1 : node.Val;
         }
 
         public void Put(int key, int value)
@@ -72,47 +59,73 @@ namespace Demo
                 return;
             }
 
-            if (_keyNode.ContainsKey(key))
+            // update
+            var node = GetLinkedNode(key);
+            if (node != null)
             {
-                // increase freq
-                Get(key);
-                _keyNode[key].Val = value;
+                node.Val = value;
                 return;
             }
 
-            if (_keyNode.Count == _capacity)
+            // add
+            if (_keyToNode.Count == _capacity)
             {
-                var head = _freqHeadNode[_minfreq];
+                var head = _freqToHeadNode[_minfreq];
                 var toDelete = head.Next;
-                _keyNode.Remove(toDelete.Key);
+                _keyToNode.Remove(toDelete.Key);
                 head.Next = toDelete.Next;
                 toDelete.Next.Pre = head;
 
                 if (head.Pre == head)
                 {
-                    _freqHeadNode.Remove(_minfreq);
+                    _freqToHeadNode.Remove(_minfreq);
                 }
             }
 
             _minfreq = 1;
-            var node = new LinkedNode(key, value);
-            _keyNode[key] = node;
+            node = new LinkedNode(key, value);
+            _keyToNode[key] = node;
             AddLinkedNode(node);
+        }
+
+        private LinkedNode GetLinkedNode(int key)
+        {
+            if (!_keyToNode.ContainsKey(key))
+            {
+                return null;
+            }
+
+            var node = _keyToNode[key];
+            node.Pre.Next = node.Next;
+            node.Next.Pre = node.Pre;
+            if (_freqToHeadNode[node.Freq].Pre == _freqToHeadNode[node.Freq])
+            {
+                _freqToHeadNode.Remove(node.Freq);
+                if (node.Freq == _minfreq)
+                {
+                    // _minfreq++ is always valid, since node.Freq++ below
+                    _minfreq++;
+                }
+            }
+
+            node.Freq++;
+            AddLinkedNode(node);
+            return node;
         }
 
         private void AddLinkedNode(LinkedNode node)
         {
             LinkedNode head;
-            if (!_freqHeadNode.ContainsKey(node.Freq))
+            if (!_freqToHeadNode.ContainsKey(node.Freq))
             {
                 head = new LinkedNode(0,0);
                 head.Pre = head;
                 head.Next = head;
-                _freqHeadNode[node.Freq] = head;
+                _freqToHeadNode[node.Freq] = head;
             }
             else
             {
-                head = _freqHeadNode[node.Freq];
+                head = _freqToHeadNode[node.Freq];
             }
 
             var tail = head.Pre;
@@ -125,7 +138,9 @@ namespace Demo
         private class LinkedNode
         {
             public int Key { get; private set; }
+
             public int Val { get; set; }
+
             public int Freq { get; set; }
 
             public LinkedNode(int key, int data)

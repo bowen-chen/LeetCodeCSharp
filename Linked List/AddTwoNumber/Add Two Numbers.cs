@@ -38,6 +38,7 @@ namespace Demo
                 head = head.next;
                 c = sum / 10;
             }
+
             return ret.next;
         }
     }

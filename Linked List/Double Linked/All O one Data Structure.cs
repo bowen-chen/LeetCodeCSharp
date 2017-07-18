@@ -9,6 +9,7 @@ GetMinKey() - Returns one of the keys with minimal value. If no element exists, 
 Challenge: Perform all these in O(1) time complexity.
 */
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -17,18 +18,21 @@ namespace Demo
     public class AllOne
     {
         // maintain a doubly linked list of Buckets
-        private Bucket _head;
-        private Bucket _tail;
+        private readonly Bucket _head;
+
         // for accessing a specific Bucket among the Bucket list in O(1) time
         private readonly Dictionary<int, Bucket> _countBucketMap = new Dictionary<int, Bucket>();
+
         // keep track of count of keys
         private readonly Dictionary<string, int> _keyCountMap = new Dictionary<string, int>();
 
         // each Bucket contains all the keys with the same count
         private class Bucket
         {
-            public HashSet<string> KeySet { get;set; }
+            public HashSet<string> KeySet { get; }
+
             public Bucket Next { get; set; }
+
             public Bucket Pre { get; set; }
 
             public Bucket()
@@ -41,9 +45,8 @@ namespace Demo
         public AllOne()
         {
             _head = new Bucket();
-            _tail = _head;
             _head.Pre = _head;
-            _tail.Next = _tail;
+            _head.Next = _head;
         }
 
         /** Inserts a new key <Key> with value 1. Or increments an existing key by 1. */
@@ -51,12 +54,41 @@ namespace Demo
         {   
             if (!_keyCountMap.ContainsKey(key))
             {
-                _keyCountMap[key]=0;
+                _keyCountMap[key] = 0;
             }
 
-            _keyCountMap[key] ++;
-            int count = _keyCountMap[key];
-            ChangeKey(key, count-1, count);
+            int count = ++_keyCountMap[key];
+
+            // add to count bucket
+            Bucket fromBucket = count == 1 ? _head : _countBucketMap[count - 1];
+            Bucket toBucket;
+            if (!_countBucketMap.ContainsKey(count))
+            {
+                toBucket = new Bucket();
+                toBucket.Pre = fromBucket;
+                toBucket.Next = fromBucket.Next;
+                fromBucket.Next.Pre = toBucket;
+                fromBucket.Next = toBucket;
+                _countBucketMap[count] = toBucket;
+            }
+            else
+            {
+                toBucket = _countBucketMap[count];
+            }
+
+            toBucket.KeySet.Add(key);
+
+            // remove from count - 1 frombucket
+            if (fromBucket != _head)
+            {
+                fromBucket.KeySet.Remove(key);
+                if (fromBucket.KeySet.Count == 0)
+                {
+                    _countBucketMap.Remove(count - 1);
+                    fromBucket.Next.Pre = fromBucket.Pre;
+                    fromBucket.Pre.Next = fromBucket.Next;
+                }
+            }
         }
 
         /** Decrements an existing key by 1. If Key's value is 1, remove it from the data structure. */
@@ -64,64 +96,116 @@ namespace Demo
         {
             if (_keyCountMap.ContainsKey(key))
             {
-                _keyCountMap[key]--;
-                int count = _keyCountMap[key];
+                int count = --_keyCountMap[key];
                 if (count == 0)
                 {
                     _keyCountMap.Remove(key);
                 }
 
-                ChangeKey(key, count + 1, count);
+                // add to count bucket
+                Bucket fromBucket = _countBucketMap[count + 1];
+                Bucket toBucket;
+                if (!_countBucketMap.ContainsKey(count))
+                {
+                    if (count != 0)
+                    {
+                        toBucket = new Bucket();
+                        toBucket.Next = fromBucket;
+                        toBucket.Pre = fromBucket.Pre;
+                        fromBucket.Pre.Next = toBucket;
+                        fromBucket.Pre = toBucket;
+                        _countBucketMap[count] = toBucket;
+                    }
+                    else
+                    {
+                        toBucket = _head;
+                    }
+                }
+                else
+                {
+                    toBucket = _countBucketMap[count];
+                }
+
+                toBucket.KeySet.Add(key);
+
+                // remove from count + 1 bucket
+                fromBucket.KeySet.Remove(key);
+                if (fromBucket.KeySet.Count == 0)
+                {
+                    _countBucketMap.Remove(count + 1);
+                    fromBucket.Next.Pre = fromBucket.Pre;
+                    fromBucket.Pre.Next = fromBucket.Next;
+                }
             }
         }
 
         /** Returns one of the keys with maximal value. */
         public string GetMaxKey()
         {
-            return _tail == _head ? "" : _tail.KeySet.First();
+            return _head.Pre == _head ? "" : _head.Pre.KeySet.First();
         }
 
         /** Returns one of the keys with Minimal value. */
         public string GetMinKey()
         {
-            return _head == _tail ? "" : _head.KeySet.First();
+            return _head.Next == _head ? "" : _head.Next.KeySet.First();
         }
 
-        // helper function to make change on given key according to offset
-        private void ChangeKey(string key, int from, int to)
+        public void Print()
         {
-            Bucket fromBucket;
-            if (_countBucketMap.ContainsKey(from))
+            var p = _head.Next;
+            while (p != _head)
             {
-                fromBucket = _countBucketMap[from];
-                fromBucket.KeySet.Remove(key);
-                if (fromBucket.KeySet.Count == 0)
-                {
-                    fromBucket.Next.Pre = fromBucket.Pre;
-                    fromBucket.Pre.Next = fromBucket.Pre;
-                    _countBucketMap.Remove(0);
-                }
-            }
-            else
-            {
-                fromBucket = _head;
+                Console.Write(string.Join(", ", p.KeySet)+"->");
+                p = p.Next;
             }
 
-            Bucket toBucket;
-            if (!_countBucketMap.ContainsKey(to))
-            {
-                toBucket = new Bucket();
-                toBucket.Pre = _head;
-                toBucket.Next = fromBucket.Next;
-                fromBucket.Next.Pre = toBucket;
-                fromBucket.Next = toBucket;
-                _countBucketMap[to] = toBucket;
-            }
-            else
-            {
-                toBucket = _countBucketMap[to];
-            }
-            toBucket.KeySet.Add(key);
+            Console.WriteLine();
+        }
+
+        static void Test()
+        {
+            var allone = new AllOne();
+            allone.Inc("a");
+            Console.WriteLine(allone.GetMaxKey());
+            Console.WriteLine(allone.GetMinKey());
+            allone.Print();
+            allone.Inc("a");
+            Console.WriteLine(allone.GetMaxKey());
+            Console.WriteLine(allone.GetMinKey());
+            allone.Print();
+            allone.Inc("a");
+            Console.WriteLine(allone.GetMaxKey());
+            Console.WriteLine(allone.GetMinKey());
+            allone.Print();
+            allone.Inc("b");
+            Console.WriteLine(allone.GetMaxKey());
+            Console.WriteLine(allone.GetMinKey());
+            allone.Print();
+            allone.Inc("b");
+            Console.WriteLine(allone.GetMaxKey());
+            Console.WriteLine(allone.GetMinKey());
+            allone.Print();
+            allone.Dec("a");
+            Console.WriteLine(allone.GetMaxKey());
+            Console.WriteLine(allone.GetMinKey());
+            allone.Print();
+            allone.Dec("a");
+            Console.WriteLine(allone.GetMaxKey());
+            Console.WriteLine(allone.GetMinKey());
+            allone.Print();
+            allone.Dec("a");
+            Console.WriteLine(allone.GetMaxKey());
+            Console.WriteLine(allone.GetMinKey());
+            allone.Print();
+            allone.Dec("b");
+            Console.WriteLine(allone.GetMaxKey());
+            Console.WriteLine(allone.GetMinKey());
+            allone.Print();
+            allone.Dec("b");
+            Console.WriteLine(allone.GetMaxKey());
+            Console.WriteLine(allone.GetMinKey());
+            allone.Print();
         }
     }
 }

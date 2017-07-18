@@ -1,4 +1,5 @@
 ﻿/*
+146	LRU Cache   
 medium, double linked link
 Design and implement a data structure for Least Recently Used (LRU) cache. It should support the following operations: get and set.
 
@@ -49,53 +50,41 @@ namespace Demo
 
     public class LRUCache
     {
-        private readonly Dictionary<int, LinkedNode<int, int>> _map = new Dictionary<int, LinkedNode<int, int>>();
-        private readonly LinkedNode<int, int> _head = new LinkedNode<int, int>(0, 0);
-        private LinkedNode<int, int> _tail;
+        private readonly Dictionary<int, LinkedNode> _keyToNode = new Dictionary<int, LinkedNode>();
+        private readonly LinkedNode _head;
         private readonly int _capacity;
 
         public LRUCache(int capacity)
         {
             _capacity = capacity;
-            _tail = _head;
+            _head = new LinkedNode(0, 0);
+            _head.Pre= _head;
+            _head.Next = _head;
         }
 
         public int Get(int key)
         {
             var node = GetLinkedNode(key);
-            return node != null ? node.Val : -1;
+            return node == null ? -1 : node.Val;
         }
 
-        private LinkedNode<int, int> GetLinkedNode(int key)
+        private LinkedNode GetLinkedNode(int key)
         {
-            if (!_map.ContainsKey(key))
+            if (!_keyToNode.ContainsKey(key))
             {
                 return null;
             }
 
-            LinkedNode<int, int> node = _map[key];
+            LinkedNode node = _keyToNode[key];
 
             // move node to head
             if (node.Pre != _head)
             {
-                if (_tail == node)
-                {
-                    _tail = node.Pre;
-                }
-
-                if (node.Next != null)
-                {
-                    node.Next.Pre = node.Pre;
-                }
                 node.Pre.Next = node.Next;
-
+                node.Next.Pre = node.Pre;
                 node.Next = _head.Next;
                 node.Pre = _head;
-
-                if (_head.Next != null)
-                {
-                    _head.Next.Pre = node;
-                }
+                _head.Next.Pre = node;
                 _head.Next = node;
             }
 
@@ -104,51 +93,45 @@ namespace Demo
 
         public void Set(int key, int value)
         {
-            LinkedNode<int, int> node = GetLinkedNode(key);
+            LinkedNode node = GetLinkedNode(key);
             if (node != null)
             {
                 node.Val = value;
+                return;
             }
-            else
-            {
-                node = new LinkedNode<int, int>(key, value);
-                _map[key] = node;
-                node.Next = _head.Next;
-                node.Pre = _head;
-                if (_head.Next != null)
-                {
-                    _head.Next.Pre = node;
-                }
-                _head.Next = node;
-                if (_head == _tail)
-                {
-                    _tail = node;
-                }
+            
+            node = new LinkedNode(key, value);
+            _keyToNode[key] = node;
 
-                if (_map.Count > _capacity && _head != _tail)
-                {
-                    _map.Remove(_tail.Key);
-                    _tail = _tail.Pre;
-                    _tail.Next.Pre = null;
-                    _tail.Next = null;
-                }
+            node.Next = _head.Next;
+            node.Pre = _head;
+            _head.Next.Pre = node;
+            _head.Next = node;
+
+            if (_keyToNode.Count > _capacity && _head != _head.Pre)
+            {
+                var tail = _head.Pre;
+                _keyToNode.Remove(tail.Key);
+                tail.Pre.Next = tail.Next;
+                tail.Next.Pre = tail.Pre;
             }
         }
 
-        private class LinkedNode<TKey, TValue>
+        private class LinkedNode
         {
-            public TKey Key { get; set; }
-            public TValue Val { get; set; }
+            public int Key { get; set; }
 
-            public LinkedNode(TKey key, TValue data)
+            public int Val { get; set; }
+
+            public LinkedNode(int key, int data)
             {
                 Key = key;
                 Val = data;
             }
 
-            public LinkedNode<TKey, TValue> Pre { get; set; }
+            public LinkedNode Pre { get; set; }
 
-            public LinkedNode<TKey, TValue> Next { get; set; }
+            public LinkedNode Next { get; set; }
         }
     }
 }

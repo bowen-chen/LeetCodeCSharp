@@ -21,6 +21,7 @@ namespace Demo
                 pre = head;
                 head = next;
             }
+
             return pre;
         }
 

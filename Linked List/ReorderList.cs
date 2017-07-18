@@ -23,41 +23,7 @@ namespace Demo
             head.Print();
         }
 
-        public void ReorderList(ListNode head)
-        {
-            if (head == null)
-            {
-                return;
-            }
-
-            var stack = new Stack<ListNode>();
-            var p = head;
-            while (p != null)
-            {
-                stack.Push(p);
-                p = p.next;
-            }
-
-            int i = 0;
-            int j = stack.Count - 1;
-            p = head;
-            var q = stack.Pop();
-            while (i < j)
-            {
-                q.next = p.next;
-                p.next = q;
-                p = q;
-
-                q = stack.Pop();
-                p = p.next;
-                i++;
-                j--;
-            }
-
-            p.next = null;
-        }
-
-        public ListNode ReorderList2(ListNode head)
+        public ListNode ReorderList(ListNode head)
         {
             if (head == null)
             {
@@ -89,6 +55,7 @@ namespace Demo
                 pre = head;
                 head = next;
             }
+
             return pre;
         }
 
@@ -111,14 +78,17 @@ namespace Demo
                 p = first;
                 first = first.next;
             }
+
             if (first != null)
             {
                 p.next = first;
             }
+
             if (second != null)
             {
                 p.next = second;
             }
+
             return ret;
         }
     }
