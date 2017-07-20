@@ -31,6 +31,7 @@ namespace Demo
             {
                 return ret;
             }
+
             Queue<TreeNode> q = new Queue<TreeNode>();
             List<int> c = new List<int>();
             q.Enqueue(root);
@@ -60,6 +61,7 @@ namespace Demo
                     }
                 }
             }
+
             return ret;
         }
     }

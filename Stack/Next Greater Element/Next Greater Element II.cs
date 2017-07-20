@@ -42,6 +42,7 @@ namespace Demo
                     st.Push(i);
                 }
             }
+
             return res;
         }
     }

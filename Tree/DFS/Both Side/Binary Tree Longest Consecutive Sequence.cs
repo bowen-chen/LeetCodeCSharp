@@ -50,7 +50,7 @@ namespace Demo
             {
                 currentLength = 1;
             }
-            res = Math.Max(current, res);
+            res = Math.Max(currentLength, res);
             LongestConsecutive(root.left, currentLength, root.val, ref res);
             LongestConsecutive(root.right, currentLength, root.val, ref res);
         }

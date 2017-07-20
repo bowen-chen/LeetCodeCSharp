@@ -44,6 +44,7 @@ namespace Demo
                     {
                         child[ppid[i]] = new HashSet<int>();
                     }
+
                     child[ppid[i]].Add(pid[i]);
                 }
             }
@@ -63,6 +64,7 @@ namespace Demo
                     }
                 }
             }
+
             return res;
         }
     }

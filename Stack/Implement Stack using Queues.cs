@@ -22,6 +22,7 @@ namespace Demo
     public class Stack
     {
         private readonly Queue<int> queue = new Queue<int>();
+
         // Push element x onto stack.
         public void Push(int x)
         {

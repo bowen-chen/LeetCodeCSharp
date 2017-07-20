@@ -60,9 +60,33 @@ namespace Demo
                     }
                     max = Math.Max(max, j);
                 }
-
             }
+
             return 0;
+        }
+
+        public int Jump2(int[] nums)
+        {
+            if (nums.Length == 1)
+            {
+                return 0;
+            }
+
+            int res = 1;
+            int last = 0;
+            int prevLast = 0;
+            for (int i = 0; last < nums.Length - 1 && i <= last; i++)
+            {
+                if (i > prevLast)
+                {
+                    prevLast = last;
+                    ++res;
+                }
+
+                last = Math.Max(last, i + nums[i]);
+            }
+
+            return last >= nums.Length - 1 ? res : 0;
         }
     }
 }

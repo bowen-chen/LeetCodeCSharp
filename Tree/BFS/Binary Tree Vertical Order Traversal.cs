@@ -69,6 +69,7 @@ namespace Demo
                     q.Enqueue(Tuple.Create(node.Item1.left, node.Item2 - 1));
                     min = Math.Min(min, node.Item2 - 1);
                 }
+
                 if (node.Item1.right != null)
                 {
                     q.Enqueue(Tuple.Create(node.Item1.right, node.Item2 + 1));

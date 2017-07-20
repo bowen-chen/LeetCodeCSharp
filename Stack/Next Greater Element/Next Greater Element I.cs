@@ -47,12 +47,15 @@ namespace Demo
                 {
                     m[st.Pop()] = num;
                 }
+
                 st.Push(num);
             }
+
             for (int i = 0; i < findNums.Length; i++)
             {
                 res[i] = m.ContainsKey(findNums[i]) ? m[findNums[i]] : -1;
             }
+
             return res;
         }
     }

@@ -35,6 +35,7 @@ namespace Demo
                             break;
                         }
                     }
+
                     Swap(nums, i, j);
 
                     // now i+1 => n-1 is decresase order, so reverse it
@@ -42,6 +43,7 @@ namespace Demo
                     return;
                 }
             }
+
             Reverse(nums, 0, nums.Length - 1);
         }
 

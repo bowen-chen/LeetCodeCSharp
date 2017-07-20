@@ -28,7 +28,7 @@ namespace Demo
         // if priority[op1, op2] = 0 then, op1 and op2 is a pair of noop, (2)
         // if priority[op1, op2] = 2 then, invalid input, )2(, (#, #)
         private static readonly int[,] priority = {
-            //    + -  *   /   (   )  #
+            //    +  -  *  /   (   )  #
             /*+*/{1, 1, -1, -1, -1, 1, 1},
             /*-*/{1, 1, -1, -1, -1, 1, 1},
             /***/{1, 1, 1, 1, -1, 1, 1},
@@ -48,9 +48,15 @@ namespace Demo
             while (i < s.Length || ops.Peek() != '#')
             {
                 var c = i < s.Length ? s[i] : '#';
+                if (c == ' ')
+                {
+                    i++;
+                    continue;
+                }
+
                 if (char.IsDigit(c))
                 {
-                    num = num ?? 0*10 + (c - '0');
+                    num = (num ?? 0) * 10 + (c - '0');
                     i++;
                 }
                 else
@@ -72,8 +78,8 @@ namespace Demo
                             i++;
                             break;
                         case 1:
-                            int a = values.Pop();
                             int b = values.Pop();
+                            int a = values.Pop();
                             char op = ops.Pop();
                             switch (op)
                             {
@@ -90,11 +96,19 @@ namespace Demo
                                     a /= b;
                                     break;
                             }
+
                             values.Push(a);
                             break;
                     }
                 }
             }
+
+            // "123" int only
+            if (num != null)
+            {
+                return num.Value;
+            }
+
             return values.Peek();
         }
     }

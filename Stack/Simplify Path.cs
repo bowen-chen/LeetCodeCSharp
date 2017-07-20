@@ -54,6 +54,7 @@ namespace Demo
             {
                 sb.Append('/');
             }
+
             return sb.ToString();
         }
     }

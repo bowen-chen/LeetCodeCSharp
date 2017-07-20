@@ -34,10 +34,18 @@ namespace Demo
     {
         public int MagicalString(int n)
         {
-            if (n <= 0) return 0;
-            if (n <= 3) return 1;
+            if (n <= 0)
+            {
+                return 0;
+            }
+
+            if (n <= 3)
+            {
+                return 1;
+            }
 
             var q = new Queue<int>();
+
             //q.Enqueue(1);
             //q.Enqueue(2);
             q.Enqueue(2);
@@ -57,8 +65,10 @@ namespace Demo
                     {
                         ++res;
                     }
+
                     ++total;
                 }
+
                 num ^= 3; // 1->2, 2->1
             }
             return -1;

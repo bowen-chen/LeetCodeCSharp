@@ -61,12 +61,14 @@ namespace Demo
                     {
                         q.Enqueue(n.left);
                     }
+
                     if (n.right != null)
                     {
                         q.Enqueue(n.right);
                     }
                 }
             }
+
             return ret;
         }
     }

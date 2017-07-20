@@ -33,6 +33,7 @@ namespace Demo
             {
                 return null;
             }
+
             var res = new StringBuilder();
             var s = new Stack<TreeNode>();
             s.Push(root);
@@ -49,6 +50,7 @@ namespace Demo
                     s.Push(c.left);
                 }
             }
+
             return res.ToString().TrimEnd(',');
         }
 
@@ -77,6 +79,7 @@ namespace Demo
             {
                 mid++;
             }
+
             c.left = deserialize(values, low, mid-1);
             c.right = deserialize(values, mid, high);
             return c;

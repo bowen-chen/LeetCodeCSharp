@@ -49,6 +49,7 @@ namespace Demo
             {
                 return 0;
             }
+
             int res = root.val;
             Queue<TreeNode> q = new Queue<TreeNode>();
             q.Enqueue(root);
@@ -70,12 +71,14 @@ namespace Demo
                     {
                         q.Enqueue(n.left);
                     }
+
                     if (n.right != null)
                     {
                         q.Enqueue(n.right);
                     }
                 }
             }
+
             return res;
         }
 

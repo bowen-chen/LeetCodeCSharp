@@ -72,6 +72,7 @@ namespace Demo
                     s.Push(c);
                 }
             }
+
             return s.Pop().ToString();
         }
     };

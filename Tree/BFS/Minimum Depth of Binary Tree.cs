@@ -19,6 +19,7 @@ namespace Demo
             {
                 return 0;
             }
+
             if (root.right == null && root.left == null)
             {
                 return 1;
@@ -36,35 +37,42 @@ namespace Demo
             {
                 return 0;
             }
+
             Queue<TreeNode> queue = new Queue<TreeNode>();
             TreeNode mark = new TreeNode(0);
             queue.Enqueue(root);
             queue.Enqueue(mark);
             int level = 1;
-            while (queue.Count > 1 || queue.Peek() == mark)
+            while (queue.Count > 0)
             {
                 TreeNode n = queue.Dequeue();
                 if (n == mark)
                 {
-                    queue.Enqueue(mark);
-                    level++;
-                }
-                else if (n.left == null && n.right == null)
-                {
-                    return level;
+                    if (queue.Count > 0)
+                    {
+                        queue.Enqueue(mark);
+                        level++;
+                    }
                 }
                 else
                 {
+                    if (n.left == null && n.right == null)
+                    {
+                        return level;
+                    }
+
                     if (n.left != null)
                     {
                         queue.Enqueue(n.left);
                     }
+
                     if (n.right != null)
                     {
                         queue.Enqueue(n.right);
                     }
                 }
             }
+
             return 0;
         }
     }

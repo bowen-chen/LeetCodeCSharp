@@ -49,6 +49,7 @@ namespace Demo
                     return false;
                 }
             }
+
             return stack.Count == 0;
         }
     }

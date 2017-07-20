@@ -44,6 +44,7 @@ namespace Demo
                 s.Append(l[first]);
                 l.RemoveAt(first);
             }
+
             s.Append(l[0]);
             return s.ToString();
         }

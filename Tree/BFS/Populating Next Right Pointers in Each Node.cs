@@ -65,6 +65,7 @@ namespace Demo
 
                     cur = cur.next;
                 }
+
                 level_start = level_start.left;
             }
         }
@@ -75,6 +76,7 @@ namespace Demo
             {
                 return;
             }
+
             Queue<TreeLinkNode> q = new Queue<TreeLinkNode>();
             q.Enqueue(root);
             q.Enqueue(null);
@@ -86,6 +88,7 @@ namespace Demo
                 {
                     pre.next = n;
                 }
+
                 pre = n;
 
                 if (n == null)
@@ -101,6 +104,7 @@ namespace Demo
                     {
                         q.Enqueue(n.left);
                     }
+
                     if (n.right != null)
                     {
                         q.Enqueue(n.right);

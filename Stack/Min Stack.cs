@@ -39,40 +39,4 @@ namespace Demo
             return _min;
         }
     }
-    public class MinStack2
-    {
-        private Stack<int> s1 = new Stack<int>();
-        private Stack<int> s2 = new Stack<int>();
-
-        /** initialize your data structure here. */
-        public MinStack2() { }
-
-        public void push(int x)
-        {
-            s1.Push(x);
-            if (s2.Count == 0 || s2.Peek() >= x)
-            {
-                s2.Push(x);
-            }
-        }
-
-        public void pop()
-        {
-            if (s2.Peek() == s1.Peek())
-            {
-                s2.Pop();
-            }
-            s1.Pop();
-        }
-
-        public int Top()
-        {
-            return s1.Peek();
-        }
-
-        public int getMin()
-        {
-            return s2.Peek();
-        }
-    }
 }

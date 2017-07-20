@@ -23,6 +23,8 @@ namespace Demo
             var str = n.ToString().ToArray();
             int len = str.Length;
 
+            //124321 ->131224
+
             // 1. from right to left, find the first nums[i] < nums[i+1], we need switch nums[i]
             //  str[i+1] to end is ordered as decending
             int i;

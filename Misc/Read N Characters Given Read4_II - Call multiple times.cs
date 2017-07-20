@@ -15,7 +15,7 @@ namespace Demo
 {
     public class SolutionRead42
     {
-        private int Read42(Stream stream, byte[] buf, int offset)
+        private int Read4(Stream stream, byte[] buf, int offset)
         {
             return stream.Read(buf, offset, 4);
         }

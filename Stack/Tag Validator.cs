@@ -97,6 +97,7 @@ namespace Demo
                     {
                         return false;
                     }
+
                     i += 2;
                 }
                 else if (code.Substring(i).StartsWith("</"))
@@ -107,12 +108,12 @@ namespace Demo
                     {
                         return false;
                     }
+
                     string tag = code.Substring(j, i - j);
                     if (st.Count == 0 || st.Pop() != tag)
                     {
                         return false;
                     }
-
                 }
                 else if (code.Substring(i).StartsWith("<"))
                 {
@@ -136,6 +137,7 @@ namespace Demo
                     st.Push(tag);
                 }
             }
+
             return st.Count == 0;
         }
     }
