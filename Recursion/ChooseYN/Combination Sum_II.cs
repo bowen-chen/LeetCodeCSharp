@@ -57,6 +57,7 @@ namespace Demo
             {
                 index++;
             }
+
             CombinationSum2(ret, candidates, target, index + 1, current);
         }
     }

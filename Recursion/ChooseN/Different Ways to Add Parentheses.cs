@@ -39,6 +39,44 @@ namespace Demo
 
         public IList<int> DiffWaysToCompute(string input)
         {
+            var ret = new List<int>();
+            for (int i = 0; i < input.Length; ++i)
+            {
+                if (input[i] == '+' || input[i] == '-' || input[i] == '*')
+                {
+                    var left = DiffWaysToCompute(input.Substring(0, i));
+                    var right = DiffWaysToCompute(input.Substring(i + 1));
+                    foreach(int l in left)
+                    {
+                        foreach (int r in right)
+                        {
+                            if (input[i] == '+')
+                            {
+                                ret.Add(l + r);
+                            }
+                            else if (input[i] == '-')
+                            {
+                                ret.Add(l - r);
+                            }
+                            else
+                            {
+                                ret.Add(l * r);
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (ret.Count == 0)
+            {
+                ret.Add(int.Parse(input));
+            }
+
+            return ret;
+        }
+
+        public IList<int> DiffWaysToCompute2(string input)
+        {
             var inputs = new List<string>();
             int s = 0;
             for (int i = 0; i < input.Length; i++)
@@ -50,7 +88,9 @@ namespace Demo
                     s = i + 1;
                 }
             }
+
             inputs.Add(input.Substring(s));
+
             // ['0', '+', '1']
             return DiffWaysToCompute(inputs, 0, inputs.Count - 1);
         }

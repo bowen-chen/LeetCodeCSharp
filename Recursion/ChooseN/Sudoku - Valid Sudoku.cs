@@ -34,12 +34,14 @@ namespace Demo
                         {
                             return false;
                         }
+
                         row[i] |= num;
                         col[j] |= num;
                         cell[k] |= num;
                     }
                 }
             }
+
             return true;
         }
     }

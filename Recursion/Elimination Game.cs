@@ -29,10 +29,10 @@ namespace Demo
         {
             // after 1st path
             // 1 2 3 4 5 6 7 8 9
-            // to  2 4 6 8 k
+            // to  2 4 6 8 (k)
             // /2
-            // 1 2 3 4 j
-            // 4 3 2 1 i
+            // 1 2 3 4 (j)
+            // 4 3 2 1 (i)
             // j = 1 + n/2 - i
             // k = 2 x (1+ n/2 - i)
             return n == 1 ? 1 : 2 * (1 + n / 2 - LastRemaining(n / 2));

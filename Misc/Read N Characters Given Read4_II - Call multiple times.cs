@@ -13,7 +13,7 @@ using System.IO;
 
 namespace Demo
 {
-    public partial class Solution
+    public class SolutionRead42
     {
         private int Read42(Stream stream, byte[] buf, int offset)
         {

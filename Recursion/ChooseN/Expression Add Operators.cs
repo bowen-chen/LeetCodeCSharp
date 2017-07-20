@@ -57,6 +57,7 @@ namespace Demo
                     AddOperators(ret, num, target, i + 1, result, carrier * cur, currentString + "*" + temp);
                 }
 
+                // start with 0
                 if (cur == 0)
                 {
                     break;

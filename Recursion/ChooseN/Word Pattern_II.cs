@@ -50,6 +50,7 @@ namespace Demo
                 {
                     return false;
                 }
+
                 return WordPatternMatch(str, i + l, pat, j + 1, visited, mp);
             }
 
@@ -70,9 +71,11 @@ namespace Demo
                 {
                     return true;
                 }
+
                 visited.Remove(s);
                 mp.Remove(c);
             }
+
             return false;
         }
     }

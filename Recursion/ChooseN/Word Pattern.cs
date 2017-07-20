@@ -27,11 +27,13 @@ namespace Demo
         {
             var m1 = new Dictionary<char, int>();
             var m2 = new Dictionary<string, int>();
-            var words = str.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            if (words.Length != pattern.Length) {
+            var words = str.Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries);
+            if (words.Length != pattern.Length)
+            {
                 return false;
             }
-            for (int i =0;i<words.Length; i++)
+
+            for (int i = 0; i < words.Length; i++)
             {
                 if (m1.ContainsKey(pattern[i]) || m2.ContainsKey(words[i]))
                 {
@@ -43,42 +45,6 @@ namespace Demo
                 else
                 {
                     m1[pattern[i]] = m2[words[i]] = i;
-                }
-            }
-            return true;
-        }
-
-        public bool WordPattern(string pattern, string str)
-        {
-            var patterns = pattern.ToCharArray();
-            var words = str.Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries);
-            if (patterns.Length != words.Length)
-            {
-                return false;
-            }
-
-            // pattern to word
-            var dic = new Dictionary<char, string>();
-            var hashtable = new HashSet<string>();
-            for (int i = 0; i < patterns.Length; i++)
-            {
-                string word;
-                if (dic.TryGetValue(patterns[i], out word))
-                {
-                    if (word != words[i])
-                    {
-                        return false;
-                    }
-                }
-                else
-                {
-                    if(hashtable.Contains(words[i]))
-                    {
-                        return false;
-                    }
-
-                    hashtable.Add(words[i]);
-                    dic[patterns[i]] = words[i];
                 }
             }
 

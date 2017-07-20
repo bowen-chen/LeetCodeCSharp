@@ -44,8 +44,8 @@ namespace Demo.Misc
             {
                 return false;
             }
-            var cache = new Dictionary<int, bool>();
-            return CanWin(maxChoosableInteger, desiredTotal, 0, cache);
+            
+            return CanWin(maxChoosableInteger, desiredTotal, 0, new Dictionary<int, bool>());
         }
 
         private bool CanWin(int maxChoosableInteger, int total, int used, Dictionary<int, bool> cache)
@@ -67,6 +67,7 @@ namespace Demo.Misc
                     }
                 }
             }
+
             cache[used] = false;
             return false;
         }

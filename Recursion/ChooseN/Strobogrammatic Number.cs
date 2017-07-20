@@ -12,8 +12,8 @@ namespace Demo
     public partial class Solution
     {
         private static readonly char[] StrobogrammaticMap =
-            //            0,   1,   2,   3,   4,   5,   6,   7,   8,   6
-            new char[] { '0', '1', 'x', 'x', 'x', 'x', '9', 'x', '8', '9' };
+        //0,   1,   2,   3,   4,   5,   6,   7,   8,   6
+        {'0', '1', 'x', 'x', 'x', 'x', '9', 'x', '8', '9'};
         public bool isStrobogrammatic(string num)
         {
             int l = 0, r = num.Length - 1;
@@ -23,9 +23,11 @@ namespace Demo
                 {
                     return false;
                 }
+
                 l++;
                 r--;
             }
+
             return true;
         }
     }

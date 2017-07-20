@@ -35,6 +35,7 @@ namespace Demo
         public bool IsAdditiveNumber(string num)
         {
             int n = num.Length;
+
             // i first number length
             for (int i = 1; i <= n / 2; i++)
             {
@@ -45,6 +46,7 @@ namespace Demo
                 }
 
                 long x1 = long.Parse(num.Substring(0, i));
+
                 // second number length
                 for (int j = 1; Math.Max(j, i) <= n - i - j; j++)
                 {
@@ -69,6 +71,7 @@ namespace Demo
             {
                 return true;
             }
+
             long temp = x2;
             x2 = x2 + x1;
             x1 = temp;

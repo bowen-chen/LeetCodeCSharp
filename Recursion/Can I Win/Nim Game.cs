@@ -46,7 +46,6 @@ namespace Demo
                 }
             }
 
-
             cache[n] = false;
             return false;
         }

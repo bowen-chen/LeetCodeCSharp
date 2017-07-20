@@ -25,6 +25,7 @@ namespace Demo
             {
                 odd += ++counts[c] % 2 == 1 ? 1 : -1;
             }
+
             return odd <= 1;
         }
     }

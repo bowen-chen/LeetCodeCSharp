@@ -44,19 +44,24 @@ namespace Demo
             {
                 return sums[0] == target && sums[1] == target && sums[2] == target;
             }
+
+            // put nums[pos] at each sums
             for (int i = 0; i < 4; ++i)
             {
                 if (sums[i] + nums[pos] > target)
                 {
                     continue;
                 }
+
                 sums[i] += nums[pos];
                 if (Makesquare(nums, sums, pos + 1, target))
                 {
                     return true;
                 }
+
                 sums[i] -= nums[pos];
             }
+
             return false;
         }
     }

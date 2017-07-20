@@ -30,6 +30,7 @@ namespace Demo
                 {
                     cur += count;
                 }
+
                 ret.Add(cur);
                 return;
             }

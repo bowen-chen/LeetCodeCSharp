@@ -32,11 +32,11 @@ namespace Demo
     {
         public int CountArrangement(int N)
         {
-            var visited = new bool[N+1];
+            int visited = 0;
             return CountArrangement(N, visited, 1);
         }
 
-        private int CountArrangement(int N, bool[] visited, int index)
+        private int CountArrangement(int N, int visited, int index)
         {
             if (index > N)
             {
@@ -46,11 +46,9 @@ namespace Demo
             int res = 0;
             for (int i = 1; i <= N; ++i)
             {
-                if (!visited[i] && (i%index == 0 || index%i == 0))
+                if (((visited & 1<<i) == 0) && (i%index == 0 || index%i == 0))
                 {
-                    visited[i] = true;
-                    res += CountArrangement(N, visited, index + 1);
-                    visited[i] = false;
+                    res += CountArrangement(N, visited | (1 << i), index + 1);
                 }
             }
 

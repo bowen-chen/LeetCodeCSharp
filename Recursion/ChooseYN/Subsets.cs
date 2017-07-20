@@ -48,6 +48,7 @@ namespace Demo
             {
                 return;
             }
+
             //choose
             cur.Add(nums[index]);
             ret.Add(new List<int>(cur));

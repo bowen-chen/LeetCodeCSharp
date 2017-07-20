@@ -38,7 +38,7 @@ Since the third round will generate the final winner, you need to output the ans
 Note:
 
 The n is in range [2, 212].
-We ensure that the input n can be converted into the form 2k, where k is a positive integer.
+We ensure that the input n can be converted into the form 2^k, where k is a positive integer.
 */
 using System.Collections.Generic;
 
@@ -53,6 +53,7 @@ namespace Demo
             {
                 v.Add(i.ToString());
             }
+
             FindContestMatch(n, v);
             return v[0];
         }
@@ -63,12 +64,13 @@ namespace Demo
             {
                 return;
             }
+
             for (int i = 0; i < n/2; ++i)
             {
                 v[i] = "(" + v[i] + "," + v[n - 1 - i] + ")";
             }
+
             FindContestMatch(n/2, v);
         }
-
     }
 }

@@ -39,7 +39,10 @@ namespace Demo
                 {
                     continue;
                 }
+
                 cur.Add(nums[i]);
+
+                // we only choose nums[i] once at this location
                 st.Add(nums[i]);
                 FindSubsequences(nums, i + 1, cur, res);
                 cur.RemoveAt(cur.Count - 1);

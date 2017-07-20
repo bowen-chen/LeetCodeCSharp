@@ -43,16 +43,16 @@ namespace Demo
             var m = new Dictionary<char, int>();
             foreach (char c in hand)
             {
-                if (m.ContainsKey(c))
+                if (!m.ContainsKey(c))
                 {
-                    m[c]++;
+                    m[c] = 0;
                 }
-                else
-                {
-                    m[c] = 1;
-                }
+
+                m[c] ++;
             }
-            return FindMinStep(board, m);
+
+            var res = FindMinStep(board, m);
+            return res == int.MaxValue ? -1 : res;
         }
 
         public int FindMinStep(string board, Dictionary<char, int> hand)
@@ -74,16 +74,12 @@ namespace Demo
                     hand[board[j]]++;
                     return 1;
                 }
-                
-                int cnt = FindMinStep(newBoard, hand);
-                if (cnt != -1)
-                {
-                    res = Math.Min(res, cnt + 1);
-                }
+
+                res = Math.Min(res, FindMinStep(newBoard, hand));
                 hand[board[j]]++;
             }
 
-            return res == int.MaxValue ? -1 : res;
+            return res;
         }
         private string RemoveConsecutive(string board)
         {

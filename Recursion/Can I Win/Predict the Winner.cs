@@ -33,17 +33,25 @@ namespace Demo
         {
             int n = nums.Length;
             var dp = new int[n, n];
+
             for (int i = 0; i < n; i++)
             {
-                for (int j = 0; j < n; i++)
+                dp[i, i] = nums[i];
+            }
+
+            for (int size = 1; size < n; size++)
+            {
+                for (int i = 0; i < n - size; i++)
                 {
-                    dp[i, j] = -1;
+                    int j = i + size;
+                    dp[i, j] = Math.Max(nums[i] - dp[i + 1, j], nums[j] - dp[i, j - 1]);
                 }
             }
-            return PredictTheWinner(nums, 0, n - 1, dp) >= 0;
+
+            return dp[0, n - 1] >= 0;
         }
 
-        // best score
+        // best relative score
         private int PredictTheWinner(int[] nums, int s, int e, int[,] dp)
         {
             if (dp[s, e] == -1)
@@ -61,24 +69,19 @@ namespace Demo
 
         public bool PredictTheWinner3(int[] nums)
         {
-            return CanWin(nums, 0, nums.Length-1, 0, 0, 1);
+            // give play 1 more to ensure it wins when it draws
+            return CanWin(nums, 0, nums.Length-1, 1, 0);
         }
 
-        public bool CanWin(int[] nums, int low, int high, int sum1, int sum2, int player)
+        public bool CanWin(int[] nums, int low, int high, int sum1, int sum2)
         {
             if (low > high)
             {
-                return player == 1 ? sum1 >= sum2 : sum1 < sum2;
+                return sum1 >= sum2;
             }
 
-            if (player == 1)
-            {
-                return !CanWin(nums, low + 1, high, sum1 + nums[low], sum2, 2) ||
-                       !CanWin(nums, low, high - 1, sum1 + nums[high], sum2, 2);
-            }
-
-            return !CanWin(nums, low + 1, high, sum1, sum2 + nums[low], 1) ||
-                   !CanWin(nums, low, high - 1, sum1, sum2 + nums[high], 1);
+            return !CanWin(nums, low + 1, high, sum2, sum1 + nums[low]) ||
+                   !CanWin(nums, low, high - 1, sum2, sum1 + nums[high]);
         }
     }
 }

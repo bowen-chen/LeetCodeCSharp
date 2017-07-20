@@ -28,6 +28,7 @@ namespace Demo
             {
                 return moves;
             }
+
             int n = s.Length;
             var sb = new StringBuilder(s);
             for (int i = 0; i < n - 1; i++)
@@ -39,6 +40,7 @@ namespace Demo
                     sb[i] = sb[i + 1] = '+';
                 }
             }
+
             return moves;
         }
     }

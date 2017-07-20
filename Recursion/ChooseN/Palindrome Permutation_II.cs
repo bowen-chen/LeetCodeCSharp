@@ -33,6 +33,7 @@ namespace Demo
                 {
                     counts[c] = 0;
                 }
+
                 odd += ++counts[c] % 2 == 1 ? 1 : -1;
             }
 
@@ -50,23 +51,20 @@ namespace Demo
                     mid = "" + c;
                     counts[c]--;
                 }
+
                 counts[c] /= 2;
                 length += counts[c];
             }
-            var permutations = new List<string>();
-            GeneratePermutation(permutations, counts, length, "");
-            foreach (var p in ret)
-            {
-                ret.Add(p + mid + new string(s.Reverse().ToArray()));
-            }
+            
+            GeneratePermutation(ret, counts, length, "", mid);
             return ret;
         }
 
-        private void GeneratePermutation(List<string> ret, Dictionary<char, int> counts, int length, string s)
+        private void GeneratePermutation(List<string> ret, Dictionary<char, int> counts, int length, string s, string mid)
         {
             if (s.Length == length)
             {
-                ret.Add(s);
+                ret.Add(s + mid + new string(s.Reverse().ToArray()));
                 return;
             }
 
@@ -75,7 +73,7 @@ namespace Demo
                 if (counts[c] > 0)
                 {
                     counts[c]--;
-                    GeneratePermutation(ret, counts, length, s + c);
+                    GeneratePermutation(ret, counts, length, s + c, mid);
                     counts[c]++;
                 }
             }

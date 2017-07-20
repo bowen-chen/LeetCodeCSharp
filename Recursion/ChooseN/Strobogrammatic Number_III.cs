@@ -38,6 +38,7 @@ namespace Demo
                 {
                     return;
                 }
+
                 if (!(w.Length > 1 && w[0] == '0')) {
                     ++res;
                 }

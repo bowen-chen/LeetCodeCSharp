@@ -40,11 +40,13 @@ namespace Demo
                 {
                     m[transactions[i, 0]] = 0;
                 }
+
                 m[transactions[i, 0]] -= transactions[i, 2];
                 if (!m.ContainsKey(transactions[i, 1]))
                 {
                     m[transactions[i, 1]] = 0;
                 }
+
                 m[transactions[i, 1]] += transactions[i, 2];
             }
 
@@ -74,6 +76,7 @@ namespace Demo
                     }
                 }
             }
+
             return res;
         }
     };

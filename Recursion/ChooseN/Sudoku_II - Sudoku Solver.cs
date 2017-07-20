@@ -53,8 +53,6 @@ namespace Demo
                             //trial. Try 1 through 9 for each cell
                             if (TryPutSolveSudoku(board, mark, i,j,c))
                             {
-                                board[i, j] = c; //Put c for this cell
-
                                 if (SolveSudoku(board, mark))
                                 {
                                     return true; //If it's the solution return true
@@ -63,6 +61,7 @@ namespace Demo
                                 UndoSudoku(board, mark, i, j);
                             }
                         }
+
                         return false;
                     }
                 }
