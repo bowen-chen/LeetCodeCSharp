@@ -34,7 +34,6 @@ namespace Demo
 
             int size = 0;
             ListNode runner = head;
-
             while (runner != null)
             {
                 runner = runner.next;

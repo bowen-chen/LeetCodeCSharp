@@ -72,11 +72,15 @@ namespace Demo
                             i++;
                             temp = temp.right;
                         }
+
                         res.Reverse(res.Count-i, i);
+
+                        // go right
                         cur = cur.right;
                     }
                 }
             }
+
             return res;
         }
 
@@ -135,6 +139,7 @@ namespace Demo
                         ret.Add(current.val);
                     }
                 }
+
                 // go up the tree from left node
                 // if it has right child push right child onto stack
                 // otherwise process it and pop stack
@@ -149,9 +154,8 @@ namespace Demo
                         s.Pop();
                         ret.Add(current.val);
                     }
-
-                    
                 }
+
                 // go up the tree from right node
                 // process parent and pop stack */
                 else if (current.right == prev)

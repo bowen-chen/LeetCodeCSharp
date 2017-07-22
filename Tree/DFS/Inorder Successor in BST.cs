@@ -28,8 +28,10 @@ namespace Demo
                     root = root.right;
                 }
             }
+
             return succ;
         }
+
         public TreeNode InOrderSuccessor(TreeNode root, TreeNode p)
         {
             if (root == null)

@@ -50,7 +50,11 @@ namespace Demo
 
             // reverse depth
             int depth = 1 + Math.Max(left, right);
-            if (depth >= res.Count) res.Add(new List<int>());
+            if (depth >= res.Count)
+            {
+                res.Add(new List<int>());
+            }
+
             res[depth].Add(root.val);
             return depth;
         }

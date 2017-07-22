@@ -42,6 +42,7 @@ namespace Demo
             {
                 return;
             }
+
             ConvertBST(root.right, ref sum);
             root.val += sum;
             sum = root.val;

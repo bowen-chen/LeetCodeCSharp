@@ -7,7 +7,7 @@ namespace Demo
     {
         static void Main()
         {
-            new Solution().LRUCache_Test();
+            Console.WriteLine(new SolutionCalc().Calculate3("2147483647"));
         }
     }
 }

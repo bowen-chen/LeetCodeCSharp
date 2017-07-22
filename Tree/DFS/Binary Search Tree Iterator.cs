@@ -25,6 +25,7 @@ namespace Demo
     public class BSTIterator
     {
         private readonly Stack<TreeNode> s = new Stack<TreeNode>(); 
+
         public BSTIterator(TreeNode root)
         {
             PushLeft(root);
@@ -43,6 +44,7 @@ namespace Demo
             {
                 return 0;
             }
+
             var n = s.Pop();
             PushLeft(n.right);
             return n.val;

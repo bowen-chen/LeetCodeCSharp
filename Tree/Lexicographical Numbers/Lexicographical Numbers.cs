@@ -20,6 +20,7 @@ namespace Demo
             {
                 LexicalOrder(i, n, res);
             }
+
             return res;
         }
 

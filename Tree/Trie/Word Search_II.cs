@@ -59,8 +59,8 @@ namespace Demo
             {
                 return;
             }
-            str += board[x, y];
 
+            str += board[x, y];
             if (node.IsWord && !ret.Contains(str))
             {
                 ret.Add(str);

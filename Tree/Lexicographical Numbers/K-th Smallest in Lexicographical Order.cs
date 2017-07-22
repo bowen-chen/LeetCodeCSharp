@@ -30,7 +30,7 @@ namespace Demo
                 // Node count under curr subtree include curr
                 int childcount = CalCount(n, curr, curr + 1);
                 
-                // K is not in the curr subtree
+                // K is not in the curr subtree, move to neighbor subtree
                 if (childcount <= k)
                 {
                     curr += 1;
@@ -42,6 +42,7 @@ namespace Demo
                     k -= 1;
                 }
             }
+
             return curr;
         }
 
@@ -59,9 +60,11 @@ namespace Demo
                 {
                     count += n - levelBegin + 1;
                 }
+
                 levelBegin *= 10;
                 levelEnd *= 10;
             }
+
             return (int)count;
         }
     }

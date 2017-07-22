@@ -30,18 +30,21 @@ namespace Demo
     {
         public int LongestConsecutive(TreeNode root)
         {
-            if (root == null) return 0;
-            int ret = 1;
-            LongestConsecutive(root, 1, root.val, ref ret);
-            return ret;
+            if (root == null)
+            {
+                return 0;
+            }
+            
+            return LongestConsecutive(root, 1, root.val);
         }
 
-        public void LongestConsecutive(TreeNode root, int currentLength, int parent, ref int res)
+        public int LongestConsecutive(TreeNode root, int currentLength, int parent)
         {
             if (root == null)
             {
-                return;
+                return 0;
             }
+
             if (root.val == parent + 1)
             {
                 currentLength++;
@@ -50,9 +53,11 @@ namespace Demo
             {
                 currentLength = 1;
             }
-            res = Math.Max(currentLength, res);
-            LongestConsecutive(root.left, currentLength, root.val, ref res);
-            LongestConsecutive(root.right, currentLength, root.val, ref res);
+
+            int ret = currentLength;
+            ret = Math.Max(ret, LongestConsecutive(root.left, currentLength, root.val));
+            ret = Math.Max(ret, LongestConsecutive(root.right, currentLength, root.val));
+            return ret;
         }
     }
 }

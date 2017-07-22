@@ -35,6 +35,7 @@ namespace Demo
             {
                 return 0;
             }
+
             int max;
             int min;
             int ret = -1;
@@ -51,12 +52,14 @@ namespace Demo
             {
                 return 0;
             }
+
             int leftMin;
             int leftMax;
             int leftSize = LargestBSTSubtree(root.left, out leftMin, out leftMax, ref ret);
             int rightMin;
             int rightMax;
             int rightSize = LargestBSTSubtree(root.right, out rightMin, out rightMax, ref ret);
+
             if (leftSize == -1 || rightSize == -1 || root.val < leftMax || root.val > rightMin)
             {
                 return -1;

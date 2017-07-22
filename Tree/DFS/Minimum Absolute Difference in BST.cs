@@ -54,6 +54,7 @@ namespace Demo
             {
                 res = Math.Min(res, root.val - pre.val);
             }
+
             pre = root;
             GetMinimumDifference(root.right, ref pre, ref res);
         }

@@ -26,6 +26,7 @@ namespace Demo
             {
                 return true;
             }
+
             int level;
             return IsBalanced(root, out level);
         }

@@ -36,7 +36,7 @@ namespace Demo
     {
         public int[] FindFrequentTreeSum(TreeNode root)
         {
-           var m = new Dictionary<int, int>();
+            var m = new Dictionary<int, int>();
             var res = new List<int>();
             int max = 0;
             FindFrequentTreeSum(root, m, ref max, res);

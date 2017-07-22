@@ -56,6 +56,7 @@ namespace Demo
                     {
                         n[c] = new TrieNode3();
                     }
+
                     n = n[c];
                 }
 

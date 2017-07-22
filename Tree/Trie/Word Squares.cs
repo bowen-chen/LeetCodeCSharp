@@ -78,6 +78,7 @@ namespace Demo
             {
                 root.Insert(w);
             }
+
             return root;
         }
 
@@ -106,6 +107,7 @@ namespace Demo
                 prefix += c[i][level];
             }
 
+            // choose n
             foreach (var word in root.GetStartsWith(prefix))
             {
                 c[level] = word;

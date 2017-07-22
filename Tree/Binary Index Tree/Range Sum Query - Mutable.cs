@@ -52,9 +52,9 @@ namespace Demo
         // When sum a rang, we travel up from right tree. ti-=ti&(-ti)
 
         // Binary index tree
-        int[] tree;
-        int[] nums;
-        int size;
+        readonly int[] tree;
+        readonly int[] nums;
+        readonly int size;
         public NumArray(int[] nums)
         {
             this.size = nums.Length;
@@ -82,7 +82,7 @@ namespace Demo
             Console.WriteLine("Tree : {0}", string.Join(" ,", tree.Select(n => n.ToString())));
         }
 
-        //c[1101] = tree[1101] + tree[1100] + tree[1000]
+        //c[1101] = tree[1101] + tree[1100] + tree[1000] knock out each bit
         public int Sum(int i)
         {
             int sum = 0;
@@ -90,12 +90,17 @@ namespace Demo
             {
                 sum += tree[ti];
             }
+
             return sum;
         }
 
         public int SumRange(int i, int j)
         {
-            if (i == 0) return Sum(j);
+            if (i == 0)
+            {
+                return Sum(j);
+            }
+
             return Sum(j) - Sum(i - 1);
         }
     }

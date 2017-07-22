@@ -99,6 +99,7 @@ namespace Demo
                 parent = pre;
                 pre = pre.right;
             }
+
             root.val = pre.val;
 
             //  root
@@ -117,6 +118,7 @@ namespace Demo
                 // reconnect left child
                 parent.right = pre.left;
             }
+
             //     root (parent)
             //    /
             //   pre

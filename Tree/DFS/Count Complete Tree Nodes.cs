@@ -28,6 +28,7 @@ namespace Demo
         {
             return root == null ? 0 : 1 + Height(root.left);
         }
+
         public int CountNodes(TreeNode root)
         {
             int h = Height(root);
@@ -37,13 +38,14 @@ namespace Demo
             }
 
             int rh = Height(root.right);
-            int ret = 1;
+            int ret = 1; // root
             if (rh == h - 1) //left is complete tree, height is h-1
             {
                 if (h - 1 > 0)
                 {
-                    ret += (1<<(h-1))-1;
+                    ret += (1 << (h - 1)) - 1;
                 }
+
                 ret += CountNodes(root.right);
             }
             else //right is complete tree, height is h-2
@@ -52,8 +54,10 @@ namespace Demo
                 {
                     ret += (1 << (h - 2)) - 1;
                 }
+
                 ret += CountNodes(root.left);
             }
+
             return ret;
         }
     }

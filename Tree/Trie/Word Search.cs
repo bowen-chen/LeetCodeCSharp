@@ -16,7 +16,6 @@ word = "ABCCED", -> returns true,
 word = "SEE", -> returns true,
 word = "ABCB", -> returns false.
 */
-using System.Collections.Generic;
 
 namespace Demo
 {

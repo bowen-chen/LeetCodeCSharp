@@ -30,6 +30,7 @@ Return a NestedInteger object containing a nested list with 2 elements:
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Demo
 {
@@ -70,14 +71,17 @@ namespace Demo
             {
                 return new NestedInteger();
             }
+
             if (s[0] != '[')
             {
                 return new NestedInteger(int.Parse(s));
             }
+
             if (s.Length <= 2)
             {
                 return new NestedInteger();
             }
+
             NestedInteger res = new NestedInteger();
             int start = 1, cnt = 0;
             for (int i = 1; i < s.Length; ++i)
@@ -96,160 +100,8 @@ namespace Demo
                     --cnt;
                 }
             }
+
             return res;
-        }
-
-        public NestedInteger Deserialize2(string s)
-        {
-            // 0 start parsing a nested number
-            // 1 parsing a number
-            // 2 parsing a list
-            // 3 end parsing a list
-
-            int sign = 1;
-            var stack = new Stack<NestedInteger>();
-            int state = 0;
-            NestedInteger root = null;
-            foreach (char c in s)
-            {
-                switch (state)
-                {
-                    case 0: //start parsing a nested number
-                        if (c >= '0' && c <= '9')
-                        {
-                            sign = 1;
-                            state = 1;
-                            NestedInteger ni = new NestedInteger(c - '0');
-                            if (stack.Count != 0)
-                            {
-                                stack.Peek().Add(ni);
-                            }
-                            else
-                            {
-                                root = ni;
-                            }
-
-                            stack.Push(ni);
-                        }
-                        else if (c == '-')
-                        {
-                            sign = -1;
-                            state = 1;
-                            NestedInteger ni = new NestedInteger(0);
-                            if (stack.Count != 0)
-                            {
-                                stack.Peek().Add(ni);
-                            }
-                            else
-                            {
-                                root = ni;
-                            }
-
-                            stack.Push(ni);
-                        }
-                        else if(c=='[')
-                        {
-                            NestedInteger ni = new NestedInteger();
-                            if (stack.Count != 0)
-                            {
-                                stack.Peek().Add(ni);
-                            }
-                            else
-                            {
-                                root = ni;
-                            }
-                            stack.Push(ni);
-                            state = 2;
-                        }
-                        else
-                        {
-                            throw new FormatException();
-                        }
-                        break;
-                    case 2:
-                        if (c >= '0' && c <= '9')
-                        {
-                            var ni = stack.Peek();
-                            ni.SetInteger(ni.GetInteger()*10 + (c - '0')*sign);
-                        }
-                        else if (c == ',')
-                        {
-                            stack.Pop();
-                            state = 0;
-                        }
-                        else if (c == ']')
-                        {
-                            stack.Pop();
-                            stack.Pop();
-                            state = 4;
-                        }
-                        else
-                        {
-                            throw new FormatException();
-                        }
-                        break;
-                    case 3: //start parsing a nested list
-                        if (c >= '0' && c <= '9')
-                        {
-                            sign = 1;
-                            state = 1;
-                            NestedInteger ni = new NestedInteger(c - '0');
-                            if (stack.Count != 0)
-                            {
-                                stack.Peek().Add(ni);
-                            }
-
-                            stack.Push(ni);
-                        }
-                        else if (c == '-')
-                        {
-                            sign = -1;
-                            state = 1;
-                            NestedInteger ni = new NestedInteger(0);
-                            if (stack.Count != 0)
-                            {
-                                stack.Peek().Add(ni);
-                            }
-
-                            stack.Push(ni);
-                        }
-                        else if (c == '[')
-                        {
-                            NestedInteger ni = new NestedInteger();
-                            if (stack.Count != 0)
-                            {
-                                stack.Peek().Add(ni);
-                            }
-                            stack.Push(ni);
-                        }
-                        else if (c == ']')
-                        {
-                            stack.Pop();
-                            state = 4;
-                        }
-                        else
-                        {
-                            throw new FormatException();
-                        }
-                        break;
-                    case 4:
-                        if (c == ',')
-                        {
-                            state = 0;
-                        }
-                        else if (c == ']')
-                        {
-                            stack.Pop();
-                        }
-                        else
-                        {
-                            throw new FormatException();
-                        }
-                        break;
-                }
-            }
-
-            return root;
         }
 
         public NestedInteger Deserialize3(string s)
@@ -282,6 +134,7 @@ namespace Demo
 
         private NestedInteger ParseList(string s, ref int index)
         {
+            Debug.Assert(s[index] == '[');
             index++; // eat '['
             NestedInteger root = new NestedInteger();
             while (index < s.Length)
@@ -309,6 +162,8 @@ namespace Demo
                     throw new Exception();
                 }
             }
+
+            Debug.Assert(s[index] == ']');
             index++; // eat ']'
             return root;
         }
@@ -336,6 +191,7 @@ namespace Demo
                     break;
                 }
             }
+
             return new NestedInteger(n * positive);
         }
     }

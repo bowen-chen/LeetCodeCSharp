@@ -131,11 +131,13 @@ namespace Demo
                 {
                     throw new InvalidOperationException();
                 }
+
                 if (Children.ContainsKey(p))
                 {
                     var c = Children[p];
-                        return c.GetNode(path.Skip(1), create);
+                    return c.GetNode(path.Skip(1), create);
                 }
+
                 if (create)
                 {
                     var c = new Node(p);

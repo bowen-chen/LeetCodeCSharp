@@ -17,7 +17,7 @@ namespace Demo
 {
     public class NumArray2
     {
-        int[] nums;
+        readonly int[] nums;
 
         public NumArray2(int[] nums)
         {

@@ -40,28 +40,28 @@ namespace Demo
             }
 
             int j = s.IndexOfAny(new[] {'(', ')'}, index);
-            // if s[index] = '(', parse my number
-            // if s[index] = ')', then it is leaf
             TreeNode n = new TreeNode(int.Parse(s.Substring(index, j - index)));
             index = j;
+
+            // if it is ')', then it is a leaf
+
+            // it is not a leaf, parse first child
             if (s[index] == '(')
             {
-                // eat '('
-                index++;
+                index++; // eat '('
                 n.left = Str2Tree(s, ref index);
                 Debug.Assert(s[index] == ')');
-                // eat ')'
-                index++;
+                index++; // eat ')'
             }
+
+
+            // parse second child
             if (s[index] == '(')
             {
-                // eat '('
-                index++;
+                index++; // eat '('
                 n.right = Str2Tree(s, ref index);
                 Debug.Assert(s[index] == ')');
-
-                // eat ')'
-                index++;
+                index++; // eat ')'
             }
 
             return n;

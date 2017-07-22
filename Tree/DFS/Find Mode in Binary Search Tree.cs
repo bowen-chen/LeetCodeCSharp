@@ -54,6 +54,7 @@ namespace Demo
             {
                 return;
             }
+
             FindMode(node.left, ref preValue, ref preCount, ref maxCount, res);
             if (node.val == preValue)
             {

@@ -30,6 +30,7 @@ namespace Demo
             {
                 return ret;
             }
+
             BinaryTreePaths(root, null, ret);
             return ret;
         }
@@ -46,6 +47,7 @@ namespace Demo
             {
                 path += "->";
             }
+
             path += root.val;
             if (root.left == null && root.right == null)
             {

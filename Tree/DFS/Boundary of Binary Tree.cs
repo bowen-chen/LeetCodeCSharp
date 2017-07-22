@@ -66,7 +66,8 @@ namespace Demo
                 // Print the left boundary in top-down manner.
                 LeftBoundaryOfBinaryTree(node.left, ret);
 
-                // Print all leaf nodes, in case of node is a leaf
+                // Print all leaf nodes
+                // in case of node is a leaf, print left and right separately
                 LeavesOfBinaryTree(node.left, ret);
                 LeavesOfBinaryTree(node.right, ret);
 

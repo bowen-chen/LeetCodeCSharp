@@ -48,6 +48,7 @@ namespace Demo
 
                         second = cur;
                     }
+
                     last = cur;
                     cur = cur.right;
                 }
@@ -66,6 +67,7 @@ namespace Demo
                         pre.right = cur;
                         cur = cur.left;
                     }
+
                     // My predecessor right is myself, so it is the second time, go right
                     else
                     {
@@ -78,6 +80,7 @@ namespace Demo
 
                             second = cur;
                         }
+
                         last = cur;
 
                         pre.right = null;
@@ -126,11 +129,13 @@ namespace Demo
                 {
                     first = pre;
                 }
+
                 if(first != null)
                 {
                     second = root;
                 }
             }
+
             pre = root;
 
             RecoverTree2(root.right,ref pre, ref first, ref second);

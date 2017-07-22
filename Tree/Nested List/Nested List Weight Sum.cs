@@ -30,6 +30,7 @@ namespace Demo
             {
                 ret += e.IsInteger() ? e.GetInteger()*depth : DepthSum(e.GetList(), depth + 1);
             }
+
             return ret;
         }
     }

@@ -38,6 +38,7 @@ namespace Demo
                     if (j > 0) t += sum[i, j - 1];
                     if (i > 0 && j > 0) t -= sum[i - 1, j - 1];
                     sum[i, j] = t;
+
                     // Traverse all recetangle ending with i,j
                     for (int r = 0; r <= i; ++r)
                     {
@@ -63,9 +64,11 @@ namespace Demo
             {
                 return 0;
             }
+
             int res = int.MinValue;
             for (int left = 0; left < n; ++left)
             {
+                // sum[row] is sum of sum[row, left->right]
                 int[] sum = new int[m];
                 for (int right = left; right < n; ++right)
                 {
@@ -76,8 +79,11 @@ namespace Demo
 
                     int curSum = 0;
                     int curMax = int.MinValue;
-                    var s = new SortedList<int, int>();
-                    s.Add(0, 0);
+                    var s = new SortedList<int, int>
+                    {
+                        {0, 0}
+                    };
+
                     foreach (int a in sum)
                     {
                         curSum += a;
@@ -92,9 +98,11 @@ namespace Demo
                             s.Add(curSum, curSum);
                         }
                     }
+
                     res = Math.Max(res, curMax);
                 }
             }
+
             return res;
         }
 

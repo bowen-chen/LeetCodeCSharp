@@ -72,6 +72,7 @@ namespace Demo
             {
                 return new TreeNode(v) {left=root};
             }
+
             AddOneRow(root, v, d, 1);
             return root;
         }
@@ -82,6 +83,7 @@ namespace Demo
             {
                 return;
             }
+
             if (currentDepth + 1 == d)
             {
                 root.left = new TreeNode(v) {left = root.left};

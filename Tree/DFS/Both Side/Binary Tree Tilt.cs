@@ -41,23 +41,23 @@ namespace Demo
     {
         public int FindTilt(TreeNode root)
         {
-            int res = 0;
-            FindTilt(root, ref res);
-            return res;
+            int sum;
+            return FindTilt(root, out sum);
         }
-      
-        /// <returns>Sum of node sub tree</returns>
-        private int FindTilt(TreeNode node, ref int res)
+        private int FindTilt(TreeNode node, out int sum)
         {
+            sum = 0;
             if (node == null)
             {
                 return 0;
             }
 
-            int leftSum = FindTilt(node.left,ref res);
-            int rightSum = FindTilt(node.right,ref res);
-            res += Math.Abs(leftSum - rightSum);
-            return leftSum + rightSum + node.val;
+            int leftSum;
+            int left = FindTilt(node.left, out leftSum);
+            int rightSum;
+            int right = FindTilt(node.right, out rightSum);
+            sum = leftSum + rightSum + node.val;
+            return Math.Abs(leftSum - rightSum) + left + right;
         }
     }
 }

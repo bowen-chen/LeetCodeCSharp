@@ -116,30 +116,31 @@ namespace Demo
                 {
                     return false;
                 }
+
                 if (word.Length - 1 == index)
                 {
                     return n.IsWord;
                 }
+
                 return Search2(n, word, index + 1);
             }
-            else
+
+            foreach (TrieNode n in node)
             {
-                foreach (TrieNode n in node)
+                if (word.Length - 1 == index)
                 {
-                    if (word.Length - 1 == index)
-                    {
-                        if (n.IsWord)
-                        {
-                            return true;
-                        }
-                    }
-                    else if (Search2(n, word, index + 1))
+                    if (n.IsWord)
                     {
                         return true;
                     }
                 }
-                return false;
+                else if (Search2(n, word, index + 1))
+                {
+                    return true;
+                }
             }
+
+            return false;
         }
 
         // Returns if the word is in the trie.

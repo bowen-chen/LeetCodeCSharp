@@ -40,6 +40,7 @@ namespace Demo
             {
                 return;
             }
+
             m = matrix.GetLength(0);
             n = matrix.GetLength(1);
             tree = new int[m + 1, n + 1];
@@ -70,20 +71,25 @@ namespace Demo
 
         public int SumRegion(int row1, int col1, int row2, int col2)
         {
-            if (m == 0 || n == 0) return 0;
+            if (m == 0 || n == 0)
+            {
+                return 0;
+            }
+
             return Sum(row2, col2) + Sum(row1 - 1, col1 - 1) - Sum(row1 - 1, col2) - Sum(row2, col1 - 1);
         }
 
         public int Sum(int row, int col)
         {
             int sum = 0;
-            for (int i = row + 1; i > 0; i -= i & (-i))
+            for (int i = row + 1; i >= 1; i -= i & (-i))
             {
-                for (int j = col + 1; j > 0; j -= j & (-j))
+                for (int j = col + 1; j >= 1; j -= j & (-j))
                 {
                     sum += tree[i, j];
                 }
             }
+
             return sum;
         }
     }

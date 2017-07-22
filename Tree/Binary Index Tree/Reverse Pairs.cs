@@ -33,12 +33,17 @@ namespace Demo
         // merge sort
         public int ReversePairs(int[] nums, int left, int right)
         {
-            if (left >= right) return 0;
+            if (left >= right)
+            {
+                return 0;
+            }
+            
+            // sort
             int mid = left + (right - left)/2;
             int res = ReversePairs(nums, left, mid) + ReversePairs(nums, mid + 1, right);
-            int i = left;
-            int j = mid + 1;
-            while (i <= mid)
+
+            // check valid rang pair with nums[i]
+            for (int i = left, j = mid + 1;i <= mid;i++)
             {
                 while (j <= right && nums[i]/2.0 > nums[j])
                 {
@@ -47,31 +52,19 @@ namespace Demo
 
                 // all number from [mid + 1, j) x 2.0 < nums[i]
                 res += j - (mid + 1);
-                ++i;
             }
 
             // merge [left, mid] and [mid+1, right]
-            i = left;
-            j = mid + 1;
-            int c = 0;
             var cache = new int[right - left + 1];
-            while (i <= mid || j <= right)
+            for (int i = left, j = mid + 1, c = 0; i <= mid || j <= right;)
             {
-                if (j > right)
+                if (i <= mid && j <= right)
                 {
-                    cache[c++] = nums[i++];
-                }
-                else if (i > mid)
-                {
-                    cache[c++] = nums[j++];
-                }
-                else if (nums[i] <= nums[j])
-                {
-                    cache[c++] = nums[i++];
+                    cache[c++] = nums[i] < nums[j] ? nums[i++] : nums[j++];
                 }
                 else
                 {
-                    cache[c++] = nums[j++];
+                    cache[c++] = i <= mid ? nums[i++] : nums[j++];
                 }
             }
 

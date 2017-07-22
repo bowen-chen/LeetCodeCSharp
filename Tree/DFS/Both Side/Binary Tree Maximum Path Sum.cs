@@ -47,12 +47,9 @@ namespace Demo
             int fromRight;
             int underRight = MaxPath(root.right, out fromRight);
 
-            int currentMax = root.val;
-            currentMax += fromLeft;
-            currentMax += fromRight;
-
             maxPathToHere = root.val + Math.Max(fromLeft, fromRight);
             maxPathToHere = maxPathToHere < 0 ? 0 : maxPathToHere;
+            int currentMax = root.val + fromLeft + fromRight;
             return Math.Max(Math.Max(underLeft, underRight), currentMax);
         }
     }

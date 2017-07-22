@@ -17,6 +17,7 @@ namespace Demo
             {
                 return null;
             }
+
             return BuildTreeInPost(inorder, postorder, 0, inorder.Length - 1,
                 postorder.Length - 1);
         }
@@ -34,6 +35,7 @@ namespace Demo
                     postin = i;
                 }
             }
+
             int rightno = inend - postin;
             int leftinend = postin - 1;
             if (leftinend >= instart)
@@ -41,12 +43,14 @@ namespace Demo
                 ret.left = BuildTreeInPost(inorder, postorder, instart, leftinend,
                     postend - 1 - (inend - rightno));
             }
+
             int rightinstart = postin + 1;
             if (rightinstart <= inend)
             {
                 ret.right = BuildTreeInPost(inorder, postorder, rightinstart,
                     inend, postend - 1);
             }
+
             return ret;
         }
     }
