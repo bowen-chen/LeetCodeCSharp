@@ -39,7 +39,7 @@ namespace Demo
                     if (M[i, j] == 1)
                     {
                         int a = i + 1;
-                        dp2[a, 0] = dp2[a - 1,0] + 1;
+                        dp2[a, 0] = dp2[a - 1, 0] + 1;
                         res = Math.Max(res, dp2[a, 0]);
                         dp2[a, 1] = dp[a, 1] + 1;
                         res = Math.Max(res, dp2[a, 1]);
@@ -49,6 +49,7 @@ namespace Demo
                         res = Math.Max(res, dp2[a, 3]);
                     }
                 }
+
                 dp = dp2;
             }
 

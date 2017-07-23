@@ -33,13 +33,15 @@ namespace Demo
                 {
                     for (int col = 0; col < n; col++)
                     {
-                        dp[row, col, step] = ((row == 0 ? 1 : dp[row - 1, col, step - 1]) /*move up*/ +
-                                              (row == m - 1 ? 1 : dp[row + 1, col, step - 1]) /*move down*/ +
-                                              (col == 0 ? 1 : dp[row, col - 1, step - 1]) /*move left*/+
-                                              (col == n - 1 ? 1 : dp[row, col + 1, step - 1]))%mod /*move right*/;
+                        dp[row, col, step] = (
+                            (row == 0 ? 1 : dp[row - 1, col, step - 1]) /*move up*/ +
+                            (row == m - 1 ? 1 : dp[row + 1, col, step - 1]) /*move down*/ +
+                            (col == 0 ? 1 : dp[row, col - 1, step - 1]) /*move left*/+
+                            (col == n - 1 ? 1 : dp[row, col + 1, step - 1]))%mod /*move right*/;
                     }
                 }
             }
+
             return (int)dp[i,j,N];
         }
 
@@ -59,12 +61,14 @@ namespace Demo
                 {
                     for (int col = 0; col < n; col++)
                     {
-                        dp2[row, col] = ((row == 0 ? 1 : dp[row - 1, col]) /*move up*/+
-                                         (row == m - 1 ? 1 : dp[row + 1, col]) /*move down*/+
-                                         (col == 0 ? 1 : dp[row, col - 1]) /*move left*/+
-                                         (col == n - 1 ? 1 : dp[row, col + 1]))%mod /*move right*/;
+                        dp2[row, col] = (
+                            (row == 0 ? 1 : dp[row - 1, col]) /*move up*/+
+                            (row == m - 1 ? 1 : dp[row + 1, col]) /*move down*/+
+                            (col == 0 ? 1 : dp[row, col - 1]) /*move left*/+
+                            (col == n - 1 ? 1 : dp[row, col + 1]))%mod /*move right*/;
                     }
                 }
+
                 dp = dp2;
             }
 

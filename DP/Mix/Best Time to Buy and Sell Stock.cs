@@ -28,6 +28,7 @@ namespace Demo
                     max = Math.Max(max, profit);
                 }
             }
+
             return max;
         }
     }

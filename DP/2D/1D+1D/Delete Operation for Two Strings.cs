@@ -26,7 +26,9 @@ namespace Demo
         {
             int len1 = word1.Length;
             int len2 = word2.Length;
+
             // dp[i,j], the max subsequence of take i from word1 and take j from word2
+            // init value dp[0,j]=0, dp[i,0]=0
             var dp = new int[len1+1, len2+1];
             for (int i = 1; i <= len1; i++)
             {
@@ -39,6 +41,7 @@ namespace Demo
                     }
                 }
             }
+
             return dp[len1, len2];
         }
 
@@ -58,8 +61,10 @@ namespace Demo
                         dp2[j] = Math.Max(dp2[j], dp[j - 1] + 1);
                     }
                 }
+
                 dp = dp2;
             }
+
             return dp[len2];
         }
     }

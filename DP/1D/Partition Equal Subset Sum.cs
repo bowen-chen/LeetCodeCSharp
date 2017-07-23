@@ -36,6 +36,8 @@ namespace Demo
             }
 
             int target = sum / 2;
+            
+            // if there is sum of array is target
             var dp = new bool[target + 1];
             dp[0] = true;
             foreach (int n in nums)
@@ -45,6 +47,7 @@ namespace Demo
                     dp[j] = dp[j] || dp[j - n];
                 }
             }
+
             return dp[target];
         }
     }

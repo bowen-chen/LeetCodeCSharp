@@ -1,5 +1,6 @@
 ﻿/*
 600. Non-negative Integers without Consecutive Ones
+hard
 Given a positive integer n, find the number of non-negative integers less than or equal to n, whose binary representations do NOT contain consecutive ones.
 
 Example 1:
@@ -31,7 +32,8 @@ namespace Demo
 
             // the number of integer
             var m = new int[32];
-            zero[0] = 1; one[0] = 1;
+            zero[0] = 1;
+            one[0] = 1;
             m[0] = 2;
             for (int i = 1; i < 32; ++i)
             {
@@ -42,6 +44,7 @@ namespace Demo
 
             int pre = 0;
             int res = 0;
+            // check each bit
             for(int k =31; k>=0;k--)
             {
                 if ((num & (1 << k)) != 0)

@@ -13,8 +13,14 @@ namespace Demo
         public int MaximalRectangle(char[,] matrix)
         {
             int n = matrix.GetLength(1), maxA = 0;
+            
+            // the height at j
             int[] h = new int[n];
+
+            // the left boundary to maintain the height
             int[] l = new int[n];
+
+            // the right boundary to maintain the height
             int[] r = new int[n];
 
             for (int i = 0; i < n; i++)
@@ -72,6 +78,7 @@ namespace Demo
                     maxA = Math.Max(maxA, (r[j] - l[j])*h[j]);
                 }
             }
+
             return maxA;
         }
     }

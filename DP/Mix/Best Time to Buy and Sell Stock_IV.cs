@@ -26,7 +26,9 @@ namespace Demo
         {
             int n = prices.Length;
             if (n <= 1)
+            {
                 return 0;
+            }
 
             // if k >= n/2, then you can make maximum number of transactions.
             // fast track
@@ -53,6 +55,7 @@ namespace Demo
                     localMax = Math.Max(localMax, dp[i - 1,j] - prices[j]);
                 }
             }
+
             return dp[k,n - 1];
         }
     }

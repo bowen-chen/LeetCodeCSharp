@@ -7,7 +7,7 @@ namespace Demo
     {
         static void Main()
         {
-            Console.WriteLine(new SolutionCalc().Calculate3("2147483647"));
+            Console.WriteLine(new Solution().GetMoneyAmount(2));
         }
     }
 }

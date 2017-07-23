@@ -20,8 +20,16 @@ namespace Demo
     {
         public int CountNumbersWithUniqueDigits(int n)
         {
-            if (n < 1) return 0;
-            if (n == 1) return 10;
+            if (n < 1)
+            {
+                return 0;
+            }
+
+            if (n == 1)
+            {
+                return 10;
+            }
+
             var ret = 10;
             var dp = 9;
             for (int i = 2; i <= n; i++)
@@ -29,6 +37,7 @@ namespace Demo
                 dp = dp*(10 - (i - 1));
                 ret += dp;
             }
+
             return ret;
         }
     }

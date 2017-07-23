@@ -25,6 +25,7 @@ namespace Demo
             {
                 return 0;
             }
+
             var dp = new int[s.Length+1];
             dp[0] = 1;
             dp[1] = s[0] == '0' ? 0 : 1;
@@ -42,6 +43,7 @@ namespace Demo
                     dp[i + 1] += dp[i-1];
                 }
             }
+
             return dp[s.Length];
         }
 
@@ -67,6 +69,7 @@ namespace Demo
                 {
                     p += p1;
                 }
+
                 if (s[i - 1] != '0' && int.Parse(s.Substring(i - 1, 2)) <= 26)
                 {
                     p += p2;
@@ -75,6 +78,7 @@ namespace Demo
                 p2 = p1;
                 p1 = p;
             }
+
             return p;
         }
     }

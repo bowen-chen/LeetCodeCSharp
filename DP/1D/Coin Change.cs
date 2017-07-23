@@ -37,41 +37,8 @@ namespace Demo
                     }
                 }
             }
+
             return dp[amount] == int.MaxValue ? -1 : dp[amount];
-        }
-
-        public int CoinChange(int[] coins, int amount)
-        {
-            coins = coins.Distinct().OrderByDescending(c => c).ToArray();
-            int ret = -1;
-            CoinChange(coins, amount, 0, 0, ref ret);
-            return ret;
-        }
-
-        public void CoinChange(int[] coins, int amount, int index, int count, ref int currentBest)
-        {
-            if (currentBest != -1 && count >= currentBest)
-            {
-                return;
-            }
-
-            if (amount == 0)
-            {
-                currentBest = count;
-            }
-
-            if (index >= coins.Length)
-            {
-                return;
-            }
-
-            int coin = coins[index];
-            if (amount >= coin)
-            {
-                CoinChange(coins, amount - coin, index, count + 1, ref currentBest);
-            }
-
-            CoinChange(coins, amount, index + 1, count, ref currentBest);
         }
     }
 }

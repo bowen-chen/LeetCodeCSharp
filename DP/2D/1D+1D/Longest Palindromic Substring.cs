@@ -38,6 +38,7 @@ namespace Demo
                     }
                 }
             }
+
             return s.Substring(start, end - start + 1);
         }
     }

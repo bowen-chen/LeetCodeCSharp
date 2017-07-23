@@ -52,7 +52,7 @@ namespace Demo
 
         private int LongestIncreasingPath(int[,] matrix, int[,] dp, int i, int j)
         {
-            if (dp[i, j] == 0)
+            if (dp[i, j] != 0)
             {
                 return dp[i, j];
             }
@@ -70,8 +70,8 @@ namespace Demo
                     max = Math.Max(max, LongestIncreasingPath(matrix, dp, a, b));
                 }
             }
-            dp[i, j] = max + 1;
 
+            dp[i, j] = max + 1;
             return dp[i, j];
         }
     }

@@ -45,15 +45,13 @@ namespace Demo
             // build up result strings
             // DFS
             List<string> ret = new List<string>();
-
-            // <next word end index, current sentence 
-            var sk = new Stack<Tuple<int, string>>();
-
             if (dp[s.Length - 1] == null)
             {
                 return ret;
             }
 
+            // <next word end index, current sentence 
+            var sk = new Stack<Tuple<int, string>>();
             foreach (int startIndex in dp[s.Length - 1])
             {
                 sk.Push(Tuple.Create(startIndex - 1, s.Substring(startIndex, s.Length - startIndex)));
@@ -74,6 +72,7 @@ namespace Demo
                         s.Substring(startIndex, top.Item1 - startIndex + 1) + " " + top.Item2));
                 }
             }
+
             return ret;
         }
 
@@ -243,15 +242,12 @@ namespace Demo
 
         public IList<string> WordBreak(string s, IList<string> wordDict)
         {
-
-
             Queue<Data> queue = new Queue<Data>();
             IList<string> response = new List<string>();
 
             Data obj = new Data(0, "");
 
             queue.Enqueue(obj);
-            HashSet<string> visited = new HashSet<string>();
 
             while (queue.Count > 0 && s.Length < 100)
             {
@@ -271,7 +267,6 @@ namespace Demo
                         {
                             obj = new Data(end, data.value + toCheck + " ");
                             queue.Enqueue(obj);
-                            visited.Add(toCheck);
                         }
                     }
                 }

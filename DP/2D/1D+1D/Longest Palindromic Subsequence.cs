@@ -45,6 +45,7 @@ namespace Demo
                     }
                 }
             }
+
             return dp[0,n - 1];
         }
 
@@ -67,8 +68,10 @@ namespace Demo
                         dp2[j] = Math.Max(dp[j], dp2[j - 1]);
                     }
                 }
+
                 dp = dp2;
             }
+
             return dp[n - 1];
         }
     }

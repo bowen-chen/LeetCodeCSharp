@@ -43,8 +43,10 @@ namespace Demo
                 {
                     dp[i] = dp[i - 1] + 1;
                 }
+
                 res += dp[i];
             }
+
             return res;
         }
 
@@ -61,8 +63,10 @@ namespace Demo
                 {
                     dp = dp_1 + 1;
                 }
+
                 res += dp;
             }
+
             return res;
         }
     }

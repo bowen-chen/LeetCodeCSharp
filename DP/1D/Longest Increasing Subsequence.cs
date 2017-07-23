@@ -24,6 +24,7 @@ namespace Demo
             {
                 return 0;
             }
+
             int[] dp = new int[nums.Length];
             dp[0] = 1;
             int res = 1;
@@ -39,6 +40,7 @@ namespace Demo
                     }
                 }
             }
+
             return res;
         }
     }

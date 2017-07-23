@@ -47,10 +47,18 @@ namespace Demo
                 n[i] = 1;
                 for (int j = 0; j < i; ++j)
                 {
-                    if (nums[i] > nums[j]) p[i] = Math.Max(p[i], n[j] + 1);
-                    else if (nums[i] < nums[j]) n[i] = Math.Max(n[i], p[j] + 1);
+                    if (nums[i] > nums[j])
+                    {
+                        p[i] = Math.Max(p[i], n[j] + 1);
+                    }
+
+                    else if (nums[i] < nums[j])
+                    {
+                        n[i] = Math.Max(n[i], p[j] + 1);
+                    }
                 }
             }
+
             return Math.Max(p[nums.Length], n[nums.Length]);
         }
     }

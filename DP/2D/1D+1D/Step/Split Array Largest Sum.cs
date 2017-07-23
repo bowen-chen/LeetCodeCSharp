@@ -31,17 +31,19 @@ namespace Demo
         public int SplitArray(int[] nums, int m)
         {
             // dp[i,j] the min larget sum, when split j parts from [0, i]
+            // dp[i,1] = sum[0->i]
             var dp = new int[nums.Length, m];
             var sum = new int[nums.Length + 1];
             for (int i = 0; i < nums.Length; i++)
             {
                 sum[i + 1] = sum[i] + nums[i];
+
+                // init dp
                 dp[i, 1] = sum[i + 1];
             }
 
             // Sum[i->j] = sum[j+1]-sum[i]
             // Sum[2,3] = sum[4] - sum[2]
-
             for (int k = 2; k <= m; k++)
             {
                 for (int i = nums.Length - 1; i >= 0; i--)
@@ -76,7 +78,6 @@ namespace Demo
 
             // Sum[i->j] = sum[j+1]-sum[i]
             // Sum[2,3] = sum[4] - sum[2]
-
             for (int k = 2; k <= m; k++)
             {
                 for (int i = nums.Length -1; i >= 0 ; i--)

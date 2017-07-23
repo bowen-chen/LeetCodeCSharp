@@ -35,6 +35,7 @@ namespace Demo
                 buy[i] = Math.Max(sell[i - 2] - p, buy[i - 1]);
                 sell[i] = Math.Max(buy[i - 1] + p, sell[i - 1]);
             }
+
             return sell[prices.Length + 1];
         }
 

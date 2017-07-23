@@ -29,13 +29,14 @@ namespace Demo
             {
                 return 0;
             }
+
             if (n == 1)
             {
                 return 3;
             }
 
             // dp[i]the number of all possible attendance (without 'A') records with length i
-            // end with "P": dp[i-1]
+            // end with "P": dp[i - 1]
             // end with "PL": dp[i - 2]
             // end with "PLL": dp[i - 3]
             // end with "LLL": is not allowed
@@ -47,6 +48,7 @@ namespace Demo
             {
                 dp[i] = dp[i - 1]%m + dp[i - 2]%m + dp[i - 3]%m;
             }
+
             var res = dp[n];
 
             // insert A into all possible location
@@ -55,6 +57,7 @@ namespace Demo
                 res += dp[i]*(n - i - 1 > 0 ? dp[n - i - 1] : 1)%m;
                 res %= m;
             }
+
             return (int)res;
         }
     }

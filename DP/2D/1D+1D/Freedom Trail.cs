@@ -34,8 +34,10 @@ namespace Demo
         {
             int n = ring.Length;
             int m = key.Length;
+
             // The mininum steps to spell key[m->end] when clock at ring[n] 
             var dp = new int[m, n];
+
             // When find Key[i]
             for (int i = m - 1; i >= 0; --i)
             {
@@ -58,6 +60,7 @@ namespace Demo
                     }
                 }
             }
+
             return dp[0, 0] + m /*push center button m times*/;
         }
     }

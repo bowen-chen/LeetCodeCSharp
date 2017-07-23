@@ -1,5 +1,6 @@
 ﻿/*
 459	Repeated Substring Pattern 
+hard
 Given a non-empty string check if it can be constructed by taking a substring of it and appending multiple copies of the substring together. You may assume the given string consists of lowercase English letters only and its length will not exceed 10000.
 
 Example 1:
@@ -38,8 +39,10 @@ namespace Demo
                         {
                             break;
                         }
+
                         j++;
                     }
+
                     if (j == s.Length) return true;
                 }
             }
@@ -50,10 +53,12 @@ namespace Demo
         {
             // end of pattern
             int i = 1;
-            // end of beginning string
+
+            // end of the string from begining
             int j = 0;
             int n = s.Length;
             var dp = new int[n];
+
             // comparing to the beginning, the larget common prefix length ending i
             dp[0] = 0; 
             while (i < n)
@@ -75,6 +80,7 @@ namespace Demo
                     j = dp[j - 1];
                 }
             }
+
             return dp[n - 1] != 0 && (dp[n - 1]%(n - dp[n - 1]) == 0);
         }
     }

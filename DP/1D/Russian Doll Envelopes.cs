@@ -26,9 +26,9 @@ namespace Demo
             {
                 jagged[i] = new[]{ envelopes[i, 0], envelopes[i, 1]};
             }
+
             jagged = jagged.OrderBy(e => e[0]).ThenByDescending(e => e[1]).ToArray();
-
-
+            
             int[] dp = new int[n];
             for (int i = 0; i < n; i++)
             {
@@ -40,8 +40,10 @@ namespace Demo
                         dp[i] = Math.Max(dp[i], dp[j] + 1);
                     }
                 }
+
                 res = Math.Max(res, dp[i]);
             }
+
             return res;
         }
     }

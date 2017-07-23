@@ -23,15 +23,17 @@ namespace Demo
             // ways, diff color ending at i
             var dp1 = new int[n];
             dp1[1] = k * (k - 1);
+
             // ways, same color ending at i
             var dp2 = new int[n];
             dp2[1] = k;
 
             for (int i = 2; i < n; i++)
             {
-                dp1[i] = dp1[i - 1] * (k - 1) + dp2[i - 1] * (k - 1);
+                dp1[i] = (dp1[i - 1] + dp2[i - 1]) * (k - 1);
                 dp2[i] = dp1[i - 1];
             }
+
             return (dp1[n - 1] + dp1[n - 1]);
         }
 
@@ -49,6 +51,7 @@ namespace Demo
                 diffColor = (preDiffColor + preSameColor) * (k - 1);
                 sameColor = preDiffColor;
             }
+
             return (diffColor + sameColor);
         }
     }

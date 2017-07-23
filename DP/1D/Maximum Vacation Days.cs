@@ -65,13 +65,15 @@ namespace Demo
         {
             int city = flights.Length;
             int day = days.GetLength(1);
+
+            // max vacation ending at city
             var dp = new int[city];
             for (int i = 0; i < city; i++)
             {
                 dp[i] = -1;
             }
-            dp[0] = 0;
 
+            dp[0] = 0;
             for (int d = 0; d < day; d++)
             {
                 var dp2 = new int[city];
@@ -79,12 +81,14 @@ namespace Demo
                 {
                     dp2[i] = -1;
                 }
+
                 for (int i = 0; i < city; i++)
                 {
                     if (dp[i] >= 0)
                     {
                         for (int j = 0; j < city; j++)
                         {
+                            // stay at i or fly to j
                             if (i == j || flights[i, j] == 1)
                             {
                                 dp2[j] = Math.Max(dp2[j], dp[i] + days[j, d]);
@@ -92,8 +96,10 @@ namespace Demo
                         }
                     }
                 }
+
                 dp = dp2;
             }
+
             return dp.Max();
         }
     }

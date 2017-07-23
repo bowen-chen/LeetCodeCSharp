@@ -61,7 +61,8 @@ namespace Demo
                 dp[i] = new Dictionary<int, int>();
                 for (int j = 0; j < i; ++j)
                 {
-                    if ((long) A[i] - A[j] > int.MaxValue || (long) A[i] - A[j] < int.MinValue)
+                    if ((long) A[i] - A[j] > int.MaxValue 
+                        || (long) A[i] - A[j] < int.MinValue)
                     {
                         continue;
                     }
@@ -71,6 +72,7 @@ namespace Demo
                     {
                         dp[i][dif] = 0;
                     }
+
                     dp[i][dif] ++;
                     if (dp[j].ContainsKey(dif))
                     {
@@ -80,6 +82,7 @@ namespace Demo
                     }
                 }
             }
+
             return res;
         }
     }

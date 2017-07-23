@@ -41,6 +41,7 @@ namespace Demo
                     dp[j] = Math.Min(dp[j], dp[j + 1]) + triangle[i][j];
                 }
             }
+
             return dp[0];
         }
 
@@ -51,6 +52,7 @@ namespace Demo
                 return triangle[0][0];
             }
             int[,] dp = new int[triangle.Count, triangle[triangle.Count - 1].Count];
+
             dp[0, 0] = triangle[0][0];
             int ret = int.MaxValue;
             for (int i = 1; i < triangle.Count; i++)

@@ -37,20 +37,26 @@ namespace Demo
                 var t = new Dictionary<int, int>();
                 foreach (var p in dp)
                 {
-                    int sum = p.Key, cnt = p.Value;
+                    int sum = p.Key;
+                    int cnt = p.Value;
                     if (!t.ContainsKey(sum + num))
                     {
                         t[sum + num] = 0;
                     }
+                    
                     t[sum + num] += cnt;
+
                     if (!t.ContainsKey(sum - num))
                     {
                         t[sum - num] = 0;
                     }
+
                     t[sum - num] += cnt;
                 }
+
                 dp = t;
             }
+
             return dp.ContainsKey(S) ? dp[S] : 0;
         }
     }

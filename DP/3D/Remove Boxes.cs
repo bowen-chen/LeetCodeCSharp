@@ -39,6 +39,7 @@ namespace Demo
             {
                 return 0;
             }
+
             if (dp[i, j, k] > 0)
             {
                 return dp[i, j, k];
@@ -57,12 +58,16 @@ namespace Demo
                         RemoveBoxes(boxes, i + 1, m - 1, 0, dp) + RemoveBoxes(boxes, m, j, k + 1, dp));
                 }
             }
+
             return dp[i, j, k] = res;
         }
 
         public int RemoveBoxes2(int[] boxes)
         {
             int n = boxes.Length;
+
+            // dp[i, j, k] max points from boxes[i, j] when there are k boxes at left side as same boxes[i]
+            // init value dp[i,i,x] = x+1*x+1
             var dp = new int[n, n, n];
             for (int i = 0; i < n; ++i)
             {
@@ -81,7 +86,7 @@ namespace Demo
                     // j is end of range
                     int j = i + t;
 
-                    // k is number of same number at right of boxes[i]
+                    // k is number of same number at left of boxes[i]
                     // the max is i, which all numbers are same of boxes[i] 
                     for (int k = 0; k <= i; ++k)
                     {
@@ -96,10 +101,12 @@ namespace Demo
                                 res = Math.Max(res, dp[i + 1, m - 1, 0] + dp[m, j, k + 1]);
                             }
                         }
+
                         dp[i, j, k] = res;
                     }
                 }
             }
+
             return n == 0 ? 0 : dp[0, n - 1, 0];
         }
     }

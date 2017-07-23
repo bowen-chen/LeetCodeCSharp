@@ -30,6 +30,7 @@ namespace Demo
                 b = costs[i, 1] + Math.Min(rr, gg);
                 g = costs[i, 2] + Math.Min(rr, bb);
             }
+
             return Math.Min(r, Math.Min(b, g));
         }
     }

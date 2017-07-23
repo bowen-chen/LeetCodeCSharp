@@ -28,8 +28,9 @@ namespace Demo
             int max = 0;
             int m = matrix.GetLength(0);
             int n = matrix.GetLength(1);
+
             // sqaure ending at matrix[i,j]
-            var dp = new int[m+1, n+1];
+            var dp = new int[m + 1, n + 1];
             for (int i = 0; i < m; i++)
             {
                 for (int j = 0; j < n; j++)
@@ -45,6 +46,7 @@ namespace Demo
                     }
                 }
             }
+
             return max*max;
         }
 
@@ -70,6 +72,7 @@ namespace Demo
 
                 pre = current;
             }
+
             return max * max;
         }
     }

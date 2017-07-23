@@ -35,6 +35,7 @@ namespace Demo
             {
                 nums[n++] = x;
             }
+
             nums[0] = nums[n++] = 1;
 
             // dp[i,j] best score from i to j, not include i, j

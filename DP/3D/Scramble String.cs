@@ -57,12 +57,14 @@ namespace Demo
                 {
                     return true;
                 }
+
                 if (IsScramble(s1.Substring(0, i), s2.Substring(s2.Length - i))
                     && IsScramble(s1.Substring(i), s2.Substring(0, s2.Length - i)))
                 {
                     return true;
                 }
             }
+
             return false;
         }
 
@@ -81,7 +83,7 @@ namespace Demo
             // if s1.SubString(i, len) and s2.SubString(j, len) is scramble
             bool[,,] dp = new bool[size + 1, size, size];
 
-            // init dp
+            // init dp, dp[1, i, j] = s1[i] == s2[j]
             for (int i = 0; i < size; i++)
             {
                 for (int j = 0; j < size; j++)
@@ -97,15 +99,16 @@ namespace Demo
                     for (int j = 0; j <= size - len; j++)
                     {
                         dp[len, i, j] = false;
-                        for (int k = 1; k < len && !dp[len, i, j] /*break loop if we want one*/; ++k)
+                        for (int k = 1; k < len && !dp[len, i, j] /*break loop if we found one*/; ++k)
                         {
-                            // break at k at j
+                            // break at k at s1
                             dp[len, i, j] = dp[len, i, j] || (dp[k, i, j] && dp[len - k, i + k, j + k]);
                             dp[len, i, j] = dp[len, i, j] || (dp[k, i + len - k, j] && dp[len - k, i, j + k]);
                         }
                     }
                 }
             }
+
             return dp[size, 0, 0];
         }
     }

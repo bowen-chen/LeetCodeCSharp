@@ -18,50 +18,6 @@ namespace Demo
 {
     public partial class Solution
     {
-        public int UniquePaths(int m, int n)
-        {
-            return m > n ? Choose(m + n - 2, n - 1) : Choose(m + n - 2, m - 1);
-        }
-
-        public int Choose(int total, int choose)
-        {
-            int[,] dp = new int[total + 1, choose + 1];
-            for (int i = 0; i <= total; i++)
-            {
-                for (int j = 0; j <= choose; j++)
-                {
-                    dp[i, j] = -1;
-                }
-            }
-
-            return Choose(total, choose, dp);
-        }
-
-        public int Choose(int total, int choose, int[,] dp)
-        {
-            if (dp[total, choose] != -1)
-            {
-                return dp[total, choose];
-            }
-
-            int ret;
-            if (total < choose)
-            {
-                ret = 0;
-            }
-            else if (choose == 0 || choose == total)
-            {
-                ret = 1;
-            }
-            else
-            {
-                ret = Choose(total - 1, choose - 1, dp)
-                      + Choose(total - 1, choose, dp);
-            }
-            dp[total, choose] = ret;
-            return ret;
-        }
-
         public int UniquePaths2(int m, int n)
         {
             return m > n ? Choose2(m + n - 2, n - 1) : Choose2(m + n - 2, m - 1);
@@ -75,6 +31,7 @@ namespace Demo
             {
                 nCk = nCk*(total - choose + i)/i;
             }
+
             return (int) nCk;
         }
 
@@ -91,6 +48,7 @@ namespace Demo
                     dp[r, c] = dp[r + 1, c] + dp[r, c + 1];
                 }
             }
+
             return dp[0, 0];
         }
     }

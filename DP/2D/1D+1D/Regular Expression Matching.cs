@@ -40,7 +40,9 @@ namespace Demo
 
         public bool IsMatch(string s, string p)
         {
-            int m = s.Length, n = p.Length;
+            int m = s.Length;
+            int n = p.Length;
+
             // we need match empty string to .*, so we need consider 0
             bool[,] dp = new bool[m + 1, n + 1];
             dp[0, 0] = true;
@@ -61,6 +63,7 @@ namespace Demo
                     }
                 }
             }
+
             return dp[m, n];
         }
     }

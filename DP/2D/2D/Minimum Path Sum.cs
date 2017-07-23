@@ -80,13 +80,12 @@ namespace Demo
             }
 
             int[] dp = new int[n];
-
             for (int i = 0; i < n; i++)
             {
                 dp[i] = int.MaxValue;
             }
-            dp[n - 1] = 0;
 
+            dp[n - 1] = 0;
             for (int r = m - 1; r >= 0; r--)
             {
                 var cur = new int[n];
@@ -101,6 +100,7 @@ namespace Demo
                         cur[c] = Math.Min(cur[c + 1], dp[c]) + grid[r, c];
                     }
                 }
+
                 dp = cur;
             }
 

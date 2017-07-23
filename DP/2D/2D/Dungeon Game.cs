@@ -47,11 +47,13 @@ namespace Demo
             {
                 dp[i] = int.MinValue;
             }
+
             dp[n-1] = 0;
             dp[n] = int.MinValue;
             for (int i = m - 1; i >= 0; i--)
             {
                 var newrow = new int[n + 1];
+
                 // block the right wall
                 newrow[n] = int.MinValue;
                 for (int j = n - 1; j >= 0; j--)
@@ -61,8 +63,10 @@ namespace Demo
                     {
                         need = 0;
                     }
+
                     newrow[j] = need + dungeon[i, j];
                 }
+
                 dp = newrow;
             }
 

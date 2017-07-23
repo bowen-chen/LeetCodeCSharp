@@ -29,6 +29,7 @@ namespace Demo
             {
                 dp[i] = dp[i >> 1] + (i & 1);
             }
+
             return dp;
         }
     }

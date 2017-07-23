@@ -243,11 +243,11 @@
     <Compile Include="DP\1D\Wiggle Subsequence.cs" />
     <Compile Include="DP\1D\Word Break.cs" />
     <Compile Include="DP\1D\Word Break_II.cs" />
-    <Compile Include="DP\2D\1D+1D\Burst Balloons.cs" />
+    <Compile Include="DP\2D\1D+1D\Step\Burst Balloons.cs" />
     <Compile Include="DP\2D\1D+1D\Distinct Subsequences.cs" />
     <Compile Include="DP\2D\1D+1D\Edit Distance - One Edit Distance.cs" />
     <Compile Include="DP\2D\1D+1D\Edit Distance.cs" />
-    <Compile Include="DP\2D\1D+1D\Encode String with Shortest Length.cs" />
+    <Compile Include="DP\2D\1D+1D\Step\Encode String with Shortest Length.cs" />
     <Compile Include="DP\2D\1D+1D\Freedom Trail.cs" />
     <Compile Include="DP\2D\1D+1D\Interleaving String.cs" />
     <Compile Include="DP\2D\1D+1D\Longest Palindromic Subsequence.cs" />

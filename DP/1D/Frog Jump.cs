@@ -40,12 +40,13 @@ namespace Demo
     {
         public bool CanCross(int[] stones)
         {
-            // bfs
+            // bfs, steps at stones[i]
             var dp = new Dictionary<int, HashSet<int>>();
             foreach (int s in stones)
             {
                 dp[s] = new HashSet<int>();
             }
+
             dp[0].Add(1);
             foreach (int s in stones)
             {
@@ -57,6 +58,7 @@ namespace Demo
                         return true;
                     }
 
+                    // make sure reach is a stone
                     if (dp.ContainsKey(reach))
                     {
                         dp[reach].Add(step+1);

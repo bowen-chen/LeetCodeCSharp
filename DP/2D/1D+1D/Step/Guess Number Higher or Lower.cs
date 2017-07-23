@@ -27,7 +27,7 @@ namespace Demo
         // Forward declaration of guess API.
         // @param num, your guess
         // @return -1 if my number is lower, 1 if my number is higher, otherwise return 0
-        public int GuessNumber(int n, Func<int, int> guess )
+        public int GuessNumber(int n, Func<int, int> guess)
         {
             int low = 1;
             int high = n;
@@ -35,10 +35,22 @@ namespace Demo
             {
                 int mid = low + (high - low)/2;
                 int t = guess(mid);
-                if (t == 0) return mid;
-                if (t == 1) low = mid +1;
-                else high = mid-1;
+
+                if (t == 0)
+                {
+                    return mid;
+                }
+
+                if (t == 1)
+                {
+                    low = mid + 1;
+                }
+                else
+                {
+                    high = mid - 1;
+                }
             }
+
             return low;
         }
     }

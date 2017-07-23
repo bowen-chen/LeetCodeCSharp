@@ -53,6 +53,7 @@ namespace Demo
                     }
                 }
             }
+
             return dp[m, n];
         }
 
@@ -81,9 +82,11 @@ namespace Demo
                     {
                         dp[i] = Math.Min(pre + 1, Math.Min(dp[i] + 1, dp[i - 1] + 1));
                     }
+
                     pre = temp;
                 }
             }
+
             return dp[m];
         }
     }

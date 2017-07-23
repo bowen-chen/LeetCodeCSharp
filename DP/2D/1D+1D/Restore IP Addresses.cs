@@ -46,6 +46,7 @@ namespace Demo
                         {
                             dp[i + 1, 0].Add(tmp);
                         }
+
                         dp[i + 1, 1].AddRange(dp[j, 0].Select(p => p + tmp));
                         dp[i + 1, 2].AddRange(dp[j, 1].Select(p => p + tmp));
                         dp[i + 1, 3].AddRange(dp[j, 2].Select(p => p + tmp));
