@@ -73,6 +73,7 @@ namespace Demo
                     dists[i, j] =  Tuple.Create(int.MaxValue, "");
                 }
             }
+
             var dirs = new[] { new[] { 0, -1 }, new[] { -1, 0 }, new[] { 0, 1 }, new[] { 1, 0 } };
             var ways = new[] {'l', 'u', 'r', 'd'};
             var q = new Queue<int[]>();
@@ -101,8 +102,8 @@ namespace Demo
                         y -= dir[1];
                         dist--;
                     }
-                    path +=ways[i];
 
+                    path +=ways[i];
                     if (dist < dists[x, y].Item1 || path.CompareTo(dists[x, y].Item2) < 0)
                     {
                         dists[x, y] = Tuple.Create(dist, path);
@@ -113,6 +114,7 @@ namespace Demo
                     }
                 }
             }
+
             var res = dists[hole[0], hole[1]];
             return (res.Item1 == int.MaxValue) ? "impossible" : res.Item2;
         }

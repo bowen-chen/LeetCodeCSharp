@@ -42,7 +42,7 @@ namespace Demo
                 var path = queue.Dequeue();
                 if (path == null)
                 {
-                    if (ret.Count >0)
+                    if (ret.Count > 0)
                     {
                         break;
                     }
@@ -65,18 +65,17 @@ namespace Demo
                         wordinlevel.Add(child);
                         var newpath = new List<string>(path);
                         newpath.Add(child);
-                        if (child.Equals(endWord))
+                        if (child == endWord)
                         {
                             ret.Add(newpath);
                             break;
                         }
-                        else
-                        {
+
                             queue.Enqueue(newpath);
                         }
-                    }
                 }
             }
+
             return ret;
         }
     };

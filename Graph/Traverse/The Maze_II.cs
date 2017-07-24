@@ -108,6 +108,7 @@ namespace Demo
                     }
                 }
             }
+
             int res = dists[destination[0], destination[1]];
             return (res == int.MaxValue) ? -1 : res;
         }

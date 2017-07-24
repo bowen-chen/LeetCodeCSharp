@@ -52,14 +52,16 @@ namespace Demo
                     foreach (string s in FindChild(n, wordDic))
                     {
                         wordDic.Remove(s);
-                        if (s.Equals(endWord))
+                        if (s == endWord)
                         {
                             return level+1;
                         }
+
                         queue.Enqueue(s);
                     }
                 }
             }
+
             return 0;
         }
 
@@ -67,7 +69,6 @@ namespace Demo
         {
             List<string> ret = new List<string>();
             char[] wordChar = n.ToCharArray();
-
             for (int i = 0; i < n.Length; i++)
             {
                 char saved = wordChar[i];
@@ -80,8 +81,10 @@ namespace Demo
                         ret.Add(str);
                     }
                 }
+
                 wordChar[i] = saved;
             }
+
             return ret;
         }
     }

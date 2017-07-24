@@ -43,6 +43,7 @@ Note:
 */
 
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Demo
 {
@@ -73,30 +74,31 @@ namespace Demo
                 }
             }
             
-            List<int> leaves = new List<int>();
+            var q = new Queue<int>();
             for (int i = 0; i < n; ++i)
             {
                 if (adj[i].Count == 1)
                 {
-                    leaves.Add(i);
+                    q.Enqueue(i);
                 }
             }
 
             while (n > 2)
             {
-                n -= leaves.Count;
-                leaves.Clear();
-                foreach (int i in leaves)
+                n -= q.Count;
+                int size = q.Count;
+                for (int i = 0; i < size; i++)
                 {
                     int j = adj[i][0];
                     adj[j].Remove(i);
                     if (adj[j].Count == 1)
                     {
-                        leaves.Add(j);
+                        q.Enqueue(j);
                     }
                 }
             }
-            return leaves;
+
+            return q.ToList();
         }
     }
 }

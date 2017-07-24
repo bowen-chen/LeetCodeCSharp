@@ -14,7 +14,9 @@ namespace Demo
     {
         public int MaxArea(int[] height)
         {
-            int len = height.Length, low = 0, high = len - 1;
+            int len = height.Length;
+            int low = 0;
+            int high = len - 1;
             int maxArea = 0;
             while (low < high)
             {
@@ -29,6 +31,7 @@ namespace Demo
                     high--;
                 }
             }
+
             return maxArea;
         }
     }

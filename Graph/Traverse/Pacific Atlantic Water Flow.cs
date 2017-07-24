@@ -38,10 +38,13 @@ namespace Demo
             int m = matrix.GetLength(0);
             int n = matrix.GetLength(1);
             var res = new List<int[]>();
-            if (m == 0 || n == 0) return res;
+            if (m == 0 || n == 0)
+            {
+                return res;
+            }
+
             var pacific = new bool[m, n];
             var atlantic = new bool[m, n];
-
             for (int i = 0; i < m; ++i)
             {
                 PacificAtlantic(matrix, pacific, int.MinValue, i, 0);
@@ -64,6 +67,7 @@ namespace Demo
                     }
                 }
             }
+
             return res;
         }
 
@@ -71,7 +75,11 @@ namespace Demo
         {
             int m = matrix.GetLength(0);
             int n = matrix.GetLength(1);
-            if (i < 0 || i >= m || j < 0 || j >= n || visited[i, j] || matrix[i, j] < pre) return;
+            if (i < 0 || i >= m || j < 0 || j >= n || visited[i, j] || matrix[i, j] < pre)
+            {
+                return;
+            }
+
             visited[i, j] = true;
             PacificAtlantic(matrix, visited, matrix[i, j], i + 1, j);
             PacificAtlantic(matrix, visited, matrix[i, j], i - 1, j);

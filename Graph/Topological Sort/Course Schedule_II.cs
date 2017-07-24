@@ -47,6 +47,7 @@ namespace Demo
                 {
                     indegree[ready]++; //duplicate case
                 }
+
                 matrix[pre, ready] = 1;
             }
             

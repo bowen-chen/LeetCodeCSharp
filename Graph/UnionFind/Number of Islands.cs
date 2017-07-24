@@ -20,6 +20,7 @@ Example 2:
 Answer: 3
 */
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 
 namespace Demo
@@ -52,10 +53,10 @@ namespace Demo
                             }
                         }
                     }
-                    
                 }
             }
-            return uf.Count - (m * n - i );
+
+            return uf.Count - (m * n - i);
         }
 
         public int NumIslands2(char[,] grid)
@@ -64,43 +65,36 @@ namespace Demo
             int m = grid.GetLength(0);
             int n = grid.GetLength(1);
             var visited = new bool[m,n];
-            var q = new Queue<Tuple<int, int>>();
-            for (int i = 0; i <m; i++)
+            var q = new Queue<int[]>();
+
+            var dirs = new[] { new[] { 0, -1 }, new[] { -1, 0 }, new[] { 0, 1 }, new[] { 1, 0 } };
+            for (int i = 0; i < m; i++)
             {
-                for (int j = 0; j <n; j++)
+                for (int j = 0; j < n; j++)
                 {
                     if (grid[i, j] == '1' && !visited[i, j])
                     {
                         ret++;
                         visited[i, j] = true;
-                        q.Enqueue(Tuple.Create(i,j));
+                        q.Enqueue(new[] {i, j});
                         while (q.Count != 0)
                         {
                             var t = q.Dequeue();
-                            if (t.Item1 - 1 >= 0 && grid[t.Item1 - 1, t.Item2] == '1' && !visited[t.Item1 - 1, t.Item2])
+                            foreach (var dir in dirs)
                             {
-                                visited[t.Item1 - 1, t.Item2] = true;
-                                q.Enqueue(Tuple.Create(t.Item1 - 1, t.Item2));
-                            }
-                            if (t.Item2 - 1 >= 0 && grid[t.Item1, t.Item2 - 1] == '1' && !visited[t.Item1, t.Item2 - 1])
-                            {
-                                visited[t.Item1, t.Item2-1] = true;
-                                q.Enqueue(Tuple.Create(t.Item1, t.Item2 - 1));
-                            }
-                            if (t.Item1 + 1 <m && grid[t.Item1 + 1, t.Item2] == '1' && !visited[t.Item1 + 1, t.Item2])
-                            {
-                                visited[t.Item1 + 1, t.Item2] = true;
-                                q.Enqueue(Tuple.Create(t.Item1 + 1, t.Item2));
-                            }
-                            if (t.Item2 + 1 < n && grid[t.Item1, t.Item2 + 1] == '1' && !visited[t.Item1, t.Item2 + 1])
-                            {
-                                visited[t.Item1, t.Item2 + 1] = true;
-                                q.Enqueue(Tuple.Create(t.Item1, t.Item2 + 1));
+                                int x = t[0] + dir[0];
+                                int y = t[1] + dir[1];
+                                if (x >= 0 && x < m && y >= 0 && y < n && grid[x, y] == '1' && !visited[x, y])
+                                {
+                                    visited[x, y] = true;
+                                    q.Enqueue(new[] {x, y});
+                                }
                             }
                         }
                     }
                 }
             }
+
             return ret;
         }
     }

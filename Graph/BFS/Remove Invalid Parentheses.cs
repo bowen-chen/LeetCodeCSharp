@@ -30,11 +30,12 @@ namespace Demo
                 var ss = q.Dequeue();
                 if (ss == null)
                 {
-                    // all valid string should be on same level
+                    // !!! all valid string should be on same level
                     if (ret.Count > 0)
                     {
                         break;
                     }
+
                     if (q.Count > 0)
                     {
                         q.Enqueue(null);
@@ -60,6 +61,7 @@ namespace Demo
                     }
                 }
             }
+
             return ret;
         }
 

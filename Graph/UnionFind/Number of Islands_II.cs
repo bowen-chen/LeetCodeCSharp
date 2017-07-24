@@ -39,9 +39,9 @@ namespace Demo
 {
     public partial class Solution
     {
-        private static readonly int[][] dirs = {new[] {0, 1}, new[] {0, -1}, new[] {-1, 0}, new[] {1, 0}};
         public List<int> NumIslands2(int m, int n, int[,] positions)
         {
+            var dirs = new[] {new[] {0, 1}, new[] {0, -1}, new[] {-1, 0}, new[] {1, 0}};
             var uf = new UnionFind(m * n);
             var ret = new List<int>();
             var map = new int[m, n];
@@ -60,8 +60,9 @@ namespace Demo
                         uf.Union(key, key2);
                     }
                 }
-                ret.Add(i + 1 - (m * n - uf.Count));
+                ret.Add(uf.Count - (m*n - (i + 1)));
             }
+
             return ret;
         }
     }

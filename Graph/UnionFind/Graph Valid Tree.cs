@@ -32,6 +32,7 @@ namespace Demo
                     return false;
                 }
             }
+
             return uf.Count == 1;
         }
     }

@@ -34,18 +34,19 @@ namespace Demo
         {
             int m = rooms.GetLength(0);
             int n = rooms.GetLength(1);
-            var q = new Queue<Tuple<int, int>>();
+            var q = new Queue<int[]>();
             for (int i = 0; i < m; i++)
             {
                 for (int j = 0; j < n; j++)
                 {
                     if (rooms[i, j] == 0)
                     {
-                        q.Enqueue(Tuple.Create(i, j));
+                        q.Enqueue(new[] {i, j});
                         q.Enqueue(null);
                     }
                 }
             }
+
             int d = 1;
             var dirs = new[] { new[] { 0, 1 }, new[] { 0, -1 }, new[] { 1, 0 }, new[] { -1, 0 } };
             while (q.Count != 0)
@@ -61,8 +62,8 @@ namespace Demo
                 }
                 else
                 {
-                    int i = p.Item1;
-                    int j = p.Item2;
+                    int i = p[0];
+                    int j = p[1];
 
                     foreach (var dir in dirs) {
                         int x = i + dir[0];
@@ -71,7 +72,7 @@ namespace Demo
                         // INF is int.Max
                         if (x >= 0 && x < m && y >= 0 && y < n && rooms[x, y] == int.MaxValue)
                         {
-                            q.Enqueue(Tuple.Create(x, y));
+                            q.Enqueue(new[] {x, y});
                             rooms[x, y] = d;
                         }
                     }

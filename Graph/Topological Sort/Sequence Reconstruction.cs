@@ -59,11 +59,13 @@ namespace Demo
                 {
                     i.Add(s[0], 0);
                 }
+
                 if (!o.ContainsKey(s[0]))
                 {
                     o.Add(s[0], new HashSet<int>());
                 }
 
+                // dedup
                 if (!o[s[0]].Contains(s[1]))
                 {
                     o[s[0]].Add(s[1]);
@@ -80,7 +82,7 @@ namespace Demo
             int index = 0;
             while (q.Count != 0)
             {
-                // only one possible char
+                // should be only one possible char
                 if (q.Count != 1)
                 {
                     return false;

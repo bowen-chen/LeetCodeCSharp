@@ -233,7 +233,7 @@
     <Compile Include="DP\1D\Repeated Substring Pattern.cs" />
     <Compile Include="DP\2D\1D+1D\Restore IP Addresses.cs" />
     <Compile Include="DP\1D\Russian Doll Envelopes.cs" />
-    <Compile Include="DP\2D\1D+1D\Split Array Largest Sum.cs" />
+    <Compile Include="DP\2D\1D+1D\Step\Split Array Largest Sum.cs" />
     <Compile Include="DP\1D\Student Attendance Record I.cs" />
     <Compile Include="DP\1D\Student Attendance Record II.cs" />
     <Compile Include="DP\1D\Target Sum.cs" />
@@ -257,8 +257,8 @@
     <Compile Include="DP\2D\1D+1D\Regular Expression Matching.cs" />
     <Compile Include="DP\2D\1D+1D\Wildcard Matching.cs" />
     <Compile Include="DP\2D\2D\Dungeon Game.cs" />
-    <Compile Include="DP\2D\1D+1D\Guess Number Higher or Lower.cs" />
-    <Compile Include="DP\2D\1D+1D\Guess Number Higher or Lower_II.cs" />
+    <Compile Include="DP\2D\1D+1D\Step\Guess Number Higher or Lower.cs" />
+    <Compile Include="DP\2D\1D+1D\Step\Guess Number Higher or Lower_II.cs" />
     <Compile Include="DP\2D\2D\Longest Increasing Path in a Matrix.cs" />
     <Compile Include="DP\2D\2D\Maximal Square.cs" />
     <Compile Include="DP\2D\2D\Minimum Path Sum.cs" />

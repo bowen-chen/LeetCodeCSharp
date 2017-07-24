@@ -20,7 +20,6 @@ X X X X
 X O X X
 */
 
-using System;
 using System.Collections.Generic;
 
 namespace Demo
@@ -79,31 +78,13 @@ namespace Demo
 
             for (int i = 0; i < m; i++)
             {
-                if (board[i, 0] == 'O')
+                for (int j = 0; j < n; j++)
                 {
-                    q.Enqueue(new[] { i, 0 });
-                    board[i, 0] = 'C';
-                }
-
-                if (board[i, n - 1] == 'O')
-                {
-                    q.Enqueue(new[] { i, n - 1 });
-                    board[i, n - 1] = 'C';
-                }
-            }
-
-            for (int j = 0; j < n; j++)
-            {
-                if (board[0, j] == 'O')
-                {
-                    q.Enqueue(new[] { 0, j });
-                    board[0, j] = 'C';
-                }
-
-                if (board[m - 1, j] == 'O')
-                {
-                    q.Enqueue(new[] { m - 1, j });
-                    board[m - 1, j] = 'C';
+                    if ((i == 0 || i == m - 1 || j == 0 || j == n - 1) && board[i, j] == 'O')
+                    {
+                        q.Enqueue(new[] { i, j });
+                        board[i, j] = 'C';
+                    }
                 }
             }
 

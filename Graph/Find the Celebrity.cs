@@ -32,21 +32,28 @@ namespace Demo
             {
                 candidates.Push(i);
             }
+
             while (candidates.Count >= 2)
             {
                 int a = candidates.Pop();
                 int b = candidates.Pop();
-                if (Knows(a, b)) candidates.Push(b);
-                else candidates.Push(a);
+                candidates.Push(Knows(a, b) ? b : a);
             }
 
             int c = candidates.Pop();
             for (int i = 0; i < n; i++)
             {
-                if (i == c) continue;
+                if (i == c)
+                {
+                    continue;
+                }
+
                 if (Knows(c, i) || !Knows(i, c))
+                {
                     return -1;
+                }
             }
+
             return c;
         }
 
@@ -60,17 +67,20 @@ namespace Demo
                     c = i;
                 }
             }
+
             for (int i = 0; i < n; i++)
             {
                 if (i == c)
                 {
                     continue;
                 }
+
                 if (!Knows(i, c) || Knows(c, i))
                 {
                     return -1;
                 }
             }
+
             return c;
         }
     }

@@ -35,8 +35,7 @@ namespace Demo
         {
             if (grid == null) return 0;
 
-            // nb
-            var shift = new[] {0, 1, 0, -1, 0};
+            var dirs = new[] { new[] { 0, -1 }, new[] { -1, 0 }, new[] { 0, 1 }, new[] { 1, 0 } };
 
             int row = grid.GetLength(0), col = grid.GetLength(1);
             int[,] distance = new int[row, col];
@@ -56,7 +55,6 @@ namespace Demo
 
                         bool[,] isVisited = new bool[row, col];
                         int level = 1;
-
                         while (q.Count != 0)
                         {
                             int[] curr = q.Dequeue();
@@ -70,11 +68,10 @@ namespace Demo
                             }
                             else
                             {
-                                for (int k = 0; k < 4; k++)
+                                foreach (var dir in dirs)
                                 {
-                                    int nextRow = curr[0] + shift[k];
-                                    int nextCol = curr[1] + shift[k + 1];
-
+                                    int nextRow = curr[0] + dir[0];
+                                    int nextCol = curr[1] + dir[1];
                                     if (nextRow >= 0 && nextRow < row && nextCol >= 0 && nextCol < col
                                         && grid[nextRow, nextCol] == 0 && !isVisited[nextRow, nextCol])
                                     {

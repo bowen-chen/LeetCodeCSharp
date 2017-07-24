@@ -39,8 +39,9 @@ namespace Demo
             var q = new PriorityQueue<Tuple<int, int>>(
                 16, Comparer<Tuple<int, int>>.Create((p1, p2) => p2.Item1 - p1.Item1));
             var visited = new HashSet<int>();
-
             var dirs = new[] {new[] {0, -1}, new[] {-1, 0}, new[] {0, 1}, new[] {1, 0}};
+
+            // enqueue all boundaries
             for (int i = 0; i < m; ++i)
             {
                 for (int j = 0; j < n; ++j)
@@ -62,20 +63,24 @@ namespace Demo
                 waterLevel = Math.Max(waterLevel, h);
                 foreach (var dir in dirs)
                 {
-                    int x = r + dir[0], y = c + dir[1];
-                    if (x < 0 || x >= m || y < 0 || y >= n || visited.Contains(x*n + y))
+                    int x = r + dir[0];
+                    int y = c + dir[1];
+                    int z = x*n + y;
+                    if (x < 0 || x >= m || y < 0 || y >= n || visited.Contains(z))
                     {
                         continue;
                     }
-                    visited.Add(x*n + y);
+
+                    visited.Add(z);
                     if (heightMap[x, y] < waterLevel)
                     {
                         res += waterLevel - heightMap[x, y];
                     }
 
-                    q.Push(Tuple.Create(heightMap[x, y], x*n + y));
+                    q.Push(Tuple.Create(heightMap[x, y], z));
                 }
             }
+
             return res;
         }
     }

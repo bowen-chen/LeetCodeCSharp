@@ -31,25 +31,21 @@ namespace Demo
             var res = new double[queries.GetLength(0)];
             for (int i = 0; i < queries.GetLength(0); i++)
             {
+                // when a/b, do traverse
                 if (queries[i, 0] != queries[i, 1])
                 {
                     res[i] = CalcEquation(equations, values, queries, i);
                 }
-                else
+                else // when a/a, check if a is in equations
                 {
-                    bool found = false;
+                    res[i] = -1.0f;
                     foreach (var q in equations)
                     {
-                        if (q == queries[i, 0])
+                        if (q == queries[i, 0] || q == queries[i, 1])
                         {
-                            found = true;
                             res[i] = 1.0f;
+                            break;
                         }
-                    }
-
-                    if (!found)
-                    {
-                        res[i] = -1.0f;
                     }
                 }
             }
@@ -59,7 +55,11 @@ namespace Demo
 
         private double CalcEquation(string[,] equations, double[] values, string[,] queries, int i)
         {
-            var visited = new HashSet<string> {queries[i, 0]};
+            var visited = new HashSet<string>
+            {
+                queries[i, 0]
+            };
+
             var q = new Queue<Tuple<string, double>>();
             q.Enqueue(Tuple.Create(queries[i, 0], 1.0d));
             while (q.Count != 0)

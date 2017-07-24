@@ -50,6 +50,7 @@ namespace Demo
                 {
                     indegree[ready]++; //duplicate case
                 }
+
                 matrix[pre, ready] = 1;
             }
 
@@ -57,14 +58,16 @@ namespace Demo
             Queue<int> queue = new Queue<int>();
             for (int i = 0; i < indegree.Length; i++)
             {
-                if (indegree[i] == 0) queue.Enqueue(i);
+                if (indegree[i] == 0)
+                {
+                    queue.Enqueue(i);
+                }
             }
 
             while (queue.Count != 0)
             {
                 int course = queue.Dequeue();
                 count++;
-
                 for (int i = 0; i < numCourses; i++)
                 {
                     if (matrix[course, i] != 0)
@@ -78,49 +81,6 @@ namespace Demo
             }
 
             return count == numCourses;
-        }
-
-        public bool CanFinish2(int numCourses, int[,] prerequisites)
-        {
-            List<int>[] graph = new List<int>[numCourses];
-            for (int i = 0; i < numCourses; i++)
-            {
-                graph[i] = new List<int>();
-            }
-
-            bool[] visited = new bool[numCourses];
-            for (int i = 0; i < prerequisites.Length; i++)
-            {
-                graph[prerequisites[i, 1]].Add(prerequisites[i, 0]);
-            }
-
-            for (int i = 0; i < numCourses; i++)
-            {
-                if (!CanFinish2(graph, visited, i))
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        private bool CanFinish2(List<int>[] graph, bool[] visited, int course)
-        {
-            if (visited[course])
-            {
-                return false;
-            }
-
-            visited[course] = true;
-            for (int i = 0; i < graph[course].Count; i++)
-            {
-                if (!CanFinish2(graph, visited, graph[course][i]))
-                {
-                    return false;
-                }
-            }
-            visited[course] = false;
-            return true;
         }
     }
 }

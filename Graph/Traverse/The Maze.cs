@@ -59,7 +59,11 @@ namespace Demo
         {
             int m = maze.GetLength(0);
             int n = maze.GetLength(1);
-            if (m == 0 || n == 0) return true;
+            if (m == 0 || n == 0)
+            {
+                return true;
+            }
+
             if (start[0] == destination[0] && start[1] == destination[1])
             {
                 return true;

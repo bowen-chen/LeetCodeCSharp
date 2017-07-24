@@ -30,6 +30,7 @@ namespace Demo
             {
                 uf.Union(edges[0, 0], edges[1, 1]);
             }
+
             return uf.Count;
         }
     }

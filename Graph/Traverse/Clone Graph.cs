@@ -39,6 +39,7 @@ namespace Demo
             }
 
             Dictionary<int, UndirectedGraphNode> m = new Dictionary<int, UndirectedGraphNode>();
+
             UndirectedGraphNode ret = new UndirectedGraphNode(node.label);
             m.Add(ret.label, ret);
             Queue<UndirectedGraphNode> q = new Queue<UndirectedGraphNode>();
@@ -63,6 +64,7 @@ namespace Demo
                     }
                 }
             }
+
             return ret;
         }
     }

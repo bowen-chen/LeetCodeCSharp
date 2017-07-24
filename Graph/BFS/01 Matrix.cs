@@ -57,6 +57,7 @@ namespace Demo
                     }
                 }
             }
+
             while (q.Count != 0)
             {
                 var t = q.Dequeue();
@@ -68,6 +69,7 @@ namespace Demo
                     {
                         continue;
                     }
+
                     if (matrix[x, y] == int.MaxValue)
                     {
                         q.Enqueue(new[] {x, y});
@@ -76,6 +78,7 @@ namespace Demo
                     matrix[x, y] = Math.Min(matrix[x, y], matrix[t[0], t[1]] + 1);
                 }
             }
+
             return matrix;
         }
     }

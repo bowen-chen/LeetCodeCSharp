@@ -11,6 +11,7 @@
             {
                 parent[i] = i;
             }
+
             Count = size;
         }
 
@@ -18,6 +19,7 @@
         {
             int src = Find(m);
             int dst = Find(n);
+
             //union
             if (src != dst)
             {
@@ -33,9 +35,11 @@
         {
             while (x != parent[x])
             {
+                // flatten the tree
                 parent[x] = parent[parent[x]];
                 x = parent[x];
             }
+
             return x;
         }
 

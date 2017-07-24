@@ -67,11 +67,13 @@ namespace Demo
                         {
                             return true;
                         }
+
                         usedTicket.Remove(i);
                         ret.RemoveAt(ret.Count - 1);
                     }
                 }
             }
+
             return false;
         }
     }
