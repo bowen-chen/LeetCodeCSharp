@@ -6,7 +6,7 @@ namespace Demo.Common
     // big heap
     public class PriorityQueue<T>
     {
-        IComparer<T> comparer;
+        readonly IComparer<T> comparer;
         T[] heap;
 
         public int Count { get; private set; }

@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Array\Sliding Window\Smallest Range.cs" />
     <Compile Include="Array\String\Add Bold Tag in String.cs" />
     <Compile Include="Array\Can Place Flowers.cs" />
     <Compile Include="Array\LowHigh\Valid Triangle Number.cs" />
@@ -54,14 +55,23 @@
     <Compile Include="Array\Sort\Count of Range Sum.cs" />
     <Compile Include="Count The Repetitions.cs" />
     <Compile Include="Array\Maximum Number\Create Maximum Number.cs" />
+    <Compile Include="DP\1D\Decode Ways II.cs" />
+    <Compile Include="DP\1D\Find the Derangement of An Array.cs" />
     <Compile Include="DP\1D\Non-negative Integers without Consecutive Ones.cs" />
+    <Compile Include="DP\2D\1D+1D\K Inverse Pairs Array.cs" />
     <Compile Include="Erect the Fence.cs" />
+    <Compile Include="Graph\Topological Sort\Course Schedule III.cs" />
+    <Compile Include="Hash Table\Design Log Storage System.cs" />
     <Compile Include="Hash Table\Find Duplicate File in System.cs" />
     <Compile Include="Hash Table\Longest Harmonious Subsequence.cs" />
     <Compile Include="Hash Table\Minimum Index Sum of Two Lists.cs" />
     <Compile Include="Hash Table\Task Scheduler.cs" />
     <Compile Include="Hash Table\Valid Square.cs" />
     <Compile Include="Math\Fraction Addition and Subtraction.cs" />
+    <Compile Include="Math\Maximum Product of Three Numbers.cs" />
+    <Compile Include="Math\Minimum Factorization.cs" />
+    <Compile Include="Math\Sum of Square Numbers.cs" />
+    <Compile Include="Math\X Base\Design Excel Sum Formula.cs" />
     <Compile Include="Minimum Unique Word Abbreviation.cs" />
     <Compile Include="Array\Iterator\Design Compressed String Iterator.cs" />
     <Compile Include="Program.cs" />
@@ -71,6 +81,7 @@
     <Compile Include="Array\Assign Cookies.cs" />
     <Compile Include="Array\Meet Median\Best Meeting Point.cs" />
     <Compile Include="Array\Compare Version Numbers.cs" />
+    <Compile Include="Recursion\ChooseYN\Shopping Offers.cs" />
     <Compile Include="Stack\Decode String.cs" />
     <Compile Include="Array\Design Tic-Tac-Toe.cs" />
     <Compile Include="Array\String\Detect Capital.cs" />
@@ -90,7 +101,9 @@
     <Compile Include="Array\String\Subsequence\Longest Uncommon Subsequence I.cs" />
     <Compile Include="Array\String\Subsequence\Longest Uncommon Subsequence II.cs" />
     <Compile Include="Array\String\Subsequence\Longest Word in Dictionary through Deleting.cs" />
+    <Compile Include="Stack\Exclusive Time of Functions.cs" />
     <Compile Include="Stack\Tag Validator.cs" />
+    <Compile Include="Tree\BFS\Average of Levels in Binary Tree.cs" />
     <Compile Include="Tree\BFS\Magical String.cs" />
     <Compile Include="Array\Sliding Window\Max Consecutive Ones.cs" />
     <Compile Include="Array\Sliding Window\Max Consecutive Ones_II .cs" />

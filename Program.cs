@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
 namespace Demo
@@ -7,7 +8,7 @@ namespace Demo
     {
         static void Main()
         {
-            Console.WriteLine(new Solution().GetMoneyAmount(2));
+        Console.WriteLine(new Solution().NumDecodings21("2839"));
         }
     }
 }
