@@ -44,13 +44,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Array Nesting.cs" />
+    <Compile Include="Array\Sliding Window\Maximum Average Subarray I.cs" />
     <Compile Include="Array\Sliding Window\Smallest Range.cs" />
     <Compile Include="Array\String\Add Bold Tag in String.cs" />
     <Compile Include="Array\Can Place Flowers.cs" />
     <Compile Include="Array\LowHigh\Valid Triangle Number.cs" />
     <Compile Include="Array\Maximum Distance in Arrays.cs" />
     <Compile Include="Array\Range Addition_II.cs" />
+    <Compile Include="Array\String\Solve the Equation.cs" />
     <Compile Include="Common\Counter.cs" />
+    <Compile Include="Convex Polygon.cs" />
     <Compile Include="DP\1D\Count Numbers with Unique Digits.cs" />
     <Compile Include="Array\Sort\Count of Range Sum.cs" />
     <Compile Include="Count The Repetitions.cs" />
@@ -59,6 +63,7 @@
     <Compile Include="DP\1D\Find the Derangement of An Array.cs" />
     <Compile Include="DP\1D\Non-negative Integers without Consecutive Ones.cs" />
     <Compile Include="DP\2D\1D+1D\K Inverse Pairs Array.cs" />
+    <Compile Include="DP\2D\1D+1D\Palindromic Substrings.cs" />
     <Compile Include="Erect the Fence.cs" />
     <Compile Include="Graph\Topological Sort\Course Schedule III.cs" />
     <Compile Include="Hash Table\Design Log Storage System.cs" />
@@ -67,6 +72,7 @@
     <Compile Include="Hash Table\Minimum Index Sum of Two Lists.cs" />
     <Compile Include="Hash Table\Task Scheduler.cs" />
     <Compile Include="Hash Table\Valid Square.cs" />
+    <Compile Include="Largest Palindrome Product.cs" />
     <Compile Include="Math\Fraction Addition and Subtraction.cs" />
     <Compile Include="Math\Maximum Product of Three Numbers.cs" />
     <Compile Include="Math\Minimum Factorization.cs" />
@@ -74,6 +80,9 @@
     <Compile Include="Math\X Base\Design Excel Sum Formula.cs" />
     <Compile Include="Minimum Unique Word Abbreviation.cs" />
     <Compile Include="Array\Iterator\Design Compressed String Iterator.cs" />
+    <Compile Include="Misc\Interval\Maximum Length of Pair Chain.cs" />
+    <Compile Include="Misc\N Number\Set Mismatch.cs" />
+    <Compile Include="Perfect Rectangle.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Array\Maximum Number\Remove K Digits.cs" />
     <Compile Include="Array\Add\Add Strings.cs" />
@@ -82,6 +91,7 @@
     <Compile Include="Array\Meet Median\Best Meeting Point.cs" />
     <Compile Include="Array\Compare Version Numbers.cs" />
     <Compile Include="Recursion\ChooseYN\Shopping Offers.cs" />
+    <Compile Include="Single Element in a Sorted Array.cs" />
     <Compile Include="Stack\Decode String.cs" />
     <Compile Include="Array\Design Tic-Tac-Toe.cs" />
     <Compile Include="Array\String\Detect Capital.cs" />
@@ -538,6 +548,7 @@
     <Compile Include="Tree\DFS\Add One Row to Tree.cs" />
     <Compile Include="Tree\DFS\Construct String from Binary Tree.cs" />
     <Compile Include="Tree\DFS\Merge Two Binary Trees.cs" />
+    <Compile Include="Tree\Trie\Design Search Autocomplete System.cs" />
     <Compile Include="Tree\Verify Preorder Sequence in Binary Search Tree.cs" />
     <Compile Include="Tree\Verify Preorder Serialization of a Binary Tree.cs" />
     <Compile Include="Tree\BFS\Binary Tree Level Order Traversal.cs" />
@@ -617,6 +628,7 @@
     <Compile Include="Tree\Trie\Word Search.cs" />
     <Compile Include="Tree\Trie\Word Search_II.cs" />
     <Compile Include="Tree\Trie\Word Squares.cs" />
+    <Compile Include="Word Abbreviation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

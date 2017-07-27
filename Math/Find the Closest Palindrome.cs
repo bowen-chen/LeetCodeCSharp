@@ -22,13 +22,12 @@ namespace Demo
 {
     public partial class Solution
     {
-        public int NearestPalindromic(int n)
+        public string NearestPalindromic(string n)
         {
             // when n is not palidromic, return mid+rev(mid)
             // when n is palidromic, return (mid-1)+ rev((mid-1))
             // When overflow, 100001 or 99999
-            string sn = n.ToString();
-            var len = sn.Length;
+            var len = n.Length;
 
             // we put all cadicate in s
             var s = new HashSet<string>();
@@ -38,19 +37,20 @@ namespace Demo
                 s.Add(new string(Enumerable.Repeat('9', len  - 1).ToArray()));
             }
 
-            int mid = int.Parse(sn.Substring(0, (len + 1)/2));
+            long mid = long.Parse(n.Substring(0, (len + 1)/2));
             int skip = len%2;
             s.Add(mid + new string(mid.ToString().Reverse().Skip(skip).ToArray()));
             s.Add((mid+1) + new string((mid+1).ToString().Reverse().Skip(skip).ToArray()));
             s.Add((mid-1) + new string((mid-1).ToString().Reverse().Skip(skip).ToArray()));
-            s.Remove(sn);
+            s.Remove(n);
 
-            int res = 0;
-            int diff = Math.Abs(n-res);
+            long res = 0;
+            long number = long.Parse(n);
+            long diff = Math.Abs(number - res);
             foreach (var c in s)
             {
-                int ic = int.Parse(c);
-                int icdiff= Math.Abs(n - ic);
+                long ic = long.Parse(c);
+                long icdiff = Math.Abs(number - ic);
                 if (diff > icdiff)
                 {
                     res = ic;
@@ -61,7 +61,8 @@ namespace Demo
                     res = ic;
                 }
             }
-            return res;
+
+            return res.ToString();
         }
     }
 }

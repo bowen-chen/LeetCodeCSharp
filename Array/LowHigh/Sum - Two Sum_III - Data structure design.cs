@@ -17,7 +17,7 @@ namespace Demo
 {
     public class TwoSum
     {
-        private Dictionary<int, int> map = new Dictionary<int, int>();
+        private readonly Dictionary<int, int> map = new Dictionary<int, int>();
 
         public void Add(int number)
         {

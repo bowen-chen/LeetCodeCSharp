@@ -35,22 +35,23 @@ namespace Demo
                 return 0;
             }
 
-            int p2 = 1;
-            int p1 = PossibleNumber(s[0]);
+            long p2 = 1;
+            long p1 = PossibleNumber(s[0]);
             if (s.Length == 1)
             {
-                return p1;
+                return (int)p1;
             }
 
-            int p = 0;
+            long p = 0;
             for (int i = 1; i < s.Length; i++)
             {
                 p = p2*PossibleNumber(s[i - 1], s[i]) + p1*PossibleNumber(s[i]);
+                p %= 1000000007;
                 p2 = p1;
                 p1 = p;
             }
 
-            return p;
+            return (int)p;
         }
 
         private int PossibleNumber(char c1)
