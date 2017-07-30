@@ -55,6 +55,7 @@ namespace Demo
                 i = nums[i];
                 ++cnt;
             }
+
             return cnt;
         }
     }
