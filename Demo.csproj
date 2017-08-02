@@ -56,6 +56,7 @@
     <Compile Include="Array\Design Snake Game.cs" />
     <Compile Include="Array\Design Tic-Tac-Toe.cs" />
     <Compile Include="Array\Diagonal Traverse.cs" />
+    <Compile Include="Array\Dota2 Senate.cs" />
     <Compile Include="Array\Find Permutation.cs" />
     <Compile Include="Array\Fizz Buzz.cs" />
     <Compile Include="Array\Game of Life.cs" />
@@ -588,6 +589,7 @@
     <Compile Include="Tree\DFS\Convert Sorted Array to Binary Search Tree.cs" />
     <Compile Include="Tree\DFS\Convert Sorted List to Binary Search Tree.cs" />
     <Compile Include="Tree\DFS\Count Complete Tree Nodes.cs" />
+    <Compile Include="Tree\DFS\Find Duplicate Subtrees.cs" />
     <Compile Include="Tree\DFS\Find Mode in Binary Search Tree.cs" />
     <Compile Include="Tree\DFS\Inorder Successor in BST.cs" />
     <Compile Include="Tree\DFS\Invert Binary Tree.cs" />

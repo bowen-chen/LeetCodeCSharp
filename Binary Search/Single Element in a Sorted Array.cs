@@ -23,7 +23,7 @@ namespace Demo
             {
                 int m = (lo + hi)/2;
                 m &= ~1; // round down to even number
-               if (m != n - 1 && nums[m] == nums[m + 1])
+                if (m != n - 1 && nums[m] == nums[m + 1])
                 {
                     lo = m + 2;
                 }
