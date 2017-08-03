@@ -23,30 +23,33 @@ namespace Demo
         public IList<IList<int>> ThreeSum(int[] nums)
         {
             Array.Sort(nums);
+            int n = nums.Length;
             IList<IList<int>> res = new List<IList<int>>();
-            for (int i = 0; i < nums.Length - 2; i++)
+            for (int i = 0; i < n - 2; i++)
             {
                 if (i == 0 || (i > 0 && nums[i] != nums[i - 1])) // skip the same int
                 {
-                    int lo = i + 1, hi = nums.Length - 1, sum = 0 - nums[i];
+                    int lo = i + 1, hi = n - 1;
                     while (lo < hi)
                     {
                         int cur = nums[i] + nums[lo] + nums[hi];
-                        if (cur == sum)
+                        if (cur == 0)
                         {
                             res.Add(new List<int> {nums[i], nums[lo], nums[hi]});
                             while (lo < hi && nums[lo] == nums[lo + 1]) // skip the same int
                             {
                                 lo++;
                             }
+
                             while (lo < hi && nums[hi] == nums[hi - 1]) // skip the same int
                             {
                                 hi--;
                             }
+
                             lo++;
                             hi--;
                         }
-                        else if (nums[lo] + nums[hi] < sum)
+                        else if (nums[lo] + nums[hi] < 0)
                         {
                             lo++;
                         }
@@ -57,6 +60,7 @@ namespace Demo
                     }
                 }
             }
+
             return res;
         }
     }

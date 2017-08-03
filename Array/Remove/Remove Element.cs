@@ -25,6 +25,7 @@ namespace Demo
                     nums[i++] = nums[j];
                 }
             }
+
             return i;
         }
     }

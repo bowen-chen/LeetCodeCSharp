@@ -51,7 +51,11 @@ namespace Demo
 
         public bool hasNext()
         {
-            if (cnt > 0) return true;
+            if (cnt > 0)
+            {
+                return true;
+            }
+
             if (i >= s.Length)
             {
                 return false;

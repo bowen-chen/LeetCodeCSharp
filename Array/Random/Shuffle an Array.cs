@@ -46,11 +46,13 @@ namespace Demo
             for (int i = 0; i < res.Length; ++i)
             {
                 int j = _random.Next(res.Length);
+
                 // 1/res.length chance keep here
                 int t = res[i];
                 res[i] = res[j];
                 res[j] = t;
             }
+
             return res;
         }
     }

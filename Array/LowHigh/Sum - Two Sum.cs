@@ -19,23 +19,7 @@ namespace Demo
 {
     public partial class Solution
     {
-        public int[] TwoSum(int[] nums, int target)
-        {
-            for (int i = 0; i < nums.Length; i++)
-            {
-                int expect = target - nums[i];
-                for (int j = i + 1; j < nums.Length; j++)
-                {
-                    if (expect == nums[j])
-                    {
-                        return new[] {i + 1, j + 1};
-                    }
-                }
-            }
-            return null;
-        }
-
-        public int[] TwoSum2(int[] numbers, int target)
+        public int[] TwoSum(int[] numbers, int target)
         {
             Dictionary<int, int> m = new Dictionary<int, int>();
             for (int i = 0; i < numbers.Length; i++)
@@ -45,8 +29,10 @@ namespace Demo
                 {
                     return new [] {m[expect] + 1, i + 1};
                 }
+
                 m[numbers[i]] = i;
             }
+
             return null;
         }
     }

@@ -48,9 +48,10 @@ namespace Demo
 
                 ++cnt;
             }
+
             return res;
         }
-    };
+    }
 
     /**
      * Your Solution object will be instantiated and called as such:

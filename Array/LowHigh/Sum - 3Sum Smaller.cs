@@ -22,7 +22,8 @@ namespace Demo
         public int ThreeSumSmaller(int[] nums, int target)
         {
             Array.Sort(nums);
-            int n = nums.Length, ret = 0;
+            int n = nums.Length;
+            int ret = 0;
             for (int i = 0; i < n - 2; i++)
             {
                 int low = i + 1, high = n - 1;
@@ -40,6 +41,7 @@ namespace Demo
                     }
                 }
             }
+
             return ret;
         }
     }

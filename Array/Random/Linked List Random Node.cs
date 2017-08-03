@@ -42,8 +42,7 @@ namespace Demo
             ListNode cur = _head;
             while (cur != null)
             {
-                int j = _rd.Next(i);
-                if (j == 0)
+                if (_rd.Next(i) == 0)
                 {
                     res = cur.val;
                 }
@@ -51,6 +50,7 @@ namespace Demo
                 ++i;
                 cur = cur.next;
             }
+
             return res;
         }
     }

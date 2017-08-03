@@ -27,7 +27,7 @@ namespace Demo
             int zero = 0;
             int one = 0;
             int second = nums.Length - 1;
-            while(one<=second)
+            while (one <= second)
             {
                 if (nums[one] == 2)
                 {

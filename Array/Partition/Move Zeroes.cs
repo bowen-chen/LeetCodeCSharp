@@ -24,8 +24,8 @@ namespace Demo
             }
 
             int j = 0;
-            // [0,j) is not zero
-            for (int i = 0; i <= nums.Length; i++)
+            // [0,j) is not zero, [j, i) is zero
+            for (int i = 0; i < nums.Length; i++)
             {
                 if (nums[i] != 0)
                 {

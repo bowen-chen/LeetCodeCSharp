@@ -15,22 +15,22 @@ namespace Demo
     {
         public int ThreeSumClosest(int[] nums, int target)
         {
-            int ret = 0;
             Array.Sort(nums);
-
-            for (int i = 0; i < nums.Length && i < 3; i++)
+            int n = nums.Length;
+            int ret = 0;
+            for (int i = 0; i < n && i < 3; i++)
             {
                 ret += nums[i];
             }
 
-            if (nums.Length <= 3)
+            if (n <= 3)
             {
                 return ret;
             }
 
-            for (int i = 0; i < nums.Length - 2; i++)
+            for (int i = 0; i < n - 2; i++)
             {
-                int lo = i + 1, hi = nums.Length - 1;
+                int lo = i + 1, hi = n - 1;
                 while (lo < hi)
                 {
                     var cur = nums[i] + nums[lo] + nums[hi];
@@ -54,6 +54,7 @@ namespace Demo
                     }
                 }
             }
+
             return ret;
         }
     }

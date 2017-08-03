@@ -1,5 +1,6 @@
 ﻿/*
 644. Maximum Average Subarray II
+hard, revist
 Given an array consisting of n integers, find the contiguous subarray whose length is greater than or equal to k that has the maximum average value. And you need to output the maximum average value.
 
 Example 1:

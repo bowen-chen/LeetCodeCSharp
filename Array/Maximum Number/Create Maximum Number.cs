@@ -44,6 +44,7 @@ namespace Demo
                     res = temp;
                 }
             }
+
             return res;
         }
 
@@ -91,13 +92,17 @@ namespace Demo
                     res.RemoveAt(res.Count-1);
                     --drop;
                 }
+
                 res.Add(num);
             }
+
+            // now if drop is not zero, then list is in descending order
             while (drop != 0 && res.Count != 0)
             {
                 res.RemoveAt(res.Count - 1);
                 --drop;
             }
+
             return res.ToArray();
         }
 
@@ -128,6 +133,7 @@ namespace Demo
                     }
                 }
             }
+
             return res.ToArray();
         }
     }

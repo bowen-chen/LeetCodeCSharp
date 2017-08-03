@@ -40,11 +40,13 @@ namespace Demo
         // small.count >= large.count
         private readonly PriorityQueue<double> small = new PriorityQueue<double>();
         private readonly PriorityQueue<double> large = new PriorityQueue<double>();
+
         // Adds a num into the data structure.
         public void AddNum(double num)
         {
             large.Push(-num);
             small.Push(-large.Pop());
+
             // keep the small as n/2 or n/2 +1
             if (large.Count <= small.Count - 2)
             {

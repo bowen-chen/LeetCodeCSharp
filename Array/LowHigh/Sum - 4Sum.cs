@@ -23,16 +23,17 @@ namespace Demo
         public IList<IList<int>> FourSum(int[] nums, int target)
         {
             Array.Sort(nums);
+            int n = nums.Length;
             IList<IList<int>> res = new List<IList<int>>();
-            for (int i = 0; i <= nums.Length - 3; i++)
+            for (int i = 0; i <= n - 3; i++)
             {
                 if (i == 0 || (i > 0 && nums[i] != nums[i - 1])) // skip the same int
                 {
-                    for (int j = i + 1; j <= nums.Length - 2; j++)
+                    for (int j = i + 1; j <= n - 2; j++)
                     {
                         if (j == i + 1 || (j > i + 1 && nums[j] != nums[j - 1])) // skip the same int
                         {
-                            int lo = j + 1, hi = nums.Length - 1;
+                            int lo = j + 1, hi = n - 1;
                             while (lo < hi)
                             {
                                 int cur = nums[i] + nums[j] + nums[lo] + nums[hi];
@@ -43,10 +44,12 @@ namespace Demo
                                     {
                                         lo++;
                                     }
+
                                     while (lo < hi && nums[hi] == nums[hi - 1]) // skip the same int
                                     {
                                         hi--;
                                     }
+
                                     lo++;
                                     hi--;
                                 }
@@ -63,6 +66,7 @@ namespace Demo
                     }
                 }
             }
+
             return res;
         }
     }

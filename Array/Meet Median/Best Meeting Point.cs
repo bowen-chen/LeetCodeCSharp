@@ -26,11 +26,10 @@ namespace Demo
         // Min(|pi.x - m.x|) + Min(|p2.0 - p1.y|)
         public int MinTotalDistance(int[][] grid)
         {
-            int m = grid.Length, n = grid[0].Length;
+            int m = grid.Length;
+            int n = grid[0].Length;
 
             var ii = new List<int>();
-            var jj = new List<int>();
-
             for (int i = 0; i < m; i++)
             {
                 for (int j = 0; j < n; j++)
@@ -41,6 +40,8 @@ namespace Demo
                     }
                 }
             }
+
+            var jj = new List<int>();
             for (int j = 0; j < n; j++)
             {
                 for (int i = 0; i < m; i++)
@@ -59,12 +60,15 @@ namespace Demo
         // the meeting point is the median
         private int MinTotalDistance(List<int> indexes)
         {
-            int i = 0, j = indexes.Count - 1, sum = 0;
+            int i = 0;
+            int j = indexes.Count - 1;
+            int sum = 0;
 
             while (i < j)
             {
                 sum += indexes[j--] - indexes[i++];
             }
+
             return sum;
         }
     }

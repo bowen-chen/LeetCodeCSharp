@@ -38,6 +38,7 @@ namespace Demo
                     res.RemoveAt(res.Count-1);
                     --k;
                 }
+
                 res.Add(c);
             }
 

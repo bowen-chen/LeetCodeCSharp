@@ -35,11 +35,13 @@ namespace Demo
             {
                 for (int j = 0; j < B.Length; ++j)
                 {
-                    if (!m.ContainsKey(A[i] + B[j]))
+                    int sum = A[i] + B[j];
+                    if (!m.ContainsKey(sum))
                     {
-                        m[A[i] + B[j]] = 0;
+                        m[sum] = 0;
                     }
-                    m[A[i] + B[j]]++;
+
+                    m[sum]++;
                 }
             }
 

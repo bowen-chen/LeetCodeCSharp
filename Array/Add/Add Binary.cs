@@ -15,18 +15,19 @@ namespace Demo
     {
         public string AddBinary(string a, string b)
         {
-            string s = "";
-
-            int c = 0, i = a.Length - 1, j = b.Length - 1;
-            while (i >= 0 || j >= 0 || c == 1)
+            string res = "";
+            int carry = 0;
+            int i = a.Length - 1;
+            int j = b.Length - 1;
+            while (i >= 0 || j >= 0 || carry == 1)
             {
-                c += i >= 0 ? a[i--] - '0' : 0;
-                c += j >= 0 ? b[j--] - '0' : 0;
-                s = (char) (c%2 + '0') + s;
-                c /= 2;
+                carry += i >= 0 ? a[i--] - '0' : 0;
+                carry += j >= 0 ? b[j--] - '0' : 0;
+                res = (char) (carry%2 + '0') + res;
+                carry /= 2;
             }
 
-            return s;
+            return res;
         }
     }
 }

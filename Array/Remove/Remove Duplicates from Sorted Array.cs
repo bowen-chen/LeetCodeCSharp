@@ -21,6 +21,7 @@ namespace Demo
             {
                 return 0;
             }
+
             int pos = 0;
             for (int i = 1; i < nums.Length; i++)
             {
@@ -29,6 +30,7 @@ namespace Demo
                     nums[++pos] = nums[i];
                 }
             }
+
             return pos + 1;
         }
     }

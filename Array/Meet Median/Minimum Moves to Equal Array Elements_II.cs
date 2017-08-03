@@ -18,7 +18,7 @@ Only two moves are needed (remember each move increments or decrements one eleme
 [1,2,3]  =>  [2,2,3]  =>  [2,2,2]
 */
 
-using System.Linq;
+using System;
 
 namespace Demo
 {
@@ -27,8 +27,10 @@ namespace Demo
         public int MinMoves2(int[] nums)
         {
             // meeting point, meet in the median
-            int res = 0, i = 0, j = nums.Length - 1;
-            nums = nums.OrderBy(n=>n).ToArray();
+            Array.Sort(nums);
+            int res = 0;
+            int i = 0;
+            int j = nums.Length - 1;
             while (i < j)
             {
                 res += nums[j--] - nums[i++];

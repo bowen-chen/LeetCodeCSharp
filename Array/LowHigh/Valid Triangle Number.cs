@@ -23,12 +23,14 @@ namespace Demo
         public int TriangleNumber(int[] nums)
         {
             Array.Sort(nums);
+            int n = nums.Length;
+            int count = 0;
 
             // the sum of two short side should be bigger than the long side
-            int count = 0, n = nums.Length;
             for (int i = n - 1; i >= 2; i--)
             {
-                int l = 0, r = i - 1;
+                int l = 0;
+                int r = i - 1;
                 while (l < r)
                 {
                     if (nums[l] + nums[r] > nums[i])
@@ -43,6 +45,7 @@ namespace Demo
                     }
                 }
             }
+
             return count;
         }
     }

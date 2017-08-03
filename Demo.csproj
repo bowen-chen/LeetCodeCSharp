@@ -205,6 +205,8 @@
     <Compile Include="Common\UndirectedGraphNode.cs" />
     <Compile Include="Common\Utility.cs" />
     <Compile Include="DP\1D\132 Pattern.cs" />
+    <Compile Include="DP\1D\2 Keys Keyboard.cs" />
+    <Compile Include="DP\1D\4 Keys Keyboard.cs" />
     <Compile Include="DP\1D\Climbing Stairs.cs" />
     <Compile Include="DP\1D\Coin Change.cs" />
     <Compile Include="DP\1D\Combination Sum IV.cs" />

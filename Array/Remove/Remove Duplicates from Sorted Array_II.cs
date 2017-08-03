@@ -39,6 +39,7 @@ namespace Demo
                     count = 1;
                 }
             }
+
             return pos + 1;
         }
     }

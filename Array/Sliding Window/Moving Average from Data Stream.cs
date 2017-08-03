@@ -29,6 +29,7 @@ namespace Demo
             {
                 sum -= q.Dequeue();
             }
+
             q.Enqueue(val);
             sum += val;
             return sum / q.Count;
