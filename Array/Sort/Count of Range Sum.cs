@@ -22,29 +22,6 @@ namespace Demo
         public int CountRangeSum(int[] nums, int lower, int upper)
         {
             int n = nums.Length;
-            long[] sums = new long[n + 1];
-            for (int i = 0; i < n; ++i)
-            {
-                sums[i + 1] = sums[i] + nums[i];
-            }
-
-            int ans = 0;
-            for (int i = 0; i < n; ++i)
-            {
-                for (int j = i + 1; j <= n; ++j)
-                {
-                    if (sums[j] - sums[i] >= lower && sums[j] - sums[i] <= upper)
-                    {
-                        ans++;
-                    }
-                }
-            }
-            return ans;
-        }
-
-        public int CountRangeSum2(int[] nums, int lower, int upper)
-        {
-            int n = nums.Length;
 
             // sums[0] = 0, to make code simpler
             long[] sums = new long[n + 1];
@@ -67,16 +44,17 @@ namespace Demo
 
             int mid = (start + end) / 2;
             int count = CountWhileMergeSort(sums, start, mid, lower, upper)
-                      + CountWhileMergeSort(sums, mid, end, lower, upper);
+                        + CountWhileMergeSort(sums, mid, end, lower, upper);
            
             // count the number of rang start with i,
+            // end with j, k
             for (int i = start, j = mid, k = mid; i < mid; ++i)
             {
-                while (k < end && sums[k] - sums[i] < lower) k++;
-                while (j < end && sums[j] - sums[i] <= upper) j++;
+                while (j < end && sums[j] - sums[i] < lower) j++;
+                while (k < end && sums[k] - sums[i] <= upper) k++;
 
-                // i can pair wiht [j, k)
-                count += j - k;
+                // i can pair wiht [k, j)
+                count += k - j;
             }
 
             // merge

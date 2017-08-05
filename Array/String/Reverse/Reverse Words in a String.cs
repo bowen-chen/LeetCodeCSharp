@@ -16,8 +16,6 @@ How about multiple spaces between two words?
 Reduce them to a single space in the reversed string.
 */
 
-using System.Text;
-
 namespace Demo
 {
     public partial class Solution

@@ -85,6 +85,7 @@ namespace Demo
                     {
                         removed.Remove(small.Top());
                     }
+
                     small.Pop();
                 }
 
@@ -94,6 +95,7 @@ namespace Demo
                     {
                         removed.Remove(big.Top());
                     }
+
                     big.Pop();
                 }
 
@@ -128,6 +130,7 @@ namespace Demo
                         {
                             removed.Remove(small.Top());
                         }
+
                         small.Pop();
                     }
 
@@ -137,6 +140,7 @@ namespace Demo
                         {
                             removed.Remove(big.Top());
                         }
+
                         big.Pop();
                     }
                 }

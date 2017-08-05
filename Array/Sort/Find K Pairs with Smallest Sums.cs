@@ -63,7 +63,6 @@ namespace Demo
             {
                 var c = q.Pop();
                 ret.Add(new [] {nums1[c[0]], nums2[c[1]]});
-
                 if (c[1] + 1 < nums2.Length)
                 {
                     q.Push(new[] {c[0], c[1] + 1, nums1[c[0]]+nums2[c[1] + 1]});

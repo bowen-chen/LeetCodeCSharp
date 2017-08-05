@@ -20,7 +20,6 @@ For Java users, please note that the input type has been changed to List<List<In
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Demo.Common;
 
 namespace Demo

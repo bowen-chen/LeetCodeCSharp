@@ -39,8 +39,10 @@ namespace Demo
                 {
                     ++j;
                 }
+
                 res = Math.Max(res, Math.Abs(heaters[j] - house));
             }
+
             return res;
         }
     }

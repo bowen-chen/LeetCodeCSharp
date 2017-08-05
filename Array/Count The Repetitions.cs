@@ -1,5 +1,6 @@
 ﻿/*
 466 Count The Repetitions
+revisit
 Define S = [s,n] as the string S which consists of n connected strings s. For example, ["abc", 3] ="abcabcabc".
 
 On the other hand, we define that string s1 can be obtained from string s2 if we can remove some characters from s2 such that it becomes s1. For example, “abc” can be obtained from “abdbec” based on our definition, but it can not be obtained from “acbbe”.
@@ -27,6 +28,7 @@ namespace Demo
             int j = 0, cnt = 0;
             for (int k = 1; k <= n1; ++k)
             {
+                // match 1 more s1
                 for (int i = 0; i < s1.Length; ++i)
                 {
                     if (s1[i] == s2[j])

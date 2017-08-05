@@ -14,12 +14,13 @@ namespace Demo
         public string ReverseString(string s)
         {
             char[] ch = s.ToCharArray();
-            for (int i = 0; i < s.Length / 2; i++)
+            for (int low = 0, high = s.Length - 1; low < high; low++, high--)
             {
-                var temp = ch[s.Length - 1 - i];
-                ch[s.Length - 1 - i] = ch[i];
-                ch[i] = temp;
+                var temp = ch[low];
+                ch[low] = ch[high];
+                ch[high] = temp;
             }
+
             return new string(ch);
         }
     }

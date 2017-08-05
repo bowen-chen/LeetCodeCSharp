@@ -41,27 +41,30 @@ namespace Demo
                     break;
                 }
             }
+
             return nums[k];
         }
 
         private int Partition(int[] a, int lo, int hi)
         {
             int p = a[lo];
-            // lo) <= p , (high >= p
             while (lo < hi)
             {
                 while (lo < hi && a[hi] >= p)
                 {
                     hi--;
                 }
+
                 a[lo] = a[hi];
 
                 while (lo < hi && a[lo] <= p)
                 {
                     lo++;
                 }
+
                 a[hi] = a[lo];
             }
+
             a[lo] = p;
             return lo;
         }

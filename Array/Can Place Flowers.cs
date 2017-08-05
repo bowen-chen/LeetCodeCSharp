@@ -64,7 +64,11 @@ namespace Demo
                 }
             }
 
-            if (acc == 2) ++count;
+            if (acc == 2)
+            {
+                ++count;
+            }
+
             return count >= n;
         }
     }

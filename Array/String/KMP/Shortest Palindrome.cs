@@ -11,7 +11,6 @@ Given "abcd", return "dcbabcd".
 */
 
 using System;
-using System.Linq;
 
 namespace Demo
 {
@@ -67,6 +66,7 @@ namespace Demo
                     break;
                 }
             }
+
             return t.Substring(0, n - i) + s;
         }
     }

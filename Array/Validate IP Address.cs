@@ -54,6 +54,7 @@ namespace Demo
             {
                 return "Neither";
             }
+
             foreach (var token in tokens)
             {
                 int temp;
@@ -70,6 +71,7 @@ namespace Demo
                     return "Neither";
                 }
             }
+
             return "IPv4";
         }
 
@@ -80,18 +82,21 @@ namespace Demo
             {
                 return "Neither";
             }
+
             foreach (var token in tokens)
             {
                 if (token.Length > 4 && token.Length<=0)
                 {
                     return "Neither";
                 }
+
                 int temp;
                 if (!int.TryParse(token, NumberStyles.AllowHexSpecifier, CultureInfo.InvariantCulture, out temp))
                 {
                     return "Neither";
                 }
             }
+
             return "IPv6";
         }
     }

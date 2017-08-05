@@ -27,6 +27,7 @@ namespace Demo
             {
                 res += nums[i];
             }
+
             return res;
         }
     }

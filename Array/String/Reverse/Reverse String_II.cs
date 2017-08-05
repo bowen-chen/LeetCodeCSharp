@@ -22,6 +22,7 @@ namespace Demo
             {
                 ReverseStr(c, i, Math.Min(i + k - 1, s.Length - 1));
             }
+
             return new string(c);
         }
 

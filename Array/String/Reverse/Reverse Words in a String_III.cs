@@ -21,7 +21,7 @@ namespace Demo
 
             var c = s.ToCharArray();
             int last = 0;
-            for (int i = 0; i < c.Length; i++)
+            for (int i = 0; i <= c.Length; i++)
             {
                 if (i == c.Length || c[i] == ' ')
                 {
@@ -29,6 +29,7 @@ namespace Demo
                     last = i + 1;
                 }
             }
+
             return new string(c);
         }
 

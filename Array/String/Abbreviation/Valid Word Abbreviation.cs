@@ -37,6 +37,7 @@ namespace Demo
             {
                 if (a >= '0' && a <= '9')
                 {
+                    // a09b
                     if (cnt == 0 && a == '0')
                     {
                         return false;

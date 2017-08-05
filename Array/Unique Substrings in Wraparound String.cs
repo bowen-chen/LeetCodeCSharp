@@ -9,12 +9,13 @@ Note: p consists of only lowercase English letters and the size of p might be ov
 Example 1:
 Input: "a"
 Output: 1
-
 Explanation: Only the substring "a" of string "a" is in the string s.
+
 Example 2:
 Input: "cac"
 Output: 2
 Explanation: There are two substrings "a", "c" of string "cac" in the string s.
+
 Example 3:
 Input: "zab"
 Output: 6
@@ -46,6 +47,7 @@ namespace Demo
 
                 cnt[p[i] - 'a'] = Math.Max(cnt[p[i] - 'a'], len);
             }
+
             return cnt.Sum();
         }
     };

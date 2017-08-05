@@ -41,6 +41,7 @@ namespace Demo
                     return true; // the increasing subsequence of 3 elements exists
                 }
             }
+
             return false;
         }
     }

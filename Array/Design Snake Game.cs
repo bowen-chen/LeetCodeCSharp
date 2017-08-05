@@ -108,6 +108,7 @@ namespace Demo
             {
                 _pos.RemoveAt(_pos.Count - 1);
             }
+
             return _score;
         }
     };

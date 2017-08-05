@@ -21,7 +21,8 @@ namespace Demo
     {
         public int FindMaxConsecutiveOnes(int[] nums)
         {
-            int res = 0, cnt = 0;
+            int res = 0;
+            int cnt = 0;
             foreach (int num in nums)
             {
                 cnt = (num == 0) ? 0 : cnt + 1;

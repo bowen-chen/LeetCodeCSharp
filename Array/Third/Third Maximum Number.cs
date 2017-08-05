@@ -51,6 +51,7 @@ namespace Demo
                     third = num;
                 }
             }
+
             return (third == null || second == null) ? first.Value : third.Value;
         }
     }

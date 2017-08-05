@@ -67,7 +67,6 @@ namespace Demo
 
             for (int i = k - 1; i < nums.Length; i++)
             {
-
                 // i add into the window
                 while (list.Count > 0 && list[list.Count - 1] < nums[i])
                 {
@@ -75,7 +74,6 @@ namespace Demo
                 }
 
                 list.Add(nums[i]);
-
                 ret[i - (k - 1)] = list[0];
 
                 // i-(k-1) remove from the window

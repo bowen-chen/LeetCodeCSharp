@@ -25,6 +25,7 @@ namespace Demo
                 return s;
             }
 
+            // compact
             var b = s.ToCharArray();
             int last = 0;
             for (int i = 0; i < b.Length; i++)

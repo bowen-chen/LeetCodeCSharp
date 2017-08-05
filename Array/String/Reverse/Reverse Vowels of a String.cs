@@ -38,6 +38,7 @@ namespace Demo
                     low++;
                 }
             }
+
             return new string(ch);
         }
     }

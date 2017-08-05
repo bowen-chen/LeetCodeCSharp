@@ -101,10 +101,11 @@ namespace Demo
             }
             else
             {
-                
+                // the cmark cannot distinguish at least 1 word 
                 int bn = 1 << n; // 1<<2 100
                 for (int b = bit; b < bn; b <<= 1)
                 {
+                    // choose each bit from maxMark
                     if ((maxMark & b) != 0)
                     {
                         DFS(dict, n, maxMark, b << 1, cmask | b, ref minLen, ref minMark);

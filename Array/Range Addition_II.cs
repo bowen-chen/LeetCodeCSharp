@@ -47,6 +47,7 @@ namespace Demo
                 m = Math.Min(m, ops[i, 0]);
                 n = Math.Min(n, ops[i, 1]);
             }
+
             return m * n;
         }
     }

@@ -55,7 +55,7 @@ namespace Demo
             int median = FindKthLargest(nums, m);
 
             // bigger half, put them into original index 1 3 5 7 9
-            // smaller half, put them into original index 0 2 4 6 9 10
+            // smaller half, put them into original index 0 2 4 6 8 10
             // Step 2: Tripartie partition within O(n)-time & O(1)-space.
             int first = 0, mid = 0, last = n - 1;
             while (mid <= last)
