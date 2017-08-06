@@ -33,6 +33,7 @@ namespace Demo
                     {
                         return false;
                     }
+
                     cntL = 0;
                 }
                 else if (c == 'L')

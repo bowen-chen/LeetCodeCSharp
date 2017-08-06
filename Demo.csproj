@@ -85,7 +85,7 @@
     <Compile Include="Array\Meet Median\Minimum Moves to Equal Array Elements.cs" />
     <Compile Include="Array\Meet Median\Minimum Moves to Equal Array Elements_II.cs" />
     <Compile Include="Array\Minimum Time Difference.cs" />
-    <Compile Include="Array\Minimum Unique Word Abbreviation.cs" />
+    <Compile Include="Array\String\Abbreviation\Minimum Unique Word Abbreviation.cs" />
     <Compile Include="Array\Partition\Move Zeroes.cs" />
     <Compile Include="Array\Partition\Sort Colors.cs" />
     <Compile Include="Array\Queue Reconstruction by Height.cs" />
@@ -152,9 +152,9 @@
     <Compile Include="Array\Triangle - Pascal's Triangle.cs" />
     <Compile Include="Array\Triangle - Pascal's Triangle_II.cs" />
     <Compile Include="Array\Unique Substrings in Wraparound String.cs" />
-    <Compile Include="Array\Valid Word Abbreviation.cs" />
+    <Compile Include="Array\String\Abbreviation\Valid Word Abbreviation.cs" />
     <Compile Include="Array\Validate IP Address.cs" />
-    <Compile Include="Array\Word Abbreviation.cs" />
+    <Compile Include="Array\String\Abbreviation\Word Abbreviation.cs" />
     <Compile Include="Array\ZigZag Conversion.cs" />
     <Compile Include="Binary Search\Arranging Coins.cs" />
     <Compile Include="Binary Search\Binary Search.cs" />
@@ -213,7 +213,7 @@
     <Compile Include="DP\1D\Concatenated Words.cs" />
     <Compile Include="DP\1D\Count Numbers with Unique Digits.cs" />
     <Compile Include="DP\1D\Counting Bits.cs" />
-    <Compile Include="DP\1D\Decode Ways II.cs" />
+    <Compile Include="DP\1D\Decode Ways_II.cs" />
     <Compile Include="DP\1D\Decode Ways.cs" />
     <Compile Include="DP\1D\Find the Derangement of An Array.cs" />
     <Compile Include="DP\1D\Frog Jump.cs" />
@@ -231,7 +231,7 @@
     <Compile Include="DP\1D\Paint House_II.cs" />
     <Compile Include="DP\1D\Partition Equal Subset Sum.cs" />
     <Compile Include="DP\1D\Perfect Squares.cs" />
-    <Compile Include="DP\1D\Repeated Substring Pattern.cs" />
+    <Compile Include="Array\String\KMP\Repeated Substring Pattern.cs" />
     <Compile Include="DP\1D\Russian Doll Envelopes.cs" />
     <Compile Include="DP\1D\Student Attendance Record I.cs" />
     <Compile Include="DP\1D\Student Attendance Record II.cs" />

@@ -96,5 +96,45 @@ namespace Demo
 
             return dp[nums.Length - 1];
         }
+
+        public int SplitArray3(int[] nums, int m)
+        {
+            int left = 0, right = 0;
+            for (int i = 0; i < nums.Length; ++i)
+            {
+                left = Math.Max(left, nums[i]);
+                right += nums[i];
+            }
+
+            while (left <= right)
+            {
+                int mid = left + (right - left) / 2;
+                if (!can_split(nums, m, mid))
+                {
+                    left = mid + 1;
+                }
+                else
+                {
+                    right = mid - 1;
+                }
+            }
+
+            return left;
+        }
+        bool can_split(int[] nums, int m, int sum)
+        {
+            int cnt = 1, curSum = 0;
+            for (int i = 0; i < nums.Length; ++i)
+            {
+                curSum += nums[i];
+                if (curSum > sum)
+                {
+                    curSum = nums[i];
+                    ++cnt;
+                    if (cnt > m) return false;
+                }
+            }
+            return true;
+        }
     }
 }

@@ -21,6 +21,9 @@ Output: false
 Explanation: The array cannot be partitioned into equal sum subsets.
 */
 
+using System.Collections;
+using System.Collections.Specialized;
+using System.Globalization;
 using System.Linq;
 
 namespace Demo
@@ -49,6 +52,17 @@ namespace Demo
             }
 
             return dp[target];
+        }
+
+        public bool CanPartition2(int[] nums)
+        {
+            var bits = new BitVector32(0);
+            int sum = nums.Sum();
+            foreach (int num in nums)
+            {
+                // bits |= bits << num;
+            }
+            return (sum % 2 == 0) && bits[sum >> 1];
         }
     }
 }

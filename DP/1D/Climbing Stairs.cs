@@ -16,6 +16,7 @@ namespace Demo
             {
                 return n;
             }
+
             int p1 = 1;
             int p2 = 2;
             int cur = 0;

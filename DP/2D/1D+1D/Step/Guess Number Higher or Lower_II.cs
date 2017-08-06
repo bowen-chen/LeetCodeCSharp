@@ -48,7 +48,7 @@ namespace Demo
             // k is num range
             for (int k = 2; k <= n; k++)
             {
-                for (int i = 1; i <= n -k + 1; i++)
+                for (int i = 1; i + k - 1 <= n; i++)
                 {
                     // fill dp[i, i+ k -1]. i+k-1<=n
                     //choose i-> i+k-1 and guess on j
@@ -57,7 +57,7 @@ namespace Demo
                     {
                         // guess on j
                         // j - 1 could be 0, j + 1 could be n+1
-                        dp[i, i + k - 1] = Math.Min(dp[i, i + k - 1], j + Math.Max(dp[i, j - 1] , dp[j + 1, i + k - 1]));
+                        dp[i, i + k - 1] = Math.Min(dp[i, i + k - 1], j + Math.Max(dp[i, j - 1], dp[j + 1, i + k - 1]));
                     }
                 }
             }

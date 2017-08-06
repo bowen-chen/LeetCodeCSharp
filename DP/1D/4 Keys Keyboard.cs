@@ -40,9 +40,11 @@ namespace Demo
             int[] dp = new int[N + 1];
             for (int i = 1; i <= N; i++)
             {
+                // press A
                 dp[i] = i;
                 for (int j = 3; j < i; j++)
                 {
+                    // dp[i - j], press ctrl A, press j-1 ctrl c;
                     dp[i] = Math.Max(dp[i], dp[i - j] * (j - 1));
                 }
             }

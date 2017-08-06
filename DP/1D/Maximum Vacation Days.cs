@@ -88,7 +88,7 @@ namespace Demo
                     {
                         for (int j = 0; j < city; j++)
                         {
-                            // stay at i or fly to j
+                            // stay at j or fly to j
                             if (i == j || flights[i, j] == 1)
                             {
                                 dp2[j] = Math.Max(dp2[j], dp[i] + days[j, d]);

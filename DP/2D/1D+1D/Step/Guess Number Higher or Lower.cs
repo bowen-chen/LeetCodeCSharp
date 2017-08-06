@@ -35,7 +35,6 @@ namespace Demo
             {
                 int mid = low + (high - low)/2;
                 int t = guess(mid);
-
                 if (t == 0)
                 {
                     return mid;

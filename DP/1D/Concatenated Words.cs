@@ -37,32 +37,22 @@ namespace Demo
                 var dp = new bool[len];
 
                 // dp[i], [0,i] can be construct from dic.
-                for (int i = 0; i < len; i++)
+                for (int i = 0; i < len + 1; ++i)
                 {
-                    if (i - 1 >= 0 && !dp[i - 1])
+                    for (int j = 0; j < i; ++j)
                     {
-                        continue;
-                    }
-
-                    for (int j = i; j < len; j++)
-                    {
-                        // same word
-                        if (i == 0 && j == len - 1)
+                        if (dp[j] && dic.Contains(word.Substring(j, i - j)))
                         {
-                            continue;
-                        }
-
-                        if (!dp[j] && dic.Contains(word.Substring(i, j - i + 1)))
-                        {
-                            dp[j] = true;
+                            dp[i] = true;
+                            break;
                         }
                     }
+                }
 
-                    if (dp[len - 1])
-                    {
-                        res.Add(word);
-                        break;
-                    }
+                if (dp[len - 1])
+                {
+                    res.Add(word);
+                    break;
                 }
             }
 

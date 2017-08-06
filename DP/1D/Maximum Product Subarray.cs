@@ -63,6 +63,7 @@ namespace Demo
                     p = 0;
                     n = 0;
                 }
+
                 if (p > res)
                 {
                     res = p;

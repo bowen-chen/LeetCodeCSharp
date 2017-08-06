@@ -31,7 +31,7 @@ namespace Demo
             dp[1] = s[0] == '0' ? 0 : 1;
             for (int i = 1; i < s.Length; i++)
             {
-                // decode the single digital
+                // decode s[i] as the single digital
                 if (s[i] != '0')
                 {
                     dp[i + 1] += dp[i];

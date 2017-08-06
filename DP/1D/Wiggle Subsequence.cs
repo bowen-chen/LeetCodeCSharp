@@ -31,35 +31,30 @@ namespace Demo
     {
         public int WiggleMaxLength(int[] nums)
         {
-            if (nums == null || nums.Length == 0) return 0;
-
-            // p[i], the max wiggle ending at i, and last diff is positive
-            int[] p =new int[nums.Length];
-            p[0] = 1;
-
-            // p[i], the max wiggle ending at i, and last diff is negative
-            int[] n = new int[nums.Length];
-            n[0] = 1;
-
-            for (int i = 1; i < nums.Length; ++i)
+            if (nums.Length < 2)
+                return nums.Length;
+            int[] up = new int[nums.Length];
+            int[] down = new int[nums.Length];
+            up[0] = down[0] = 1;
+            for (int i = 1; i < nums.Length; i++)
             {
-                p[i] = 1;
-                n[i] = 1;
-                for (int j = 0; j < i; ++j)
+                if (nums[i] > nums[i - 1])
                 {
-                    if (nums[i] > nums[j])
-                    {
-                        p[i] = Math.Max(p[i], n[j] + 1);
-                    }
-
-                    else if (nums[i] < nums[j])
-                    {
-                        n[i] = Math.Max(n[i], p[j] + 1);
-                    }
+                    up[i] = down[i - 1] + 1;
+                    down[i] = down[i - 1];
+                }
+                else if (nums[i] < nums[i - 1])
+                {
+                    down[i] = up[i - 1] + 1;
+                    up[i] = up[i - 1];
+                }
+                else
+                {
+                    down[i] = down[i - 1];
+                    up[i] = up[i - 1];
                 }
             }
-
-            return Math.Max(p[nums.Length], n[nums.Length]);
+            return Math.Max(down[nums.Length - 1], up[nums.Length - 1]);
         }
     }
 }

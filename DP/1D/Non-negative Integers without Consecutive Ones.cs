@@ -44,6 +44,12 @@ namespace Demo
 
             int pre = 0;
             int res = 0;
+
+            // 10101100
+            // 0xxxxxxx
+            // 100xxxxx
+            // 10101xxx
+            // 101011xx
             // check each bit
             for(int k =31; k>=0;k--)
             {

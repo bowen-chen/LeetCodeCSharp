@@ -61,14 +61,15 @@ namespace Demo
 
         private int PossibleNumber(char c1, char c2)
         {
+            // * is 1-9
             if (c1 == '*')
             {
-                if (c2=='*')
+                if (c2 == '*')
                 {
                     // 11-19 21-26
                     return 15;
                 }
-                if (c2 >= '0' && c2 <= '6')
+                if ('0' <= c2 && c2 <= '6')
                 {
                     // 1X, 2X
                     return 2;
@@ -97,13 +98,14 @@ namespace Demo
                     // 21-26
                     return 6;
                 }
-                if (c2 >= '0' && c2 <= '6')
+                if ('0' <= c2 && c2 <= '6')
                 {
                     // 2X
                     return 1;
                 }
             }
 
+            // c1 == 0
             return 0;
         }
     }

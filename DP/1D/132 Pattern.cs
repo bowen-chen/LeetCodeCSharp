@@ -28,6 +28,7 @@ Explanation: There are three 132 patterns in the sequence: [-1, 3, 2], [-1, 3, 0
 */
 
 using System;
+using System.Collections.Generic;
 
 namespace Demo
 {
@@ -54,6 +55,32 @@ namespace Demo
                         dp[i] = Math.Min(dp[i], nums[j]);
                     }
                 }
+            }
+
+            return false;
+        }
+
+        public bool Find132pattern2(int[] nums)
+        {
+            // keep third as high as possible
+            int third = int.MinValue;
+
+            // the nums in s is sorted
+            var s = new Stack<int>();
+            for (int i = nums.Length - 1; i >= 0; --i)
+            {
+                if (nums[i] < third)
+                {
+                    return true;
+                }
+
+                // use nums[i] as 1, highest
+                while (s.Count != 0 && nums[i] > s.Peek())
+                {
+                    third = s.Pop();
+                }
+
+                s.Push(nums[i]);
             }
 
             return false;
