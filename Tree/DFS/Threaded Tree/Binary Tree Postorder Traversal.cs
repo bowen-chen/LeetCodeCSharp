@@ -60,9 +60,6 @@ namespace Demo
                     // My predecessor right is myself, so it is the second time, go right
                     else
                     {
-                        // restore tree
-                        pre.right = null;
-
                         // postorder visit
                         var temp = cur.left;
                         int i = 0;
@@ -74,6 +71,9 @@ namespace Demo
                         }
 
                         res.Reverse(res.Count-i, i);
+                        
+                        // restore tree
+                        pre.right = null;
 
                         // go right
                         cur = cur.right;

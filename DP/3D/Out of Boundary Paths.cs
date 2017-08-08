@@ -26,7 +26,7 @@ namespace Demo
         {
             if (N <= 0) return 0;
             const int mod = 1000000007;
-            var dp = new long[m, n, N + 1];
+            var dp = new long[m, n, N + 1]; // init value dp[m,n,0]
             for (int step = 1; step <= N; step++)
             {
                 for (int row = 0; row < m; row++)

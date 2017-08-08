@@ -51,8 +51,8 @@ namespace Demo
                 int localMax = dp[i - 1, 0] - prices[0];
                 for (int j = 1; j < n; j++)
                 {
-                    dp[i,j] = Math.Max(dp[i,j - 1], prices[j] + localMax);
-                    localMax = Math.Max(localMax, dp[i - 1,j] - prices[j]);
+                    dp[i, j] = Math.Max(dp[i, j - 1], prices[j] + localMax);
+                    localMax = Math.Max(localMax, dp[i - 1, j] - prices[j]);
                 }
             }
 

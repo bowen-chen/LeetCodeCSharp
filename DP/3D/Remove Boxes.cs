@@ -77,7 +77,7 @@ namespace Demo
                 }
             }
 
-            // t is range length
+            // t is range length - 1
             for (int t = 1; t < n; ++t)
             {
                 // i is start of range

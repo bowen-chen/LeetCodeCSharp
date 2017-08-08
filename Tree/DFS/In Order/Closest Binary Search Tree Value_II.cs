@@ -22,7 +22,7 @@ Try to assume that each node has a parent pointer, it makes the problem much eas
 Without parent pointer we just need to keep track of the path from the root to the current node using a stack.
 You would need two stacks to track the path in finding predecessor and successor node separately.
 */
-using Demo.Common;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,6 +45,7 @@ namespace Demo
             }
 
             ClosestKValues(root.left, target, k, res);
+
             if (res.Count < k)
             {
                 res.Enqueue(root.val);
@@ -60,45 +61,6 @@ namespace Demo
             }
 
             ClosestKValues(root.right, target, k, res);
-        }
-
-        public List<int> ClosestKValues3(TreeNode root, double target, int k)
-        {
-            var res = new List<int>();
-
-            var s1 = new Stack<int>(); // predecessors
-            var s2 = new Stack<int>(); // successors
-
-            ClosestKValues3(root, target, false, s1);
-            ClosestKValues3(root, target, true, s2);
-
-            while (k-- > 0)
-            {
-                if (s1.Count == 0)
-                    res.Add(s2.Pop());
-                else if (s2.Count == 0)
-                    res.Add(s1.Pop());
-                else if (Math.Abs(s1.Peek() - target) < Math.Abs(s2.Peek() - target))
-                    res.Add(s1.Pop());
-                else
-                    res.Add(s2.Pop());
-            }
-
-            return res;
-        }
-
-        // inorder traversal
-        private void ClosestKValues3(TreeNode root, double target, bool reverse, Stack<int> stack)
-        {
-            if (root == null) return;
-
-            ClosestKValues3(reverse ? root.right : root.left, target, reverse, stack);
-            // early terminate, no need to traverse the whole tree
-            // each time, we traverse half the tree
-            if ((reverse && root.val <= target) || (!reverse && root.val > target)) return;
-            // track the value of current node
-            stack.Push(root.val);
-            ClosestKValues3(reverse ? root.left : root.right, target, reverse, stack);
         }
     }
 }

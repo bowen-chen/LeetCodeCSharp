@@ -251,11 +251,11 @@
     <Compile Include="DP\2D\1D+1D\Freedom Trail.cs" />
     <Compile Include="DP\2D\1D+1D\Interleaving String.cs" />
     <Compile Include="DP\2D\1D+1D\K Inverse Pairs Array.cs" />
-    <Compile Include="DP\2D\1D+1D\Longest Palindromic Subsequence.cs" />
-    <Compile Include="DP\2D\1D+1D\Longest Palindromic Substring.cs" />
-    <Compile Include="DP\2D\1D+1D\Palindrome Partitioning.cs" />
-    <Compile Include="DP\2D\1D+1D\Palindrome Partitioning_II.cs" />
-    <Compile Include="DP\2D\1D+1D\Palindromic Substrings.cs" />
+    <Compile Include="DP\2D\1D+1D\Palindrome\Longest Palindromic Subsequence.cs" />
+    <Compile Include="DP\2D\1D+1D\Palindrome\Longest Palindromic Substring.cs" />
+    <Compile Include="DP\2D\1D+1D\Palindrome\Palindrome Partitioning.cs" />
+    <Compile Include="DP\2D\1D+1D\Palindrome\Palindrome Partitioning_II.cs" />
+    <Compile Include="DP\2D\1D+1D\Palindrome\Palindromic Substrings.cs" />
     <Compile Include="DP\2D\1D+1D\Regular Expression Matching.cs" />
     <Compile Include="DP\2D\1D+1D\Restore IP Addresses.cs" />
     <Compile Include="DP\2D\1D+1D\Step\Burst Balloons.cs" />

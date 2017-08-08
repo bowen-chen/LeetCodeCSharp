@@ -41,6 +41,7 @@ namespace Demo
             {
                 if (A[i] - A[i - 1] == A[i - 1] - A[i - 2])
                 {
+                    // number of slices ends at i-1 + i, and i-2, i-1, i
                     dp[i] = dp[i - 1] + 1;
                 }
 

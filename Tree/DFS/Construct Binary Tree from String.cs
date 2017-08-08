@@ -39,7 +39,7 @@ namespace Demo
                 return null;
             }
 
-            int j = s.IndexOfAny(new[] {'(', ')'}, index);
+            int j = s.IndexOfAny(new[] {'(', ')'}, index); // 2(*), (2)
             TreeNode n = new TreeNode(int.Parse(s.Substring(index, j - index)));
             index = j;
 
@@ -53,7 +53,6 @@ namespace Demo
                 Debug.Assert(s[index] == ')');
                 index++; // eat ')'
             }
-
 
             // parse second child
             if (s[index] == '(')

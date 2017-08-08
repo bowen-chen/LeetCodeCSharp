@@ -15,11 +15,8 @@ The average value of nodes on level 0 is 3,  on level 1 is 14.5, and on level 2 
 Note:
 The range of node's value is in the range of 32-bit signed integer.
 */
-using System;
+
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Demo
 {
@@ -32,6 +29,7 @@ namespace Demo
      *     public TreeNode(int x) { val = x; }
      * }
      */
+
     public partial class Solution
     {
         public IList<double> AverageOfLevels(TreeNode root)
@@ -43,7 +41,7 @@ namespace Demo
             {
                 int size = q.Count;
                 double sum = 0;
-                for (int i=0; i < size; i++)
+                for (int i = 0; i < size; i++)
                 {
                     var node = q.Dequeue();
                     sum += node.val;

@@ -62,6 +62,7 @@ namespace Demo
                 ret[i] = count;
                 sortedList.Insert(count, nums[i]);
             }
+
             return ret;
         }
     }

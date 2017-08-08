@@ -59,5 +59,32 @@ namespace Demo
             ret = Math.Max(ret, LongestConsecutive(root.right, currentLength, root.val));
             return ret;
         }
+
+        public int LongestConsecutive3(TreeNode root)
+        {
+            int inc;
+            return LongestConsecutive3(root, out inc);
+        }
+
+        private int LongestConsecutive3(TreeNode root, out int inc)
+        {
+            inc = 1;
+            int res = 0;
+            foreach (var child in new[] { root.left, root.right })
+            {
+                if (child != null)
+                {
+                    int cinc;
+                    res = Math.Max(res, LongestConsecutive3(child, out cinc));
+                    if (child.val == root.val + 1)
+                    {
+                        inc = Math.Max(inc, cinc + 1);
+                    }
+                }
+            }
+
+            res = Math.Max(res, inc);
+            return res;
+        }
     }
 }

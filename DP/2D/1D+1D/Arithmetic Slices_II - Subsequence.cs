@@ -77,6 +77,7 @@ namespace Demo
                     if (dp[j].ContainsKey(dif))
                     {
                         dp[i][dif] += dp[j][dif];
+
                         // dp[j][dif] seq ending with j at least 2 numbers long 
                         res += dp[j][dif];
                     }

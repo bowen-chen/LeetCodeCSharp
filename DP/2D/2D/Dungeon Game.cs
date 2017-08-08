@@ -58,6 +58,7 @@ namespace Demo
                 newrow[n] = int.MinValue;
                 for (int j = n - 1; j >= 0; j--)
                 {
+                    // tomorrow's health point cannot save your life today
                     int need = Math.Max(newrow[j + 1], dp[j]);
                     if (need > 0)
                     {

@@ -37,9 +37,9 @@ namespace Demo
         public string SmallestGoodBase(string n)
         {
             long num = long.Parse(n);
-            for (long m = (long)(Math.Log(num + 1) / Math.Log(2)); m >= 2; --m)
+            for (long m = (long) (Math.Log(num + 1)/Math.Log(2)); m >= 2; --m)
             {
-                long left = 2, right = (long)Math.Pow(num, 1.0 / (m-1)) + 1;
+                long left = 2, right = (long) Math.Pow(num, 1.0/(m - 1)) + 1;
                 while (left <= right)
                 {
                     long mid = left + (right - left)/2;
@@ -47,15 +47,15 @@ namespace Demo
                     long km = 1;
                     for (long j = 0; j < m; ++j)
                     {
-                        sum = sum +km;
+                        sum = sum + km;
                         km *= mid;
                     }
-                   
+
                     if (sum < num)
                     {
                         left = mid + 1;
                     }
-                    else if(sum>num)
+                    else if (sum > num)
                     {
                         right = mid - 1;
                     }

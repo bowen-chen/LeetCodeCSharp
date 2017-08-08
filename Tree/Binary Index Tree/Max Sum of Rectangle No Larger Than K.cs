@@ -90,12 +90,12 @@ namespace Demo
                         var it = FindLowerBound(s, curSum - k);
                         if (it != s.Count)
                         {
-                            curMax = Math.Max(curMax, curSum - s[s.Keys[it]]);
+                            curMax = Math.Max(curMax, curSum - s.Keys[it]);
                         }
 
                         if (!s.ContainsKey(curSum))
                         {
-                            s.Add(curSum, curSum);
+                            s.Add(curSum, 0);
                         }
                     }
 
@@ -114,7 +114,7 @@ namespace Demo
             while (low <= high)
             {
                 var mid = low + (high - low) / 2;
-                if (sortedList[sortedList.Keys[mid]] < target)
+                if (sortedList.Keys[mid] < target)
                 {
                     low = mid + 1;
                 }

@@ -58,6 +58,7 @@ namespace Demo
                     {
                         q.Enqueue(j);
                     }
+
                     max = Math.Max(max, j);
                 }
             }

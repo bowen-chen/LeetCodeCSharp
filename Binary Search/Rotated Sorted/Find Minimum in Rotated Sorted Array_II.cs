@@ -21,7 +21,6 @@ namespace Demo
         public int FindMin2(int[] nums)
         {
             int lo = 0, hi = nums.Length - 1;
-
             while (lo < hi)
             {
                 int mid = (lo + hi) / 2;

@@ -25,7 +25,6 @@ namespace Demo
     // numArray.SumRange(0, 1);
     // numArray.Update(1, 10);
     // numArray.SumRange(1, 2);
-
     public partial class Solution
     {
         public void Test_NumArray()
@@ -85,6 +84,7 @@ namespace Demo
         //c[1101] = tree[1101] + tree[1100] + tree[1000] knock out each bit
         public int Sum(int i)
         {
+            // when i = -1, return 0;
             int sum = 0;
             for (int ti = i + 1; ti >= 1; ti -= ti & (-ti))
             {
@@ -96,11 +96,6 @@ namespace Demo
 
         public int SumRange(int i, int j)
         {
-            if (i == 0)
-            {
-                return Sum(j);
-            }
-
             return Sum(j) - Sum(i - 1);
         }
     }

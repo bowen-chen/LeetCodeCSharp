@@ -52,6 +52,7 @@ namespace Demo
 
                 maxProfit = Math.Max(maxProfit, dp[i] + dp2[i]);
             }
+
             return maxProfit;
         }
     }

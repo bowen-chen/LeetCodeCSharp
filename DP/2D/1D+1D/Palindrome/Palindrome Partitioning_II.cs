@@ -8,7 +8,6 @@ Return the minimum cuts needed for a palindrome partitioning of s.
 For example, given s = "aab",
 Return 1 since the palindrome partitioning ["aa","b"] could be produced using 1 cut.
 */
-using System;
 
 namespace Demo
 {
@@ -36,6 +35,7 @@ namespace Demo
                     {
                         dp[i, j] = true;
 
+                        // keep s[i,j] in the min cut 
                         if (j == n - 1)
                         {
                             d[i] = 0;
