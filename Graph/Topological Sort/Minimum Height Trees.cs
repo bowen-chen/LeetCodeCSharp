@@ -87,8 +87,9 @@ namespace Demo
             {
                 n -= q.Count;
                 int size = q.Count;
-                for (int i = 0; i < size; i++)
+                for (int k = 0; k < size; k++)
                 {
+                    int i = q.Dequeue();
                     int j = adj[i][0];
                     adj[j].Remove(i);
                     if (adj[j].Count == 1)

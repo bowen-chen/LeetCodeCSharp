@@ -41,6 +41,7 @@ namespace Demo
                 q.Push(c[0]);
                 if (curTime > c[1])
                 {
+                    // could pop c, if c is the most cost course
                     curTime -= q.Pop();
                 }
             }
