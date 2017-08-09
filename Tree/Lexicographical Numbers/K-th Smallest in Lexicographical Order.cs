@@ -39,7 +39,7 @@ namespace Demo
                 else // k is in the curr subtree
                 {
                     curr *= 10;
-                    k -= 1;
+                    k -= 1; /*- node*/
                 }
             }
 

@@ -39,20 +39,14 @@ namespace Demo
 
         private bool Exist(char[,] board, int y, int x, string word, int i)
         {
+            if (y < 0 || x < 0 || y >= board.GetLength(0) || x >= board.GetLength(1) || board[y, x] != word[i])
+            {
+                return false;
+            }
+
             if (i == word.Length)
             {
                 return true;
-            }
-
-            if (y < 0 || x < 0 || y >= board.GetLength(0) || x >= board.GetLength(1))
-            {
-                return false;
-            }
-
-            // if it is visited, then it won't match
-            if (board[y, x] != word[i])
-            {
-                return false;
             }
 
             // mark it as visited

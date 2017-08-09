@@ -29,7 +29,6 @@ Return a NestedInteger object containing a nested list with 2 elements:
 */
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace Demo
@@ -65,45 +64,6 @@ namespace Demo
  */
     public partial class Solution
     {
-        public NestedInteger Deserialize(string s)
-        {
-            if (string.IsNullOrEmpty(s))
-            {
-                return new NestedInteger();
-            }
-
-            if (s[0] != '[')
-            {
-                return new NestedInteger(int.Parse(s));
-            }
-
-            if (s.Length <= 2)
-            {
-                return new NestedInteger();
-            }
-
-            NestedInteger res = new NestedInteger();
-            int start = 1, cnt = 0;
-            for (int i = 1; i < s.Length; ++i)
-            {
-                if (cnt == 0 && (s[i] == ',' || i == s.Length - 1))
-                {
-                    res.Add(Deserialize(s.Substring(start, i - start)));
-                    start = i + 1;
-                }
-                else if (s[i] == '[')
-                {
-                    ++cnt;
-                }
-                else if (s[i] == ']')
-                {
-                    --cnt;
-                }
-            }
-
-            return res;
-        }
-
         public NestedInteger Deserialize3(string s)
         {
             int index = 0;

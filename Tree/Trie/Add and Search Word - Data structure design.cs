@@ -98,6 +98,7 @@ namespace Demo
 
                 n = n[c];
             }
+
             n.IsWord = true;
         }
 
@@ -108,6 +109,11 @@ namespace Demo
 
         private bool Search2(TrieNode node, string word, int index)
         {
+            if (word.Length - 1 == index)
+            {
+                return node.IsWord;
+            }
+
             char c = word[index];
             if (c != '.')
             {
@@ -117,83 +123,18 @@ namespace Demo
                     return false;
                 }
 
-                if (word.Length - 1 == index)
-                {
-                    return n.IsWord;
-                }
-
                 return Search2(n, word, index + 1);
             }
 
             foreach (TrieNode n in node)
             {
-                if (word.Length - 1 == index)
-                {
-                    if (n.IsWord)
-                    {
-                        return true;
-                    }
-                }
-                else if (Search2(n, word, index + 1))
+                if (Search2(n, word, index + 1))
                 {
                     return true;
                 }
             }
 
             return false;
-        }
-
-        // Returns if the word is in the trie.
-        public bool Search(string word)
-        {
-            var q = new Queue<TrieNode>();
-            q.Enqueue(root);
-            q.Enqueue(null);
-            int i = 0;
-            while (q.Count > 0)
-            {
-                var node = q.Dequeue();
-                if (node == null)
-                {
-                    if (q.Count > 0)
-                    {
-                        q.Enqueue(null);
-                        i++;
-                    }
-                }
-                else
-                {
-                    if (word[i] == '.')
-                    {
-                        foreach (TrieNode n in node)
-                        {
-                            if (i == word.Length - 1)
-                            {
-                                return n.IsWord;
-                            }
-
-                            q.Enqueue(n);
-                        }
-                    }
-                    else
-                    {
-                        var n = node[word[i]];
-                        if (n == null)
-                        {
-                            continue;
-                        }
-
-                        if (i == word.Length - 1)
-                        {
-                            return n.IsWord;
-                        }
-
-                        q.Enqueue(n);
-                    }
-                }
-            }
-
-            return i == word.Length - 1;
         }
     }
 }

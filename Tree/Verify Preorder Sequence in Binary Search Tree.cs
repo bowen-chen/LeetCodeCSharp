@@ -54,6 +54,7 @@ namespace Demo
 
                 preorder[++i] = p;
             }
+
             return true;
         }
     }

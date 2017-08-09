@@ -91,6 +91,7 @@ namespace Demo
                     slot += 2;
                 }
             }
+
             return slot == 0;
         }
     }

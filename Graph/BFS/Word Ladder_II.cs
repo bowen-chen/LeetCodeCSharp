@@ -71,8 +71,8 @@ namespace Demo
                             break;
                         }
 
-                            queue.Enqueue(newpath);
-                        }
+                        queue.Enqueue(newpath);
+                    }
                 }
             }
 
