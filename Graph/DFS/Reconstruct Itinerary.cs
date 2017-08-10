@@ -24,12 +24,13 @@ namespace Demo
     {
         public IList<string> FindItinerary(string[,] tickets)
         {
+            // from to tickets
             var t = new Dictionary<string, List<int>>();
             for (int i = 0; i < tickets.GetLength(0); i++)
             {
                 if (!t.ContainsKey(tickets[i, 0]))
                 {
-                    t.Add(tickets[i,0], new List<int> {i});
+                    t.Add(tickets[i, 0], new List<int> {i});
                 }
                 else
                 {
@@ -39,8 +40,9 @@ namespace Demo
 
             foreach (string key in t.Keys)
             {
-                t[key].Sort((i1, i2) => tickets[i1, 1].CompareTo(tickets[i2, 1]));
+                t[key].Sort((i1, i2) => tickets[i1, 1].CompareTo(tickets[i2, 1])); /*lexical order*/
             }
+
             var ret = new List<string> { "JFK" };
             var usedTicket = new HashSet<int>();
             FindItinerary(t, usedTicket, tickets,  ret);

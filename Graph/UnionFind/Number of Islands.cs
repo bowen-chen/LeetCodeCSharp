@@ -19,8 +19,6 @@ Example 2:
 00011
 Answer: 3
 */
-using System;
-using System.CodeDom;
 using System.Collections.Generic;
 
 namespace Demo

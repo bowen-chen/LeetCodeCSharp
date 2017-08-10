@@ -77,8 +77,8 @@ namespace Demo
             var dirs = new[] { new[] { 0, -1 }, new[] { -1, 0 }, new[] { 0, 1 }, new[] { 1, 0 } };
             var ways = new[] {'l', 'u', 'r', 'd'};
             var q = new Queue<int[]>();
-            q.Enqueue(start);
             dists[start[0], start[1]] = Tuple.Create(0, "");
+            q.Enqueue(start);
             while (q.Count != 0)
             {
                 var t = q.Dequeue();

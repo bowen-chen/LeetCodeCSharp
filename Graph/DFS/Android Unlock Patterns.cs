@@ -53,6 +53,7 @@ namespace Demo
             int index = j + i*3;
             visited |= 1 << index;
             len++;
+
             int res = 0;
             if (len >= m)
             {
@@ -72,7 +73,7 @@ namespace Demo
                     int nextj = next % 3;
                     int I = i + nexti, J = j + nextj;
 
-                    // (1, 0) (2, 1) no middle point
+                    // (1 + 0) (2 + 1) no middle point
                     if (I % 2 == 1 || J % 2 == 1 || (visited & (1 << (I / 2 * 3 + J / 2))) != 0)
                     {
                         res += NumberOfPatterns(nexti, nextj, len, m, n, visited);

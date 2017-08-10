@@ -115,7 +115,7 @@ namespace Demo
                         board[row, col] = 'B';
                         foreach (var a in emptyNeighbors)
                         {
-                            board[a[0], a[1]] = 'V';
+                            board[a[0], a[1]] = 'V'; /* as visited*/
                             q.Enqueue(a);
                         }
                     }

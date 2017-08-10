@@ -48,7 +48,8 @@ namespace Demo
         }
         private int ArrayNesting(int[] nums, int start, bool[] visited)
         {
-            int i = start, cnt = 0;
+            int i = start;
+            int cnt = 0;
             while (cnt == 0 || i != start)
             {
                 visited[i] = true;
