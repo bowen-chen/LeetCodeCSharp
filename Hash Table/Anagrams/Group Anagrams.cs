@@ -38,8 +38,10 @@ namespace Demo
                 {
                     dic[key] = new List<string>();
                 }
+
                 dic[key].Add(s);
             }
+
             return dic.Values.ToList();
         }
     }

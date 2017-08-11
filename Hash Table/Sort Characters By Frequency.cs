@@ -68,6 +68,7 @@ namespace Demo
                 {
                     intToString[kvp.Value] = "";
                 }
+
                 intToString[kvp.Value] += new string(kvp.Key, kvp.Value);
                 max = Math.Max(max, kvp.Value);
             }

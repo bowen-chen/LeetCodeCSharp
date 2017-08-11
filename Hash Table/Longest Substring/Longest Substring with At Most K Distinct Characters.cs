@@ -9,7 +9,6 @@ T is "ece" which its length is 3.
 */
 
 using System;
-using System.Collections.Generic;
 
 namespace Demo
 {

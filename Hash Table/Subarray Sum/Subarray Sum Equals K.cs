@@ -21,6 +21,7 @@ namespace Demo
         {
             int res = 0;
             int sum = 0;
+
             // empty array sum is 0
             var m = new Dictionary<int, int> { { 0, 1 } };
             foreach (int n in nums)

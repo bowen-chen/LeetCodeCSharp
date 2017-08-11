@@ -32,7 +32,7 @@ namespace Demo
             // mask = 0x7FFFFFFF
             int mask = int.MaxValue;
 
-            // find the mask to make the leading 0
+            // find the mask to mark the leading 0
             while ((mask & num )!= 0)
             {
                 mask <<= 1;

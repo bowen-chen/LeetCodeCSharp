@@ -23,7 +23,8 @@ namespace Demo
 
         public int LengthOfLongestSubstring(string s)
         {
-            int res = 0, left = 0;
+            int res = 0;
+            int left = 0;
             var m = new int[26];
             for (int i = 0; i < s.Length; ++i)
             {
@@ -35,6 +36,7 @@ namespace Demo
 
                 res = Math.Max(res, i - left + 1);
             }
+
             return res;
         }
     }

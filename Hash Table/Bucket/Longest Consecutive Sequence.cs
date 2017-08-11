@@ -1,6 +1,6 @@
 ﻿/*
 128. Longest Consecutive Sequence
-hard, double link
+hard, double link, revisit
 Given an unsorted array of integers, find the length of the longest consecutive elements sequence.
 
 For example,
@@ -22,7 +22,7 @@ namespace Demo
             int res = 0;
 
             // the longest sequence includes i
-            // We only keept the start and end of the sequence accurate
+            // We only keept the start and end of the sequence accurate, we could save start and end in int[2]
             var m = new Dictionary<int, int>();
             foreach (int d in nums)
             {

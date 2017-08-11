@@ -52,24 +52,24 @@ namespace Demo
             }
 
             // count is sum of all the positive hash value
-            int left = 0;
-            int right = 0;
             int count = p.Length;
-            while (right < s.Length)
+            int len = p.Length;
+            for (int i = 0; i < s.Length; i++)
             {
-                if (m[s[right++] - 'a']-- >= 1)
+                if (m[s[i] - 'a']-- >= 1)
                 {
                     count--;
                 }
 
+                int left = i - len + 1;
                 if (count == 0)
                 {
                     res.Add(left);
                 }
 
-                if (right - left == p.Length)
+                if (left >= 0)
                 {
-                    if (m[s[left++] - 'a']++ >= 0)
+                    if (m[s[left] - 'a']++ >= 0)
                     {
                         count++;
                     }

@@ -44,12 +44,9 @@ namespace Demo.Hash_Table
             var ans = new List<int>();
             foreach (var key in map.Keys)
             {
-                if (low <= key)
+                if (low <= key && key <= high)
                 {
-                    if (key <= high)
-                    {
-                        ans.Add(map[key]);
-                    }
+                    ans.Add(map[key]);
                 }
             }
 

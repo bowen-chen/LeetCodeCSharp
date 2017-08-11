@@ -48,8 +48,12 @@ namespace Demo
                         max_idx = j;
                     }
                 }
+
+                // [i, max_index] all char repeats at least k time.
+                // no need to check range [j,k] c [i, max_index] 
                 i = max_idx + 1;
             }
+
             return res;
         }
 

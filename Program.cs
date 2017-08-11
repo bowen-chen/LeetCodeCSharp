@@ -6,7 +6,7 @@ namespace Demo
     {
         static void Main()
         {
-            Console.WriteLine(new Solution().FindDuplicateSubtrees(new TreeNode(0) {right = new TreeNode(0)}));
+            Console.WriteLine(new Solution().FindSubstring("barfoothefoobarman", new[] {"foo", "bar"}));
         }
     }
 }

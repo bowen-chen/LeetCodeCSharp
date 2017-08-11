@@ -41,8 +41,8 @@ namespace Demo
         {
             List<int> indexes1 = map[word1];
             List<int> indexes2 = map[word2];
-            int i = 0, j = 0, dist =int.MaxValue;
-            while (i < indexes1.Count && j < indexes2.Count)
+            int dist =int.MaxValue;
+            for (int i = 0, j = 0;i < indexes1.Count && j < indexes2.Count;)
             {
                 dist = Math.Min(dist, Math.Abs(indexes1[i] - indexes2[j]));
                 if (indexes1[i] < indexes2[j])

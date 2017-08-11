@@ -1,4 +1,5 @@
 ﻿/*
+219	Contains Duplicate II   
 Easy
 Contains Duplicate II
 
@@ -14,21 +15,23 @@ namespace Demo
 
         public bool ContainsNearbyDuplicate(int[] nums, int k)
         {
+            int len = k + 1;
             var h = new HashSet<int>();
             for (int i = 0; i < nums.Length; i++)
             {
-                if (i > k)
-                {
-                    h.Remove(nums[i - k]);
-                }
-
                 var n = nums[i];
                 if (h.Contains(n))
                 {
                     return true;
                 }
-
+                
                 h.Add(n);
+
+                int left = i - len + 1;
+                if (left >= 0)
+                {
+                    h.Remove(nums[left]);
+                }
             }
 
             return false;

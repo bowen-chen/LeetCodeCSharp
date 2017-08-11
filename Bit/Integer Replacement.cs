@@ -71,6 +71,7 @@ namespace Demo
 
                 count++;
             }
+
             return count;
         }
     }

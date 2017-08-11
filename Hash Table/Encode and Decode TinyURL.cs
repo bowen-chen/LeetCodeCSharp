@@ -36,6 +36,7 @@ namespace Demo
             {
                 id++;
             }
+
             storage[id] = longUrl;
             string res = "";
             while (id!=0)
@@ -43,6 +44,7 @@ namespace Demo
                 res = dict[id%dict.Length] + res;
                 id = id/dict.Length;
             }
+
             return res;
         }
 
@@ -55,6 +57,7 @@ namespace Demo
             {
                 id = id*dict.Length + idLookup[c];
             }
+
             return storage.ContainsKey(id) ? storage[id] : shortUrl;
         }
     }

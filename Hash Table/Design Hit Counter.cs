@@ -65,6 +65,7 @@ namespace Demo
                     res += hits[i];
                 }
             }
+
             return res;
         }
 

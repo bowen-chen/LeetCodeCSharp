@@ -53,6 +53,7 @@ namespace Demo
                     max = Math.Max(max, count);
                 }
             }
+
             return wall.Count - max;
         }
     }

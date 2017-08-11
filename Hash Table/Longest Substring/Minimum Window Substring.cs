@@ -43,10 +43,8 @@ namespace Demo
             // Move end to find a valid window.
             while (end < s.Length)
             {
-                // Decrease m[s[end]]. m[s[end]] will be negative.
-                
                 // If char in s exists in t, decrease counter
-                if (--m[s[end++] - 'A'] >= 0)
+                if (m[s[end++] - 'A']-- >= 1)
                 {
                     counter--;
                 }
@@ -61,7 +59,7 @@ namespace Demo
                     }
                     
                     // When char exists in t, increase counter.
-                    if (++m[s[start++] - 'A']> 0)
+                    if (m[s[start++] - 'A']++>= 0)
                     {
                         counter++;
                     }

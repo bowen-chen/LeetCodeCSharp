@@ -14,7 +14,10 @@ namespace Demo
     {
         public bool ContainsNearbyAlmostDuplicate2(int[] nums, int k, int t)
         {
-            if (k < 1 || t < 0) return false;
+            if (k < 1 || t < 0)
+            {
+                return false;
+            }
 
             // bucket size t+1
             // the possible pair is in nearby bucket or same bucket

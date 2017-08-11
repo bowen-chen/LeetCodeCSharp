@@ -24,7 +24,7 @@ namespace Demo
                 aXorb ^= item;
             }
 
-            int lastBit = (aXorb & (aXorb - 1)) ^ aXorb;  // the last bit that a diffs b
+            int lastBit = -aXorb & aXorb;  // the last bit that a diffs b
             int intA = 0, intB = 0;
             foreach (int item in nums)
             {

@@ -40,7 +40,7 @@ namespace Demo
         {
             var wd = new WordDictionary();
             wd.AddWord("a");
-            wd.Search2(".");
+            wd.Search(".");
 
             wd.AddWord("a");
             wd.AddWord("a");
@@ -102,12 +102,12 @@ namespace Demo
             n.IsWord = true;
         }
 
-        public bool Search2(string word)
+        public bool Search(string word)
         {
-            return Search2(root, word, 0);
+            return Search(root, word, 0);
         }
 
-        private bool Search2(TrieNode node, string word, int index)
+        private bool Search(TrieNode node, string word, int index)
         {
             if (word.Length - 1 == index)
             {
@@ -123,12 +123,12 @@ namespace Demo
                     return false;
                 }
 
-                return Search2(n, word, index + 1);
+                return Search(n, word, index + 1);
             }
 
             foreach (TrieNode n in node)
             {
-                if (Search2(n, word, index + 1))
+                if (Search(n, word, index + 1))
                 {
                     return true;
                 }

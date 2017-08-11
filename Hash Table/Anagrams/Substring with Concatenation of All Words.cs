@@ -35,44 +35,39 @@ namespace Demo
                 m1[w]++;
             }
 
-
             int n = s.Length;
             int len = words[0].Length;
             for (int i = 0; i < len; ++i)
             {
-                int left = i;
                 int count = words.Length;
-                var m2 = new Dictionary<string, int>(m1);
+                var m2 = new Dictionary<string, int>(m1); /* make a copy */
                 for (int j = i; j <= n - len; j += len)
                 {
                     string t = s.Substring(j, len);
                     if (m2.ContainsKey(t))
                     {
-
-                        if (--m2[t] >= 0)
+                        if (m2[t]-- >= 1)
                         {
                             count--;
-                            if (count == 0)
-                            {
-                                res.Add(left);
-                            }
                         }
+                    }
 
-                        while (m2[t] < 0 || count ==0)
+                    int left = j - (words.Length - 1)*len;
+                    if (count == 0)
+                    {
+                        res.Add(left);
+                    }
+
+                    if (left >= 0)
+                    {
+                        string o = s.Substring(left, len);
+                        if (m2.ContainsKey(o))
                         {
-                            if (++m2[s.Substring(left, len)] >0)
+                            if (m2[o]++ >= 0)
                             {
                                 count++;
                             }
-
-                            left += len;
                         }
-                    }
-                    else
-                    {
-                        m2 = new Dictionary<string, int>(m1);
-                        count = words.Length;
-                        left = j + len;
                     }
                 }
             }

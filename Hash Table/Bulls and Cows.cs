@@ -60,6 +60,7 @@ namespace Demo
                     unused[g]--;
                 }
             }
+
             return b + "A" + c + "B";
         }
     }

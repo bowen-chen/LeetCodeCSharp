@@ -31,9 +31,7 @@ namespace Demo
     {
         public string[] FindRestaurant(string[] list1, string[] list2)
         {
-            var res = new List<string>();
             var m = new Dictionary<string, int>();
-            int mn = int.MaxValue;
             for (int i = 0; i < list1.Length; ++i)
             {
                 if (!m.ContainsKey(list1[i]))
@@ -41,6 +39,9 @@ namespace Demo
                     m[list1[i]] = i;
                 }
             }
+
+            var res = new List<string>();
+            int mn = int.MaxValue;
             for (int i = 0; i < list2.Length; ++i)
             {
                 if (m.ContainsKey(list2[i]))
@@ -58,6 +59,7 @@ namespace Demo
                     }
                 }
             }
+
             return res.ToArray();
         }
     }

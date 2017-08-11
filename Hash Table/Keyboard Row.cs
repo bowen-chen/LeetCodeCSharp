@@ -51,8 +51,12 @@ namespace Demo
                     }
                 }
 
-                if (one + two + three == 1) res.Add(word);
+                if (one + two + three == 1)
+                {
+                    res.Add(word);
+                }
             }
+
             return res.ToArray();
         }
     }

@@ -7,7 +7,6 @@ Given an array of integers, find if the array contains any duplicates. Your func
 */
 
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Demo
 {
@@ -25,6 +24,7 @@ namespace Demo
 
                 h.Add(n);
             }
+
             return false;
         }
     }

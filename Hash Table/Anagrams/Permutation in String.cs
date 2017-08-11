@@ -33,12 +33,11 @@ namespace Demo
             }
 
             // count is sum of all the positive hash value
-            int left = 0;
-            int right = 0;
             int count = p.Length;
-            while (right < s.Length)
+            int len = p.Length;
+            for (int i = 0; i < s.Length; i++)
             {
-                if (m[s[right++] - 'a']-- >= 1)
+                if (m[s[i] - 'a']-- >= 1)
                 {
                     count--;
                 }
@@ -48,49 +47,16 @@ namespace Demo
                     return true;
                 }
 
-                if (right - left == p.Length)
+                int left = i - len + 1;
+                if (left >= 0)
                 {
-                    if (m[s[left++] - 'a']++ >= 0)
+                    if (m[s[left] - 'a']++ >= 0)
                     {
                         count++;
                     }
                 }
             }
 
-            return false;
-        }
-
-        public bool CheckInclusion2(string s1, string s2)
-        {
-            int n1 = s1.Length;
-            int n2 = s2.Length;
-            int cnt = n1;
-            int left = 0;
-            var m = new int[26];
-            foreach (char c in s1)
-            {
-                m[c - 'a']++;
-            }
-
-            for (int right = 0; right < n2; ++right)
-            {
-                if (m[s2[right] - 'a']-- > 0)
-                {
-                    cnt--;
-                }
-                while (cnt == 0)
-                {
-                    if (right - left + 1 == n1)
-                    {
-                        return true;
-                    }
-
-                    if (++m[s2[left++] - 'a'] > 0)
-                    {
-                        ++cnt;
-                    }
-                }
-            }
             return false;
         }
     }

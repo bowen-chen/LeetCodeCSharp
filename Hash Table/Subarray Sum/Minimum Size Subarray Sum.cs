@@ -20,6 +20,7 @@ namespace Demo
     {
         public int MinSubArrayLen(int s, int[] nums)
         {
+            // all positive number
             int start = 0;
             int sum = 0;
             int minlen = int.MaxValue;

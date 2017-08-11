@@ -23,10 +23,7 @@ namespace Demo
             var h = new HashSet<int>();
             foreach (int n in nums1)
             {
-                if (!h.Contains(n))
-                {
-                    h.Add(n);
-                }
+                h.Add(n);
             }
 
             var l = new List<int>();
