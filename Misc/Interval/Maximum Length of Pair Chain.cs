@@ -14,7 +14,6 @@ Note:
 The number of given pairs will be in the range [1, 1000].
 */
 using System;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace Demo

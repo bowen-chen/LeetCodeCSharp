@@ -1,9 +1,8 @@
 ﻿/*
+148	Sort List
 hard
 Sort a linked list in O(n log n) time using constant space complexity.
 */
-
-using System.Data;
 
 namespace Demo
 {
@@ -16,48 +15,50 @@ namespace Demo
                 return null;
             }
 
-            return QuickSort(head, null).first;
+            return QuickSort(head, null)[0];
         }
 
         // sort from head to node before end
-        Pair<ListNode> QuickSort(ListNode head, ListNode end)
+        ListNode[] QuickSort(ListNode head, ListNode end)
         {
             if (head == null || head == end)
             {
                 return null;
             }
 
-            // only head in the list
-            var ret = new Pair<ListNode>();
+            // only 1 node in the list
+            var ret = new ListNode[2];
             if (head.next == end)
             {
-                ret.first = head;
-                ret.second = head;
+                ret[0] = head;
+                ret[1] = head;
                 return ret;
             }
 
             ListNode pivot = head;
-            Pair<ListNode> p = Partition(head, end);
+            ListNode[] p = Partition(head, end);
 
-            Pair<ListNode> p1 = QuickSort(p.first, pivot);
+            // p[1] is always pivot
+            ListNode[] p1 = QuickSort(p[0], pivot);
             if (p1 != null)
             {
-                p1.second.next = pivot;
-                ret.first = p1.first;
+                p1[1].next = p[1];
+                ret[0] = p1[0];
             }
             else
             {
-                ret.first = pivot;
+                ret[0] = pivot;
             }
-            Pair<ListNode> p2 = QuickSort(p.second.next, end);
+            
+            ListNode[] p2 = QuickSort(p[1].next, end);
             if (p2 != null)
             {
-                p.second.next = p2.first;
-                ret.second = p2.second;
+                p[1].next = p2[0];
+                ret[1] = p2[1];
             }
             else
             {
-                ret.second = p.second;
+                ret[1] = p[1];
             }
 
             return ret;
@@ -65,40 +66,41 @@ namespace Demo
 
 
         // return two partition head divided by head.
-        Pair<ListNode> Partition(ListNode head, ListNode end)
+        ListNode[] Partition(ListNode head, ListNode end)
         {
-            Pair<ListNode> ret = new Pair<ListNode>
+            var ret = new []
             {
-                first = head,
-                second = head
+                head, head
             };
 
             if (head.next == end)
             {
                 return ret;
             }
+
             ListNode p = head.next;
             head.next = end;
             while (p != end)
             {
                 ListNode next = p.next;
-                if (p.val >= ret.second.val)
+                if (p.val >= head.val)
                 {
-                    ListNode temp = ret.second.next;
-                    ret.second.next = p;
-                    p.next = temp;
-                    if (p.val == ret.second.val)
+                    p.next = ret[1].next;
+                    ret[1].next = p;
+                    if (p.val == ret[1].val)
                     {
-                        ret.second = p;
+                        ret[1] = p;
                     }
                 }
                 else
                 {
-                    p.next = ret.first;
-                    ret.first = p;
+                    p.next = ret[0];
+                    ret[0] = p;
                 }
+
                 p = next;
             }
+
             return ret;
         }
 
@@ -127,6 +129,7 @@ namespace Demo
             {
                 head2 = head2.next;
             }
+
             return Merge(MergeSort(head, count1), count1, MergeSort(head2, count2), count2);
         }
 
@@ -170,115 +173,6 @@ namespace Demo
 
             end.next = null;
 
-            return ret.next;
-        }
-
-
-        // Buble Down
-        public ListNode SortList3 (ListNode head)
-        {
-            if (head == null)
-            {
-                return null;
-            }
-
-            ListNode ret = new ListNode(0) {next = head};
-            ListNode newend = null;
-            bool changed = false;
-
-            do
-            {
-                ListNode pre = ret;
-                ListNode cur = ret.next;
-                ListNode end = newend;
-                changed = false;
-                while (cur.next != end)
-                {
-                    ListNode next = cur.next;
-                    if (next.val < cur.val)
-                    {
-                        pre.next = next;
-                        cur.next = next.next;
-                        next.next = cur;
-
-                        pre = next;
-                        newend = next;
-                        changed = true;
-                    }
-                    else
-                    {
-                        pre = cur;
-                        cur = cur.next;
-                    }
-                }
-            } while (changed);
-
-            return ret.next;
-        }
-
-        // buble up
-        public ListNode SortList4(ListNode head)
-        {
-            if (head == null)
-            {
-                return null;
-            }
-
-            ListNode ret = new ListNode(0)
-            {
-                next = head
-            };
-
-            ListNode p = ret;
-            while (p.next != null)
-            {
-                ListNode premin = p;
-                ListNode min = p.next;
-                ListNode p2 = p.next;
-                while (p2.next != null)
-                {
-                    if (p2.next.val < min.val)
-                    {
-                        premin = p2;
-                        min = p2.next;
-                    }
-
-                    p2 = p2.next;
-                }
-
-                premin.next = min.next;
-                min.next = p.next;
-                p.next = min;
-                p = p.next;
-            }
-
-            return ret.next;
-        }
-
-        public ListNode SortList5(ListNode head)
-        {
-            if (head == null)
-            {
-                return null;
-            }
-
-            ListNode ret = new ListNode(0);
-            ListNode p = head;
-            while (p != null)
-            {
-                ListNode pre = ret;
-                ListNode cur = pre.next;
-                while (cur != null && cur.val < p.val)
-                {
-                    pre = cur;
-                    cur = cur.next;
-                }
-
-                ListNode next = p.next;
-                pre.next = p;
-                p.next = cur;
-                p = next;
-            }
             return ret.next;
         }
     }

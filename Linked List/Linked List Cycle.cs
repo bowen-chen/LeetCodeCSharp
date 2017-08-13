@@ -39,6 +39,7 @@ namespace Demo
                     fast = fast.next;
                 }
             }
+
             return false;
         }
     }

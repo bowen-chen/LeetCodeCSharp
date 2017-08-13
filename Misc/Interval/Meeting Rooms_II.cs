@@ -39,6 +39,7 @@ namespace Demo
             {
                 res = Math.Max(res, rooms += it.Value);
             }
+
             return res;
         }
 

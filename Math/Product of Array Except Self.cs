@@ -31,21 +31,23 @@ namespace Demo
             }
 
             var ret = new int[nums.Length];
-            if (ret.Length != 0)
+            if (ret.Length == 0)
             {
-                ret[0] = 1;
-                for (int i = 1; i < nums.Length; i++)
-                {
-                    ret[i] = nums[i-1]*ret[i - 1];
-                }
-
-                int right = nums[nums.Length-1];
-                for (int i = nums.Length -2; i >=0; i--)
-                {
-                    ret[i] = ret[i] * right;
-                    right *= nums[i];
-                }
+                return ret;
             }
+            ret[0] = 1;
+            for (int i = 1; i < nums.Length; i++)
+            {
+                ret[i] = nums[i - 1]*ret[i - 1];
+            }
+
+            int right = nums[nums.Length - 1];
+            for (int i = nums.Length - 2; i >= 0; i--)
+            {
+                ret[i] = ret[i]*right;
+                right *= nums[i];
+            }
+
             return ret;
         }
     }

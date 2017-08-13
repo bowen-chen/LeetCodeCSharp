@@ -20,7 +20,6 @@ namespace Demo
             }
 
             ListNode pre = head;
-
             while (pre != null)
             {
                 ListNode q = pre.next;

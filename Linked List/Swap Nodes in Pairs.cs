@@ -41,6 +41,7 @@ namespace Demo
                 current.next = second;
                 current = current.next.next;
             }
+
             return ret.next;
         }
     }

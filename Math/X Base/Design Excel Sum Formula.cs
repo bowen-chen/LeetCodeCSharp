@@ -98,7 +98,7 @@ namespace Demo
             return mat[r - 1, c - 'A'];
         }
 
-        int sum(int r, char c, List<string> strs)
+        private int sum(int r, char c, List<string> strs)
         {
 
             long key = ((long)r << 32) | c;

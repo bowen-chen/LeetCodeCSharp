@@ -29,7 +29,7 @@ namespace Demo
             int j = 0;
             while (i < intervals1.Count || j < intervals2.Count)
             {
-                Interval m;
+                Interval m; /*interval to merge*/
                 if (i < intervals1.Count && j < intervals2.Count)
                 {
                     m = intervals1[i].start <= intervals2[j].start ? intervals1[i++] : intervals2[j++];
@@ -49,6 +49,7 @@ namespace Demo
                     cur.end = Math.Max(cur.end, m.end);
                 }
             }
+
             return ret;
         }
     }

@@ -44,12 +44,12 @@ namespace Demo
                 }
                 else
                 {
-                    ++res;
-                    
                     //remove the bigger one
                     end = Math.Min(end.Value, i.end);
+                    ++res;
                 }
             }
+
             return res;
         }
 

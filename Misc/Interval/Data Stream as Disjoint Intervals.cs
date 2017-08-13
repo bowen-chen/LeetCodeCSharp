@@ -16,7 +16,6 @@ What if there are lots of merges and the number of disjoint intervals are small 
 
 using System;
 using System.Collections.Generic;
-using Interval=Demo.Solution.Interval;
 
 namespace Demo
 {
@@ -31,28 +30,28 @@ namespace Demo
      */
     public class SummaryRanges
     {
-        List<Interval> list = new List<Interval>();
+        private List<Interval> list = new List<Interval>();
 
         public void AddNum(int val)
         {
-            Interval cur = new Interval(val, val);
+            Interval newInterval = new Interval(val, val);
             List<Interval> res = new List<Interval>();
             bool notadd = true;
             foreach (var a in list)
             {
                 // cur is before a
-                if (cur.end < a.start -1)
+                if (newInterval.end < a.start -1)
                 {
                     if (notadd)
                     {
-                        res.Add(cur);
+                        res.Add(newInterval);
                         notadd = false;
                     }
 
                     res.Add(a);
                 }
                 // cur is after a
-                else if (a.end +1 < cur.start)
+                else if (a.end + 1 < newInterval.start)
                 {
                     res.Add(a);
                 }
@@ -61,11 +60,11 @@ namespace Demo
                     // cur is overlap with a
                     // a.start-1 <= cur.end
                     // a.end >=cur.start-1
-                    cur.start = Math.Min(cur.start, a.start);
-                    cur.end = Math.Max(cur.end, a.end);
+                    newInterval.start = Math.Min(newInterval.start, a.start);
+                    newInterval.end = Math.Max(newInterval.end, a.end);
                     if (notadd)
                     {
-                        res.Add(cur);
+                        res.Add(newInterval);
                         notadd = false;
                     }
                 }

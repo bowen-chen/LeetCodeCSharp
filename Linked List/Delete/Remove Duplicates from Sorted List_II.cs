@@ -16,7 +16,6 @@ namespace Demo
         {
             var ret = new ListNode(0);
             var pre = ret;
-
             while (head != null)
             {
                 int val = head.val;

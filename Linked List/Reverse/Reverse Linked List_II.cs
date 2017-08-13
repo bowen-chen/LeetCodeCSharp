@@ -39,9 +39,8 @@ namespace Demo
             };
 
             ListNode reverseHead = ret;
-
             n -= m;
-            while (m != 1)
+            while (m != 1) /*m is 1 based*/
             {
                 reverseHead = reverseHead.next;
                 m--;

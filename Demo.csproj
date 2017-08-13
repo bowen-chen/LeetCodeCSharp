@@ -195,7 +195,6 @@
     <Compile Include="Bit\UTF-8 Validation.cs" />
     <Compile Include="Common\Counter.cs" />
     <Compile Include="Common\ListNode.cs" />
-    <Compile Include="Common\Pair.cs" />
     <Compile Include="Common\Palindrome.cs" />
     <Compile Include="Common\Point.cs" />
     <Compile Include="Common\PriorityQueue.cs" />
@@ -371,7 +370,7 @@
     <Compile Include="Hash Table\Subarray Sum\Minimum Size Subarray Sum.cs" />
     <Compile Include="Hash Table\Subarray Sum\Split Array with Equal Sum.cs" />
     <Compile Include="Hash Table\Subarray Sum\Subarray Sum Equals K.cs" />
-    <Compile Include="Hash Table\Substring with Concatenation of All Words.cs" />
+    <Compile Include="Hash Table\Anagrams\Substring with Concatenation of All Words.cs" />
     <Compile Include="Hash Table\Task Scheduler.cs" />
     <Compile Include="Hash Table\Unique Word Abbreviation.cs" />
     <Compile Include="Hash Table\Valid Square.cs" />

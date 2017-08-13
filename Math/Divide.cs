@@ -31,14 +31,10 @@ namespace Demo
 
         public int Divide(int dividend, int divisor)
         {
+            int sign = dividend > 0 ^ divisor > 0 ? -1 : 1;
+
             //Reduce the problem to positive long integer to make it easier.
             //Use long to avoid integer overflow cases.
-            int sign = 1;
-            if ((dividend > 0 && divisor < 0) || (dividend < 0 && divisor > 0))
-            {
-                sign = -1;
-            }
-
             long ldividend = Math.Abs((long)dividend);
             long ldivisor = Math.Abs((long)divisor);
 
@@ -48,7 +44,7 @@ namespace Demo
                 return int.MaxValue;
             }
 
-            if ((ldividend == 0) || (ldividend < ldivisor))
+            if (ldividend == 0 || ldividend < ldivisor)
             {
                 return 0;
             }

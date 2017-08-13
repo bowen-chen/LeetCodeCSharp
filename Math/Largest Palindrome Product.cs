@@ -32,29 +32,31 @@ namespace Demo
             }
 
             // if n = 3 then upperBound = 999 and lowerBound = 99
-            long upperBound = (long)Math.Pow(10, n) - 1, lowerBound = upperBound / 10;
+            long upperBound = (long) Math.Pow(10, n) - 1;
+            long lowerBound = upperBound / 10;
             long maxNumber = upperBound * upperBound;
 
             // represents the first half of the maximum assumed palindrom.
             // e.g. if n = 3 then maxNumber = 999 x 999 = 998001 so firstHalf = 998
             int firstHalf = (int)(maxNumber / (long)Math.Pow(10, n));
-            
-            while (firstHalf>0)
+
+            while (firstHalf > 0)
             {
                 // creates maximum assumed palindrom
                 // e.g. if n = 3 first time the maximum assumed palindrom will be 998 899
                 long palindrom = createPalindrom(firstHalf);
 
                 // here i and palindrom/i forms the two factor of assumed palindrom
-                for (long i = upperBound; i * upperBound >= palindrom && i>lowerBound; i--)
+                for (long i = upperBound; i*upperBound >= palindrom && i > lowerBound; i--)
                 {
                     // if two factors found, where both of them are n-digits,
-                    if (palindrom % i == 0)
+                    if (palindrom%i == 0)
                     {
                         Console.WriteLine("{0} x {1} = {2}", i, palindrom/i, palindrom);
                         return (int) (palindrom%1337);
                     }
                 }
+
                 firstHalf--;
             }
 

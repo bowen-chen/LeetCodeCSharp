@@ -45,6 +45,7 @@ namespace Demo
                 x /= 10;
                 i /= 100;
             }
+
             return true;
         }
     }

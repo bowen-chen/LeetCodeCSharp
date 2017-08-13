@@ -79,6 +79,7 @@ namespace Demo
                     prevHeight = curHeight;
                 }
             }
+
             return result;
         }
     }

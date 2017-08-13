@@ -16,7 +16,6 @@ namespace Demo
             for (int i = 0; i <= vals.Length; ++i)
             {
                 int curr = (i == vals.Length) ? end + 1 : vals[i];
-
                 if (curr - prev >= 2)
                 {
                     ranges.Add(getRange(prev + 1, curr - 1));

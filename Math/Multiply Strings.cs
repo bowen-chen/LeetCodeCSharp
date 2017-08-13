@@ -44,6 +44,7 @@ namespace Demo
             {
                 res += v[i] + '0';
             }
+
             res = res.TrimStart('0');
             return string.IsNullOrEmpty(res) ? "0" : res;
         }

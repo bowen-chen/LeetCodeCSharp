@@ -1,6 +1,6 @@
 ﻿/*
 84	Largest Rectangle in Histogram
-hard
+hard, revisit
 Given n non-negative integers representing the histogram's bar height where the width of each bar is 1, find the area of largest rectangle in the histogram.
 
 
@@ -24,9 +24,8 @@ namespace Demo
         {
             // keep index in stack
             // height[inex] is ascending order
-            Stack<int> stack = new Stack<int>();
+            var stack = new Stack<int>();
             int max_area = 0;
-
             for (int i = 0; i <= height.Length; ++i)
             {
                 int height_bound = (i == height.Length) ? 0 : height[i];

@@ -33,20 +33,24 @@ namespace Demo
             {
                 return null;
             }
+
             var ans = nums[0].ToString();
             if (nums.Length == 1)
             {
                 return ans;
             }
+
             if (nums.Length == 2)
             {
                 return ans + "/" + nums[1];
             }
+
             ans += "/(" + nums[1];
             for (int i = 2; i < nums.Length; ++i)
             {
                 ans += "/" + nums[i];
             }
+
             ans += ")";
             return ans;
         }

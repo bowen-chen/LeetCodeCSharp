@@ -24,19 +24,6 @@ namespace Demo
 
         public int CountDigitOne(int n)
         {
-            int res = 0;
-            for (int k = 1; k <= n; k *= 10)
-            {
-                int r = n / k, m = n % k;
-
-                // sum up the count of ones on every place k
-                res += (r + 8) / 10 * k + (r % 10 == 1 ? m + 1 : 0);
-            }
-            return res;
-        }
-
-        public int CountDigitOne2(int n)
-        {
             long ones = 0;
             for (long m = 1; m <= n; m *= 10)
             {
@@ -72,6 +59,7 @@ namespace Demo
                     ones += b + 1;
                 }
             }
+
             return (int)ones;
         }
     }

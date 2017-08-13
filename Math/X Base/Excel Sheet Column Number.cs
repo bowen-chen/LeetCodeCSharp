@@ -23,11 +23,13 @@ namespace Demo
         public int TitleToNumber(string s)
         {
             // 26 based, start with 1
+            // A0=Z
             int result = 0;
             foreach (char c in s)
             {
                 result = result*26 + (c - 'A' + 1);
             }
+
             return result;
         }
     }

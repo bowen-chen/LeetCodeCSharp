@@ -13,20 +13,6 @@ namespace Demo
 {
     public partial class Solution
     {
-        public bool IsPowerOfThree(int n)
-        {
-            if (n <= 0)
-            {
-                return false;
-            }
-
-            while (n%3 == 0)
-            {
-                n /= 3;
-            }
-            return n == 1;
-        }
-
         // all prime number can be solved by this.
         private const int MaxPowOfThree = 1162261467;
 

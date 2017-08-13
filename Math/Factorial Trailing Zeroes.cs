@@ -19,6 +19,7 @@ namespace Demo
             {
                 result += (int) (n/i);
             }
+
             return result;
         }
     }

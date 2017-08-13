@@ -17,11 +17,9 @@ namespace Demo
         {
             ListNode ret = new ListNode(0);
             ListNode head = ret;
-            int c = 0; //carrier
-            while (l1 != null || l2 != null || c != 0)
+            int sum = 0; //carrier
+            while (l1 != null || l2 != null || sum != 0)
             {
-                int sum = c;
-
                 if (l1 != null)
                 {
                     sum += l1.val;
@@ -36,7 +34,7 @@ namespace Demo
 
                 head.next = new ListNode(sum % 10);
                 head = head.next;
-                c = sum / 10;
+                sum = sum / 10;
             }
 
             return ret.next;

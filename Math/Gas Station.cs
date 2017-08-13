@@ -22,6 +22,7 @@ namespace Demo
 
             int start = 0;
             int tank = 0;
+
             //if car fails at 'start', record the next station
             for (int i = 0; i < gas.Length; i++)
             {
@@ -33,6 +34,7 @@ namespace Demo
                     tank = 0;
                 }
             }
+
             return (total + tank < 0) ? -1 : start;
         }
     }

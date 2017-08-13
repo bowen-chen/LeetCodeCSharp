@@ -1,4 +1,5 @@
 ﻿/*
+86 Partition List   
 easy, linked list
 Given a linked list and a value x, partition it such that all nodes less than x come before nodes greater than or equal to x.
 
@@ -43,9 +44,8 @@ namespace Demo
                 head = head.next;
             }
 
-            le.next = null;
-            he.next = null;
             le.next = hh.next;
+            he.next = null;
             return lh.next;
         }
     }
