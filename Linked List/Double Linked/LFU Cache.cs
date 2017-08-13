@@ -25,7 +25,6 @@ cache.get(4);       // returns 4
 */
 
 using System.Collections.Generic;
-using System.Runtime.Remoting.Messaging;
 
 namespace Demo
 {
@@ -36,7 +35,7 @@ namespace Demo
         // key to node
         private readonly Dictionary<int, LinkedNode> _keyToNode = new Dictionary<int, LinkedNode>();
 
-        // freq to node head, single linked loop list
+        // freq to node head, double linked loop list
         private readonly Dictionary<int, LinkedNode> _freqToHeadNode = new Dictionary<int, LinkedNode>();
 
         private readonly int _capacity;

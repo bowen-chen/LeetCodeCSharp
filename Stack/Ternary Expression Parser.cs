@@ -61,7 +61,7 @@ namespace Demo
                 char c = expression[i];
                 if (s.Count != 0 && s.Peek() == '?')
                 {
-                    s.Pop();
+                    s.Pop(); // pop ?
                     char first = s.Pop();
                     s.Pop(); // pop :
                     char second = s.Pop();

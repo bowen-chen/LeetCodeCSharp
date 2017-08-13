@@ -41,7 +41,7 @@ namespace Demo
         {
             var res = new int[n];
             int time = 0;
-            var s = new Stack<int[]>();
+            var s = new Stack<int[]>(); /*id, total excution time*/
             foreach (string log in logs)
             {
                 var tokens = log.Split(':');

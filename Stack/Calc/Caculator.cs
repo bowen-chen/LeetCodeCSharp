@@ -98,6 +98,8 @@ namespace Demo
                             }
 
                             values.Push(a);
+                            // don't move i in this case, to continue process the ops in task with c
+
                             break;
                     }
                 }

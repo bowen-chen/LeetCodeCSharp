@@ -119,7 +119,7 @@ namespace Demo
                 {
                     int j = i + 1;
                     i = code.IndexOf(">", j);
-                    if (i < 0 || i == j || i - j > 9)
+                    if (i < 0 || i == j || i - j > 9 /*length in range [1,9]*/)
                     {
                         return false;
                     }
