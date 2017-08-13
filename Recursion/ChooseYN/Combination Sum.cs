@@ -24,7 +24,7 @@ namespace Demo
     {
         public IList<IList<int>> CombinationSum(int[] candidates, int target)
         {
-            candidates = candidates.OrderBy(c => c).Distinct().ToArray();
+            candidates = candidates.OrderBy(c => c).Distinct()/*unique combination*/.ToArray();
             IList<IList<int>> ret = new List<IList<int>>();
             CombinationSum(ret, candidates, target, 0, new List<int>());
             return ret;
@@ -47,7 +47,7 @@ namespace Demo
 
             // choose
             current.Add(candidates[index]);
-            CombinationSum(ret, candidates, target - candidates[index], index, current);
+            CombinationSum(ret, candidates, target - candidates[index], index /*use multiple times*/, current);
             current.RemoveAt(current.Count - 1);
 
             // not choose

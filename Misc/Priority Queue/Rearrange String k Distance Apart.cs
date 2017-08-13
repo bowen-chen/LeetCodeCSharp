@@ -63,7 +63,7 @@ namespace Demo
             int len = str.Length;
             while (q.Count != 0)
             {
-                List<Tuple<int, char>> v = new List<Tuple<int, char>>();
+                var v = new List<Tuple<int, char>>();
                 int cnt = Math.Min(k, len);
                 for (int i = 0; i < cnt; ++i)
                 {

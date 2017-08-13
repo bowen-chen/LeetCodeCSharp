@@ -428,7 +428,8 @@
     <Compile Include="Math\Number of Digit One.cs" />
     <Compile Include="Math\Optimal Division.cs" />
     <Compile Include="Math\Palindrome Number.cs" />
-    <Compile Include="Math\Patching Array.cs" />
+    <Compile Include="Misc\Interval\Interval.cs" />
+    <Compile Include="Tree\BFS\Patching Array.cs" />
     <Compile Include="Math\Perfect Number.cs" />
     <Compile Include="Math\Perfect Rectangle.cs" />
     <Compile Include="Math\Plus One.cs" />

@@ -72,7 +72,7 @@ namespace Demo
 
             if (notadd)
             {
-                res.Add(cur);
+                res.Add(newInterval);
             }
 
             list = res;

@@ -68,7 +68,7 @@ namespace Demo
                 return;
             }
 
-            for (int i = start; i <= n; ++i)
+            for (int i = start; i < n; ++i)
             {
                 if (n % i == 0)
                 {

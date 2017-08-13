@@ -21,9 +21,7 @@ namespace Demo
     {
         public bool WordPatternMatch(string pattern, string str)
         {
-            var st = new HashSet<string>();
-            var mp = new Dictionary<char, string>();
-            return WordPatternMatch(str, 0, pattern, 0, st, mp);
+            return WordPatternMatch(str, 0, pattern, 0, new HashSet<string>(), new Dictionary<char, string>());
         }
 
         public bool WordPatternMatch(string str, int i, string pat, int j, HashSet<string> visited, Dictionary<char, string> mp)

@@ -1,4 +1,5 @@
 ﻿/*
+158	Read N Characters Given Read4 II - Call multiple times
 The API: int read4(char *buf) reads 4 characters at a time from a file.
 
 The return value is the actual number of characters read. For example, it returns 3 if there is only 3 characters left in the file.
@@ -26,7 +27,6 @@ namespace Demo
 
         private int Read2(Stream stream, byte[] buf, int n)
         {
-
             int len = 0;
             int m = 0;
             for (int i = current; i < bufferLength; i++)

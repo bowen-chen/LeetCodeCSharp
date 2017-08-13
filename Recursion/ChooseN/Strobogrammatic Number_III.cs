@@ -31,17 +31,12 @@ namespace Demo
 
         private void StrobogrammaticInRange(string low, string high, string w, ref int res)
         {
-            if (w.Length >= low.Length && w.Length <= high.Length)
+            if (w.Length >= low.Length && w.Length <= high.Length
+                && !(w.Length > 1 && w[0] == '0')
+                && !(w.Length == low.Length && w.CompareTo(low) < 0)
+                || (w.Length == high.Length && w.CompareTo(high) > 0))
             {
-                if ((w.Length == low.Length && w.CompareTo(low) < 0)
-                    || (w.Length == high.Length && w.CompareTo(high) > 0))
-                {
-                    return;
-                }
-
-                if (!(w.Length > 1 && w[0] == '0')) {
-                    ++res;
-                }
+                ++res;
             }
 
             if (w.Length + 2 > high.Length) {
@@ -53,26 +48,6 @@ namespace Demo
             StrobogrammaticInRange(low, high, "6" + w + "9", ref res);
             StrobogrammaticInRange(low, high, "8" + w + "8", ref res);
             StrobogrammaticInRange(low, high, "9" + w + "6", ref res);
-        }
-
-        public int StrobogrammaticInRange2(string low, string high)
-        {
-            int count = 0;
-            var ret = new List<string>();
-            for (int n = low.Length; n <= high.Length; n++)
-            {
-                ret.AddRange(FindStrobogrammatic2(n));
-            }
-            foreach (string num in ret)
-            {
-                if ((num.Length == low.Length && num.CompareTo(low) < 0) 
-                    || (num.Length == high.Length && num.CompareTo(high) > 0))
-                {
-                    continue;
-                }
-                count++;
-            }
-            return count;
         }
     }
 }

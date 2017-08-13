@@ -53,6 +53,7 @@ namespace Demo
                     sb[i] = 'Q';
                     r.Add(sb.ToString());
                 }
+
                 ret.Add(r);
                 return;
             }

@@ -1,4 +1,5 @@
 ﻿/*
+40 Combination Sum II   
 easy, recursion
 Given a collection of candidate numbers (C) and a target number (T), find all unique combinations in C where the candidate numbers sums to T.
 
@@ -48,11 +49,13 @@ namespace Demo
 
             // choose
             current.Add(candidates[index]);
-            CombinationSum2(ret, candidates, target - candidates[index], index + 1, current);
+            CombinationSum2(ret, candidates, target - candidates[index], index + 1 /*use once*/, current);
             current.RemoveAt(current.Count - 1);
 
             // not choose
             int c = candidates[index];
+
+            /*unique*/
             while (index + 1 < candidates.Length && candidates[index + 1] == c)
             {
                 index++;

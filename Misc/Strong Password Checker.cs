@@ -36,9 +36,9 @@ namespace Demo
             }
 
             int triplet = 0; // the number of triple set of number
-            int one = 0; // (AAA)[N]A can be solve by N times [replace] (AAX)[N]A or N-1 [replace] and 2 [delete] (AAX)[N-1]AA
-            int two = 0; // (AAA)[N]AA can be solve by N times [replace] (AAX)[N]AA
-            int three = 0; // (AAA)[N] can be solve by N times [replace] (AAX)[N] or change-1 replace and 1 delete (AAA)[N-1]AA;
+            int one = 0; // (AAA)[N]A can be solve by N times [replace] or [insert] (AAX)[N]A or N-1 [replace] or [insert] and 2 [delete] (AAX)[N-1]AA
+            int two = 0; // (AAA)[N]AA can be solve by N times [replace] or [insert] (AAX)[N]AA
+            int zero = 0; // (AAA)[N] can be solve by N times [replace] or [insert] (AAX)[N] or change-1 [replace] or [insert] and 1 delete (AAA)[N-1]AA;
 
             int p = 2;
             while (p < s.Length)
@@ -56,7 +56,7 @@ namespace Demo
                     triplet += length/3;
                     if (length%3 == 0)
                     {
-                        three ++;
+                        zero++;
                     }
                     else if (length%3 == 1)
                     {
@@ -89,8 +89,8 @@ namespace Demo
             int deleteTotal = s.Length - 20;
             int remainingDelete = deleteTotal;
 
-            // delete 1 from each three
-            var delete = Math.Min(remainingDelete, three);
+            // delete 1 from each zero
+            var delete = Math.Min(remainingDelete, zero);
             triplet -= delete;
             remainingDelete -= delete;
 

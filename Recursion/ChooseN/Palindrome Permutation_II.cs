@@ -40,7 +40,7 @@ namespace Demo
             if (odd > 1)
             {
                 return ret;
-            };
+            }
 
             string mid = "";
             int length = 0;

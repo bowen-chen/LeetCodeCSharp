@@ -48,7 +48,8 @@ namespace Demo
                 long x1 = long.Parse(num.Substring(0, i));
 
                 // second number length
-                for (int j = 1; Math.Max(j, i) <= n - i - j; j++)
+                // sum length >= max(i, j)
+                for (int j = 1; Math.Max(i, j) <= n - i - j; j++)
                 {
                     if (num[i] == '0' && j > 1)
                     {
@@ -62,6 +63,7 @@ namespace Demo
                     }
                 }
             }
+
             return false;
         }
 
@@ -71,12 +73,10 @@ namespace Demo
             {
                 return true;
             }
-
-            long temp = x2;
-            x2 = x2 + x1;
-            x1 = temp;
-            string sum = x2.ToString();
-            return num.StartsWith(sum) && IsValid(x1, x2, num.Substring(sum.Length));
+            
+            long x3 = x2 + x1;
+            string sum = x3.ToString();
+            return num.StartsWith(sum) && IsValid(x2, x3, num.Substring(sum.Length));
         }
     }
 }

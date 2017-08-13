@@ -33,7 +33,6 @@ namespace Demo
         {
             int n = nums.Length;
             var dp = new int[n, n];
-
             for (int i = 0; i < n; i++)
             {
                 dp[i, i] = nums[i];
@@ -49,22 +48,6 @@ namespace Demo
             }
 
             return dp[0, n - 1] >= 0;
-        }
-
-        // best relative score
-        private int PredictTheWinner(int[] nums, int s, int e, int[,] dp)
-        {
-            if (dp[s, e] == -1)
-            {
-                dp[s, e] =
-                    (s == e) ?
-                    nums[s] :
-                    Math.Max(
-                        nums[s] - PredictTheWinner(nums, s + 1, e, dp),
-                        nums[e] - PredictTheWinner(nums, s, e - 1, dp));
-            }
-
-            return dp[s, e];
         }
 
         public bool PredictTheWinner3(int[] nums)

@@ -56,28 +56,5 @@ namespace Demo
 
             SubsetsWithDup(ret, nums, i + 1, cur);
         }
-
-        public IList<IList<int>> SubsetsWithDup2(int[] nums)
-        {
-            var ret = new List<IList<int>> {new List<int>()};
-            nums = nums.OrderBy(n => n).ToArray();
-            for (int i = 0; i < nums.Length;)
-            {
-                int count = 0; // num of elements are the same
-                while (count + i < nums.Length && nums[count + i] == nums[i]) count++;
-                int previousN = ret.Count;
-                for (int k = 0; k < previousN; k++)
-                {
-                    List<int> instance = new List<int>(ret[k]);
-                    for (int j = 0; j < count; j++)
-                    {
-                        instance.Add(nums[i]);
-                        ret.Add(new List<int>(instance));
-                    }
-                }
-                i += count;
-            }
-            return ret;
-        }
     }
 }

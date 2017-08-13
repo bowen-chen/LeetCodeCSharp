@@ -39,7 +39,6 @@ namespace Demo
                 minCapital.Push(new[] {Capital[i], Profits[i]});
             }
 
-
             var maxProfit = new PriorityQueue<int>(Profits.Length);
             for (int i = 0; i < k; ++i)
             {
@@ -55,6 +54,7 @@ namespace Demo
 
                 W += maxProfit.Pop();
             }
+
             return W;
         }
     }

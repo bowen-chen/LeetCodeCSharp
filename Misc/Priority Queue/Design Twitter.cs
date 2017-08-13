@@ -36,24 +36,17 @@ twitter.getNewsFeed(1);
 */
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using Demo.Common;
 
-namespace Demo.Misc
+namespace Demo
 {
     public class Twitter
     {
         private int _index = 0;
         private readonly Dictionary<int, List<Tuple<int, int>>> _userToPost = new Dictionary<int, List<Tuple<int, int>>>();
         private readonly Dictionary<int, HashSet<int>> _userToFollowees = new Dictionary<int, HashSet<int>>();  
-
-        /** Initialize your data structure here. */
-        public Twitter()
-        {
-
-        }
-
+        
         /** Compose a new tweet. */
         public void PostTweet(int userId, int tweetId)
         {

@@ -59,10 +59,11 @@ namespace Demo
             if (index < special.Count)
             {
                 bool canChoose = true;
-                for (int i = 0; i < (special[index].Count - 1); i++)
+                var s = special[index];
+                for (int i = 0; i < s.Count - 1; i++)
                 {
-                    sum -= special[index][i];
-                    if ((needs[i] -= special[index][i]) < 0)
+                    sum -= s[i];
+                    if ((needs[i] -= s[i]) < 0)
                     {
                         canChoose = false;
                     }
@@ -70,30 +71,28 @@ namespace Demo
 
                 if (canChoose)
                 {
-                    ret = Math.Min(ret,
-                        ShoppingOffers(price, special, needs, sum, index,
-                            current + special[index][special[index].Count - 1]));
+                    ret = Math.Min(ret, ShoppingOffers(price, special, needs, sum, index, current + s[s.Count - 1]));
                 }
 
-                for (int i = 0; i < (special[index].Count - 1); i++)
+                for (int i = 0; i < (s.Count - 1); i++)
                 {
-                    sum += special[index][i];
-                    needs[i] += special[index][i];
+                    sum += s[i];
+                    needs[i] += s[i];
                 }
-
 
                 ret = Math.Min(ret, ShoppingOffers(price, special, needs, sum, index + 1, current));
             }
             else if (index < special.Count + price.Count)
             {
-                if (needs[index - special.Count] > 0)
+                int priceIndex = index - special.Count;
+                if (needs[priceIndex] > 0)
                 {
-                    var temp = needs[index - special.Count];
-                    needs[index - special.Count] = 0;
+                    var temp = needs[priceIndex];
+                    needs[priceIndex] = 0;
                     ret = Math.Min(ret,
                         ShoppingOffers(price, special, needs, sum - temp, index + 1,
-                            current + price[index - special.Count]*temp));
-                    needs[index - special.Count] = temp;
+                            current + price[priceIndex]*temp));
+                    needs[priceIndex] = temp;
                 }
                 else
                 {

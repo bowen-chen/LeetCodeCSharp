@@ -60,13 +60,16 @@ namespace Demo
                     {
                         newList.Add("0" + str + "0");
                     }
+
                     newList.Add("1" + str + "1");
                     newList.Add("6" + str + "9");
                     newList.Add("8" + str + "8");
                     newList.Add("9" + str + "6");
                 }
+
                 r = newList;
             }
+
             return r;
         }
     }

@@ -1,6 +1,6 @@
 ﻿/*
 218	The Skyline Problem
-hard
+hard, revisit
 A city's skyline is the outer contour of the silhouette formed by all the buildings in that city when viewed from a distance. Now suppose you are given the locations and height of all the buildings as shown on a cityscape photo (Figure A), write a program to output the skyline formed by these buildings collectively (Figure B).
 
  Buildings  Skyline Contour
@@ -48,9 +48,15 @@ namespace Demo
             // number of height building
             // <height, count>
             var sortedList = new SortedDictionary<int, int>(Comparer<int>.Create((a, b) => b -a));
+
+            // the last point
             sortedList.Add(0, 1);
             int prevHeight = 0;
-            foreach (var h in height.OrderBy(x => x, Comparer<int[]>.Create((x, y) => x[0] == y[0] ? x[1] - y[1] : x[0] - y[0])))
+
+            // sort it by x,
+            // when enter build then order by height desc (we save the heigh as -h)
+            // when leave build then order by heigh asc
+            foreach (var h in height.OrderBy(x => x[0]).ThenBy(x => x[1]))
             {
                 if (h[1] < 0)
                 {

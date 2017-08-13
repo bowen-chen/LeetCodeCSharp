@@ -35,7 +35,7 @@ namespace Demo
 
         public IList<IList<int>> Subsets(int[] nums)
         {
-            nums = nums.OrderBy(n => n).ToArray();
+            nums = nums.OrderBy(n => n)/*non-descending order*/.ToArray();
             var ret = new List<IList<int>> {new List<int>()};
             Subsets(ret, nums, 0, new List<int>());
             return ret;

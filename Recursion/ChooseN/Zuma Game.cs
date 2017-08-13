@@ -32,7 +32,6 @@ Both input strings will be non-empty and only contain characters 'R','Y','B','G'
 */
 
 using System;
-using System.Collections.Generic;
 
 namespace Demo
 {
@@ -40,63 +39,69 @@ namespace Demo
     {
         public int FindMinStep(string board, string hand)
         {
-            var m = new Dictionary<char, int>();
+            var m =  new int[26];
             foreach (char c in hand)
             {
-                if (!m.ContainsKey(c))
-                {
-                    m[c] = 0;
-                }
-
-                m[c] ++;
+                m[c-'A'] ++;
             }
 
             var res = FindMinStep(board, m);
             return res == int.MaxValue ? -1 : res;
         }
 
-        public int FindMinStep(string board, Dictionary<char, int> hand)
+        public int FindMinStep(string board, int[] hand)
         {
-            int res = int.MaxValue;
-
-            for (int j = 0; j < board.Length; ++j)
+            if (board.Length == 0)
             {
-                if (!hand.ContainsKey(board[j])|| hand[board[j]] == 0)
+                return 0;
+            }
+            
+            int res = int.MaxValue;
+            for (int i = 0, j = 1; j <= board.Length; ++j)
+            {
+                if (j < board.Length && board[i] == board[j])
                 {
                     continue;
                 }
 
-                hand[board[j]]--;
-                string newBoard = board.Insert(j, board[j].ToString());
-                newBoard = RemoveConsecutive(newBoard);
-                if (newBoard.Length == 0)
+                int need = 3 - (j - i);
+                if (hand[board[i] - 'A'] >= need)
                 {
-                    hand[board[j]]++;
-                    return 1;
+
+                    hand[board[i] - 'A'] -= need;
+                    string newBoard = board.Substring(0, i) + board.Substring(j);
+                    newBoard = RemoveConsecutive(newBoard);
+                    int steps = FindMinStep(newBoard, hand);
+                    if (steps != int.MaxValue)
+                    {
+                        res = Math.Min(res, steps + need);
+                    }
+
+                    hand[board[i] - 'A'] += need;
                 }
 
-                res = Math.Min(res, FindMinStep(newBoard, hand));
-                hand[board[j]]++;
+                i = j;
             }
 
             return res;
         }
         private string RemoveConsecutive(string board)
         {
-            for (int i = 0, j = 0; i <= board.Length; ++i)
+            for (int i = 0, j = 1; j <= board.Length; ++j)
             {
-                if (i < board.Length && board[i] == board[j])
+                if (j < board.Length && board[i] == board[j])
                 {
                     continue;
                 }
 
-                if (i - j >= 3)
+                if (j - i >= 3)
                 {
-                    return RemoveConsecutive(board.Substring(0, j) + (i < board.Length ? board.Substring(i) : ""));
+                    return RemoveConsecutive(board.Substring(0, i) + (j < board.Length ? board.Substring(j) : ""));
                 }
 
-                j = i;
+                i = j;
             }
+
             return board;
         }
     }

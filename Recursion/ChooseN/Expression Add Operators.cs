@@ -39,6 +39,7 @@ namespace Demo
                 {
                     ret.Add(currentString);
                 }
+
                 return;
             }
 

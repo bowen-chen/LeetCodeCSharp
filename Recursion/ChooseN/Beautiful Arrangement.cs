@@ -46,7 +46,7 @@ namespace Demo
             int res = 0;
             for (int i = 1; i <= N; ++i)
             {
-                if (((visited & 1<<i) == 0) && (i%index == 0 || index%i == 0))
+                if (((visited & 1 << i) == 0) && (i%index == 0 || index%i == 0))
                 {
                     res += CountArrangement(N, visited | (1 << i), index + 1);
                 }
