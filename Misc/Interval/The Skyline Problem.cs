@@ -47,7 +47,7 @@ namespace Demo
 
             // number of height building
             // <height, count>
-            var sortedList = new SortedDictionary<int, int>(Comparer<int>.Create((a, b) => b -a));
+            var sortedList = new SortedDictionary<int, int>(Comparer<int>.Create((a, b) => b - a));
 
             // the last point
             sortedList.Add(0, 1);

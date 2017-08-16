@@ -1,6 +1,6 @@
 ﻿/*
-revisit
 456. 132 Pattern
+revisit
 Given a sequence of n integers a1, a2, ..., an, a 132 pattern is a subsequence ai, aj, ak such that i < j < k and ai < ak < aj. Design an algorithm that takes a list of n numbers as input and checks whether there is a 132 pattern in the list.
 
 Note: n will be less than 15,000.
@@ -65,7 +65,7 @@ namespace Demo
             // keep third as high as possible
             int third = int.MinValue;
 
-            // the nums in s is sorted
+            // the nums in s is sorted, use any of nums as highest.
             var s = new Stack<int>();
             for (int i = nums.Length - 1; i >= 0; --i)
             {

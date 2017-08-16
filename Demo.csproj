@@ -200,7 +200,6 @@
     <Compile Include="Common\Palindrome.cs" />
     <Compile Include="Common\Point.cs" />
     <Compile Include="Common\PriorityQueue.cs" />
-    <Compile Include="Common\PriorityQueue2.cs" />
     <Compile Include="Common\TreeNode.cs" />
     <Compile Include="Common\Trie.cs" />
     <Compile Include="Common\UndirectedGraphNode.cs" />

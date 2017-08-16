@@ -111,26 +111,15 @@ namespace Demo
             var res = new List<int>();
             int i = 0;
             int j = 0;
-            while (i<nums1.Length || j <nums2.Length)
+            while (i < nums1.Length || j < nums2.Length)
             {
-                if (i == nums1.Length)
+                if (i == nums1.Length || j == nums2.Length)
                 {
-                    res.Add(nums2[j++]);
-                }
-                else if(j == nums2.Length)
-                {
-                    res.Add(nums1[i++]);
+                    res.Add(i == nums1.Length ? nums2[j++] : nums1[i++]);
                 }
                 else
                 {
-                    if (CompareVector(nums1, i, nums2, j)>0)
-                    {
-                        res.Add(nums1[i++]);
-                    }
-                    else
-                    {
-                        res.Add(nums2[j++]);
-                    }
+                    res.Add(CompareVector(nums1, i, nums2, j) > 0 ? nums1[i++] : nums2[j++]);
                 }
             }
 

@@ -53,7 +53,7 @@ namespace Demo
             // scan the buckets for the max gap
             int maxGap = int.MinValue;
             int previousMax = min;
-            for (int i = 0; i < nums.Length - 1; i++)
+            for (int i = 0; i < bucketsMIN.Length - 1; i++)
             {
                 if (bucketsMIN[i] == null || bucketsMAX[i] == null)
                 {

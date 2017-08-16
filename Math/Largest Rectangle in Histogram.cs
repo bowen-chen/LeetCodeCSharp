@@ -11,6 +11,12 @@ The largest rectangle is shown in the shaded area, which has area = 10 unit.
 
 For example,
 Given heights = [2,1,5,6,2,3],
+   *
+  **
+  **
+  ** *
+* ****
+******
 return 10.
 */
 using System;
@@ -33,7 +39,7 @@ namespace Demo
                 {
                     int h = height[stack.Peek()];
 
-                    // height_bound will be the max height
+                    // height_bound will be the max height, we cannot calculate those height yet
                     if (h < height_bound)
                     {
                         break;
@@ -41,7 +47,8 @@ namespace Demo
 
                     stack.Pop();
 
-                    // at the end, the area with the height of the minimal element.
+                    // the height is 0 at -1 and n 
+                    // the left is the first index where height is low than h
                     int leftIndex = stack.Count == 0 ? -1 : stack.Peek();
 
                     // calc max area at height h

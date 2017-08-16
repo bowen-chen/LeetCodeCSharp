@@ -24,6 +24,7 @@ namespace Demo
                         break;
                     }
                 }
+
                 if (j== needle.Length)
                 {
                     return i;

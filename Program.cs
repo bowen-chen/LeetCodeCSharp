@@ -6,7 +6,7 @@ namespace Demo
     {
         static void Main()
         {
-            Console.WriteLine(new Solution().CheapestJump(new [] {1, 2, 4, -1, 2}, 2));
+            Console.WriteLine(new Solution().CountRangeSum(new [] {-2,5,-1}, -2, 2));
         }
     }
 }

@@ -30,48 +30,48 @@ namespace Demo
                 sums[i + 1] = sums[i] + nums[i];
             }
 
-            return CountWhileMergeSort(sums, 0, n + 1, lower, upper);
+            return CountWhileMergeSort(sums, 0, n, lower, upper);
         }
 
-        // merge sort (0, end]
+        // merge sort [start, end]
         private int CountWhileMergeSort(long[] sums, int start, int end, int lower, int upper)
         {
             // sort
-            if (end - start <= 1)
+            if (start >= end)
             {
                 return 0;
             }
 
-            int mid = (start + end) / 2;
+            int mid = start + (end - start) / 2;
             int count = CountWhileMergeSort(sums, start, mid, lower, upper)
-                        + CountWhileMergeSort(sums, mid, end, lower, upper);
+                        + CountWhileMergeSort(sums, mid + 1, end, lower, upper);
            
             // count the number of rang start with i,
-            // end with j, k
-            for (int i = start, j = mid, k = mid; i < mid; ++i)
+            // end with [j, k)
+            for (int i = start, j = mid + 1, k = mid + 1; i <= mid; ++i)
             {
-                while (j < end && sums[j] - sums[i] < lower) j++;
-                while (k < end && sums[k] - sums[i] <= upper) k++;
+                while (j <= end && sums[j] - sums[i] < lower) j++;
+                while (k <= end && sums[k] - sums[i] <= upper) k++;
 
-                // i can pair wiht [k, j)
+                // i can pair wiht (j, k]
                 count += k - j;
             }
 
             // merge
-            long[] cache = new long[end - start];
-            for (int i = start, j = mid, r = 0; i < mid || j < end;)
+            long[] cache = new long[end - start + 1];
+            for (int i = start, j = mid + 1, r = 0; i <= mid || j <= end;)
             {
-                if (i < mid && j < end)
+                if (i <= mid && j <= end)
                 {
                     cache[r++] = sums[i] < sums[j] ? sums[i++] : sums[j++];
                 }
                 else
                 {
-                    cache[r++] = i < mid ? sums[i++] : sums[j++];
+                    cache[r++] = i <= mid ? sums[i++] : sums[j++];
                 }
             }
 
-            Array.Copy(cache, 0, sums, start, end - start);
+            Array.Copy(cache, 0, sums, start, end - start + 1);
             return count;
         }
     }
