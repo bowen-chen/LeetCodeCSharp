@@ -65,6 +65,7 @@
     <Compile Include="Array\Iterator\Design Compressed String Iterator.cs" />
     <Compile Include="Array\Iterator\Flatten 2D Vector.cs" />
     <Compile Include="Array\Iterator\Zigzag Iterator.cs" />
+    <Compile Include="Array\Judge Route Circle.cs" />
     <Compile Include="Array\License Key Formatting.cs" />
     <Compile Include="Array\Lonely Pixel I.cs" />
     <Compile Include="Array\Lonely Pixel II.cs" />
@@ -159,6 +160,7 @@
     <Compile Include="Binary Search\Arranging Coins.cs" />
     <Compile Include="Binary Search\Binary Search.cs" />
     <Compile Include="Binary Search\Count of Smaller Numbers After Self.cs" />
+    <Compile Include="Binary Search\Find K Closest Elements.cs" />
     <Compile Include="Binary Search\Find Peak Element.cs" />
     <Compile Include="Binary Search\First Bad Version.cs" />
     <Compile Include="Binary Search\H-Index.cs" />
@@ -208,6 +210,7 @@
     <Compile Include="DP\1D\4 Keys Keyboard.cs" />
     <Compile Include="DP\1D\Climbing Stairs.cs" />
     <Compile Include="DP\1D\Coin Change.cs" />
+    <Compile Include="DP\1D\Coin Path.cs" />
     <Compile Include="DP\1D\Combination Sum IV.cs" />
     <Compile Include="DP\1D\Concatenated Words.cs" />
     <Compile Include="DP\1D\Count Numbers with Unique Digits.cs" />
@@ -428,7 +431,9 @@
     <Compile Include="Math\Number of Digit One.cs" />
     <Compile Include="Math\Optimal Division.cs" />
     <Compile Include="Math\Palindrome Number.cs" />
+    <Compile Include="Math\X Base\Remove9.cs" />
     <Compile Include="Misc\Interval\Interval.cs" />
+    <Compile Include="Array\Split Array into Consecutive Subsequences.cs" />
     <Compile Include="Tree\BFS\Patching Array.cs" />
     <Compile Include="Math\Perfect Number.cs" />
     <Compile Include="Math\Perfect Rectangle.cs" />
@@ -569,7 +574,8 @@
     <Compile Include="Array\Sort\Reverse Pairs.cs" />
     <Compile Include="Tree\DFS\Add One Row to Tree.cs" />
     <Compile Include="Tree\DFS\Post Order\Balanced Binary Tree.cs" />
-    <Compile Include="Tree\DFS\Binary Search Tree Iterator.cs" />
+    <Compile Include="Tree\DFS\In Order\Binary Search Tree Iterator.cs" />
+    <Compile Include="Tree\DFS\Post Order\Print Binary Tree.cs" />
     <Compile Include="Tree\DFS\Pre Order\Binary Tree Paths.cs" />
     <Compile Include="Tree\DFS\Binary Tree Upside Down.cs" />
     <Compile Include="Tree\DFS\Post Order\Binary Tree Longest Consecutive Sequence.cs" />
@@ -617,8 +623,10 @@
     <Compile Include="Tree\DFS\Pre Order\Validate Binary Search Tree.cs" />
     <Compile Include="Tree\Delete Node in a BST.cs" />
     <Compile Include="Tree\Design In-Memory File System.cs" />
+    <Compile Include="Tree\DFS\Two Sum IV - Input is a BST.cs" />
     <Compile Include="Tree\Lexicographical Numbers\K-th Smallest in Lexicographical Order.cs" />
     <Compile Include="Tree\Lexicographical Numbers\Lexicographical Numbers.cs" />
+    <Compile Include="Tree\Maximum Binary Tree.cs" />
     <Compile Include="Tree\Nested List\Flatten Nested List Iterator.cs" />
     <Compile Include="Tree\Nested List\Mini Parser.cs" />
     <Compile Include="Tree\Nested List\Nested List Weight Sum.cs" />
