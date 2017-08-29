@@ -1,6 +1,6 @@
 ﻿/*
 100	Same Tree
-easy, tree
+easy, tree, *
 Same Tree
 
 Given two binary trees, write a function to check if they are equal or not.

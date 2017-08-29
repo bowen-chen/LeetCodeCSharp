@@ -1,6 +1,6 @@
 ﻿/*
 132	Palindrome Partitioning II
-hard, dp
+hard, dp, *
 Given a string s, partition s such that every substring of the partition is a palindrome.
 
 Return the minimum cuts needed for a palindrome partitioning of s.
@@ -13,6 +13,32 @@ namespace Demo
 {
     public partial class Solution
     {
+        public int MinCut_4(string s)
+        {
+            var dp = new int[s.Length, s.Length];
+            for (int i = 0; i < s.Length; i++)
+            {
+                int minCut = i;
+                for (int j = i; j >= 0; j--)
+                {
+                    dp[j, i] = i - j;
+                    if (s[i] == s[j] && (i - j <= 2 || dp[j + 1, i - 1] == 0))
+                    {
+                        dp[j, i] = 0;
+                        var c = j == 0 ? 0 : dp[0, j - 1] + 1;
+                        if (minCut > c)
+                        {
+                            minCut = c;
+                        }
+                    }
+                }
+
+                dp[0, i] = minCut;
+            }
+
+            return dp[0, s.Length - 1];
+        }
+
         // prefer
         public int MinCut_3(string s)
         {

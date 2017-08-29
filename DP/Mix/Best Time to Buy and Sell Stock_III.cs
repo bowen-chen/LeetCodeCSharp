@@ -17,6 +17,27 @@ namespace Demo
     {
         public int MaxProfit3(int[] prices)
         {
+            if (prices == null || prices.Length == 0)
+            {
+                return 0;
+            }
+
+            var dp = new int[3, prices.Length];
+            for (int i = 1; i <= 2; i++)
+            {
+                var max = dp[i - 1, 0] - prices[0];
+                for (int j = 1; j < prices.Length; j++)
+                {
+                    dp[i, j] = Math.Max(dp[i, j - 1], prices[j] + max);
+                    max = Math.Max(max, dp[i - 1, j] - prices[j]);
+                }
+            }
+
+            return dp[2, prices.Length - 1];
+        }
+
+        public int MaxProfit32(int[] prices)
+        {
             // null check
             int len = prices.Length;
             if (len == 0)

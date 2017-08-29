@@ -1,6 +1,6 @@
 ﻿/*
 71	Simplify Path
-easy
+easy, *
 Given an absolute path for a file (Unix-style), simplify it.
 
 For example,

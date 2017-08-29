@@ -1,5 +1,6 @@
 ﻿/*
 167	Two Sum II - Input array is sorted
+easy, *
 Sum - Two Sum II - Input array is sorted
 1 based index - what's wrong with you?
 */

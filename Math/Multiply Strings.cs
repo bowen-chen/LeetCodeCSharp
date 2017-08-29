@@ -1,6 +1,6 @@
 ﻿/*
 43	Multiply Strings
-easy, math
+easy, math, *
 Given two numbers represented as strings, return multiplication of the numbers as a string.
 
 Note: The numbers can be arbitrarily large and are non-negative.
@@ -20,33 +20,33 @@ namespace Demo
 
         public string Multiply(string num1, string num2)
         {
-            int n1 = num1.Length, n2 = num2.Length;
-            var v = new int[n1+n2];
-            for (int i = n1 - 1; i >= 0; --i)
+            var ret = new int[num1.Length + num2.Length];
+            for (int i = num1.Length - 1; i >= 0; i--)
             {
-                for (int j = n2 - 1; j >= 0; ++j)
+                for (int j = num2.Length - 1; j >= 0; j--)
                 {
-                    // n1-1-i + n2-1-j
-                    v[n1 + n2 - 2 - i - j] += (num1[i] - '0')*(num2[j] - '0');
+                    ret[i + j + 1] += (num1[i] - '0')*(num2[j] - '0');
                 }
             }
 
-            int carry = 0;
-            for (int i = 0; i < n1 + n2; ++i)
+
+            for (int i = ret.Length - 1; i > 0; i--)
             {
-                v[i] += carry;
-                carry = v[i] / 10;
-                v[i] %= 10;
+                if (ret[i] >= 10)
+                {
+                    ret[i - 1] += ret[i]/10;
+                    ret[i] %= 10;
+                }
             }
 
-            string res = "";
-            for (int i = n1+n2-1; i >=0; --i)
+            var sb = new StringBuilder();
+            for (int i = 0; i < ret.Length; i++)
             {
-                res += v[i] + '0';
+                sb.Append(ret[i].ToString());
             }
 
-            res = res.TrimStart('0');
-            return string.IsNullOrEmpty(res) ? "0" : res;
+            var s = sb.ToString().TrimStart('0');
+            return string.IsNullOrEmpty(s) ? "0" : s;
         }
 
         public string Multiply2(string num1, string num2)

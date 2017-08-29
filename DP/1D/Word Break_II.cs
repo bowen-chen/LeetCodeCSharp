@@ -1,6 +1,6 @@
 ﻿/*
 140	Word Break II
-medium, dfs
+medium, dfs, *
 Word Break II
 Given a string s and a dictionary of words dict, add spaces in s to construct a sentence where each word is a valid dictionary word.
 

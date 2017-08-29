@@ -25,7 +25,7 @@ namespace Demo
         {
             int res = 0;
             int left = 0;
-            var m = new int[26];
+            var m = new int[128];
             for (int i = 0; i < s.Length; ++i)
             {
                 m[s[i]]++;

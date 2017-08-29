@@ -1,6 +1,6 @@
 ﻿/*
 78	Subsets
-easy, recursion
+easy, recursion, *
 Given a set of distinct integers, nums, return all possible subsets.
 
 Note:

@@ -13,58 +13,34 @@ Here are some examples. Inputs are in the left-hand column and its corresponding
 1,1,5 → 1,5,1
 */
 
+using System;
+
 namespace Demo
 {
     public partial class Solution
     {
         public void NextPermutation(int[] nums)
         {
-            int n = nums.Length;
-            for (int i = n - 2; i >= 0; --i)
+
+            int i = nums.Length - 1;
+            // from right to left, find the first nums[i-1] < nums[i], we need switch nums[i-1]
+            for (; i > 0 && nums[i - 1] >= nums[i]; i--) { }
+            if (i == 0)
             {
-                // from right to left, find the first nums[i] < nums[i+1], we need switch nums[i]
-                if (nums[i] < nums[i + 1])
-                {
-                    int j;
-
-                    // from right to left, find the first nums[j] > nums[i]
-                    for (j = n - 1; j >= i; --j)
-                    {
-                        if (nums[j] > nums[i])
-                        {
-                            break;
-                        }
-                    }
-
-                    Swap(nums, i, j);
-
-                    // now i+1 => n-1 is decresase order, so reverse it
-                    Reverse(nums, i + 1, nums.Length - 1);
-                    return;
-                }
+                Array.Reverse(nums);
+                return;
             }
+            i--;
 
-            Reverse(nums, 0, nums.Length - 1);
-        }
-
-        public void Swap(int[] nums, int i, int j)
-        {
+            // from right to left, find the first nums[j] > nums[i]
+            int j = nums.Length - 1;
+            for (; j > i && nums[j] <= nums[i]; j--) { }
             int temp = nums[i];
             nums[i] = nums[j];
             nums[j] = temp;
-        }
 
-        public void Reverse(int[] nums, int start, int end)
-        {
-            if (start > end)
-            {
-                return;
-            }
-
-            for (int i = start; i <= (end + start)/2; i++)
-            {
-                Swap(nums, i, start + end - i);
-            }
+            // now i+1 => n-1 is decresase order, so reverse it
+            Array.Reverse(nums, i + 1, nums.Length - i - 1);
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿/*
-318	Maximum Product of Word Lengths
+152. Maximum Product Subarray
 easy, dp
 Find the contiguous subarray within an array (containing at least one number) which has the largest product.
 
@@ -14,6 +14,19 @@ namespace Demo
     public partial class Solution
     {
         public int MaxProduct(int[] nums)
+        {
+            int max = nums[0], min = nums[0], maxAns = nums[0];
+            for (int i = 1; i < nums.Length; i++)
+            {
+                int mx = max, mn = min;
+                max = Math.Max(Math.Max(nums[i], mx * nums[i]), mn * nums[i]);
+                min = Math.Min(Math.Min(nums[i], mx * nums[i]), mn * nums[i]);
+                maxAns = Math.Max(max, maxAns);
+            }
+            return maxAns;
+        }
+
+        public int MaxProduct2(int[] nums)
         {
             int[] p = new int[nums.Length];
             int[] n = new int[nums.Length];
@@ -39,7 +52,7 @@ namespace Demo
             return res;
         }
 
-        public int MaxProduct2(int[] nums)
+        public int MaxProduct3(int[] nums)
         {
             int p = nums[0] > 0 ? nums[0] : 0;
             int n = nums[0] < 0 ? nums[0] : 0;

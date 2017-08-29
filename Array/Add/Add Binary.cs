@@ -1,6 +1,6 @@
 ﻿/*
 67	Add Binary
-easy, math
+easy, math, *
 Given two binary strings, return their sum (also a binary string).
 
 For example,

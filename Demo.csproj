@@ -390,6 +390,7 @@
     <Compile Include="Linked List\Double Linked\Insert Delete GetRandom O%281%29.cs" />
     <Compile Include="Linked List\Double Linked\LFU Cache.cs" />
     <Compile Include="Linked List\Double Linked\LRU Cache.cs" />
+    <Compile Include="Linked List\Insertion Sort List.cs" />
     <Compile Include="Linked List\Intersection of Two Linked Lists.cs" />
     <Compile Include="Linked List\Linked List Cycle.cs" />
     <Compile Include="Linked List\Linked List Cycle_II.cs" />
@@ -599,6 +600,7 @@
     <Compile Include="Tree\DFS\Post Order\Find Duplicate Subtrees.cs" />
     <Compile Include="Tree\DFS\In Order\Find Mode in Binary Search Tree.cs" />
     <Compile Include="Tree\DFS\Inorder Successor in BST.cs" />
+    <Compile Include="Tree\DFS\Pre Order\Flatten Binary Tree to Linked List.cs" />
     <Compile Include="Tree\DFS\Pre Order\Invert Binary Tree.cs" />
     <Compile Include="Tree\DFS\In Order\Kth Smallest Element in a BST.cs" />
     <Compile Include="Tree\DFS\Post Order\Lowest Common Ancestor of a Binary Search Tree.cs" />

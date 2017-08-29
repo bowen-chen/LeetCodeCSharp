@@ -1,6 +1,6 @@
 ﻿/*
 69. Sqrt(x)
-medium, low/high
+medium, low/high, *
 Implement int sqrt(int x).
 
 Compute and return the square root of x.

@@ -18,22 +18,21 @@ namespace Demo
         {
             int lo = 0;
             int hi = nums.Length - 1;
-
-            // find first low, !(nums[low]>left edge)
-            while (lo <= hi)
+            
+            while (lo < hi)
             {
-                int mid = (lo + hi)/2;
-                if (nums[mid] > nums[hi])
+                int mid = (lo + hi) / 2;
+                if (nums[mid] > nums[hi]) // the min must be in mid+1->hi
                 {
                     lo = mid + 1;
                 }
-                else
+                else // the min must be low to mid
                 {
                     hi = mid;
                 }
             }
 
-            return lo;
+            return nums[lo];
         }
     }
 }

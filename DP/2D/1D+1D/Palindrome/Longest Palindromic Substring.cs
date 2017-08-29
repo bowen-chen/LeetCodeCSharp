@@ -20,7 +20,7 @@ namespace Demo
         {
             int len = s.Length;
             bool[,] dp = new bool[len, len];
-            int max = 0, start = 0, end = 0;
+            int max = 0, start = 0;
             for (int i = 0; i < s.Length; i++)
             {
                 dp[i, i] = true;
@@ -31,12 +31,11 @@ namespace Demo
                     {
                         max = i - j + 1;
                         start = j;
-                        end = i;
                     }
                 }
             }
 
-            return s.Substring(start, end - start + 1);
+            return s.Substring(start, max);
         }
 
 

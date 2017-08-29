@@ -1,6 +1,6 @@
 ﻿/*
 98	Validate Binary Search Tree
-easy, tree
+easy, tree, *
 Given a binary tree, determine if it is a valid binary search tree (BST).
 
 Assume a BST is defined as follows:
@@ -26,7 +26,7 @@ namespace Demo
     {
         public bool IsValidBST(TreeNode root)
         {
-            return IsValidBST(root, int.MinValue, int.MaxValue);
+            return IsValidBST(root, long.MinValue, long.MaxValue);
         }
 
         public bool IsValidBST(TreeNode root, long minVal, long maxVal)

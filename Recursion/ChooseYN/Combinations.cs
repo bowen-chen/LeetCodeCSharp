@@ -1,6 +1,6 @@
 ﻿/*
 77	Combinations
-easy, recursive
+easy, recursive, *
 Given two integers n and k, return all possible combinations of k numbers out of 1 ... n.
 
 For example,
@@ -25,32 +25,28 @@ namespace Demo
         public IList<IList<int>> Combine(int n, int k)
         {
             var ret = new List<IList<int>>();
-            Combine(ret, new List<int>(), 1, n, k);
+            Combine(ret, n, k, new List<int>());
             return ret;
         }
 
-        public void Combine(IList<IList<int>> ret, List<int> current, int c, int n, int k)
+        public void Combine(IList<IList<int>> ret, int n, int k, List<int> c)
         {
-            // happy
             if (k == 0)
             {
-                ret.Add(new List<int>(current));
+                ret.Add(new List<int>(c));
                 return;
             }
 
-            // unhappy
-            if (n - c + 1 < k)
+            if (n < k)
             {
                 return;
             }
 
-            // choose
-            current.Add(c);
-            Combine(ret, current, c + 1, n, k - 1);
-            current.Remove(c);
+            c.Add(n);
+            Combine(ret, n - 1, k - 1, c);
+            c.RemoveAt(c.Count - 1);
 
-            // not choose
-            Combine(ret, current, c + 1, n, k);
+            Combine(ret, n - 1, k, c);
         }
     }
 }

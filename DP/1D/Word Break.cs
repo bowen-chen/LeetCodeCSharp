@@ -1,6 +1,6 @@
 ﻿/*
 139	Word Break
-dp, easy
+dp, easy, *
 Word Break
 
 Given a string s and a dictionary of words dict, determine if s can be segmented into a space-separated sequence of one or more dictionary words.
@@ -25,7 +25,7 @@ namespace Demo
             {
                 for (int j = i; j >= 0; j--)
                 {
-                    if ((j <= 0 || dp[j - 1]) && wordDict.Contains(s.Substring(j, i - j + 1)))
+                    if ((j == 0 || dp[j - 1]) && wordDict.Contains(s.Substring(j, i - j + 1)))
                     {
                         dp[i] = true;
                         break;

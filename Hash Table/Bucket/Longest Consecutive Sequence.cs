@@ -1,6 +1,6 @@
 ﻿/*
 128. Longest Consecutive Sequence
-hard, double link, revisit
+hard, double link, revisit, *
 Given an unsorted array of integers, find the length of the longest consecutive elements sequence.
 
 For example,
