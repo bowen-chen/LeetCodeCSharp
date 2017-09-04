@@ -1,6 +1,6 @@
 ﻿/*
 264	Ugly Number II
-easy, math, dp
+easy, math, dp, *
 Ugly Number II
 
 Write a program to find the n-th ugly number.

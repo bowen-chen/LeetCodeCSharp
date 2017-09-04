@@ -1,6 +1,6 @@
 ﻿/*
 226	Invert Binary Tree
-easy, tree, dfs
+easy, tree, dfs, *
 Invert Binary Tree
 
      4

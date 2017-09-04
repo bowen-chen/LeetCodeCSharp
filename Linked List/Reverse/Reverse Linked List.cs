@@ -1,6 +1,6 @@
 ﻿/*
 206	Reverse Linked List
-easy
+easy, *
 Reverse a singly linked list.
 
 Hint:

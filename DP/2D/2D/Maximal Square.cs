@@ -1,6 +1,6 @@
 ﻿/*
 221	Maximal Square
-easy
+easy, *
 Given a 2D binary matrix filled with 0's and 1's, find the largest square containing all 1's and return its area.
 
 For example, given the following matrix:
@@ -35,11 +35,7 @@ namespace Demo
             {
                 for (int j = 0; j < n; j++)
                 {
-                    if (matrix[i, j] == '0')
-                    {
-                        dp[i + 1, j + 1] = 0;
-                    }
-                    else
+                    if (matrix[i, j] == '1')
                     {
                         dp[i + 1, j + 1] = 1 + Math.Min(Math.Min(dp[i, j], dp[i, j + 1]), dp[i + 1, j]);
                         max = Math.Max(max, dp[i + 1, j + 1]);
@@ -53,24 +49,22 @@ namespace Demo
         public int MaximalSquare2(char[,] matrix)
         {
             int max = 0;
-            var pre = new int[matrix.GetLength(1) + 1];
-            for (int i = 0; i < matrix.GetLength(0); i++)
+            int m = matrix.GetLength(0);
+            int n = matrix.GetLength(1);
+            var dp = new int[n + 1];
+            for (int i = 0; i < m; i++)
             {
-                var current = new int[matrix.GetLength(1) + 1];
-                for (int j = 0; j < matrix.GetLength(1); j++)
+                var dp2 = new int[n + 1];
+                for (int j = 0; j < n; j++)
                 {
-                    if (matrix[i, j] == '0')
+                    if (matrix[i, j] == '1')
                     {
-                        current[j + 1] = 0;
-                    }
-                    else
-                    {
-                        current[j + 1] = 1 + Math.Min(Math.Min(pre[j], pre[j + 1]), current[j]);
-                        max = Math.Max(max, current[j + 1]);
+                        dp2[j + 1] = 1 + Math.Min(Math.Min(dp[j], dp[j + 1]), dp2[j]);
+                        max = Math.Max(max, dp[j + 1]);
                     }
                 }
 
-                pre = current;
+                dp = dp2;
             }
 
             return max * max;

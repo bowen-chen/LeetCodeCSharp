@@ -1,6 +1,6 @@
 ﻿/*
 203	Remove Linked List Elements	
-easy, linked list
+easy, linked list, *
 Remove Linked List Elements
 
 Remove all elements from a linked list of integers that have value val.
@@ -18,18 +18,15 @@ namespace Demo
         {
             var ret = new ListNode(0);
             var pre = ret;
-            while (head != null)
+            while (pre.next != null)
             {
-                if (head.val != val)
+                if (pre.next.val == val)
                 {
-                    pre.next = head;
-                    pre = head;
-                    head = head.next;
-                    pre.next = null;
+                    pre.next = pre.next.next;
                 }
                 else
                 {
-                    head = head.next;
+                    pre = pre.next;
                 }
             }
 

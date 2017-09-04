@@ -419,7 +419,7 @@
     <Compile Include="Math\Gas Station.cs" />
     <Compile Include="Math\Gray Code.cs" />
     <Compile Include="Math\Integer Break.cs" />
-    <Compile Include="Math\Largest Number.cs" />
+    <Compile Include="Array\Maximum Number\Largest Number.cs" />
     <Compile Include="Math\Largest Palindrome Product.cs" />
     <Compile Include="Math\Largest Rectangle in Histogram.cs" />
     <Compile Include="Math\Majority Element.cs" />
@@ -434,6 +434,7 @@
     <Compile Include="Math\X Base\Remove9.cs" />
     <Compile Include="Misc\Interval\Interval.cs" />
     <Compile Include="Array\Split Array into Consecutive Subsequences.cs" />
+    <Compile Include="Misc\Peeking Iterator.cs" />
     <Compile Include="Tree\BFS\Patching Array.cs" />
     <Compile Include="Math\Perfect Number.cs" />
     <Compile Include="Math\Perfect Rectangle.cs" />
@@ -635,6 +636,7 @@
     <Compile Include="Tree\Nested List\NestedInteger.cs" />
     <Compile Include="Tree\Trie\Add and Search Word - Data structure design.cs" />
     <Compile Include="Tree\Trie\Design Search Autocomplete System.cs" />
+    <Compile Include="Tree\Trie\Implement Trie %28Prefix Tree%29.cs" />
     <Compile Include="Tree\Trie\Palindrome Pairs.cs" />
     <Compile Include="Tree\Trie\Replace Words.cs" />
     <Compile Include="Tree\Trie\Valid Word Square.cs" />

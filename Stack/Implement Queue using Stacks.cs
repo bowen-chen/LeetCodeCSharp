@@ -1,6 +1,6 @@
 ﻿/*
 232. Implement Queue using Stacks
-easy
+easy, *
 Implement Queue using Stacks
 
 Implement the following operations of a queue using stacks.

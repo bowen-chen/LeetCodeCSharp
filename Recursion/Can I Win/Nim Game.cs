@@ -1,6 +1,6 @@
 ﻿/*
 292	Nim Game 
-easy, math
+easy, math, *
 Nim Game
 
 You are playing the following Nim Game with your friend: There is a heap of stones on the table, each time one of you take turns to remove 1 to 3 stones. The one who removes the last stone will be the winner. You will take the first turn to remove the stones.
@@ -24,30 +24,32 @@ namespace Demo
         {
             return n%4 != 0;
         }
-
         public bool CanWinNim2(int n)
         {
-            return CanWinNim2(n, new Dictionary<int, bool>());
+            return CanWinNim(n, new Dictionary<int, bool>());
         }
 
-        private bool CanWinNim2(int n, Dictionary<int, bool> cache)
+        public bool CanWinNim(int n, Dictionary<int, bool> cache)
         {
             if (cache.ContainsKey(n))
             {
                 return cache[n];
             }
 
-            for (int i = 1; i <= 3; ++i)
+            bool ret = false;
+            if (n <= 3)
             {
-                if (n <= i || !CanWinNim2(n - i, cache))
+                ret = true;
+            }
+            else
+            {
+                for (int i = 1; i <= 3; i++)
                 {
-                    cache[n] = true;
-                    return true;
+                    ret |= !CanWinNim(n - i, cache);
                 }
             }
-
-            cache[n] = false;
-            return false;
+            cache[n] = ret;
+            return ret;
         }
     }
 }

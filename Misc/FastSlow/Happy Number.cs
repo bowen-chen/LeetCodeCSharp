@@ -1,6 +1,6 @@
 ﻿/*
 202	Happy Number
-easy, slow fast
+easy, slow fast, *
 Happy Number
 Write an algorithm to determine if a number is "happy".
 

@@ -1,6 +1,6 @@
 ﻿/*
 299	Bulls and Cows
-medium, hashtable
+medium, hashtable, *
 Bulls and Cows
 
 You are playing the following Bulls and Cows game with your friend: You write a 4-digit secret number and ask your friend to guess it, each time your friend guesses a number, you give a hint, the hint tells your friend how many digits are in the correct positions (called "bulls") and how many digits are in the wrong positions (called "cows"), your friend will use those hints to find out the secret number.
@@ -45,19 +45,16 @@ namespace Demo
                     int g = guess[i] - '0';
                     
                     // there is unused guess
-                    if (unused[s] < 0)
+                    if (unused[s]++ < 0)
                     {
                         c++;
                     }
 
                     // thre is unused secret
-                    if (unused[g] > 0)
+                    if (unused[g]-- > 0)
                     {
                         c++;
                     }
-
-                    unused[s]++;
-                    unused[g]--;
                 }
             }
 

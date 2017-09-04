@@ -1,6 +1,6 @@
 ﻿/*
 239. Sliding Window Maximum
-medium
+medium, *
 Sliding Window Maximum
 
 Given an array nums, there is a sliding window of size k which is moving from the very left of the array to the very right. You can only see the k numbers in the window. Each time the sliding window moves right by one position.
@@ -45,45 +45,34 @@ namespace Demo
 
         public int[] MaxSlidingWindow(int[] nums, int k)
         {
-            if (nums == null || nums.Length < k || k == 0)
+            if (nums == null)
             {
-                return new int[] { };
+                return new int[] {};
             }
 
-            var list = new List<int>();
-            int[] ret = new int[nums.Length - k + 1];
-
-            // fit k-1 numbers
-            // the list is descending
-            for (int i = 0; i < k - 1; i++)
+            var left = 0;
+            var ret = new List<int>();
+            var window = new List<int>();
+            for (int i = 0; i < nums.Length; i++)
             {
-                while (list.Count > 0 && list[list.Count - 1] < nums[i])
+                var n = nums[i];
+                while (window.Count > 0 && n > window[window.Count - 1])
                 {
-                    list.RemoveAt(list.Count - 1);
+                    window.RemoveAt(window.Count - 1);
                 }
 
-                list.Add(nums[i]);
-            }
-
-            for (int i = k - 1; i < nums.Length; i++)
-            {
-                // i add into the window
-                while (list.Count > 0 && list[list.Count - 1] < nums[i])
+                window.Add(n);
+                if (i - left + 1 == k)
                 {
-                    list.RemoveAt(list.Count - 1);
-                }
-
-                list.Add(nums[i]);
-                ret[i - (k - 1)] = list[0];
-
-                // i-(k-1) remove from the window
-                if (list[0] == nums[i - (k - 1)])
-                {
-                    list.RemoveAt(0);
+                    ret.Add(window[0]);
+                    if (nums[left++] == window[0])
+                    {
+                        window.RemoveAt(0);
+                    }
                 }
             }
 
-            return ret;
+            return ret.ToArray();
         }
     }
 }

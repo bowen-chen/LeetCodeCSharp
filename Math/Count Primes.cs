@@ -1,6 +1,6 @@
 ﻿/*
 204	Count Primes
-easy. math
+easy, math, *
 Count Primes
 Description:
 

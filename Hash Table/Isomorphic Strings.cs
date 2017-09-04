@@ -1,6 +1,6 @@
 ﻿/*
 205	Isomorphic Strings
-easy
+easy, *
 Isomorphic Strings
 
 Given two strings s and t, determine if they are isomorphic.
@@ -16,8 +16,6 @@ Given "foo", "bar", return false.
 
 Given "paper", "title", return true.
 */
-
-using System.Collections.Generic;
 
 namespace Demo
 {
@@ -39,34 +37,6 @@ namespace Demo
                 m1[s[i]] = i + 1;
                 m2[t[i]] = i + 1;
             }
-            return true;
-        }
-
-        public bool IsIsomorphic2(string s, string t)
-        {
-            var dic = new Dictionary<char, char>();
-            var dic2 = new HashSet<char>();
-            for (int i = 0; i < s.Length; i++)
-            {
-                if (dic.ContainsKey(s[i]))
-                {
-                    if (dic[s[i]] != t[i])
-                    {
-                        return false;
-                    }
-                }
-                else
-                {
-                    if (dic2.Contains(t[i]))
-                    {
-                        return false;
-                    }
-
-                    dic[s[i]] = t[i];
-                    dic2.Add(t[i]);
-                }
-            }
-
             return true;
         }
     }

@@ -12,7 +12,7 @@ namespace Demo
 {
     public partial class Solution
     {
-        public bool ContainsNearbyAlmostDuplicate2(int[] nums, int k, int t)
+        public bool ContainsNearbyAlmostDuplicate(int[] nums, int k, int t)
         {
             if (k < 1 || t < 0)
             {
@@ -22,25 +22,24 @@ namespace Demo
             // bucket size t+1
             // the possible pair is in nearby bucket or same bucket
             var map = new Dictionary<long, long>();
-            for (int i = 0; i < nums.Length; i++)
+            int left = 0;
+            for (int right = 0; right < nums.Length; right++)
             {
-                long bucket = ((long)nums[i] - int.MinValue) / ((long)t + 1);
+                long bucket = ((long)nums[left] - int.MinValue) / ((long)t + 1);
                 if (map.ContainsKey(bucket)
-                    || (map.ContainsKey(bucket - 1) && nums[i] - map[bucket - 1] <= t)
-                    || (map.ContainsKey(bucket + 1) && map[bucket + 1] - nums[i] <= t))
+                    || (map.ContainsKey(bucket - 1) && nums[left] - map[bucket - 1] <= t)
+                    || (map.ContainsKey(bucket + 1) && map[bucket + 1] - nums[left] <= t))
                 {
                     return true;
                 }
 
-                // remove the last bucket
-                if (map.Count >= k)
-                {
-                    long lastBucket = ((long)nums[i - k] - int.MinValue) / ((long)t + 1);
-                    map.Remove(lastBucket);
-                }
+                map[bucket] = nums[right];
 
-                //add
-                map.Add(bucket, nums[i]);
+                // remove the last bucket
+                if (right - left == k)
+                {
+                    map.Remove(((long)nums[left++] - int.MinValue) / ((long)t + 1));
+                }
             }
 
             return false;

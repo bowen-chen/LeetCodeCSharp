@@ -32,6 +32,7 @@ namespace Demo
 
             var stack = new Stack<TreeNode>();
 
+            // Push left
             while (root != null)
             {
                 stack.Push(root);
@@ -57,6 +58,34 @@ namespace Demo
             }
 
             return 0;
+        }
+
+        // for follow up question, we could save the node count in the node
+        public int KthSmallest2(TreeNode root, int k)
+        {
+            int left = NodeCount(root.left);
+            if (left + 1 == k)
+            {
+                return root.val;
+            }
+
+            if (left + 1 < k)
+            {
+                return KthSmallest2(root.right, k - left - 1);
+            }
+            else
+            {
+                return KthSmallest2(root.left, k);
+            }
+        }
+
+        private int NodeCount(TreeNode root)
+        {
+            if (root == null)
+            {
+                return 0;
+            }
+            return 1 + NodeCount(root.left) + NodeCount(root.right);
         }
     }
 }

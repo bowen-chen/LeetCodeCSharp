@@ -1,6 +1,6 @@
 ﻿/*
 290	Word Pattern
-easy, hashtable
+easy, hashtable, *
 Word Pattern
 
 Given a pattern and a string str, find if str follows the same pattern.
@@ -25,26 +25,29 @@ namespace Demo
     {
         public bool WordPattern2(string pattern, string str)
         {
-            var m1 = new Dictionary<char, int>();
-            var m2 = new Dictionary<string, int>();
             var words = str.Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries);
             if (words.Length != pattern.Length)
             {
                 return false;
             }
 
+            var m1 = new Dictionary<char, int>();
+            var m2 = new Dictionary<string, int>();
             for (int i = 0; i < words.Length; i++)
             {
-                if (m1.ContainsKey(pattern[i]) || m2.ContainsKey(words[i]))
+                if (!m1.ContainsKey(pattern[i]))
                 {
-                    if (!m1.ContainsKey(pattern[i]) || !m2.ContainsKey(words[i]) || m1[pattern[i]] != m2[words[i]])
-                    {
-                        return false;
-                    }
+                    m1[pattern[i]] = i;
                 }
-                else
+
+                if (!m2.ContainsKey(words[i]))
                 {
-                    m1[pattern[i]] = m2[words[i]] = i;
+                    m2[words[i]] = i;
+                }
+
+                if (m1[pattern[i]] != m2[words[i]])
+                {
+                    return false;
                 }
             }
 

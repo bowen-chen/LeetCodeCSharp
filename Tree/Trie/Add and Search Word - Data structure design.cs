@@ -1,6 +1,6 @@
 ﻿/*
 211	Add and Search Word - Data structure design
-easy, tri
+easy, tri, *
 Design a data structure that supports the following two operations:
 
 void addWord(word)

@@ -1,6 +1,6 @@
 ﻿/*
 219	Contains Duplicate II   
-Easy
+Easy, *
 Contains Duplicate II
 
 Given an array of integers and an integer k, find out whether there are two distinct indices i and j in the array such that nums[i] = nums[j] and the difference between i and j is at most k.
@@ -12,25 +12,20 @@ namespace Demo
 {
     public partial class Solution
     {
-
         public bool ContainsNearbyDuplicate(int[] nums, int k)
         {
-            int len = k + 1;
             var h = new HashSet<int>();
-            for (int i = 0; i < nums.Length; i++)
+            int left = 0;
+            for (int right = 0; right < nums.Length; right++)
             {
-                var n = nums[i];
-                if (h.Contains(n))
+                if (!h.Add(nums[right]))
                 {
                     return true;
                 }
-                
-                h.Add(n);
 
-                int left = i - len + 1;
-                if (left >= 0)
+                if (right - left == k)
                 {
-                    h.Remove(nums[left]);
+                    h.Remove(nums[left++]);
                 }
             }
 

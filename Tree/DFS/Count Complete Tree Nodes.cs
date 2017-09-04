@@ -1,6 +1,6 @@
 ﻿/*
 222	Count Complete Tree Nodes
-medium, tree
+medium, tree, *
 Count Complete Tree Nodes
 
 Given a complete binary tree, count the number of nodes.
@@ -26,36 +26,31 @@ namespace Demo
         }
         private int Height(TreeNode root)
         {
+            // fast track for complete tree
             return root == null ? 0 : 1 + Height(root.left);
         }
 
         public int CountNodes(TreeNode root)
         {
-            int h = Height(root);
-            if (h == 0)
+            if (root == null)
             {
                 return 0;
             }
 
-            int rh = Height(root.right);
-            int ret = 1; // root
-            if (rh == h - 1) //left is complete tree, height is h-1
+            int l = Height(root.left);
+            int r = Height(root.right);
+            int ret = 1;
+            if (l > r)
             {
-                if (h - 1 > 0)
-                {
-                    ret += (1 << (h - 1)) - 1;
-                }
-
-                ret += CountNodes(root.right);
-            }
-            else //right is complete tree, height is h-2
-            {
-                if (h - 2 > 0)
-                {
-                    ret += (1 << (h - 2)) - 1;
-                }
-
+                // right is complete tree
+                ret += ((1 << r) - 1);
                 ret += CountNodes(root.left);
+            }
+            else
+            {
+                // left is complete tree
+                ret += ((1 << l) - 1);
+                ret += CountNodes(root.right);
             }
 
             return ret;
