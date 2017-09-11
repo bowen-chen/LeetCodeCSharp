@@ -15,6 +15,7 @@ Return the array [2, 1, 1, 0].
 */
 
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Demo
 {
@@ -64,6 +65,54 @@ namespace Demo
             }
 
             return ret;
+        }
+
+        class Node
+        {
+            public Node left;
+            public Node right;
+            public readonly int val;
+            public int sum; /*sum of left sub tree*/
+            public int count;
+            public Node(int v)
+            {
+                val = v;
+            }
+        }
+        public List<int> CountSmaller2(int[] nums)
+        {
+            var ret = new List<int>();
+            Node root = new Node(0);
+            for (int i = nums.Length - 1; i >= 0; i--)
+            {
+                ret.Add(Insert(nums[i], root));
+            }
+
+            return ret;
+        }
+
+        private int Insert(int num, Node node)
+        {
+            int ret = 0;
+            while (node.val != num)
+            {
+                if (node.val > num)
+                {
+                    node.sum++;
+                    node.left = node.left ?? new Node(num);
+                    node = node.left;
+                }
+                else
+                {
+                    ret += node.count;
+                    ret += node.sum;
+                    node.right = node.right ?? new Node(num);
+                    node = node.right;
+                }
+            }
+
+            node.count++;
+            return ret + node.sum;
         }
     }
 }

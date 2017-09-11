@@ -1,6 +1,6 @@
 ﻿/*
 307	Range Sum Query - Mutable 
-hard, binary index tree
+hard, binary index tree, *
 Given an integer array nums, find the sum of the elements between indices i and j (i ≤ j), inclusive.
 
 The update(i, val) function modifies nums by updating the element at index i to val.
@@ -53,13 +53,11 @@ namespace Demo
         // Binary index tree
         readonly int[] tree;
         readonly int[] nums;
-        readonly int size;
         public NumArray(int[] nums)
         {
-            this.size = nums.Length;
-            this.tree = new int[size + 1];
-            this.nums = new int[size];
-            for (int i = 0; i < size; i++)
+            this.tree = new int[nums.Length + 1];
+            this.nums = new int[nums.Length];
+            for (int i = 0; i < nums.Length; i++)
             {
                 Update(i, nums[i]);
             }
@@ -69,7 +67,7 @@ namespace Demo
         {
             int delta = val - nums[i];
             nums[i] = val;
-            for (int ti = i + 1; ti <=size; ti += ti & (-ti))
+            for (int ti = i + 1; ti < tree.Length; ti += ti & (-ti))
             {
                 tree[i] += delta;
             }

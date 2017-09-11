@@ -11,6 +11,8 @@ Note:
 (3) 0 < k ≤ 100, 0 < n ≤ 106, 0 < primes[i] < 1000.
 */
 using System;
+using System.Collections.Generic;
+using Demo.Common;
 
 namespace Demo
 {
@@ -43,6 +45,36 @@ namespace Demo
                         index[j]++;
                     }
                 }
+            }
+
+            return dp[n - 1];
+        }
+
+        public int NthSuperUglyNumber2(int n, int[] primes)
+        {
+            var dp = new int[n];
+            dp[0] = 1;
+            var q = new PriorityQueue<int[]>(
+                primes.Length,
+                Comparer<int[]>.Create((a,b)=>b[0].CompareTo(a[0])));
+            for (int i = 0; i < primes.Length; i++)
+            {
+                q.Push(new [] { primes[i]*dp[0], primes[i], 0});
+            }
+
+            for (int i = 1; i < n; i++)
+            {
+                var next = q.Pop();
+                if (next[0] != dp[i-1])
+                {
+                    dp[i] = next[0];
+                }
+                else
+                {
+                    i--;
+                }
+
+                q.Push(new[] { next[1] * dp[++next[2]], next[1], next[2] });
             }
 
             return dp[n - 1];

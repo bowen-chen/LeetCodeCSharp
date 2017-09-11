@@ -1,6 +1,6 @@
 ﻿/*
 350. Intersection of Two Arrays II
-easy, hashtable
+easy, hashtable, *
 Given two arrays, write a function to compute their intersection.
 
 Example:

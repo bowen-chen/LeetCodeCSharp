@@ -1,6 +1,6 @@
 ﻿/*
 352. Data Stream as Disjoint Intervals
-easy
+easy, *
 Given a data stream input of non-negative integers a1, a2, ..., an, ..., summarize the numbers seen so far as a list of disjoint intervals.
 
 For example, suppose the integers from the data stream are 1, 3, 7, 2, 6, ..., then the summary will be:
@@ -57,16 +57,17 @@ namespace Demo
                 }
                 else
                 {
-                    // cur is overlap with a
-                    // a.start-1 <= cur.end
-                    // a.end >=cur.start-1
-                    newInterval.start = Math.Min(newInterval.start, a.start);
-                    newInterval.end = Math.Max(newInterval.end, a.end);
                     if (notadd)
                     {
                         res.Add(newInterval);
                         notadd = false;
                     }
+
+                    // cur is overlap with a
+                    // a.start-1 <= cur.end
+                    // a.end >=cur.start-1
+                    newInterval.start = Math.Min(newInterval.start, a.start);
+                    newInterval.end = Math.Max(newInterval.end, a.end);
                 }
             }
 

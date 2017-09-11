@@ -1,5 +1,6 @@
 ﻿/*
 357. Count Numbers with Unique Digits
+*
 Given a non-negative integer n, count all numbers with unique digits, x, where 0 ≤ x < 10n.
 
 Example:
@@ -20,14 +21,9 @@ namespace Demo
     {
         public int CountNumbersWithUniqueDigits(int n)
         {
-            if (n < 1)
+            if (n <= 0)
             {
-                return 0;
-            }
-
-            if (n == 1)
-            {
-                return 10;
+                return 1;
             }
 
             var ret = 10;

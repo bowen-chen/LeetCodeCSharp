@@ -1,6 +1,6 @@
 ﻿/*
 354. Russian Doll Envelopes
-easy
+easy, *
 You have a number of envelopes with widths and heights given as a pair of integers (w, h). One envelope can fit into another if and only if both the width and height of one envelope is greater than the width and height of the other envelope.
 
 What is the maximum number of envelopes can you Russian doll? (put one inside other)
@@ -18,9 +18,7 @@ namespace Demo
     {
         public int MaxEnvelopes(int[,] envelopes)
         {
-            int res = 0;
             int n = envelopes.GetLength(0);
-
             int[][] jagged = new int[n][];
             for (int i = 0; i < n; i++)
             {
@@ -29,6 +27,7 @@ namespace Demo
 
             jagged = jagged.OrderBy(e => e[0]).ThenByDescending(e => e[1]).ToArray();
             
+            int res = 0;
             int[] dp = new int[n];
             for (int i = 0; i < n; i++)
             {

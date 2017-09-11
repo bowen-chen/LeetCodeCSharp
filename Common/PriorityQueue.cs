@@ -34,7 +34,7 @@ namespace Demo.Common
             heap[1] = heap[Count--];
             if (Count > 1)
             {
-                SiftDown(0);
+                SiftDown(1);
             }
 
             return v;
@@ -53,7 +53,7 @@ namespace Demo.Common
         void SiftUp(int n)
         {
             var v = heap[n];
-            for (var parent = n/2; n >=1; n = parent, parent /= 2)
+            for (var parent = n/2; parent >=1; n = parent, parent /= 2)
             {
                 if (comparer.Compare(v, heap[parent]) > 0)
                 {

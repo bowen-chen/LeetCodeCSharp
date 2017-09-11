@@ -32,12 +32,12 @@ namespace Demo
                 }
                 else if (x <= c2)
                 {
-                    // here when x > c1, i.e. x might be either c2 or c3
-                    c2 = x; // x is better than the current c2, store it
+                    // when c1<x<=c2, x is better than the current c2, store it
+                    c2 = x;
                 }
                 else
                 {
-                    // here when we have/had c1 < c2 already and x > c2
+                    // here when we have or had c1 < c2 already and x > c2
                     return true; // the increasing subsequence of 3 elements exists
                 }
             }

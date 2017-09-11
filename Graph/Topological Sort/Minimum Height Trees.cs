@@ -1,6 +1,6 @@
 ﻿/*
 310	Minimum Height Trees 
-easy, reverse bfs
+easy, *
 For a undirected graph with tree characteristics, we can choose any node as the root. The result graph is then a rooted tree. Among all possible rooted trees, those with minimum height are called minimum height trees (MHTs). Given such a graph, write a function to find all the MHTs and return a list of their root labels.
 
 Format
@@ -55,29 +55,29 @@ namespace Demo
             {
                 return new List<int> {0};
             }
-
-            List<List<int>> adj = new List<List<int>>(n);
-            for (int i = 0; i < n; i++)
-            {
-                adj.Add(new List<int>());
-            }
-
+            
+            var adj = new HashSet<int>[n];
             for (int i = 0; i < edges.GetLength(0); i++)
             {
-                for (int j = 0; j < n; j++)
+                int a = edges[i, 0];
+                int b = edges[i, 1];
+                if (adj[a] == null)
                 {
-                    if (edges[i, j] != 0)
-                    {
-                        adj[i].Add(j);
-                        adj[j].Add(i);
-                    }
+                    adj[a] = new HashSet<int>();
                 }
+                if (adj[b] == null)
+                {
+                    adj[b] = new HashSet<int>();
+                }
+
+                adj[a].Add(b);
+                adj[b].Add(a);
             }
-            
+
             var q = new Queue<int>();
             for (int i = 0; i < n; ++i)
             {
-                if (adj[i].Count == 1)
+                if (adj[i] == null || adj[i].Count == 1)
                 {
                     q.Enqueue(i);
                 }
@@ -87,14 +87,16 @@ namespace Demo
             {
                 n -= q.Count;
                 int size = q.Count;
-                for (int k = 0; k < size; k++)
+                for (int i = 0; i < size; i++)
                 {
-                    int i = q.Dequeue();
-                    int j = adj[i][0];
-                    adj[j].Remove(i);
-                    if (adj[j].Count == 1)
+                    var c = q.Dequeue();
+                    foreach (var d in adj[c])
                     {
-                        q.Enqueue(j);
+                        adj[d].Remove(c);
+                        if (adj[d].Count == 1)
+                        {
+                            q.Enqueue(d);
+                        }
                     }
                 }
             }

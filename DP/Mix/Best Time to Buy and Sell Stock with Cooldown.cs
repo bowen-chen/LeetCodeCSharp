@@ -1,6 +1,6 @@
 ﻿/*
 309	Best Time to Buy and Sell Stock with Cooldown 
-easy, dp
+easy, dp, *
 Say you have an array for which the ith element is the price of a given stock on day i.
 
 Design an algorithm to find the maximum profit. You may complete as many transactions as you like (ie, buy one and sell one share of the stock multiple times) with the following restrictions:
@@ -43,15 +43,21 @@ namespace Demo
         {
             // buy[i] = max(sell[i-2]-price, buy[i-1])
             // sell[i] = max(buy[i - 1] + price, sell[i - 1])
-            int sell = 0, prev_sell = 0, buy = int.MinValue, prev_buy;
-            foreach (int price in prices)
+            int buy_2 = int.MinValue;
+            int sell_2 = 0;
+            int buy_1 = int.MinValue;
+            int sell_1 = 0;
+            foreach (int p in prices)
             {
-                prev_buy = buy;
-                buy = Math.Max(prev_sell - price, prev_buy);
-                prev_sell = sell;
-                sell = Math.Max(prev_buy + price, prev_sell);
+                int buy = Math.Max(sell_2 - p, buy_1);
+                int sell = Math.Max(sell_1, buy_1 + p);
+                buy_2 = buy_1;
+                sell_2 = sell_1;
+                buy_1 = buy;
+                sell_1 = sell;
             }
-            return sell;
+
+            return sell_1;
         }
     }
 }
