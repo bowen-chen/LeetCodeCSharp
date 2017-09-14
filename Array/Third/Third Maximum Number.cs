@@ -1,5 +1,6 @@
 ﻿/*
 414. Third Maximum Number
+*
 Given a non-empty array of integers, return the third maximum number in this array. If it does not exist, return the maximum number. The time complexity must be in O(n).
 
 Example 1:
@@ -52,7 +53,7 @@ namespace Demo
                 }
             }
 
-            return (third == null || second == null) ? first.Value : third.Value;
+            return third ?? first.Value;
         }
     }
 }

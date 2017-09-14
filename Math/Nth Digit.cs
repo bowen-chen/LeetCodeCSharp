@@ -1,5 +1,6 @@
 ﻿/*
 400. Nth Digit
+*
 Find the nth digit of the infinite integer sequence 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, ...
 
 Note:
@@ -33,7 +34,7 @@ namespace Demo
             int len = 1;
             long cnt = 9;
             long start = 1;
-            while (n > len*cnt)
+            while (n > len*cnt /* could overflow */)
             {
                 n -= (int)(len*cnt);
                 ++len;

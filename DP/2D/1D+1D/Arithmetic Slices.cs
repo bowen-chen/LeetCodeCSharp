@@ -1,5 +1,6 @@
 ﻿/*
 413. Arithmetic Slices
+*
 A sequence of number is called arithmetic if it consists of at least three elements and if the difference between any two consecutive elements is the same.
 
 For example, these are arithmetic sequence:
@@ -58,14 +59,16 @@ namespace Demo
             var dp = 0;
             for (int i = 2; i < n; ++i)
             {
-                var dp_1 = dp;
-                dp = 0;
                 if (A[i] - A[i - 1] == A[i - 1] - A[i - 2])
                 {
-                    dp = dp_1 + 1;
+                    dp += 1;
+                    res += dp;
+                }
+                else
+                {
+                    dp = 0;
                 }
 
-                res += dp;
             }
 
             return res;

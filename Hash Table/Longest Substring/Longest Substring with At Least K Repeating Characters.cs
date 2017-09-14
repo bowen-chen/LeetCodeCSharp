@@ -1,5 +1,6 @@
 ﻿/*
 395. Longest Substring with At Least K Repeating Characters
+revisit
 Find the length of the longest substring T of a given string (consists of lowercase letters only) such that every character in T appears no less than k times.
 
 Example 1:
@@ -50,7 +51,6 @@ namespace Demo
                 }
 
                 // [i, max_index] all char repeats at least k time.
-                // no need to check range [j,k] c [i, max_index] 
                 i = max_idx + 1;
             }
 

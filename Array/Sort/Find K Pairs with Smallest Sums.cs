@@ -71,5 +71,34 @@ namespace Demo
 
             return ret;
         }
+
+        public IList<int[]> KSmallestPairs2(int[] nums1, int[] nums2, int k)
+        {
+            var res = new List<int[]>();
+            int i = 0;
+            int j = 0;
+            while (res.Count < k && i < nums1.Length && j < nums2.Length)
+            {
+                res.Add(new[] { nums1[i], nums2[j] });
+                if (i == nums1.Length - 1)
+                {
+                    j++;
+                }
+                else if (j == nums2.Length - 1)
+                {
+                    i++;
+                }
+                else if (nums1[i + 1] + nums2[j] < nums1[i] + nums2[j + 1])
+                {
+                    i++;
+                }
+                else
+                {
+                    j++;
+                }
+            }
+
+            return res;
+        }
     }
 }

@@ -1,4 +1,6 @@
 ﻿/*
+372. Super Pow
+easy, *
 Your task is to calculate a^b mod 1337 where a is a positive integer and b is an extremely large positive integer given in the form of an array.
 
 Example1:
@@ -27,7 +29,8 @@ namespace Demo
             int res = 1;
             foreach (int i in b)
             {
-                res = (SuperPow(res, 10)%1337)*(SuperPow(a%1337, i)%1337)%1337;
+                res = SuperPow(res, 10)*SuperPow(a, i);
+                res %= 1337;
             }
 
             return res;
@@ -35,6 +38,7 @@ namespace Demo
 
         private int SuperPow(int x, int n)
         {
+            x = x%1337;
             if (n == 0)
             {
                 return 1;
@@ -45,7 +49,7 @@ namespace Demo
                 return x;
             }
 
-            return (SuperPow(x*x%1337, n/2)%1337)*(SuperPow(x, n%2)%1337)%1337;
+            return (SuperPow(x*x, n/2)*SuperPow(x, n%2))%1337;
         }
     }
 }

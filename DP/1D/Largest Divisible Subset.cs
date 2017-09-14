@@ -1,5 +1,6 @@
 ﻿/*
 368	Largest Divisible Subset
+*
 Given a set of distinct positive integers, find the largest subset such that every pair (Si, Sj) of elements in this subset satisfies: Si % Sj = 0 or Sj % Si = 0.
 
 If there are multiple solutions, return any subset is fine.
@@ -16,8 +17,8 @@ nums: [1,2,4,8]
 Result: [1,2,4,8]
 */
 
+using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Demo
 {
@@ -25,7 +26,7 @@ namespace Demo
     {
         public IList<int> LargestDivisibleSubset(int[] nums)
         {
-            nums = nums.OrderBy(n => n).ToArray();
+            Array.Sort(nums);
             var dp = new int[nums.Length];
             var parent = new int[nums.Length];
             int mx = 0, mx_idx = 0;
@@ -38,12 +39,14 @@ namespace Demo
                     {
                         dp[i] = dp[j] + 1;
                         parent[i] = j;
-                        if (mx < dp[i])
-                        {
-                            mx = dp[i];
-                            mx_idx = i;
-                        }
                     }
+                }
+
+
+                if (mx < dp[i])
+                {
+                    mx = dp[i];
+                    mx_idx = i;
                 }
             }
             

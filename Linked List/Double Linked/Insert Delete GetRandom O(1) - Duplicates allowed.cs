@@ -31,6 +31,7 @@ collection.getRandom();
 */
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Demo
 {
@@ -94,4 +95,66 @@ namespace Demo
      * bool param_2 = obj.Remove(val);
      * int param_3 = obj.GetRandom();
      */
+
+    public class RandomizedCollection2
+    {
+        public List<int> list = new List<int>();
+        public Dictionary<int, HashSet<int>> valueToIndex = new Dictionary<int, HashSet<int>>();
+        private readonly Random _random = new Random();
+
+        /** Initialize your data structure here. */
+        public RandomizedCollection2()
+        {
+
+        }
+
+        /** Inserts a value to the set. Returns true if the set did not already contain the specified element. */
+        public bool Insert(int val)
+        {
+            if (!valueToIndex.ContainsKey(val))
+            {
+                valueToIndex[val] = new HashSet<int>();
+            }
+
+            list.Add(val);
+            valueToIndex[val].Add(list.Count - 1);
+            return valueToIndex[val].Count == 1;
+        }
+
+        /** Removes a value from the set. Returns true if the set contained the specified element. */
+
+        public bool Remove(int val)
+        {
+            if (!valueToIndex.ContainsKey(val))
+            {
+                return false;
+            }
+
+            int index = valueToIndex[val].First();
+            valueToIndex[val].Remove(index);
+
+            valueToIndex[list[list.Count - 1]].Add(index);
+            valueToIndex[list[list.Count - 1]].Remove(list.Count - 1);
+            list[index] = list[list.Count - 1];
+
+            list.RemoveAt(list.Count - 1);
+            if (valueToIndex[val].Count == 0)
+            {
+                valueToIndex.Remove(val);
+            }
+
+            return true;
+        }
+
+        /** Get a random element from the set. */
+        public int GetRandom()
+        {
+            if (list.Count == 0)
+            {
+                return 0;
+            }
+            int r = _random.Next(list.Count);
+            return list[r];
+        }
+    }
 }

@@ -1,5 +1,6 @@
 ﻿/*
 399. Evaluate Division
+*
 Equations are given in the format A / B = k, where A and B are variables represented as strings, and k is a real number (floating point number). Given some queries, return the answers. If the answer does not exist, return -1.0.
 
 Example:
@@ -28,6 +29,13 @@ namespace Demo
     {
         public double[] CalcEquation(string[,] equations, double[] values, string[,] queries)
         {
+            var h = new HashSet<string>();
+            for (int i = 0; i < equations.GetLength(0); i++)
+            {
+                h.Add(equations[i, 0]);
+                h.Add(equations[i, 1]);
+            }
+
             var res = new double[queries.GetLength(0)];
             for (int i = 0; i < queries.GetLength(0); i++)
             {
@@ -38,14 +46,13 @@ namespace Demo
                 }
                 else // when a/a, check if a is in equations
                 {
-                    res[i] = -1.0f;
-                    foreach (var q in equations)
+                    if (h.Contains(queries[i, 0]))
                     {
-                        if (q == queries[i, 0] || q == queries[i, 1])
-                        {
-                            res[i] = 1.0f;
-                            break;
-                        }
+                        res[i] = 1.0d;
+                    }
+                    else
+                    {
+                        res[i] = -1.0d;
                     }
                 }
             }

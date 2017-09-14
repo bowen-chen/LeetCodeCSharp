@@ -1,5 +1,6 @@
 ﻿/*
 378. Kth Smallest Element in a Sorted Matrix
+medium, *
 Given a n x n matrix where each of the rows and columns are sorted in ascending order, find the kth smallest element in the matrix.
 
 Note that it is the kth smallest element in the sorted order, not the kth distinct element.
@@ -27,6 +28,7 @@ namespace Demo
             int n = matrix.GetLength(0);
             int m = matrix.GetLength(1);
 
+            // binary search on value not the index.
             // find first low doesn't meet condition (number than matrix(low)<k)
             // we need use "doesn't meet condition search", since matrix could have dup number
             // so there may not be a low meet condition (number than matrix(low)==k-1)

@@ -1,5 +1,6 @@
 ﻿/*
 405	Convert a Number to Hexadecimal
+*
 Given an integer, write an algorithm to convert it to hexadecimal. For negative integer, two’s complement method is used.
 
 Note:
@@ -32,9 +33,12 @@ namespace Demo
         public string ToHex(int num)
         {
             string res = "";
-            for (int i = 0; num != 0 && i < 8; ++i)
+
+            // do logical shift
+            var un = (uint)num;
+            while (un != 0)
             {
-                int t = num & 0xf;
+                uint t = un & 0xf;
                 if (t >= 10)
                 {
                     res = (char)('a' + t - 10) + res;
@@ -44,7 +48,7 @@ namespace Demo
                     res = (char)('0' + t) + res;
                 }
 
-                num >>= 4;
+                un >>= 4;
             }
 
             return res == "" ? "0" : res;

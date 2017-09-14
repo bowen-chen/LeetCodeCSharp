@@ -1,5 +1,6 @@
 ﻿/*
 384. Shuffle an Array
+easy, *
 Shuffle a set of numbers without duplicates.
 
 Example:

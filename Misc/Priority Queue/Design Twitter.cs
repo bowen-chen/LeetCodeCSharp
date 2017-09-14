@@ -147,7 +147,7 @@ namespace Demo
         }
 
         /** Initialize your data structure here. */
-        public Twitter()
+        public Twitter2()
         {
 
         }
