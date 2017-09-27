@@ -53,6 +53,7 @@ namespace Demo
                 {
                     count[s[l++] - 'A']--;
                 }
+
                 maxLength = Math.Max(maxLength, r - l + 1);
             }
 

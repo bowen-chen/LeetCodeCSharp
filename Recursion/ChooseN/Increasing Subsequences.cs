@@ -1,5 +1,6 @@
 ﻿/*
 491. Increasing Subsequences
+hard
 Given an integer array, your task is to find all the different possible increasing subsequences of the given array, and the length of an increasing subsequence should be at least 2 .
 
 Example:

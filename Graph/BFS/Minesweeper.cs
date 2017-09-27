@@ -1,5 +1,6 @@
 ﻿/*
 529. Minesweeper
+*
 Let's play the minesweeper game (Wikipedia, online game)!
 
 You are given a 2D char matrix representing the game board. 'M' represents an unrevealed mine, 'E' represents an unrevealed empty square, 'B' represents a revealed blank square that has no adjacent (above, below, left, right, and all 4 diagonals) mines, digit ('1' to '8') represents how many mines are adjacent to this revealed square, and finally 'X' represents a revealed mine.
@@ -63,67 +64,63 @@ namespace Demo
     {
         public char[,] UpdateBoard(char[,] board, int[] click)
         {
+
             if (board == null || board.GetLength(0) == 0 || board.GetLength(1) == 0)
             {
                 return board;
             }
 
-            int m = board.GetLength(0);
-            int n = board.GetLength(1);
-            var q = new Queue<int[]>();
-            q.Enqueue(click);
-            while (q.Count != 0)
+            if (board[click[0], click[1]] == 'M')
             {
-                var p = q.Dequeue();
-                int row = p[0];
-                int col = p[1];
-                if (board[row, col] == 'M')
+                board[click[0], click[1]] = 'X';
+            }
+            else if (board[click[0], click[1]] == 'E')
+            {
+                int m = board.GetLength(0);
+                int n = board.GetLength(1);
+                var q = new Queue<int[]>();
+                board[click[0], click[1]] = 'C';
+                q.Enqueue(click);
+                while (q.Count != 0)
                 {
-                    board[row, col] = 'X';
-                }
-                else
-                {
-                    int cnt = 0;
-                    var emptyNeighbors = new List<int[]>();
-                    for (int i = -1; i < 2; ++i)
+                    var p = q.Dequeue();
+                    int a = p[0];
+                    int b = p[1];
+                    int c = 0;
+                    for (int i = a - 1; i <= a + 1; i++)
                     {
-                        for (int j = -1; j < 2; ++j)
+                        for (int j = b - 1; j <= b + 1; j++)
                         {
-                            int x = row + i, y = col + j;
-                            if (x < 0 || x >= m || y < 0 || y >= n || (i == 0 && j == 0) /* exclude itself*/)
+                            if (i >= 0 && i < m && j >= 0 && j < n && board[i, j] == 'M')
                             {
-                                continue;
-                            }
-
-                            if (board[x, y] == 'M')
-                            {
-                                ++cnt;
-                            }
-                            else if (board[x, y] == 'E')
-                            {
-                                emptyNeighbors.Add(new[] {x, y});
+                                c++;
                             }
                         }
                     }
 
-                    if (cnt > 0)
+                    if (c > 0)
                     {
-                        board[row, col] = (char) (cnt + '0');
+                        board[a, b] = (char) ('0' + c);
                     }
                     else
                     {
-                        board[row, col] = 'B';
-                        foreach (var a in emptyNeighbors)
+                        board[a, b] = 'B';
+                        for (int i = a - 1; i <= a + 1; i++)
                         {
-                            board[a[0], a[1]] = 'V'; /* as visited*/
-                            q.Enqueue(a);
+                            for (int j = b - 1; j <= b + 1; j++)
+                            {
+                                if (i >= 0 && i < m && j >= 0 && j < n && board[i, j] == 'E')
+                                {
+                                    board[i, j] = 'C';
+                                    q.Enqueue(new[] {i, j});
+                                }
+                            }
                         }
                     }
                 }
             }
 
             return board;
-
         }
     }
 }

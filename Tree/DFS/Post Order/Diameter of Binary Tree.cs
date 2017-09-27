@@ -1,6 +1,6 @@
 ﻿/*
 543. Diameter of Binary Tree
-easy
+easy， *
 Given a binary tree, you need to compute the length of the diameter of the tree. The diameter of a binary tree is the length of the longest path between any two nodes in a tree. This path may or may not pass through the root.
 
 Example:
@@ -32,21 +32,23 @@ namespace Demo
     {
         public int DiameterOfBinaryTree(TreeNode root)
         {
-            int res = 0;
-            DiameterOfBinaryTree(root, ref res);
-            return res;
+            int len = 0;
+            return DiameterOfBinaryTree(root, out len);
         }
-        public int DiameterOfBinaryTree(TreeNode node, ref int res)
+        public int DiameterOfBinaryTree(TreeNode node, out int len)
         {
             if (node == null)
             {
+                len = 0;
                 return 0;
             }
 
-            int left = DiameterOfBinaryTree(node.left, ref res);
-            int right = DiameterOfBinaryTree(node.right, ref res);
-            res = Math.Max(res, left + right);
-            return Math.Max(left, right) + 1;
+            int leftLen;
+            var left = DiameterOfBinaryTree(node.left, out leftLen);
+            int rightLen;
+            var right = DiameterOfBinaryTree(node.right, out rightLen);
+            len = Math.Max(leftLen, rightLen) + 1;
+            return Math.Max(Math.Max(left, right), leftLen + rightLen);
         }
     }
 }

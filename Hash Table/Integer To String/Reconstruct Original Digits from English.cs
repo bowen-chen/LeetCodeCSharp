@@ -1,6 +1,6 @@
 ﻿/*
 423. Reconstruct Original Digits from English
-easy
+easy, *
 Given a non-empty string containing an out-of-order English representation of digits 0-9, output the digits in ascending order.
 
 Note:

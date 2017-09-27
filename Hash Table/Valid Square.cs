@@ -1,5 +1,6 @@
 ﻿/*
 593. Valid Square
+*
 Given the coordinates of four points in 2D space, return whether the four points could construct a square.
 
 The coordinate (x,y) of a point is represented by an integer array with two integers.
@@ -30,7 +31,7 @@ namespace Demo
                 {
                     int x1 = v[i][0], y1 = v[i][1], x2 = v[j][0], y2 = v[j][1];
                     int dist = (x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2);
-                    if (dist == 0)
+                    if (dist == 0) /*important*/
                     {
                         return false;
                     }

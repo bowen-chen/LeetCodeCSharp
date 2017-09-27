@@ -1,5 +1,6 @@
 ﻿/*
 542. 01 Matrix
+*
 Given a matrix consists of 0 and 1, find the distance of the nearest 0 for each cell.
 
 The distance between two adjacent cells is 1.
@@ -58,26 +59,33 @@ namespace Demo
                 }
             }
 
+            int level = 0;
             while (q.Count != 0)
             {
-                var t = q.Dequeue();
-                foreach (var dir in dirs)
+                level++;
+                int count = q.Count;
+                for (int i = 0; i < count; i++)
                 {
-                    int x = t[0] + dir[0];
-                    int y = t[1] + dir[1];
-                    if (x < 0 || x >= m || y < 0 || y >= n)
-                    {
-                        continue;
-                    }
 
-                    if (matrix[x, y] == int.MaxValue)
+                    var t = q.Dequeue();
+                    foreach (var dir in dirs)
                     {
-                        q.Enqueue(new[] {x, y});
+                        int x = t[0] + dir[0];
+                        int y = t[1] + dir[1];
+                        if (x < 0 || x >= m || y < 0 || y >= n)
+                        {
+                            continue;
+                        }
+                        if (matrix[x, y] == int.MaxValue)
+                        {
+                            matrix[x, y] = level;
+                            q.Enqueue(new[] { x, y });
+                        }
                     }
-
-                    matrix[x, y] = Math.Min(matrix[x, y], matrix[t[0], t[1]] + 1);
                 }
             }
+            return matrix;
+        }
 
             return matrix;
         }

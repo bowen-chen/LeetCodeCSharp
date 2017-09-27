@@ -22,65 +22,11 @@ namespace Demo
 {
     public partial class Solution
     {
-        public int FindIntegers(int num)
-        {
-            // the number of integer ending with zero
-            var zero = new int[32];
-            
-            // the number of integer ending with one
-            var one = new int[32];
-
-            // the number of integer
-            var m = new int[32];
-            zero[0] = 1;
-            one[0] = 1;
-            m[0] = 2;
-            for (int i = 1; i < 32; ++i)
-            {
-                zero[i] = zero[i - 1] + one[i - 1]; // =m[i-1]
-                one[i] = zero[i - 1]; // =m[i-2]
-                m[i] = zero[i] + one[i]; // = m[i-1] + m[i-2]
-            }
-
-            int pre = 0;
-            int res = 0;
-
-            // 10101100
-            // 0xxxxxxx
-            // 100xxxxx
-            // 10101xxx
-            // 101011xx
-            // check each bit
-            for(int k =31; k>=0;k--)
-            {
-                if ((num & (1 << k)) != 0)
-                {
-                    // make k as 0
-                    res += m[k-1];
-
-                    // mark k as 1
-                    if (pre == 1)
-                    {
-                        return res;
-                    }
-
-                    pre = 1;
-                }
-                else
-                {
-                    pre = 0;
-                }
-            }
-
-            // there is no two 1 in the num add itself
-            return res + 1;
-        }
-
         public int FindIntegers2(int num)
         {
             var m = new int[32];
-            m[0] = 1;
-            m[1] = 2;
+            m[0] = 1; // 0 bits
+            m[1] = 2; // 1 bits
             for (int i = 2; i < 32; ++i)
             {
                 m[i] = m[i-2] + m[i-1];

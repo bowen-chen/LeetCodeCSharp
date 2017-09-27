@@ -50,8 +50,7 @@ namespace Demo
                 {
                     ++res;
                 }
-
-                if (k > 0 && m.ContainsKey(a.Key + k))
+                else if (k > 0 && m.ContainsKey(a.Key + k))
                 {
                     ++res;
                 }

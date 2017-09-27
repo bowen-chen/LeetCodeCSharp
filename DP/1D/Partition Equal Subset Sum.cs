@@ -21,9 +21,7 @@ Output: false
 Explanation: The array cannot be partitioned into equal sum subsets.
 */
 
-using System.Collections;
 using System.Collections.Specialized;
-using System.Globalization;
 using System.Linq;
 
 namespace Demo
@@ -45,6 +43,7 @@ namespace Demo
             dp[0] = true;
             foreach (int n in nums)
             {
+                // computer from back to front
                 for (int j = target; j >= n; --j)
                 {
                     dp[j] = dp[j] || dp[j - n];

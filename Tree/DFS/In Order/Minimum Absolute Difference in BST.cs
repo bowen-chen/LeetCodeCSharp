@@ -37,26 +37,26 @@ namespace Demo
     {
         public int GetMinimumDifference(TreeNode root)
         {
-            int res = int.MaxValue;
             TreeNode pre = null;
-            GetMinimumDifference(root, ref pre, ref res);
-            return res;
+            return GetMinimumDifference(root, ref pre);
         }
-        private void GetMinimumDifference(TreeNode root, ref TreeNode pre, ref int res)
+
+        private int GetMinimumDifference(TreeNode root, ref TreeNode pre)
         {
             if (root == null)
             {
-                return;
+                return int.MaxValue;
             }
 
-            GetMinimumDifference(root.left, ref pre, ref res);
+            var left = GetMinimumDifference(root.left, ref pre);
+            int current = int.MaxValue;
             if (pre != null)
             {
-                res = Math.Min(res, root.val - pre.val);
+                current = root.val - pre.val;
             }
-
             pre = root;
-            GetMinimumDifference(root.right, ref pre, ref res);
+            var right = GetMinimumDifference(root.right, ref pre);
+            return Math.Min(Math.Min(left, current), right);
         }
     }
 }

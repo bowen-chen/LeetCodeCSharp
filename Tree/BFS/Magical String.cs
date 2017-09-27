@@ -1,5 +1,6 @@
 ﻿/*
 481. Magical String
+*
 A magical string S consists of only '1' and '2' and obeys the following rules:
 
 The string S is magical because concatenating the number of contiguous occurrences of characters '1' and '2' generates the string S itself.
@@ -39,7 +40,7 @@ namespace Demo
                 return 0;
             }
 
-            if (n <= 3)
+            if (n <= 2)
             {
                 return 1;
             }
@@ -49,29 +50,22 @@ namespace Demo
             //q.Enqueue(1);
             //q.Enqueue(2);
             q.Enqueue(2);
-            int res = 1, total = 3, num = 1;
-            while (q.Count != 0)
+            int res = 1, num = 1;
+            for (int i = 2; i < n; i++)
             {
-                var r = q.Dequeue();
-                for (int i = 0; i < r; ++i)
+                var j = q.Dequeue();
+                if (j == 1)
                 {
-                    if (total == n)
-                    {
-                        return res;
-                    }
-
-                    q.Enqueue(num);
-                    if (num == 1)
-                    {
-                        ++res;
-                    }
-
-                    ++total;
+                    res++;
                 }
-
+                for (; j > 0; j--)
+                {
+                    q.Enqueue(num);
+                }
                 num ^= 3; // 1->2, 2->1
             }
-            return -1;
+
+            return res;
         }
     }
 }

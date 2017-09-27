@@ -1,6 +1,6 @@
 ﻿/*
 501. Find Mode in Binary Search Tree
-easy
+easy, *
 Given a binary search tree (BST) with duplicates, find all the mode(s) (the most frequently occurred element) in the given BST.
 
 Assume a BST is defined as follows:

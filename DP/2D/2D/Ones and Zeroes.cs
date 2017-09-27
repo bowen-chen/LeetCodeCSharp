@@ -1,5 +1,6 @@
 ﻿/*
 474. Ones and Zeroes
+*
 In the computer world, use restricted resource you have to generate maximum benefit is what we always want to pursue.
 
 For now, suppose you are a dominator of m 0s and n 1s respectively. On the other hand, there is an array with strings consisting of only 0s and 1s.
@@ -46,6 +47,7 @@ namespace Demo
                     }
                 }
 
+                // REVERSE ORDER MATTERS
                 for (int i = m; i >= zeros; --i)
                 {
                     for (int j = n; j >= ones; --j)

@@ -1,5 +1,6 @@
 ﻿/*
 526. Beautiful Arrangement
+*
 Suppose you have N integers from 1 to N. We define a beautiful arrangement as an array that is constructed by these N numbers successfully if one of the following is true for the ith position (1 ≤ i ≤ N) in this array:
 
 The number at the ith position is divisible by i.
@@ -32,8 +33,7 @@ namespace Demo
     {
         public int CountArrangement(int N)
         {
-            int visited = 0;
-            return CountArrangement(N, visited, 1);
+            return CountArrangement(N, 0, 1);
         }
 
         private int CountArrangement(int N, int visited, int index)

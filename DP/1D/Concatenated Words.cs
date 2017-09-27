@@ -1,5 +1,6 @@
 ﻿/*
 472. Concatenated Words
+*
 Given a list of words (without duplicates), please write a program that returns all concatenated words in the given list of words.
 
 A concatenated word is defined as a string that is comprised entirely of at least two shorter words in the given array.
@@ -33,14 +34,25 @@ namespace Demo
 
             foreach (string word in words)
             {
-                int len = word.Length;
-                var dp = new bool[len];
+                if (string.IsNullOrEmpty(word))
+                {
+                    continue;
+                }
 
-                // dp[i], [0,i] can be construct from dic.
-                for (int i = 0; i < len + 1; ++i)
+                int len = word.Length;
+                var dp = new bool[len+1];
+                dp[0] = true;
+
+                // dp[i], substring(0, i) can be construct from dic.
+                for (int i = 1; i <= len; ++i)
                 {
                     for (int j = 0; j < i; ++j)
                     {
+                        if (j == 0 && i == len)
+                        {
+                            continue;
+                        }
+
                         if (dp[j] && dic.Contains(word.Substring(j, i - j)))
                         {
                             dp[i] = true;
@@ -49,10 +61,9 @@ namespace Demo
                     }
                 }
 
-                if (dp[len - 1])
+                if (dp[len])
                 {
                     res.Add(word);
-                    break;
                 }
             }
 
