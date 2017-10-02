@@ -86,8 +86,5 @@ namespace Demo
             }
             return matrix;
         }
-
-            return matrix;
-        }
     }
 }

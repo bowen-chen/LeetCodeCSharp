@@ -30,7 +30,6 @@ namespace Demo
 {
     public partial class Solution
     {
-        public:
         public bool IsPossible(int[] nums)
         {
             Dictionary<int, int> freq = new Dictionary<int, int>();
