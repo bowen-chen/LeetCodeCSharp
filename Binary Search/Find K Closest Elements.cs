@@ -1,5 +1,6 @@
 ﻿/*
 658. Find K Closest Elements
+revisit
 Given a sorted array, two integers k and x, find the k closest elements to x in the array. The result should also be sorted in ascending order. If there is a tie, the smaller elements are always preferred.
 
 Example 1:
@@ -15,12 +16,31 @@ Absolute value of elements in the array and x will not exceed 10^4
 */
 
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Demo
 {
     public partial class Solution
     {
-        public IList<int> FindClosestElements(IList<int> arr, int k, int x)
+        public List<int> FindClosestElements(IList<int> arr, int k, int x)
+        {
+            int left = 0, right = arr.Count - k;
+            while (left < right)
+            {
+                int mid = left + (right - left) / 2;
+                if (x - arr[mid] > arr[mid + k] - x)
+                {
+                    left = mid + 1;
+                }
+                else
+                {
+                    right = mid;
+                }
+            }
+
+            return arr.ToList().GetRange(left, k);
+        }
+        public IList<int> FindClosestElements2(IList<int> arr, int k, int x)
         {
             int i = FindFirstNumberNotLessThanX(arr, x);
             int j = i - 1;

@@ -1,5 +1,6 @@
 ﻿/*
 646. Maximum Length of Pair Chain
+*
 You are given n pairs of numbers. In every pair, the first number is always smaller than the second number.
 
 Now, we define a pair (c, d) can follow another pair (a, b) if and only if b < c. Chain of pairs can be formed in this fashion.
@@ -35,7 +36,7 @@ namespace Demo
             {
                 if (ps[i][0] <= last)
                 {
-                    last = Math.Min(last, ps[i][1]);
+                    last = Math.Min(last, ps[i][1]); /*choose the smaller end for greater possibility*/
                 }
                 else
                 {

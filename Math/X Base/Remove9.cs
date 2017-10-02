@@ -19,7 +19,6 @@ namespace Demo
         {
             int ans = 0;
             int b = 1;
-
             while (n > 0)
             {
                 ans += n%9*b;

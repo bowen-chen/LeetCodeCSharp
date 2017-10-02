@@ -23,6 +23,20 @@ namespace Demo
 {
     public partial class Solution
     {
+        public int minSteps2(int n)
+        {
+            int res = 0;
+            for (int i = 2; i <= n; ++i)
+            {
+                while (n % i == 0)
+                {
+                    res += i;
+                    n /= i;
+                }
+            }
+            return res;
+        }
+
         public int minSteps(int n)
         {
             int[] dp = new int[n + 1];

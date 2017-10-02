@@ -1,6 +1,5 @@
 ﻿/*
 659. Split Array into Consecutive Subsequences
-
 You are given an integer array sorted in ascending order (may contain duplicates), you need to split them into several subsequences, where each subsequences consist of at least 3 consecutive integers. Return whether you can make such a split.
 
 Example 1:
@@ -31,7 +30,47 @@ namespace Demo
 {
     public partial class Solution
     {
+        public:
         public bool IsPossible(int[] nums)
+        {
+            Dictionary<int, int> freq = new Dictionary<int, int>();
+            Dictionary<int, int> tail = new Dictionary<int, int>();
+            foreach (int num in nums)
+            {
+                if (!freq.ContainsKey(num))
+                {
+                    freq[num] = 0;
+                }
+
+                ++freq[num];
+            }
+            foreach (int num in nums)
+            {
+                if (freq[num] == 0) /*already used*/
+                {
+                    continue;
+                }
+                else if (tail.ContainsKey(num) && tail[num] > 0) /*add it to an existing seq*/
+                {
+                    --tail[num];
+                    ++tail[num + 1];
+                }
+                else if (freq.ContainsKey(num + 1) && freq[num + 1] > 0 && freq.ContainsKey(num + 2) && freq[num + 2] > 0) /*start a new seq*/
+                {
+                    --freq[num + 1];
+                    --freq[num + 2];
+                    ++tail[num + 3];
+                }
+                else
+                {
+                    return false;
+                }
+                --freq[num];
+            }
+            return true;
+        }
+
+        public bool IsPossible2(int[] nums)
         {
             int i = 0;
             while (i < nums.Length)

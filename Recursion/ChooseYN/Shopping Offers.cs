@@ -1,5 +1,6 @@
 ﻿/*
 638. Shopping Offers
+*
 In LeetCode Store, there are some kinds of items to sell. Each item has a price.
 
 However, there are some special offers, and a special offer consists of one or more different kinds of items with a sale price.
@@ -102,5 +103,41 @@ namespace Demo
 
             return ret;
         }
-    }
+
+        public int ShoppingOffers2(IList<int> price, IList<IList<int>> special, IList<int> needs)
+        {
+            int res = 0, n = price.Count;
+            for (int i = 0; i < n; ++i)
+            {
+                res += price[i] * needs[i];
+            }
+
+            foreach (var offer in special)
+            {
+                bool isValid = true;
+                for (int j = 0; j < n; ++j)
+                {
+                    if (needs[j] - offer[j] < 0)
+                    {
+                        isValid = false;
+                    }
+
+                    needs[j] -= offer[j];
+                }
+
+                if (isValid)
+                {
+                    res = Math.Min(res, ShoppingOffers2(price, special, needs) + offer[offer.Count-1]);
+                }
+
+                for (int j = 0; j < n; ++j)
+                {
+                    needs[j] += offer[j];
+                }
+            }
+
+            return res;
+        }
+    };
+}
 }

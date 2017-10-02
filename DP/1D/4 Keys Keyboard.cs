@@ -35,6 +35,16 @@ namespace Demo
 {
     public partial class Solution
     {
+        public int MaxA2(int N)
+        {
+            int res = N;
+            for (int i = 1; i < N - 2; ++i)
+            {
+                res = Math.Max(res, MaxA(i) * (N - i - 1));
+            }
+
+            return res;
+        }
         public int MaxA(int N)
         {
             int[] dp = new int[N + 1];
@@ -44,7 +54,7 @@ namespace Demo
                 dp[i] = i;
                 for (int j = 3; j < i; j++)
                 {
-                    // dp[i - j], press ctrl A, press j-1 ctrl c;
+                    // dp[i - j], press ctrl A, ctrl C, press j-2 ctrl V;
                     dp[i] = Math.Max(dp[i], dp[i - j] * (j - 1));
                 }
             }
